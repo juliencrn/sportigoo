@@ -1,4 +1,3 @@
-tags
 *.log
 *.swp
 *.back
@@ -19,8 +18,6 @@ wp-content/upgrade/
 wp-content/backup-db/
 wp-content/cache/
 wp-content/backups/
-wp-content/updraft/
-wp-content/aiowps_backups/
 
 wp-content/advanced-cache.php
 wp-content/object-cache.php
@@ -69,5 +66,3 @@ wp-includes/
 /wp-signup.php
 /wp-trackback.php
 /xmlrpc.php
-
-.idea/
