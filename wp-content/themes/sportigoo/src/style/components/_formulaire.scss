@@ -1,0 +1,266 @@
+%input-type {
+  background: $white;
+  color: $blue;
+  border-radius: $global-radius;
+  padding: 18px 23px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.formulaire {
+  p {
+    position: relative;
+  }
+
+  margin-bottom: 0;
+  position: relative;
+
+  @media (#{$bp-larger-than-tablet}) {
+    .w50 {
+      width: 45%;
+      margin-bottom: 0;
+    }
+
+    .w100 {
+      min-width: 100%;
+    }
+  }
+
+  @media (#{$bp-smaller-than-tablet}) {
+    p, label, input, select, option, textarea {
+      min-width: 100%;
+    }
+  }
+
+  input[type='email'],
+  input[type='number'],
+  input[type='search'],
+  input[type='text'],
+  input[type='tel'],
+  input[type='url'],
+  input[type='password'],
+  textarea,
+  select,
+  option,
+  input {
+    @extend %input-type;
+    border: none;
+    margin-bottom: 50px;
+  }
+
+  input::placeholder {
+    color: $blue;
+  }
+
+  label, input, select, textarea {
+    min-width: 100%;
+  }
+
+  input[type='submit'],
+  select,
+  option {
+    cursor: pointer;
+  }
+
+  input[type='submit']#submit,
+  .submit-ninja {
+    background-color: $blue !important;
+    color: $white !important;
+    padding: 11px 27px !important;
+    border: none !important;
+    outline: none !important;
+    min-width: 0;
+    position: absolute !important;
+    margin-bottom: 0 !important;
+    bottom: 20px;
+    right: 20px;
+    width: auto;
+  }
+
+  textarea, p {
+    margin-bottom: 0;
+  }
+
+  textarea {
+    box-sizing: border-box;
+  }
+}
+
+textarea::placeholder {
+  color: $blue !important;
+}
+
+
+.woocommerce {
+  .woocommerce-checkout {
+    #payment {
+      background: transparent !important;
+
+      .payment_box {
+        background: transparent !important;
+        padding: 0;
+
+        &.payment_method_stripe {
+          &:before {
+            content: none;
+          }
+        }
+
+        p, label {
+          color: $blue;
+
+          &.row-row {
+            label {
+              display: none;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+  form {
+
+    &.checkout.woocommerce-checkout,
+    &.edit-account,
+    &.woocommerce-form-login,
+    &.woocommerce-form {
+      padding: 50px;
+      max-width: 873px;
+      background-color: $light-grey;
+      margin: 0 auto 50px;
+
+      &.login, &.woocommerce-EditAccountForm {
+        p {
+          margin-bottom: 50px;
+
+          label {
+            display: inline-block;
+          }
+        }
+      }
+
+      p {
+        margin-bottom: 0;
+
+        .woocommerce-input-wrapper {
+          margin-bottom: 50px;
+          display: block;
+        }
+
+        padding: 0;
+        font-size: 18px;
+
+        label {
+          font-size: 18px;
+          display: none;
+
+          &.checkbox, &.inline {
+            display: inline-block;
+            margin-bottom: 6px;
+          }
+
+          input {
+            width: unset;
+          }
+        }
+      }
+
+      #mailjet_woo_subscribe_ok_field {
+        span, label {
+          width: 100%;
+          display: inline-block;
+        }
+
+        .optional {
+          display: none;
+        }
+      }
+
+      table.shop_table.woocommerce-checkout-review-order-table {
+        border: none;
+        background-color: $white;
+        font-size: 18px;
+
+        td, th {
+          padding: 18px 23px;
+
+          p {
+            line-height: 1.5em !important;
+          }
+        }
+      }
+
+      input[type='email'],
+      input[type='number'],
+      input[type='search'],
+      input[type='text'],
+      input[type='tel'],
+      input[type='url'],
+      input[type='password'],
+      textarea,
+      select,
+      option,
+      input {
+        @extend %input-type;
+        border: none;
+      }
+
+      textarea {
+        min-height: 150px;
+        color: $blue;
+      }
+
+      input::placeholder, textarea::placeholder {
+        color: $blue;
+      }
+    }
+
+
+  }
+}
+
+.select2-dropdown--above {
+  border: none !important;
+  padding: 18px !important;
+}
+
+.select2-selection.select2-selection--single {
+  height: auto;
+  border: none;
+}
+
+.select2 {
+  margin: 0 !important;
+
+  &-search__field {
+    padding: 18px 23px;
+  }
+
+  &-results {
+    &__option {
+      padding: 18px 23px;
+    }
+  }
+
+  &-selection {
+    width: 100%;
+    border: none;
+    padding: 0 !important;
+
+    &__rendered {
+      background: $white;
+      color: $blue !important;
+      border-radius: $global-radius;
+      padding: 18px 23px !important;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    &__arrow {
+      padding: 18px 23px;
+    }
+  }
+}

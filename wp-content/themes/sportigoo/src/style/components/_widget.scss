@@ -1,0 +1,113 @@
+.widget {
+  border-radius: $global-radius;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
+  max-width: 100%;
+  background: $white;
+  padding: 20px 15px;
+  color: $blue;
+  margin-bottom: 20px;
+  a.icon:hover {
+    color: $blue;
+    opacity: .8;
+  }
+  &__title {
+    color: $blue;
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  &__search {
+    form {
+      margin-bottom: 0;
+      p {
+        margin-bottom: 0;
+        input[type="text"] {
+          height: 30px;
+          border: 2px solid #224979;
+          border-radius: $global-radius;
+          padding: 0 10px;
+          font-size: 15px;
+          box-sizing: border-box;
+        }
+        input {
+          height: 30px;
+          font-size: 20px;
+          font-weight: 500;
+          padding-bottom: 0;
+          padding-top: 0;
+          width: 100%;
+          text-transform: none;
+        }
+      }
+    }
+
+  }
+  &__recents-posts {
+    border-radius: $global-radius;
+    overflow: hidden;
+    .actu-item {
+      &__img {
+        padding-left: 10px;
+      }
+      &__content {
+        padding: 10px 10px 10px 0;
+      }
+    }
+    .separator{
+      margin: 0 auto;
+      max-width: 50px;
+    }
+  }
+  &__social-list {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    a {
+      margin: 0 10px;
+      fill: $blue
+    }
+  }
+  &__reviews {
+    .blog_avis {
+      margin-bottom: 15px;
+      p {
+        text-align: center;
+        margin-bottom: 5px;
+        font-size: 15px;
+        font-weight: 500;
+      }
+      &__note {
+        display: flex;
+        justify-content: center;
+        * {
+          margin: 5px 3px
+        }
+      }
+    }
+  }
+  &__count {
+    display: flex;
+    justify-content: center;
+    &-item {
+      display: flex;
+      margin: auto;
+      fill: $blue;
+      * {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+    }
+  }
+  &.twitter_widget {
+    h3 {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    padding-left: 0;
+    padding-right: 0;
+    iframe {
+      max-width: 100%;
+    }
+  }
+}

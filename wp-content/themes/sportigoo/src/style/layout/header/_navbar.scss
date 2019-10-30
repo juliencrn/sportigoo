@@ -1,0 +1,102 @@
+/* Navbar */
+.nav {
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 500;
+  &.transparent {
+    background: $nav-background;
+  }
+  background: $blue;
+  position: fixed;
+  padding : $nav-padding;
+  transition: all $slow;
+  &__container {
+    display: flex;
+    justify-content: center;
+  }
+  &__logo img {
+    height: $logo-height;
+    margin-top: 5px
+  }
+  &__links-container {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    margin-bottom: 0;
+    a {
+      font-size: 15px;
+      font-weight: 400;
+      color: $nav-color;
+      padding: 5px 12px;
+      &:hover {
+        color:$link-color-hover;
+      }
+    }
+    ul {
+      margin: 0;
+    }
+    
+    li {
+      margin: 0;
+      padding: 5px 10px;
+      list-style: none;
+      text-transform: uppercase;
+      ul {
+        visibility: hidden;
+        opacity: 0;
+        top: 30px;
+        position: absolute;
+        border-radius: 0 0 $global-radius $global-radius;
+        padding: 20px 10px 10px 10px;
+        transition: background $fast, visibility $fast, opacity $fast;
+        &.active {
+          visibility: visible;
+          opacity: 1;
+          transition: background $fast, visibility $fast, opacity $fast;
+        }
+      }
+    }
+  }
+  &__search {
+    border-radius: 40px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    &:hover {
+      background: transparent;
+      .nav__search-input {
+        width: 150px;
+        padding: 0.25em 0.5em;
+      }
+    }
+  }
+  &__search-button {
+    background: none;
+    padding: 0;
+    margin: 0;
+    margin-right: 40px;
+    fill:$white;
+    &:hover {
+      background-color: transparent;
+      fill:$secondary;
+    }
+  }
+  &__search-input {
+    outline: none;
+    border: none;
+    background: transparent;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 0;
+    width: 0;
+    transition: all ease-in 400ms;
+    font-weight: 500;
+    &::placeholder {
+      color: $white;
+      opacity: 0.8;
+    }
+  }
+}
+@import 'responsive';

@@ -1,0 +1,35 @@
+.socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+        margin: 0 6px;
+        fill: $white;
+        &:hover {
+            fill: $secondary;
+        }
+    }
+}
+.socialshare {
+    @media (#{$bp-larger-than-tablet}) {
+        margin: auto;
+        max-width: 440px;
+    }
+
+    text-align: center;
+    p {
+        font-size: 20px;
+        font-weight: 700;
+    }
+    &__icons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        a {
+            margin: 25px;
+        }
+        svg {
+            fill: $blue;
+        }
+    }
+}

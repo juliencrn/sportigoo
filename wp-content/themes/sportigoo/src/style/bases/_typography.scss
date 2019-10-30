@@ -1,0 +1,118 @@
+// Typography
+/**
+ * Basic typography style for copy text
+ */
+
+h1,
+.h1 {
+  font-size: $fs-h1;
+  line-height: $flh-h1;
+  font-weight: $fw-h1;
+  font-family: $ff-h1;
+}
+
+h2,
+.h2 {
+  font-size: $fs-h2;
+  line-height: $flh-h2;
+  font-weight: $fw-h2;
+  font-family: $ff-h2;
+  margin-bottom: 4rem;
+}
+
+h3,
+.h3 {
+  font-size: $fs-h3;
+  line-height: $flh-h3;
+  font-weight: $fw-h3;
+  font-family: $ff-h3;
+}
+
+h4,
+.h4 {
+  font-size: $fs-h4;
+  line-height: $flh-h4;
+  font-weight: $fw-h4;
+  font-family: $ff-h4;
+}
+
+h5,
+.h5 {
+  font-size: $fs-h5;
+  line-height: $flh-h5;
+  font-weight: $fw-h5;
+  font-family: $ff-h5;
+}
+
+h6,
+.h6 {
+  font-size: $fs-h6;
+  line-height: $flh-h6;
+  font-weight: $fw-h6;
+  font-family: $ff-h6;
+}
+
+p,
+.p {
+  font-size: $fs-p;
+  line-height: $flh-p;
+  font-family: $ff-p;
+  font-weight: $fw-p;
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+@media (#{$bp-smaller-than-desktop}) {
+  h1,
+  .h1 {
+    font-size: $fs-h1 * 0.85;
+  }
+  h2,
+  .h2 {
+    font-size: $fs-h2 * 0.85;
+  }
+  h3,
+  .h3 {
+    font-size: $fs-h3 * 0.85;
+  }
+  h4,
+  .h4 {
+    font-size: $fs-h4 * 0.85;
+  }
+  h5,
+  .h5 {
+    font-size: $fs-h5 * 0.85;
+  }
+}
+
+@media (#{$bp-smaller-than-phablet}) {
+  h1,
+  .h1 {
+    font-size: $fs-h1 * 0.65;
+  }
+  h2,
+  .h2 {
+    font-size: $fs-h2 * 0.65;
+  }
+  h3,
+  .h3 {
+    font-size: $fs-h3 * 0.7;
+  }
+  h4,
+  .h4 {
+    font-size: $fs-h4 * 0.7;
+  }
+  h5,
+  .h5 {
+    font-size: $fs-h5 * 0.65;
+  }
+  p,
+  .p {
+    font-size: $fs-p * .9;
+  }
+}
+
+p {
+  margin-top: 0;
+}

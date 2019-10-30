@@ -1,0 +1,39 @@
+.actualites__main-sidebar {
+  .widget {
+
+
+
+  }
+
+  .woocommerce.widget_recent_reviews {
+    .product_list_widget {
+      li {
+        position: relative;
+        padding: 15px 0 40px;
+
+        .reviewer {
+          text-align: center;
+          font-size: 15px;
+          font-weight: 500;
+          min-width: 100%;
+          display: inline-block;
+          a, span {
+            display: inline-block;
+            font-weight: 500;
+          }
+        }
+        .star-rating {
+          position: absolute;
+          bottom: 0;
+          color: $orange;
+          &::before {
+            color: #57585a;
+          }
+        }
+      }
+      a > img {
+        display: none;
+      }
+    }
+  }
+}

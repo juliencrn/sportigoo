@@ -1,0 +1,40 @@
+// Spacing
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+button,
+.button {
+  margin: $margin-xs;
+}
+
+input,
+textarea,
+select,
+fieldset {
+  margin-bottom: $margin-xs;
+}
+
+pre,
+blockquote,
+dl,
+figure,
+table,
+ul,
+ol,
+form {
+  margin-bottom: $margin-xs;
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0;
+  margin-bottom: $margin-sm;
+}
+
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+  margin-bottom: $margin-sm;
+}

@@ -1,0 +1,103 @@
+{
+    "name": "unscuzzy-starter",
+    "version": "2.0.0",
+    "description": "An awesome starter to do awesome websites",
+    "scripts": {
+        "prettier": "prettier \"src/script/**/*.js\"",
+        "build": "gulp compile --dist",
+        "watch": "gulp watch --dist"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.0",
+        "babel-eslint": "^8.1.2",
+        "babel-plugin-external-helpers": "^6.22.0",
+        "babel-preset-env": "^1.6.1",
+        "browser-sync": "^2.26.7",
+        "debug": "3.1.0",
+        "eslint-plugin-prettier": "^2.3.1",
+        "gulp": "^4.0.2",
+        "gulp-autoprefixer": "^4.1.0",
+        "gulp-babel": "^7.0.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-cssnano": "^2.1.2",
+        "gulp-eslint": "^4.0.0",
+        "gulp-gh-pages": "^0.5.4",
+        "gulp-imagemin": "^5.0.3",
+        "gulp-load-plugins": "^1.6.0",
+        "gulp-plumber": "^1.1.0",
+        "gulp-pug": "3.3.0",
+        "gulp-rename": "^1.2.2",
+        "gulp-sass": "^4.0.1",
+        "gulp-size": "^3.0.0",
+        "gulp-svg-sprite": "^1.4.0",
+        "husky": "^0.14.3",
+        "imagemin-giflossy": "^5.1.10",
+        "imagemin-mozjpeg": "^8.0.0",
+        "imagemin-pngquant": "^6.0.0",
+        "imagemin-zopfli": "^6.0.0",
+        "minimist": "^1.2.0",
+        "prettier": "^1.8.2",
+        "rollup": "^0.51.3",
+        "rollup-plugin-babel": "^3.0.2",
+        "rollup-plugin-node-resolve": "^3.0.0",
+        "rollup-plugin-uglify": "^2.0.1",
+        "through2": "^2.0.3",
+        "vinyl": "^2.1.0",
+        "vinyl-buffer": "^1.0.0",
+        "vinyl-file": "^2.0.0",
+        "vinyl-source-stream": "^1.1.0"
+    },
+    "license": "MIT",
+    "repository": "https://git.unscuzzy.com/lab/starter-integration",
+    "dependencies": {
+        "browserslist": "^4.0.2",
+        "gm": "^1.23.1"
+    },
+    "prettier": {
+        "trailingComma": "es5",
+        "singleQuote": true,
+        "printWidth": 80,
+        "semi": false,
+        "parser": "flow",
+        "jsxBracketSameLine": true
+    },
+    "babel": {
+        "presets": [
+            [
+                "env",
+                {
+                    "targets": {
+                        "node": "current"
+                    }
+                }
+            ]
+        ]
+    },
+    "eslintConfig": {
+        "parser": "babel-eslint",
+        "env": {
+            "node": true,
+            "es6": true
+        },
+        "plugins": [
+            "prettier"
+        ],
+        "rules": {
+            "prettier/prettier": [
+                2,
+                {
+                    "trailingComma": "es5",
+                    "singleQuote": true,
+                    "printWidth": 80,
+                    "semi": false,
+                    "parser": "flow",
+                    "jsxBracketSameLine": true
+                }
+            ],
+            "no-unused-vars": 0,
+            "no-console": 2,
+            "no-restricted-syntax": 2
+        }
+    }
+}

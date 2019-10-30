@@ -1,0 +1,11 @@
+// Selection
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+::-moz-selection {
+  color: $selection-color;
+  background: $selection-background;
+}
+
+::selection {
+  color: $selection-color;
+  background: $selection-background;
+}

@@ -1,0 +1,140 @@
+.actualites {
+  .row {
+    padding: 0;
+  }
+
+  .newsletter-big {
+    margin-top: 25px;
+  }
+
+  .last-posts {
+    display: block;
+    height: 80vh;
+    width: 100%;
+    padding: 0;
+  }
+
+  &__last-posts {
+    align-items: center;
+    display: flex;
+    position: unset;
+    height: 100%;
+  }
+
+  &__last-posts-wrapper {
+    align-items: center;
+    display: flex;
+    position: unset;
+    justify-content: space-between;
+
+    .last-posts__preview {
+      margin-top: 20%;
+    }
+
+    .last-posts__nav {
+
+    }
+  }
+
+  &__main {
+    padding-top: 50px;
+    @media (#{$bp-smaller-than-desktop}) {
+      &-page {
+        width: 100% !important;
+      }
+      &-sidebar {
+        display: none;
+      }
+    }
+
+    .recents_slider {
+      margin-bottom: 20px;
+
+      &__wrapper {
+        position: relative;
+        @media (#{$bp-larger-than-desktop}) {
+          margin: 0 -10px;
+          width: calc(100% + 20px);
+        }
+
+        overflow: hidden;
+      }
+
+      &__carousel {
+
+        &__prev,
+        &__next {
+          position: absolute;
+          z-index: 10;
+          fill: $white;
+          cursor: pointer;
+          border-radius: $global-radius;
+          @media (#{$bp-larger-than-tablet}) {
+            width: 100px;
+          }
+          width: 50px;
+          opacity: 0;
+          transition: fill $fast, opacity $fast;
+          top: 0;
+          height: calc(100% - 20px);
+          display: flex !important;
+
+          &:hover {
+            opacity: 1;
+            transition: fill $fast, opacity $fast;
+          }
+
+          &.slick-disabled {
+            display: none !important;
+          }
+
+          svg {
+            margin: auto 0;
+          }
+
+          &:hover {
+            fill: $secondary;
+          }
+        }
+
+        &__prev {
+          @media (#{$bp-larger-than-desktop}) {
+            margin-left: 10px;
+          }
+
+          padding-left: 10px;
+          left: 0;
+          background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(132, 184, 48, 0) 100%);
+
+        }
+
+        &__next {
+          @media (#{$bp-larger-than-desktop}) {
+            margin-right: 7px;
+          }
+
+          padding-right: 10px;
+          right: 0;
+          justify-content: flex-end;
+          background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5) 0%, rgba(132, 184, 48, 0) 100%);
+        }
+
+      }
+
+      &__topbar {
+        z-index: 0;
+        height: 40px;
+        margin-bottom: -20px;
+        border-radius: $global-radius;
+        overflow: hidden;
+      }
+
+      &__title {
+        font-size: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin: 0;
+      }
+    }
+  }
+}

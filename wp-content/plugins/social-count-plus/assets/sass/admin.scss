@@ -1,0 +1,84 @@
+/* Status page */
+table#social-count-plus-system-status {
+	margin-top: 1.1em;
+
+	tr {
+		&:nth-child(2n) {
+			th, td {
+				background: #fcfcfc;
+			}
+		}
+	}
+	th {
+		font-weight: bold;
+	}
+	td:first-child {
+		width: 20%;
+	}
+	td {
+		font-size: 1.1em;
+		padding: 6px 9px;
+
+		mark {
+			background: transparent none;
+		}
+		mark.yes {
+			color: #7AD03A;
+		}
+		mark.no {
+			color: #999;
+		}
+		mark.error {
+			color: #a00;
+		}
+		ul {
+			margin: 0;
+		}
+	}
+}
+
+.social-count-plus-icons-order {
+	*zoom: 1;
+	background: #fff;
+	border: 1px solid #ddd;
+	padding: 10px 5px 0 5px;
+
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+
+	.social-icon,
+	.social-icon-placeholder {
+		border: 3px solid #ddd;
+		cursor: move;
+		float: left;
+		font-weight: bold;
+		margin: 0 5px 10px;
+		padding: 4px;
+	}
+
+	.social-icon-placeholder {
+		background: #f4f4f4;
+		border-style: dashed;
+	}
+}
+
+.social-count-plus {
+	margin-bottom: 20px;
+
+	.vertical li:not(:first-child) {
+		margin-left: 26px;
+	}
+}
+
+.social-count-plus-model-input {
+	display: block !important;
+	float: left !important;
+	margin: 10px 10px 0 0 !important;
+}

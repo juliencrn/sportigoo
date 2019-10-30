@@ -1,0 +1,26 @@
+.activities-archive {
+    .activity-preview {
+        min-height: 100vh;
+    }
+    .activities {
+        &--trendy {
+            @media (#{$bp-larger-than-tablet}) {
+                margin-top: -150px;
+
+            }
+            margin-top: -50px;
+            .activities__block:nth-child(2) {
+                .section-subtitle {
+                    color: $white;
+                }
+            }
+            .activities__pattern {
+                margin-top: 150px;
+                height: calc(100% - 150px);
+            }
+        }
+
+    }
+}
+
+

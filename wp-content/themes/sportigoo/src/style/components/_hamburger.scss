@@ -1,0 +1,52 @@
+.hamburger {
+    display: none;
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+    right: 10px;
+    .line{
+        width: 40px;
+        height: 2px;
+        background-color: $white;
+        display: block;
+        margin: 8px auto;
+        transition: all 0.3s ease-in-out;
+    }
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+@keyframes smallbig{
+    0%, 100%{
+      transform: scale(1);
+    }
+  
+    50%{
+      transform: scale(0);
+    }
+}
+
+.is-active{
+    .hamburger {
+        animation: smallbig 0.6s forwards;
+        .line:nth-child(1),
+        .line:nth-child(2),
+        .line:nth-child(3){
+            transition-delay: 0.2s;
+        }
+        .line:nth-child(2){
+            opacity: 0;
+        }
+        .line:nth-child(1){
+            transform: translateY(10px) rotate(45deg);
+        }
+        .line:nth-child(3){
+            transform: translateY(-10px) rotate(-45deg);
+        }
+    }
+}
+@media screen and ($bp-smaller-than-desktop) {
+    .hamburger {
+        display: block;
+    }
+}

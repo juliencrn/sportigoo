@@ -1,0 +1,511 @@
+0000.001 (0) Opened log file at time: Mon, 19 Aug 2019 13:32:30 +0000 on https://sportigoo.fr
+0000.013 (0) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.14 WP: 5.2.1 PHP: 7.0.33 (fpm-fcgi, Linux 108737hpv095149.ikexpress.com 3.16.0-4-amd64 #1 SMP Debian 3.16.39-1 (2016-12-30) x86_64) MySQL: 10.0.38-MariaDB-0+deb8u1 WPLANG: fr_FR Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 33.6M | 36M) multisite: N openssl: OpenSSL 1.0.1t  3 May 2016 mcrypt: Y LANG:  ZipArchive::addFile: Y
+0000.019 (0) Free space on disk containing Updraft's temporary directory: 22713.6 MB
+0000.037 (0) Tasks: Backup files:  (schedule: weekly) Backup DB: 1 (schedule: daily)
+0000.043 (0) Processed schedules. Tasks now: Backup files:  Backup DB: 1
+0000.070 (0) Requesting semaphore lock (d) (apparently via scheduler: last_scheduled_action_called_at=1566135349, seconds_ago=86202)
+0000.101 (0) Set semaphore last lock (d) time to 2019-08-19 13:32:31
+0000.109 (0) Semaphore lock (d) complete
+0000.134 (0) Backup run: resumption=0, nonce=4a839572356d, file_nonce=4a839572356d begun at=1566221550 (1s ago), job type=backup
+0000.148 (0) Scheduling a resumption (1) after 300 seconds (1566221851) in case this run gets aborted
+0000.188 (0) This backup run is not intended for files - skipping
+0000.196 (0) Beginning creation of database dump (WordPress DB)
+0000.236 (0) Table wsporp_options: Total expected rows (approximate): 1378
+0000.473 (0) Table wsporp_options: Total rows added: 1249 in 0.23 seconds
+0000.485 (0) Table wsporp_options: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_options.table.gz - 226.1 KB)
+0000.525 (0) Table wsporp_users: Total expected rows (approximate): 11
+0000.536 (0) Table wsporp_users: Total rows added: 14 in 0.00 seconds
+0000.548 (0) Table wsporp_users: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_users.table.gz - 1.6 KB)
+0000.567 (0) Table wsporp_usermeta: Total expected rows (approximate): 671
+0000.589 (0) Table wsporp_usermeta: Total rows added: 671 in 0.02 seconds
+0000.595 (0) Table wsporp_usermeta: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_usermeta.table.gz - 14.3 KB)
+0000.624 (0) Table wsporp_commentmeta: Total expected rows (approximate): 6
+0000.634 (0) Table wsporp_commentmeta: Total rows added: 6 in 0.00 seconds
+0000.642 (0) Table wsporp_commentmeta: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_commentmeta.table.gz - 0.4 KB)
+0000.655 (0) Table wsporp_comments: Total expected rows (approximate): 65
+0000.671 (0) Table wsporp_comments: Total rows added: 93 in 0.01 seconds
+0000.679 (0) Table wsporp_comments: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_comments.table.gz - 3.1 KB)
+0000.702 (0) Table wsporp_links: Total expected rows (approximate): 0
+0000.713 (0) Table wsporp_links: Total rows added: 0 in 0.00 seconds
+0000.719 (0) Table wsporp_links: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_links.table.gz - 0.4 KB)
+0000.741 (0) Table wsporp_postmeta: Total expected rows (approximate): 45850
+0003.030 (0) Table wsporp_postmeta: Total rows added: 46425 in 2.28 seconds
+0003.038 (0) Table wsporp_postmeta: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_postmeta.table.gz - 952.4 KB)
+0003.054 (0) Table wsporp_posts: Total expected rows (approximate): 1228
+0003.246 (0) Table wsporp_posts: Total rows added: 1762 in 0.19 seconds
+0003.255 (0) Table wsporp_posts: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_posts.table.gz - 311.5 KB)
+0003.298 (0) Table wsporp_term_relationships: Total expected rows (approximate): 4311
+0003.356 (0) Table wsporp_term_relationships: Total rows added: 5017 in 0.05 seconds
+0003.364 (0) Table wsporp_term_relationships: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_term_relationships.table.gz - 14.5 KB)
+0003.390 (0) Table wsporp_term_taxonomy: Total expected rows (approximate): 2961
+0003.463 (0) Table wsporp_term_taxonomy: Total rows added: 2961 in 0.06 seconds
+0003.476 (0) Table wsporp_term_taxonomy: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_term_taxonomy.table.gz - 17.1 KB)
+0003.500 (0) Table wsporp_termmeta: Total expected rows (approximate): 327
+0003.517 (0) Table wsporp_termmeta: Total rows added: 330 in 0.01 seconds
+0003.524 (0) Table wsporp_termmeta: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_termmeta.table.gz - 13.7 KB)
+0003.545 (0) Table wsporp_terms: Total expected rows (approximate): 2503
+0003.613 (0) Table wsporp_terms: Total rows added: 2961 in 0.06 seconds
+0003.623 (0) Table wsporp_terms: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_terms.table.gz - 39.3 KB)
+0003.649 (0) Table wsporp_woocommerce_order_itemmeta: Total expected rows (approximate): 262
+0003.662 (0) Table wsporp_woocommerce_order_itemmeta: Total rows added: 330 in 0.01 seconds
+0003.668 (0) Table wsporp_woocommerce_order_itemmeta: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_order_itemmeta.table.gz - 3.4 KB)
+0003.698 (0) Table wsporp_woocommerce_payment_tokenmeta: Total expected rows (approximate): 8
+0003.705 (0) Table wsporp_woocommerce_payment_tokenmeta: Total rows added: 8 in 0.00 seconds
+0003.714 (0) Table wsporp_woocommerce_payment_tokenmeta: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_payment_tokenmeta.table.gz - 0.5 KB)
+0003.740 (0) Table wsporp_yoast_seo_links: Total expected rows (approximate): 214
+0003.757 (0) Table wsporp_yoast_seo_links: Total rows added: 214 in 0.01 seconds
+0003.763 (0) Table wsporp_yoast_seo_links: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_yoast_seo_links.table.gz - 3.2 KB)
+0003.788 (0) Table wsporp_yoast_seo_meta: Total expected rows (approximate): 618
+0003.796 (0) Table wsporp_yoast_seo_meta: Total rows added: 901 in 0.01 seconds
+0003.803 (0) Table wsporp_yoast_seo_meta: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_yoast_seo_meta.table.gz - 2.7 KB)
+0003.829 (0) Table wsporp_aiowps_events: Total expected rows (approximate): 0
+0003.839 (0) Table wsporp_aiowps_events: Total rows added: 0 in 0.00 seconds
+0003.847 (0) Table wsporp_aiowps_events: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_aiowps_events.table.gz - 0.4 KB)
+0003.872 (0) Table wsporp_aiowps_failed_logins: Total expected rows (approximate): 5131
+0003.985 (0) Table wsporp_aiowps_failed_logins: Total rows added: 5000 in 0.11 seconds
+0003.993 (0) Table wsporp_aiowps_failed_logins: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_aiowps_failed_logins.table.gz - 44.5 KB)
+0004.024 (0) Table wsporp_aiowps_global_meta: Total expected rows (approximate): 0
+0004.044 (0) Table wsporp_aiowps_global_meta: Total rows added: 0 in 0.01 seconds
+0004.050 (0) Table wsporp_aiowps_global_meta: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_aiowps_global_meta.table.gz - 0.4 KB)
+0004.079 (0) Table wsporp_aiowps_login_activity: Total expected rows (approximate): 100
+0004.089 (0) Table wsporp_aiowps_login_activity: Total rows added: 106 in 0.00 seconds
+0004.094 (0) Table wsporp_aiowps_login_activity: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_aiowps_login_activity.table.gz - 2 KB)
+0004.115 (0) Table wsporp_aiowps_login_lockdown: Total expected rows (approximate): 0
+0004.123 (0) Table wsporp_aiowps_login_lockdown: Total rows added: 0 in 0.00 seconds
+0004.132 (0) Table wsporp_aiowps_login_lockdown: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_aiowps_login_lockdown.table.gz - 0.4 KB)
+0004.156 (0) Table wsporp_aiowps_permanent_block: Total expected rows (approximate): 0
+0004.163 (0) Table wsporp_aiowps_permanent_block: Total rows added: 0 in 0.00 seconds
+0004.169 (0) Table wsporp_aiowps_permanent_block: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_aiowps_permanent_block.table.gz - 0.4 KB)
+0004.200 (0) Table wsporp_ewwwio_images: Total expected rows (approximate): 7460
+0004.624 (0) Table wsporp_ewwwio_images: Total rows added: 7673 in 0.41 seconds
+0004.632 (0) Table wsporp_ewwwio_images: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_ewwwio_images.table.gz - 171.2 KB)
+0004.651 (0) Table wsporp_ewwwio_queue: Total expected rows (approximate): 0
+0004.658 (0) Table wsporp_ewwwio_queue: Total rows added: 0 in 0.00 seconds
+0004.664 (0) Table wsporp_ewwwio_queue: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_ewwwio_queue.table.gz - 0.3 KB)
+0004.686 (0) Table wsporp_followup_coupon_logs: Total expected rows (approximate): 0
+0004.695 (0) Table wsporp_followup_coupon_logs: Total rows added: 0 in 0.00 seconds
+0004.699 (0) Table wsporp_followup_coupon_logs: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_coupon_logs.table.gz - 0.4 KB)
+0004.721 (0) Table wsporp_followup_coupons: Total expected rows (approximate): 0
+0004.738 (0) Table wsporp_followup_coupons: Total rows added: 0 in 0.01 seconds
+0004.743 (0) Table wsporp_followup_coupons: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_coupons.table.gz - 0.5 KB)
+0004.763 (0) Table wsporp_followup_customer_carts: Total expected rows (approximate): 28
+0004.769 (0) Table wsporp_followup_customer_carts: Total rows added: 28 in 0.00 seconds
+0004.776 (0) Table wsporp_followup_customer_carts: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_customer_carts.table.gz - 1.9 KB)
+0004.815 (0) Table wsporp_followup_customer_notes: Total expected rows (approximate): 0
+0004.825 (0) Table wsporp_followup_customer_notes: Total rows added: 0 in 0.00 seconds
+0004.828 (0) Table wsporp_followup_customer_notes: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_customer_notes.table.gz - 0.3 KB)
+0004.850 (0) Table wsporp_followup_customer_orders: Total expected rows (approximate): 11
+0004.858 (0) Table wsporp_followup_customer_orders: Total rows added: 18 in 0.00 seconds
+0004.864 (0) Table wsporp_followup_customer_orders: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_customer_orders.table.gz - 0.5 KB)
+0004.887 (0) Table wsporp_followup_customers: Total expected rows (approximate): 15
+0004.894 (0) Table wsporp_followup_customers: Total rows added: 17 in 0.00 seconds
+0004.902 (0) Table wsporp_followup_customers: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_customers.table.gz - 0.8 KB)
+0004.926 (0) Table wsporp_followup_email_excludes: Total expected rows (approximate): 0
+0004.933 (0) Table wsporp_followup_email_excludes: Total rows added: 0 in 0.00 seconds
+0004.939 (0) Table wsporp_followup_email_excludes: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_email_excludes.table.gz - 0.4 KB)
+0004.962 (0) Table wsporp_followup_email_logs: Total expected rows (approximate): 4
+0004.973 (0) Table wsporp_followup_email_logs: Total rows added: 6 in 0.00 seconds
+0004.977 (0) Table wsporp_followup_email_logs: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_email_logs.table.gz - 0.8 KB)
+0004.992 (0) Table wsporp_followup_email_orders: Total expected rows (approximate): 176
+0005.010 (0) Table wsporp_followup_email_orders: Total rows added: 298 in 0.02 seconds
+0005.018 (0) Table wsporp_followup_email_orders: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_email_orders.table.gz - 8.4 KB)
+0005.033 (0) Table wsporp_followup_email_tracking: Total expected rows (approximate): 2
+0005.042 (0) Table wsporp_followup_email_tracking: Total rows added: 3 in 0.00 seconds
+0005.047 (0) Table wsporp_followup_email_tracking: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_email_tracking.table.gz - 0.7 KB)
+0005.066 (0) Table wsporp_followup_followup_history: Total expected rows (approximate): 11
+0005.074 (0) Table wsporp_followup_followup_history: Total rows added: 11 in 0.00 seconds
+0005.079 (0) Table wsporp_followup_followup_history: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_followup_history.table.gz - 1.1 KB)
+0005.094 (0) Table wsporp_followup_order_categories: Total expected rows (approximate): 91
+0005.103 (0) Table wsporp_followup_order_categories: Total rows added: 107 in 0.00 seconds
+0005.114 (0) Table wsporp_followup_order_categories: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_order_categories.table.gz - 0.6 KB)
+0005.132 (0) Table wsporp_followup_order_items: Total expected rows (approximate): 14
+0005.140 (0) Table wsporp_followup_order_items: Total rows added: 21 in 0.00 seconds
+0005.143 (0) Table wsporp_followup_order_items: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_order_items.table.gz - 0.4 KB)
+0005.158 (0) Table wsporp_followup_subscriber_lists: Total expected rows (approximate): 0
+0005.167 (0) Table wsporp_followup_subscriber_lists: Total rows added: 0 in 0.00 seconds
+0005.176 (0) Table wsporp_followup_subscriber_lists: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_subscriber_lists.table.gz - 0.3 KB)
+0005.198 (0) Table wsporp_followup_subscribers: Total expected rows (approximate): 0
+0005.209 (0) Table wsporp_followup_subscribers: Total rows added: 0 in 0.00 seconds
+0005.215 (0) Table wsporp_followup_subscribers: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_subscribers.table.gz - 0.4 KB)
+0005.236 (0) Table wsporp_followup_subscribers_to_lists: Total expected rows (approximate): 0
+0005.242 (0) Table wsporp_followup_subscribers_to_lists: Total rows added: 0 in 0.00 seconds
+0005.250 (0) Table wsporp_followup_subscribers_to_lists: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_subscribers_to_lists.table.gz - 0.3 KB)
+0005.273 (0) Table wsporp_nf3_action_meta: Total expected rows (approximate): 120
+0005.284 (0) Table wsporp_nf3_action_meta: Total rows added: 120 in 0.00 seconds
+0005.289 (0) Table wsporp_nf3_action_meta: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_action_meta.table.gz - 2 KB)
+0005.308 (0) Table wsporp_nf3_actions: Total expected rows (approximate): 4
+0005.314 (0) Table wsporp_nf3_actions: Total rows added: 4 in 0.00 seconds
+0005.326 (0) Table wsporp_nf3_actions: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_actions.table.gz - 0.5 KB)
+0005.351 (0) Table wsporp_nf3_chunks: Total expected rows (approximate): 0
+0005.362 (0) Table wsporp_nf3_chunks: Total rows added: 0 in 0.00 seconds
+0005.370 (0) Table wsporp_nf3_chunks: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_chunks.table.gz - 0.3 KB)
+0005.387 (0) Table wsporp_nf3_field_meta: Total expected rows (approximate): 383
+0005.407 (0) Table wsporp_nf3_field_meta: Total rows added: 383 in 0.01 seconds
+0005.416 (0) Table wsporp_nf3_field_meta: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_field_meta.table.gz - 5.4 KB)
+0005.441 (0) Table wsporp_nf3_fields: Total expected rows (approximate): 8
+0005.448 (0) Table wsporp_nf3_fields: Total rows added: 8 in 0.00 seconds
+0005.454 (0) Table wsporp_nf3_fields: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_fields.table.gz - 0.8 KB)
+0005.477 (0) Table wsporp_nf3_form_meta: Total expected rows (approximate): 115
+0005.488 (0) Table wsporp_nf3_form_meta: Total rows added: 115 in 0.00 seconds
+0005.496 (0) Table wsporp_nf3_form_meta: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_form_meta.table.gz - 1.9 KB)
+0005.521 (0) Table wsporp_nf3_forms: Total expected rows (approximate): 1
+0005.528 (0) Table wsporp_nf3_forms: Total rows added: 1 in 0.00 seconds
+0005.535 (0) Table wsporp_nf3_forms: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_forms.table.gz - 0.5 KB)
+0005.566 (0) Table wsporp_nf3_object_meta: Total expected rows (approximate): 0
+0005.575 (0) Table wsporp_nf3_object_meta: Total rows added: 0 in 0.00 seconds
+0005.583 (0) Table wsporp_nf3_object_meta: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_object_meta.table.gz - 0.3 KB)
+0005.614 (0) Table wsporp_nf3_objects: Total expected rows (approximate): 0
+0005.627 (0) Table wsporp_nf3_objects: Total rows added: 0 in 0.00 seconds
+0005.630 (0) Table wsporp_nf3_objects: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_objects.table.gz - 0.3 KB)
+0005.655 (0) Table wsporp_nf3_relationships: Total expected rows (approximate): 0
+0005.664 (0) Table wsporp_nf3_relationships: Total rows added: 0 in 0.00 seconds
+0005.668 (0) Table wsporp_nf3_relationships: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_relationships.table.gz - 0.4 KB)
+0005.692 (0) Table wsporp_nf3_upgrades: Total expected rows (approximate): 1
+0005.704 (0) Table wsporp_nf3_upgrades: Total rows added: 1 in 0.00 seconds
+0005.708 (0) Table wsporp_nf3_upgrades: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_upgrades.table.gz - 4.7 KB)
+0005.734 (0) Table wsporp_pmxi_files: Total expected rows (approximate): 0
+0005.742 (0) Table wsporp_pmxi_files: Total rows added: 0 in 0.00 seconds
+0005.750 (0) Table wsporp_pmxi_files: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_pmxi_files.table.gz - 0.3 KB)
+0005.778 (0) Table wsporp_pmxi_history: Total expected rows (approximate): 0
+0005.784 (0) Table wsporp_pmxi_history: Total rows added: 0 in 0.00 seconds
+0005.790 (0) Table wsporp_pmxi_history: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_pmxi_history.table.gz - 0.4 KB)
+0005.824 (0) Table wsporp_pmxi_images: Total expected rows (approximate): 0
+0005.837 (0) Table wsporp_pmxi_images: Total rows added: 0 in 0.00 seconds
+0005.845 (0) Table wsporp_pmxi_images: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_pmxi_images.table.gz - 0.3 KB)
+0005.866 (0) Table wsporp_pmxi_imports: Total expected rows (approximate): 0
+0005.878 (0) Table wsporp_pmxi_imports: Total rows added: 0 in 0.01 seconds
+0005.887 (0) Table wsporp_pmxi_imports: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_pmxi_imports.table.gz - 0.6 KB)
+0005.909 (0) Table wsporp_pmxi_posts: Total expected rows (approximate): 0
+0005.915 (0) Table wsporp_pmxi_posts: Total rows added: 0 in 0.00 seconds
+0005.926 (0) Table wsporp_pmxi_posts: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_pmxi_posts.table.gz - 0.4 KB)
+0005.949 (0) Table wsporp_pmxi_templates: Total expected rows (approximate): 0
+0005.956 (0) Table wsporp_pmxi_templates: Total rows added: 0 in 0.00 seconds
+0005.960 (0) Table wsporp_pmxi_templates: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_pmxi_templates.table.gz - 0.4 KB)
+0005.981 (0) Table wsporp_redirection_404: Total expected rows (approximate): 499
+0005.997 (0) Table wsporp_redirection_404: Total rows added: 507 in 0.01 seconds
+0006.007 (0) Table wsporp_redirection_404: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_redirection_404.table.gz - 9.1 KB)
+0006.030 (0) Table wsporp_redirection_groups: Total expected rows (approximate): 2
+0006.041 (0) Table wsporp_redirection_groups: Total rows added: 2 in 0.00 seconds
+0006.048 (0) Table wsporp_redirection_groups: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_redirection_groups.table.gz - 0.5 KB)
+0006.071 (0) Table wsporp_redirection_items: Total expected rows (approximate): 18
+0006.082 (0) Table wsporp_redirection_items: Total rows added: 18 in 0.00 seconds
+0006.094 (0) Table wsporp_redirection_items: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_redirection_items.table.gz - 1.3 KB)
+0006.128 (0) Table wsporp_redirection_logs: Total expected rows (approximate): 93
+0006.144 (0) Table wsporp_redirection_logs: Total rows added: 102 in 0.01 seconds
+0006.152 (0) Table wsporp_redirection_logs: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_redirection_logs.table.gz - 2.7 KB)
+0006.182 (0) Table wsporp_smush_dir_images: Total expected rows (approximate): 0
+0006.187 (0) Table wsporp_smush_dir_images: Total rows added: 0 in 0.00 seconds
+0006.191 (0) Table wsporp_smush_dir_images: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_smush_dir_images.table.gz - 0.4 KB)
+0006.213 (0) Table wsporp_tm_taskmeta: Total expected rows (approximate): 0
+0006.223 (0) Table wsporp_tm_taskmeta: Total rows added: 0 in 0.00 seconds
+0006.237 (0) Table wsporp_tm_taskmeta: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_tm_taskmeta.table.gz - 0.4 KB)
+0006.262 (0) Table wsporp_tm_tasks: Total expected rows (approximate): 0
+0006.269 (0) Table wsporp_tm_tasks: Total rows added: 0 in 0.00 seconds
+0006.279 (0) Table wsporp_tm_tasks: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_tm_tasks.table.gz - 0.4 KB)
+0006.312 (0) Table wsporp_wc_booking_relationships: Total expected rows (approximate): 0
+0006.329 (0) Table wsporp_wc_booking_relationships: Total rows added: 0 in 0.00 seconds
+0006.340 (0) Table wsporp_wc_booking_relationships: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_wc_booking_relationships.table.gz - 0.3 KB)
+0006.372 (0) Table wsporp_wc_bookings_availability: Total expected rows (approximate): 0
+0006.380 (0) Table wsporp_wc_bookings_availability: Total rows added: 0 in 0.00 seconds
+0006.387 (0) Table wsporp_wc_bookings_availability: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_wc_bookings_availability.table.gz - 0.5 KB)
+0006.413 (0) Table wsporp_wc_download_log: Total expected rows (approximate): 0
+0006.421 (0) Table wsporp_wc_download_log: Total rows added: 0 in 0.00 seconds
+0006.427 (0) Table wsporp_wc_download_log: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_wc_download_log.table.gz - 0.4 KB)
+0006.459 (0) Table wsporp_wc_product_meta_lookup: Total expected rows (approximate): 109
+0006.473 (0) Table wsporp_wc_product_meta_lookup: Total rows added: 109 in 0.01 seconds
+0006.479 (0) Table wsporp_wc_product_meta_lookup: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_wc_product_meta_lookup.table.gz - 1 KB)
+0006.502 (0) Table wsporp_wc_webhooks: Total expected rows (approximate): 0
+0006.508 (0) Table wsporp_wc_webhooks: Total rows added: 0 in 0.00 seconds
+0006.526 (0) Table wsporp_wc_webhooks: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_wc_webhooks.table.gz - 0.5 KB)
+0006.544 (0) Table wsporp_wcpv_commissions: Total expected rows (approximate): 0
+0006.556 (0) Table wsporp_wcpv_commissions: Total rows added: 0 in 0.00 seconds
+0006.566 (0) Table wsporp_wcpv_commissions: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_wcpv_commissions.table.gz - 0.4 KB)
+0006.592 (0) Table wsporp_wcpv_per_product_shipping_rules: Total expected rows (approximate): 0
+0006.600 (0) Table wsporp_wcpv_per_product_shipping_rules: Total rows added: 0 in 0.00 seconds
+0006.606 (0) Table wsporp_wcpv_per_product_shipping_rules: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_wcpv_per_product_shipping_rules.table.gz - 0.4 KB)
+0006.626 (0) Table wsporp_woocommerce_api_keys: Total expected rows (approximate): 0
+0006.634 (0) Table wsporp_woocommerce_api_keys: Total rows added: 0 in 0.00 seconds
+0006.641 (0) Table wsporp_woocommerce_api_keys: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_api_keys.table.gz - 0.4 KB)
+0006.672 (0) Table wsporp_woocommerce_attribute_taxonomies: Total expected rows (approximate): 0
+0006.682 (0) Table wsporp_woocommerce_attribute_taxonomies: Total rows added: 0 in 0.00 seconds
+0006.689 (0) Table wsporp_woocommerce_attribute_taxonomies: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_attribute_taxonomies.table.gz - 0.4 KB)
+0006.720 (0) Table wsporp_woocommerce_downloadable_product_permissions: Total expected rows (approximate): 0
+0006.734 (0) Table wsporp_woocommerce_downloadable_product_permissions: Total rows added: 0 in 0.00 seconds
+0006.746 (0) Table wsporp_woocommerce_downloadable_product_permissions: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_downloadable_product_permissions.table.gz - 0.5 KB)
+0006.776 (0) Table wsporp_woocommerce_log: Total expected rows (approximate): 0
+0006.783 (0) Table wsporp_woocommerce_log: Total rows added: 0 in 0.00 seconds
+0006.792 (0) Table wsporp_woocommerce_log: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_log.table.gz - 0.4 KB)
+0006.813 (0) Table wsporp_woocommerce_order_items: Total expected rows (approximate): 26
+0006.824 (0) Table wsporp_woocommerce_order_items: Total rows added: 42 in 0.00 seconds
+0006.831 (0) Table wsporp_woocommerce_order_items: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_order_items.table.gz - 0.8 KB)
+0006.851 (0) Table wsporp_woocommerce_payment_tokens: Total expected rows (approximate): 2
+0006.862 (0) Table wsporp_woocommerce_payment_tokens: Total rows added: 2 in 0.00 seconds
+0006.874 (0) Table wsporp_woocommerce_payment_tokens: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_payment_tokens.table.gz - 0.5 KB)
+0006.898 (0) Table wsporp_woocommerce_sessions: Total expected rows (approximate): 118
+0006.918 (0) Table wsporp_woocommerce_sessions: Total rows added: 118 in 0.01 seconds
+0006.928 (0) Table wsporp_woocommerce_sessions: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_sessions.table.gz - 5.9 KB)
+0006.954 (0) Table wsporp_woocommerce_shipping_zone_locations: Total expected rows (approximate): 0
+0006.960 (0) Table wsporp_woocommerce_shipping_zone_locations: Total rows added: 0 in 0.00 seconds
+0006.967 (0) Table wsporp_woocommerce_shipping_zone_locations: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_shipping_zone_locations.table.gz - 0.4 KB)
+0006.992 (0) Table wsporp_woocommerce_shipping_zone_methods: Total expected rows (approximate): 0
+0006.998 (0) Table wsporp_woocommerce_shipping_zone_methods: Total rows added: 0 in 0.00 seconds
+0007.006 (0) Table wsporp_woocommerce_shipping_zone_methods: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_shipping_zone_methods.table.gz - 0.4 KB)
+0007.036 (0) Table wsporp_woocommerce_shipping_zones: Total expected rows (approximate): 0
+0007.042 (0) Table wsporp_woocommerce_shipping_zones: Total rows added: 0 in 0.00 seconds
+0007.046 (0) Table wsporp_woocommerce_shipping_zones: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_shipping_zones.table.gz - 0.3 KB)
+0007.068 (0) Table wsporp_woocommerce_tax_rate_locations: Total expected rows (approximate): 0
+0007.082 (0) Table wsporp_woocommerce_tax_rate_locations: Total rows added: 0 in 0.00 seconds
+0007.090 (0) Table wsporp_woocommerce_tax_rate_locations: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_tax_rate_locations.table.gz - 0.4 KB)
+0007.110 (0) Table wsporp_woocommerce_tax_rates: Total expected rows (approximate): 1
+0007.118 (0) Table wsporp_woocommerce_tax_rates: Total rows added: 1 in 0.00 seconds
+0007.128 (0) Table wsporp_woocommerce_tax_rates: finishing file (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_tax_rates.table.gz - 0.5 KB)
+0007.148 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_options.table.gz (1/83): adding to final database dump
+0007.264 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_users.table.gz (2/83): adding to final database dump
+0007.279 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_usermeta.table.gz (3/83): adding to final database dump
+0007.289 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_commentmeta.table.gz (4/83): adding to final database dump
+0007.295 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_comments.table.gz (5/83): adding to final database dump
+0007.301 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_links.table.gz (6/83): adding to final database dump
+0007.306 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_postmeta.table.gz (7/83): adding to final database dump
+0007.780 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_posts.table.gz (8/83): adding to final database dump
+0007.952 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_term_relationships.table.gz (9/83): adding to final database dump
+0007.970 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_term_taxonomy.table.gz (10/83): adding to final database dump
+0007.991 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_termmeta.table.gz (11/83): adding to final database dump
+0008.004 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_terms.table.gz (12/83): adding to final database dump
+0008.031 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_order_itemmeta.table.gz (13/83): adding to final database dump
+0008.040 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_payment_tokenmeta.table.gz (14/83): adding to final database dump
+0008.047 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_yoast_seo_links.table.gz (15/83): adding to final database dump
+0008.053 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_yoast_seo_meta.table.gz (16/83): adding to final database dump
+0008.064 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_aiowps_events.table.gz (17/83): adding to final database dump
+0008.071 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_aiowps_failed_logins.table.gz (18/83): adding to final database dump
+0008.110 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_aiowps_global_meta.table.gz (19/83): adding to final database dump
+0008.118 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_aiowps_login_activity.table.gz (20/83): adding to final database dump
+0008.128 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_aiowps_login_lockdown.table.gz (21/83): adding to final database dump
+0008.135 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_aiowps_permanent_block.table.gz (22/83): adding to final database dump
+0008.141 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_ewwwio_images.table.gz (23/83): adding to final database dump
+0008.250 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_ewwwio_queue.table.gz (24/83): adding to final database dump
+0008.260 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_coupon_logs.table.gz (25/83): adding to final database dump
+0008.271 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_coupons.table.gz (26/83): adding to final database dump
+0008.280 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_customer_carts.table.gz (27/83): adding to final database dump
+0008.289 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_customer_notes.table.gz (28/83): adding to final database dump
+0008.295 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_customer_orders.table.gz (29/83): adding to final database dump
+0008.301 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_customers.table.gz (30/83): adding to final database dump
+0008.309 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_email_excludes.table.gz (31/83): adding to final database dump
+0008.320 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_email_logs.table.gz (32/83): adding to final database dump
+0008.327 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_email_orders.table.gz (33/83): adding to final database dump
+0008.336 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_email_tracking.table.gz (34/83): adding to final database dump
+0008.353 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_followup_history.table.gz (35/83): adding to final database dump
+0008.374 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_order_categories.table.gz (36/83): adding to final database dump
+0008.381 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_order_items.table.gz (37/83): adding to final database dump
+0008.396 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_subscriber_lists.table.gz (38/83): adding to final database dump
+0008.401 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_subscribers.table.gz (39/83): adding to final database dump
+0008.411 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_followup_subscribers_to_lists.table.gz (40/83): adding to final database dump
+0008.417 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_action_meta.table.gz (41/83): adding to final database dump
+0008.424 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_actions.table.gz (42/83): adding to final database dump
+0008.434 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_chunks.table.gz (43/83): adding to final database dump
+0008.439 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_field_meta.table.gz (44/83): adding to final database dump
+0008.450 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_fields.table.gz (45/83): adding to final database dump
+0008.458 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_form_meta.table.gz (46/83): adding to final database dump
+0008.470 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_forms.table.gz (47/83): adding to final database dump
+0008.485 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_object_meta.table.gz (48/83): adding to final database dump
+0008.490 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_objects.table.gz (49/83): adding to final database dump
+0008.496 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_relationships.table.gz (50/83): adding to final database dump
+0008.504 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_nf3_upgrades.table.gz (51/83): adding to final database dump
+0008.517 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_pmxi_files.table.gz (52/83): adding to final database dump
+0008.528 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_pmxi_history.table.gz (53/83): adding to final database dump
+0008.540 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_pmxi_images.table.gz (54/83): adding to final database dump
+0008.548 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_pmxi_imports.table.gz (55/83): adding to final database dump
+0008.554 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_pmxi_posts.table.gz (56/83): adding to final database dump
+0008.561 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_pmxi_templates.table.gz (57/83): adding to final database dump
+0008.568 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_redirection_404.table.gz (58/83): adding to final database dump
+0008.581 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_redirection_groups.table.gz (59/83): adding to final database dump
+0008.596 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_redirection_items.table.gz (60/83): adding to final database dump
+0008.608 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_redirection_logs.table.gz (61/83): adding to final database dump
+0008.616 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_smush_dir_images.table.gz (62/83): adding to final database dump
+0008.623 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_tm_taskmeta.table.gz (63/83): adding to final database dump
+0008.631 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_tm_tasks.table.gz (64/83): adding to final database dump
+0008.635 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_wc_booking_relationships.table.gz (65/83): adding to final database dump
+0008.649 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_wc_bookings_availability.table.gz (66/83): adding to final database dump
+0008.653 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_wc_download_log.table.gz (67/83): adding to final database dump
+0008.659 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_wc_product_meta_lookup.table.gz (68/83): adding to final database dump
+0008.664 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_wc_webhooks.table.gz (69/83): adding to final database dump
+0008.668 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_wcpv_commissions.table.gz (70/83): adding to final database dump
+0008.676 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_wcpv_per_product_shipping_rules.table.gz (71/83): adding to final database dump
+0008.680 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_api_keys.table.gz (72/83): adding to final database dump
+0008.688 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_attribute_taxonomies.table.gz (73/83): adding to final database dump
+0008.694 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_downloadable_product_permissions.table.gz (74/83): adding to final database dump
+0008.703 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_log.table.gz (75/83): adding to final database dump
+0008.708 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_order_items.table.gz (76/83): adding to final database dump
+0008.717 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_payment_tokens.table.gz (77/83): adding to final database dump
+0008.722 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_sessions.table.gz (78/83): adding to final database dump
+0008.734 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_shipping_zone_locations.table.gz (79/83): adding to final database dump
+0008.743 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_shipping_zone_methods.table.gz (80/83): adding to final database dump
+0008.748 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_shipping_zones.table.gz (81/83): adding to final database dump
+0008.757 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_tax_rate_locations.table.gz (82/83): adding to final database dump
+0008.767 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db-table-wsporp_woocommerce_tax_rates.table.gz (83/83): adding to final database dump
+0008.779 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db.gz: finished writing out complete database file (1864 KB)
+0008.880 (0) Total database tables backed up: 83 (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db.gz, size: 1918834, sha256)
+0008.922 (0) backup_2019-08-19-1532_Sportigoofr_4a839572356d-db.gz: db: This file has not yet been successfully uploaded: will queue
+0008.928 (0) Saving backup history. Total backup size: 1.8 MB
+0008.960 (0) Requesting upload of the files that have not yet been successfully uploaded (1)
+0008.975 (0) Cloud backup selection (1/1): dropbox with instance (1/1) (last)
+0008.981 (0) Beginning dispatch of backup to remote (dropbox) (instance identifier s-6d1526adcf3ff586f5e25920ae7788ba)
+0008.985 (0) Dropbox: begin cloud upload (using API version 2 with OAuth v2 token)
+0009.002 (0) Dropbox: access gained; setting chunk size to: 1024 KB
+0009.519 (0) Dropbox: exception (Dropbox_BadRequestException) occurred whilst getting account info: Error in call to API function "users/get_space_usage": request body: expected null, got value
+0009.531 (0) Dropbox: Attempt to upload: backup_2019-08-19-1532_Sportigoofr_4a839572356d-db.gz to: backup_2019-08-19-1532_Sportigoofr_4a839572356d-db.gz
+0010.615 (0) Dropbox chunked upload: 54.6 % uploaded (AAAAAAAAA_SkfuZsNUk9Qg, 1048576, 5120 KB)
+0011.774 (0) Dropbox chunked upload: 100 % uploaded (AAAAAAAAA_SkfuZsNUk9Qg, 1918834, 5120 KB)
+0013.790 (0) Recording as successfully uploaded: backup_2019-08-19-1532_Sportigoofr_4a839572356d-db.gz
+0013.808 (0) Deleting local file: backup_2019-08-19-1532_Sportigoofr_4a839572356d-db.gz: OK
+0013.813 (0) Dropbox: File upload success (backup_2019-08-19-1532_Sportigoofr_4a839572356d-db.gz): 1873 KB in 4s (437 KB/s)
+0013.838 (0) Retain: beginning examination of existing backup sets; user setting: retain_files=8, retain_db=30
+0013.844 (0) Number of backup sets in history: 35; groups (db): 1
+0013.866 (0) Examining (for databases) backup set with group_id=0, nonce=4a839572356d, datestamp=1566221550 (Aug 19 2019 13:32:30)
+0013.878 (0) This backup set is the backup set just made, so will not be deleted.
+0013.878 (0) Examining (for databases) backup set with group_id=0, nonce=ce1b75f511c4, datestamp=1566135349 (Aug 18 2019 13:35:49)
+0013.878 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.883 (0) Examining (for databases) backup set with group_id=0, nonce=ef2da73287d4, datestamp=1566048737 (Aug 17 2019 13:32:17)
+0013.883 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.884 (0) Examining (for databases) backup set with group_id=0, nonce=5aa46b6735ff, datestamp=1565962380 (Aug 16 2019 13:33:00)
+0013.884 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.884 (0) Examining (for databases) backup set with group_id=0, nonce=0ac2733c7d7b, datestamp=1565877022 (Aug 15 2019 13:50:22)
+0013.884 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.885 (0) Examining (for databases) backup set with group_id=0, nonce=deb0e4c10d92, datestamp=1565876329 (Aug 15 2019 13:38:49)
+0013.885 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.885 (0) Examining (for databases) backup set with group_id=0, nonce=01d0cb02ddee, datestamp=1565875996 (Aug 15 2019 13:33:16)
+0013.885 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0013.892 (0) Examining (for databases) backup set with group_id=0, nonce=cb3178ff027a, datestamp=1565789528 (Aug 14 2019 13:32:08)
+0013.892 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.900 (0) Examining (for databases) backup set with group_id=0, nonce=2af62f3634e3, datestamp=1565703137 (Aug 13 2019 13:32:17)
+0013.900 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.900 (0) Examining (for databases) backup set with group_id=0, nonce=c04f90162c35, datestamp=1565616793 (Aug 12 2019 13:33:13)
+0013.900 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.901 (0) Examining (for databases) backup set with group_id=0, nonce=cde2d02562f9, datestamp=1565600435 (Aug 12 2019 09:00:35)
+0013.901 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0013.909 (0) Examining (for databases) backup set with group_id=0, nonce=271c5d5f8b8d, datestamp=1565530338 (Aug 11 2019 13:32:18)
+0013.909 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.916 (0) Examining (for databases) backup set with group_id=0, nonce=20c29d534c0c, datestamp=1565444208 (Aug 10 2019 13:36:48)
+0013.917 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.917 (0) Examining (for databases) backup set with group_id=0, nonce=408a85e93044, datestamp=1565357543 (Aug 09 2019 13:32:23)
+0013.917 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.917 (0) Examining (for databases) backup set with group_id=0, nonce=1c95677399c2, datestamp=1565272784 (Aug 08 2019 13:59:44)
+0013.917 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.917 (0) Examining (for databases) backup set with group_id=0, nonce=eba21481b1bb, datestamp=1565271319 (Aug 08 2019 13:35:19)
+0013.917 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.918 (0) Examining (for databases) backup set with group_id=0, nonce=b659346456f9, datestamp=1565271190 (Aug 08 2019 13:33:10)
+0013.918 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0013.926 (0) Examining (for databases) backup set with group_id=0, nonce=c917f09c7168, datestamp=1565184740 (Aug 07 2019 13:32:20)
+0013.926 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.931 (0) Examining (for databases) backup set with group_id=0, nonce=fe5dfcea9c1a, datestamp=1565107354 (Aug 06 2019 16:02:34)
+0013.931 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.931 (0) Examining (for databases) backup set with group_id=0, nonce=6e4fe72132c4, datestamp=1565098406 (Aug 06 2019 13:33:26)
+0013.931 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.931 (0) Examining (for databases) backup set with group_id=0, nonce=873dcd8cf102, datestamp=1565012192 (Aug 05 2019 13:36:32)
+0013.931 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.932 (0) Examining (for databases) backup set with group_id=0, nonce=06b3c25e47ab, datestamp=1564925576 (Aug 04 2019 13:32:56)
+0013.932 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.932 (0) Examining (for databases) backup set with group_id=0, nonce=e6b205fdda8f, datestamp=1564839136 (Aug 03 2019 13:32:16)
+0013.932 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.932 (0) Examining (for databases) backup set with group_id=0, nonce=75537c38ba50, datestamp=1564752928 (Aug 02 2019 13:35:28)
+0013.932 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.932 (0) Examining (for databases) backup set with group_id=0, nonce=7f28986b20fb, datestamp=1564667113 (Aug 01 2019 13:45:13)
+0013.932 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.933 (0) Examining (for databases) backup set with group_id=0, nonce=7be56079ea9c, datestamp=1564666445 (Aug 01 2019 13:34:05)
+0013.933 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0013.940 (0) Examining (for databases) backup set with group_id=0, nonce=83e7698dec28, datestamp=1564579965 (Jul 31 2019 13:32:45)
+0013.940 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.950 (0) Examining (for databases) backup set with group_id=0, nonce=eab8cdc88234, datestamp=1564493551 (Jul 30 2019 13:32:31)
+0013.950 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.950 (0) Examining (for databases) backup set with group_id=0, nonce=66f10d694e2c, datestamp=1564407402 (Jul 29 2019 13:36:42)
+0013.950 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.951 (0) Examining (for databases) backup set with group_id=0, nonce=b1e64dec0811, datestamp=1564320966 (Jul 28 2019 13:36:06)
+0013.951 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0013.951 (0) Examining (for databases) backup set with group_id=0, nonce=b4a3266cc3e1, datestamp=1564234558 (Jul 27 2019 13:35:58)
+0013.951 (0) 1564234558: db: this set includes a database (backup_2019-07-27-1535_Sportigoofr_b4a3266cc3e1-db.gz); db count is now 30
+0013.951 (0) 1564234558: db: over retain limit (30); will delete this database
+0013.952 (0) Delete file: backup_2019-07-27-1535_Sportigoofr_b4a3266cc3e1-db.gz, service=dropbox
+0013.961 (0) Dropbox: request deletion: backup_2019-07-27-1535_Sportigoofr_b4a3266cc3e1-db.gz
+0014.920 (0) Dropbox: delete succeeded
+0014.934 (0) This backup set is now empty; will remove from history
+0014.941 (0) Deleting log file (log.b4a3266cc3e1.txt)
+0014.946 (0) Examining (for databases) backup set with group_id=0, nonce=eeaa5bbeb220, datestamp=1564061659 (Jul 25 2019 13:34:19)
+0014.946 (0) Examining (for databases) backup set with group_id=0, nonce=8d1e8d3473cb, datestamp=1563456765 (Jul 18 2019 13:32:45)
+0014.946 (0) Examining (for databases) backup set with group_id=0, nonce=b1eda6d03405, datestamp=1562851983 (Jul 11 2019 13:33:03)
+0014.946 (0) Examining (for databases) backup set with group_id=0, nonce=5e7d7f046e10, datestamp=1562247292 (Jul 04 2019 13:34:52)
+0014.946 (0) Number of backup sets in history: 34; groups (files): 1
+0014.955 (0) Examining (for files) backup set with nonce=4a839572356d, datestamp=1566221550 (Aug 19 2019 13:32:30)
+0014.955 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0014.963 (0) Examining (for files) backup set with nonce=ce1b75f511c4, datestamp=1566135349 (Aug 18 2019 13:35:49)
+0014.963 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0014.963 (0) Examining (for files) backup set with nonce=ef2da73287d4, datestamp=1566048737 (Aug 17 2019 13:32:17)
+0014.963 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0014.963 (0) Examining (for files) backup set with nonce=5aa46b6735ff, datestamp=1565962380 (Aug 16 2019 13:33:00)
+0014.963 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0014.963 (0) Examining (for files) backup set with nonce=0ac2733c7d7b, datestamp=1565877022 (Aug 15 2019 13:50:22)
+0014.963 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0014.964 (0) Examining (for files) backup set with nonce=deb0e4c10d92, datestamp=1565876329 (Aug 15 2019 13:38:49)
+0014.964 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0014.964 (0) Examining (for files) backup set with nonce=01d0cb02ddee, datestamp=1565875996 (Aug 15 2019 13:33:16)
+0014.964 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0014.977 (0) Examining (for files) backup set with nonce=cb3178ff027a, datestamp=1565789528 (Aug 14 2019 13:32:08)
+0014.977 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0014.992 (0) Examining (for files) backup set with nonce=2af62f3634e3, datestamp=1565703137 (Aug 13 2019 13:32:17)
+0014.992 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0014.992 (0) Examining (for files) backup set with nonce=c04f90162c35, datestamp=1565616793 (Aug 12 2019 13:33:13)
+0014.992 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0014.992 (0) Examining (for files) backup set with nonce=cde2d02562f9, datestamp=1565600435 (Aug 12 2019 09:00:35)
+0014.992 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0014.996 (0) Examining (for files) backup set with nonce=271c5d5f8b8d, datestamp=1565530338 (Aug 11 2019 13:32:18)
+0014.996 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0015.004 (0) Examining (for files) backup set with nonce=20c29d534c0c, datestamp=1565444208 (Aug 10 2019 13:36:48)
+0015.004 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0015.004 (0) Examining (for files) backup set with nonce=408a85e93044, datestamp=1565357543 (Aug 09 2019 13:32:23)
+0015.004 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0015.004 (0) Examining (for files) backup set with nonce=1c95677399c2, datestamp=1565272784 (Aug 08 2019 13:59:44)
+0015.004 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0015.005 (0) Examining (for files) backup set with nonce=eba21481b1bb, datestamp=1565271319 (Aug 08 2019 13:35:19)
+0015.005 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0015.005 (0) Examining (for files) backup set with nonce=b659346456f9, datestamp=1565271190 (Aug 08 2019 13:33:10)
+0015.005 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0015.013 (0) Examining (for files) backup set with nonce=c917f09c7168, datestamp=1565184740 (Aug 07 2019 13:32:20)
+0015.013 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0015.020 (0) Examining (for files) backup set with nonce=fe5dfcea9c1a, datestamp=1565107354 (Aug 06 2019 16:02:34)
+0015.020 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0015.024 (0) Examining (for files) backup set with nonce=6e4fe72132c4, datestamp=1565098406 (Aug 06 2019 13:33:26)
+0015.024 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0015.024 (0) Examining (for files) backup set with nonce=873dcd8cf102, datestamp=1565012192 (Aug 05 2019 13:36:32)
+0015.024 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0015.025 (0) Examining (for files) backup set with nonce=06b3c25e47ab, datestamp=1564925576 (Aug 04 2019 13:32:56)
+0015.026 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0015.027 (0) Examining (for files) backup set with nonce=e6b205fdda8f, datestamp=1564839136 (Aug 03 2019 13:32:16)
+0015.027 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0015.027 (0) Examining (for files) backup set with nonce=75537c38ba50, datestamp=1564752928 (Aug 02 2019 13:35:28)
+0015.027 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0015.027 (0) Examining (for files) backup set with nonce=7f28986b20fb, datestamp=1564667113 (Aug 01 2019 13:45:13)
+0015.027 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0015.027 (0) Examining (for files) backup set with nonce=7be56079ea9c, datestamp=1564666445 (Aug 01 2019 13:34:05)
+0015.027 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0015.037 (0) Examining (for files) backup set with nonce=83e7698dec28, datestamp=1564579965 (Jul 31 2019 13:32:45)
+0015.038 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0015.043 (0) Examining (for files) backup set with nonce=eab8cdc88234, datestamp=1564493551 (Jul 30 2019 13:32:31)
+0015.043 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0015.043 (0) Examining (for files) backup set with nonce=66f10d694e2c, datestamp=1564407402 (Jul 29 2019 13:36:42)
+0015.043 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0015.043 (0) Examining (for files) backup set with nonce=b1e64dec0811, datestamp=1564320966 (Jul 28 2019 13:36:06)
+0015.043 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0015.044 (0) Examining (for files) backup set with nonce=eeaa5bbeb220, datestamp=1564061659 (Jul 25 2019 13:34:19)
+0015.044 (0) This backup set remains non-empty (f=1/d=0); will retain in history
+0015.052 (0) Examining (for files) backup set with nonce=8d1e8d3473cb, datestamp=1563456765 (Jul 18 2019 13:32:45)
+0015.052 (0) This backup set remains non-empty (f=1/d=0); will retain in history
+0015.053 (0) Examining (for files) backup set with nonce=b1eda6d03405, datestamp=1562851983 (Jul 11 2019 13:33:03)
+0015.053 (0) This backup set remains non-empty (f=1/d=0); will retain in history
+0015.053 (0) Examining (for files) backup set with nonce=5e7d7f046e10, datestamp=1562247292 (Jul 04 2019 13:34:52)
+0015.053 (0) This backup set remains non-empty (f=1/d=0); will retain in history
+0015.053 (0) Retain: saving new backup history (sets now: 34) and finishing retain operation
+0015.081 (0) Resume backup (4a839572356d, 0): finish run
+0015.099 (0) Decremented the semaphore (d) by 1
+0015.110 (0) Semaphore (d) unlocked
+0015.119 (0) There were no errors in the uploads, so the 'resume' event (1) is being unscheduled
+0015.152 (0) The backup apparently succeeded and is now complete
+0015.163 (0) No email will/can be sent - the user has not configured an email address.
+0015.167 (0) La sauvegarde a réussie. Elle est maintenant terminée.

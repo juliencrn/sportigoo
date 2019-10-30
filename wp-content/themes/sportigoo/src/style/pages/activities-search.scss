@@ -1,0 +1,15 @@
+.activities-search {
+    &__header {
+        padding: 100px 0 75px 0;
+    }
+    .activities__row {
+        display: flex;
+    }
+    
+    .activities__item-wrapper {
+        flex: 1;
+    }
+    .activities__slider {
+        width: 100%;
+    }
+}

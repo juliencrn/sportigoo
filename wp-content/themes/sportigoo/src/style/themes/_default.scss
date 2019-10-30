@@ -1,0 +1,176 @@
+// -----------------------------------------------------------------------------
+// When having several themes, this file contains everything related to the
+// default one.
+// -----------------------------------------------------------------------------
+// -----------------------
+// Functionnal CSS
+// -----------------------
+// Position
+.pab {
+  position: absolute;
+}
+.prel {
+  position: relative;
+}
+
+.fl, .alignleft {
+  float: left;
+}
+.fr, .alignright {
+  float: right;
+}
+
+// Display
+.d-none {
+  display: none;
+}
+.d-flex {
+  display: flex;
+}
+.d-block {
+  display: block;
+}
+
+.t-uppercase {
+  text-transform: uppercase;
+}
+
+// Colors
+.t-orange {
+  color: $orange
+}
+.bg-orange {
+  background: $orange;
+}
+.t-red {
+  color: red;
+}
+.bg-red {
+  background: red;
+}
+.t-gris {
+  color: $blog_gris
+}
+.bg-gris {
+  background: $blog_gris;
+}
+.t-ocre {
+  color: $blog_ocre
+}
+.bg-ocre {
+  background: $blog_ocre;
+}
+.t-light-blue {
+  color: $blog_blueLight
+}
+.bg-light-blue {
+  background: $blog_blueLight;
+}
+.t-blue {
+  color: $blog_blue;
+  fill: $blog_blue
+}
+.bg-blue {
+  background: $blog_blue;
+}
+.t-green {
+  color: $blog_green
+}
+.bg-green {
+  background: $blog_green;
+}
+.t-purple {
+  color: $blog_purple
+}
+.bg-purple {
+  background: $blog_purple;
+}
+.bg-white {
+  background: $white;
+}
+.invalid {
+  .select-selected {
+    background-color: #ffd4db;
+  }
+}
+
+/* General slider */
+.slick-disabled {
+  display: none!important;
+}
+
+/* avis */
+.star {
+  &.light {
+    fill: $white;
+  }
+  fill: #57585a;
+  &.good {
+    fill: $orange;
+  }
+}
+
+/* Reset */
+iframe {
+  padding: 5px;
+  max-width: calc(100% - 10px);
+}
+
+/* Comments */
+.must-log-in {
+  text-align: center;
+}
+
+#mapsvg svg {
+  cursor: pointer;
+}
+
+/* Footer bottom */
+body {
+  min-height: 100vh;
+  @media all and (min-width: 783px) {
+    &.admin-bar {
+      min-height: calc(100vh - 32px);
+    }
+  }
+  @media all and (max-width: 782px) {
+    &.admin-bar {
+      min-height: calc(100vh - 46px);
+    }
+  }
+
+  display: flex;
+  flex-direction: column;
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    display: block;
+  }
+  #sportigoo__main {
+    flex: 1;
+  }
+}
+
+.archive,
+.page-template-search {
+  #results.activities__row {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-around;
+    & > * {
+      @media (#{$bp-larger-than-tablet}) {
+        max-width: 24%;
+        min-width: 24%;
+      }
+      min-width: 100%;
+      margin-bottom: 50px;
+      max-width: unset;
+    }
+  }
+}
+
+.woocommerce-info {
+  margin:0!important;
+}
+
+.widget-text.wp_widget_plugin_box > span {
+    display: none;
+}

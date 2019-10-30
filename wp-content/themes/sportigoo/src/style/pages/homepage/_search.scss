@@ -1,0 +1,47 @@
+.search {
+    text-align: center;
+    padding: 30px 0;
+    background: $light-grey;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    @media (#{$bp-smaller-than-tablet}) {
+        background-color: $light-grey;
+        background-image: none!important;
+    }
+    form {
+        display: flex;
+    }
+    .button {
+        font-weight: 800;
+        z-index: 10;
+    }
+    &__deco-button {
+        position: absolute;
+        right: -28px;
+        bottom: -10px;
+        z-index: 0;
+    }
+    @media (#{$bp-smaller-than-desktop}) {
+        form {
+            flex-wrap: wrap;
+        }
+        .custom-select {
+            min-width: 125px;
+            margin: auto;
+        }
+        .button {
+            margin: 10px auto 0;
+        }
+        &__deco-button {
+            display: none;
+        }
+    }
+    @media (#{$bp-smaller-than-tablet}) {
+        .custom-select {
+            min-width: 150px;
+        }
+        .button {
+            width: 100%;
+        }
+    }
+}

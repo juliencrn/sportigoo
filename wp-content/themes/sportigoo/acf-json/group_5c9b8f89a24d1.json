@@ -1,0 +1,43 @@
+{
+    "key": "group_5c9b8f89a24d1",
+    "title": "Theme - 404",
+    "fields": [
+        {
+            "key": "field_5c9b906acc7ec",
+            "label": "404",
+            "name": "404",
+            "type": "wysiwyg",
+            "instructions": "Texte à afficher en cas de page\/résultat non trouvé",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-404"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1553698746
+}

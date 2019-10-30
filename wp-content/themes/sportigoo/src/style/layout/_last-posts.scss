@@ -1,0 +1,98 @@
+.last-posts {
+    display: flex;
+    padding: 30px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    justify-content: space-between;
+    overflow: hidden;
+    &__preview {
+        width: calc(50% - 40px);
+        display: flex;
+        flex-direction: column;
+        z-index: 10;
+        justify-content: space-between;
+        @media (#{$bp-smaller-than-desktop}) {
+            width: calc(50% - 20px);
+        }
+        @media (#{$bp-smaller-than-tablet}) {
+            display: none;
+        }
+    }
+    &__nav {
+        width: calc(50% - 40px);
+        text-align: left;
+        color: $white;
+        @media (#{$bp-smaller-than-desktop}) {
+            width: calc(50% - 20px);
+        }
+        @media (#{$bp-smaller-than-tablet}) {
+            width: 100%;
+            text-align: center;
+        }
+        .link {
+            z-index: 10;
+            margin-bottom: 30px;
+        }
+    }
+    &__nav-item-wrapper {
+        &.active {
+            .last-posts__img {
+                z-index: 1!important;
+            }
+        }
+        .last-posts__nav-item::after {
+            content: url(../img/chevron-left.svg);
+            width: 0px;
+            height: 20px;
+            position: absolute;
+            bottom: 25px;
+            left: -40px;
+            transition: width .4s;
+            @media (#{$bp-smaller-than-tablet}) {
+                display: none;
+            }
+        }
+        &.active .last-posts__nav-item::after,
+        &:hover .last-posts__nav-item::after {
+            width: 20px;
+        }
+    }
+    &__nav-item {
+        color: $white;
+        z-index: 10;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        &:hover {
+            color: $white;
+        }
+        h4 {
+            margin-bottom: 10px;
+        }
+    }
+    &__filter {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: linear-gradient( -90deg, rgba($primary,1) 0%, rgba($primary,0.75) 75%, rgba($primary,0.50196) 100%);
+        z-index: 2;
+    }
+    &__excerpt-wrapper {
+        background: $white;
+        border-radius: $global-radius;
+        padding: 20px;
+    }
+    &__img {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        left: 50%;
+        width: 100%;
+        z-index: 0;
+        height: 100%;
+        background-size: cover;
+    }
+}

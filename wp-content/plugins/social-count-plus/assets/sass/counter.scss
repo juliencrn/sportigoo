@@ -1,0 +1,129 @@
+@import "compass/css3";
+@import "compass/utilities/general/clearfix";
+
+/* General styles */
+.social-count-plus {
+	@include pie-clearfix();
+
+	.clear {
+		clear: both;
+	}
+
+	ul {
+		border: none !important;
+		list-style: none !important;
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		background: none !important;
+		border: none !important;
+		clear: none !important;
+		float: left;
+		list-style: none !important;
+		margin: 0;
+		padding: 0 0 20px;
+		text-align: center;
+		width: 60px;
+	}
+
+	.vertical li {
+		@include pie-clearfix();
+		display: block;
+		float: none;
+		padding-bottom: 10px;
+		text-align: left;
+		width: 100%;
+	}
+
+	span {
+		display: block;
+		margin: 0;
+		padding: 0;
+	}
+
+	/* Icons */
+	a {
+		@include transition(all 0.4s ease);
+		display: block;
+		margin: 0 auto;
+		opacity: 1;
+		padding: 0 !important;
+	}
+
+	a:hover {
+		opacity: 0.7;
+	}
+
+	.default a {
+		background-color: transparent !important;
+		background-image: url('../images/sprite-default.png') !important;
+		background-repeat: no-repeat !important;
+		height: 32px !important;
+		width: 32px !important;
+	}
+
+	.circle a {
+		background-image: url('../images/sprite-circle.png') !important;
+		height: 37px !important;
+		width: 36px !important;
+	}
+
+	.flat a {
+		background-image: url('../images/sprite-flat.png') !important;
+		height: 32px !important;
+		width: 32px !important;
+	}
+
+	.vertical a {
+		float: left;
+	}
+
+	.vertical .items {
+		float: left;
+		margin-left: 10px;
+		text-align: left;
+	}
+
+	/* Counters */
+	.count {
+		display: block;
+		font-size: 14px;
+		font-weight: bold;
+		line-height: 16px;
+		margin: 5px 0 0;
+		padding: 0;
+	}
+
+	.vertical .count {
+		margin-top: 3px;
+	}
+
+	/* Labels */
+	.label {
+		font-size: 9px;
+		font-weight: normal;
+		line-height: 16px;
+		text-transform: capitalize;
+	}
+
+	/* Sprites */
+	$icons: twitter facebook youtube googleplus posts comments instagram steam soundcloud twitch linkedin pinterest vimeo users tumblr github;
+	$i: 0;
+	@each $icon in $icons {
+		.default .count-#{$icon} a {
+			background-position: (-32px*$i) 0 !important;
+		}
+
+		.circle .count-#{$icon} a {
+			background-position: (-36px*$i) 0 !important;
+		}
+
+		.flat .count-#{$icon} a {
+			background-position: (-32px*$i) 0 !important;
+		}
+
+		$i: $i+1;
+	}
+}

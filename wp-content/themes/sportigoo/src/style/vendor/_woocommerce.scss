@@ -1,0 +1,122 @@
+.woocommerce {
+  tr.woocommerce-cart-form__cart-item.cart_item * {
+    line-height: 1.5em !important;
+  }
+
+  font-size: 18px;
+
+  table {
+    td, th {
+      padding: 18px 23px;
+    }
+  }
+  table.shop_table * {
+    font-size: 18px!important;
+    line-height: 27px;
+  }
+}
+
+
+.ywsl-social {
+  display: none!important;
+}
+.woocommerce-form-login.login {
+  .ywsl-social {
+    display: inline!important;
+  }
+}
+
+// Stars
+.stars.woocommerce.orange {
+  .star-rating {
+    &::before {
+      color: $secondary!important;
+    }
+    span {
+      color: $secondary!important;
+    }
+  }
+}
+
+
+// Product addon
+.product-addon-totals {
+  .wc-pao-col1 > * {
+    padding: 0 15px 0 0;
+  }
+  .wc-pao-col2 > * {
+    margin: 0 0 0 -15px;
+    text-align: right;
+  }
+}
+
+
+
+// Payement stripe
+#payment .payment_box.payment_method_cod::before {display:none!important;}
+.wc_payment_method input {
+  display: inline!important;
+  width: auto!important;
+}
+
+.woocommerce-account {
+  .woocommerce-MyAccount-content h2 {
+    display: none;
+  }
+
+  @media (#{$bp-larger-than-desktop}) {
+    .woocommerce-MyAccount {
+      &-navigation {
+        float: none;
+        width: 100%;
+
+        ul {
+          padding: 0;
+          display: flex;
+          justify-content: space-between;
+
+          li {
+            list-style: none;
+          }
+        }
+      }
+
+      &-content {
+        float: none;
+        width: 100%;
+      }
+    }
+  }
+
+}
+
+@media (#{$bp-larger-than-tablet}) {
+  form.checkout.woocommerce-checkout {
+    .col-1, .col-2 {
+      width: 100%;
+    }
+
+    .woocommerce-billing-fields__field-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .form-row.form-row-wide {
+        width: 47%;
+      }
+    }
+
+    .woocommerce-additional-fields {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      #age_field,
+      #event_type_field {
+        width: 47%;
+      }
+      &__field-wrapper,
+      h3 {
+        width: 100%;
+      }
+    }
+  }
+}

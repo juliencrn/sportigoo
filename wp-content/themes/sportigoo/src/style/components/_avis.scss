@@ -1,0 +1,169 @@
+.avis {
+  &__title {
+    margin-bottom: 0;
+  }
+
+  &__bg {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 50px 0;
+    margin-top: 50px;
+
+    .container {
+      z-index: 10;
+    }
+
+    &-filter {
+      background-color: #1d467a;
+      opacity: 0.3;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+    }
+  }
+
+  &__quote {
+    position: absolute;
+    right: 15px;
+    top: -8px;
+
+    svg {
+      overflow: visible;
+      height: 35px;
+    }
+  }
+
+  .slick-arrow {
+
+    fill: $white;
+    cursor: pointer;
+    display: none !important;
+    @media (#{$bp-larger-than-tablet}) {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 50%;
+      display: flex !important;
+      & > * {
+        margin: auto;
+      }
+    }
+
+    &.slick-hidden, &.slick-disabled {
+      display: none !important;
+    }
+
+  }
+
+  &__prev {
+    left: 0;
+  }
+
+  &__next {
+    right: 0;
+  }
+
+
+  &__item {
+    background-color: #00233f;
+    border-radius: $global-radius;
+    padding: 40px 20px 15px;
+    height: auto;
+
+
+    transition: transform $fast, opacity $fast;
+    overflow: hidden;
+    position: relative;
+
+
+    &.slick-center {
+
+      transform: scale(1) translate(0, 0) !important;
+      opacity: 1!important;
+      z-index: 999!important;
+      transition: transform $fast, opacity $fast;
+
+      .avis__avis {
+        opacity: 1;
+        transition: opacity $fast;
+      }
+    }
+
+    &.slick-current {
+
+    }
+
+    p {
+      font-size: 25px;
+      font-weight: 300;
+      color: $white;
+      text-align: center;
+      margin-bottom: 0;
+    }
+  }
+
+  &__img {
+    margin: 0 auto 15px;
+    width: 70px;
+    height: auto;
+
+    img {
+      border-radius: 999px;
+      overflow: hidden;
+    }
+  }
+
+  &__name {
+    text-transform: capitalize;
+  }
+
+  &__avis {
+    opacity: 0;
+    transition: opacity $fast;
+  }
+}
+
+.avis {
+  &__carousel {
+    &.hasMore {
+      .avis__item {
+        @media (#{$bp-larger-than-desktop}) {
+          opacity: .7;
+          transform: scale(.8);
+          &.slick-active {
+            transform: translate(35%, 0) scale(.8);
+            opacity: .7;
+            z-index: 1;
+            transition: transform $fast, opacity $fast;
+          }
+
+          &.slick-current + .slick-active {
+            transform: translate(-35%, 0) scale(.8);
+            opacity: .7;
+            z-index: 1;
+            transition: transform $fast, opacity $fast;
+          }
+        }
+      }
+    }
+  }
+}
+
+.avis {
+  &__carousel {
+    &.hasMin {
+      @media (#{$bp-larger-than-desktop}) {
+        max-width: 50% !important;
+        margin: auto;
+        .avis__item {
+          margin: 0 35px;
+        }
+
+      }
+    }
+  }
+}

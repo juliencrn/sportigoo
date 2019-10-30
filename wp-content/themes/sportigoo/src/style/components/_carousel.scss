@@ -1,0 +1,47 @@
+.carousel {
+    position: relative;
+    &__item {
+        height: 300px;
+        background-position: center;
+        background-size: cover;
+        border-radius: $global-radius;
+    }
+    &__prev,
+    &__next {
+        position: absolute;
+        fill: $white;
+        cursor: pointer;
+        transition: fill $fast;
+        &:hover {
+            fill: $secondary;
+        }
+    }
+    &__prev {
+        left: 10px;
+        top: calc(50% - 10px);
+    }
+    &__next {
+        right: 10px;
+        top: calc(50% - 10px);
+    }
+    &__after1,
+    &__after2 {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: $secondary;
+        z-index: -1;
+        border-radius: $global-radius;
+    }
+    &__after1 {
+        left: 10px;
+        top: 10px;
+        opacity: 0.7;
+    }
+    &__after2 {
+        left: 20px;
+        top: 20px;
+        opacity: 0.5;
+    }
+}
+

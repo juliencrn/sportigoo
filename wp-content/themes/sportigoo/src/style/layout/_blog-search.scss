@@ -1,0 +1,19 @@
+.blog-search {
+    &__row {
+        display: flex;
+        flex-wrap: wrap;
+        .blogcard {
+            width: calc(25% - 20px);
+            margin: 0 auto 20px auto;
+            @media (#{$bp-smaller-than-desktophd}) {
+                width: calc(33% - 20px);
+            }
+            @media (#{$bp-smaller-than-desktop}) {
+                width: calc(50% - 20px);
+            }
+            @media (#{$bp-smaller-than-phablet}) {
+                width: 100%;
+            }
+        }
+    }
+}

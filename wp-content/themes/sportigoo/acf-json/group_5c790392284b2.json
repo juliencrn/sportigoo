@@ -1,0 +1,67 @@
+{
+    "key": "group_5c790392284b2",
+    "title": "Blog - Catégories",
+    "fields": [
+        {
+            "key": "field_5c79039a06dc7",
+            "label": "Image à la une",
+            "name": "image_a_la_une",
+            "type": "image",
+            "instructions": "Cette image est affichée dans la page des catégories",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5c790408ba429",
+            "label": "Couleur",
+            "name": "couleur",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "category"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+<<<<<<< HEAD
+    "modified": 1559130053
+=======
+    "modified": 1559064332
+>>>>>>> master
+}

@@ -1,0 +1,19 @@
+.logo-partners {
+    padding-top: 50px;
+    &__container {
+        display: flex;
+        margin-bottom: 70px;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    img {
+        height: 40px;
+        filter: grayscale(100%);
+        transition: all $fast;
+        margin: 10px;
+    }
+    a:hover img {
+        margin-top: -6px;
+        filter: grayscale(0);
+    }
+}

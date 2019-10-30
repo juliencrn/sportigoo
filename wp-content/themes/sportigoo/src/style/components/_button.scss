@@ -1,0 +1,43 @@
+/* Buttons */
+a.button,
+input.button,
+button.button,
+.woocommerce a.button,
+.woocommerce input.button,
+.woocommerce button.button{
+  color: $secondary-btn!important;
+  background: $primary-btn!important;
+  border-radius: $global-radius;
+  border:none;
+  padding: $padding-btn;
+  font-family: $ff-h1;
+  transition: all $fast;
+  text-transform: uppercase;
+  margin: 0;
+  cursor: pointer;
+  display: inline-block;
+  &:hover {
+    background: $secondary!important;
+    transform: $transform-btn;
+    color: $secondary-btn!important;
+  }
+  &--white {
+    background: $white!important;
+    border: 2px solid $primary!important;
+    color: $primary!important;
+    font-weight: 500;
+  }
+  &--jumbotron {
+    padding: 15px 50px;
+  }
+}
+
+.activity-preview {
+  a.button,
+  input.button,
+  button.button{
+    &--white {
+      border: none;
+    }
+  }
+}

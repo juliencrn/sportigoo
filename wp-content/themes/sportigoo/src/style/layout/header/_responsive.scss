@@ -1,0 +1,53 @@
+@media screen and ($bp-smaller-than-desktop) {
+    .nav {
+        &__links-container,
+        &__search,
+        .socials {
+            display:none;
+        }
+    }
+
+    ul.sub-menu.active {
+        width: 100vw;
+        left: 0;
+        top: 50px;
+        z-index: 120;
+        height: calc(100vh - 50px);
+        padding: 0;
+        text-align: center;
+        overflow-y: scroll;
+    li {margin: 0}
+    }
+
+    .is-active {
+        .nav__links-container, .nav__search, .nav .socials {
+            display: block;
+        }
+        .nav__container {
+            flex-direction:column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav__links-container {
+            flex-direction: column;
+            margin: 0;
+            li {
+                text-align: center;
+                padding: 10px;
+                margin: 10px 0;
+                a {
+                    font-size: 1.8rem;
+                }
+            }
+        }
+        .socials {
+            margin-top: 20px;
+        }
+        .nav__search {
+            margin: auto;
+        }
+        .nav__search-input {
+            width: 110px;
+        }
+    }
+}

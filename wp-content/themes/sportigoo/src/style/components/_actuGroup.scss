@@ -1,0 +1,78 @@
+.actu-group {
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
+  border-radius: $global-radius;
+  overflow: hidden;
+  background-color: #fdfdfd;
+  z-index: 11;
+  position: relative;
+  margin-bottom: 20px;
+
+  &__topbar {
+    z-index: 0;
+    height: 40px;
+    margin-bottom: -20px;
+    border-radius: $global-radius;
+    overflow: hidden;
+  }
+
+  &__title {
+    background-color: #fdfdfd;
+    margin: 0;
+    padding: 20px;
+    font-size: 25px;
+  }
+
+  &__img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__list {
+    padding: 20px 0 10px;
+  }
+
+  &__footer {
+    height: 100px;
+    background-image: linear-gradient(to top, rgba(black, 0.5) 0%, rgba(132, 184, 48, 0) 100%);
+    fill: $white;
+    text-align: center;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transition: visibility $fast, opacity $fast;
+
+    a {
+      position: absolute;
+      bottom: 20px;
+      fill: $white;
+      transition: fill $fast;
+    }
+
+    &:hover {
+      a {
+        fill: $secondary;
+        transition: fill $fast;
+      }
+    }
+  }
+
+  &:hover {
+    .actu-group__footer {
+      z-index: 21;
+      visibility: visible;
+      opacity: 1;
+      transition: visibility $fast, opacity $fast;
+    }
+  }
+
+  .separator {
+    margin: 10px auto;
+    display: block;
+    color: #cccbcb;
+    max-width: 50px;
+  }
+}

@@ -1,0 +1,261 @@
+# Copyright (C) 2018 YITH WooCommerce Social Login
+# This file is distributed under the same license as the YITH WooCommerce Social Login package.
+msgid ""
+msgstr ""
+"Project-Id-Version: YITH WooCommerce Social Login 1.2.3\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/init\n"
+"POT-Creation-Date: 2018-10-23 12:35:27+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: includes/class-yith-social-login-admin.php:139
+msgid "Settings"
+msgstr ""
+
+#: includes/class-yith-social-login-admin.php:143
+msgid "Premium Version"
+msgstr ""
+
+#: includes/class-yith-social-login-admin.php:150
+#: includes/class-yith-social-login-admin.php:151
+msgctxt "Plugin name. Do not translate"
+msgid "Social Login"
+msgstr ""
+
+#: includes/class-yith-social-login.php:251
+msgid "Add your email address"
+msgstr ""
+
+#: includes/class-yith-social-login.php:257
+msgid "Your email address is not valid!"
+msgstr ""
+
+#: includes/class-yith-social-login.php:263
+msgid "This email already exists"
+msgstr ""
+
+#: includes/class-yith-social-login.php:269
+msgid "Username is not valid!"
+msgstr ""
+
+#: includes/class-yith-social-login.php:574
+msgid "Unspecified error."
+msgstr ""
+
+#: includes/class-yith-social-login.php:577
+msgid "Hybriauth configuration error."
+msgstr ""
+
+#: includes/class-yith-social-login.php:580
+msgid "Provider not properly configured."
+msgstr ""
+
+#: includes/class-yith-social-login.php:583
+msgid "Unknown or disabled provider."
+msgstr ""
+
+#: includes/class-yith-social-login.php:586
+msgid "Missing provider application credentials."
+msgstr ""
+
+#: includes/class-yith-social-login.php:589
+msgid ""
+"Authentification failed. The user has canceled the authentication or the "
+"provider refused the connection."
+msgstr ""
+
+#: includes/class-yith-social-login.php:592
+msgid ""
+"Request of user profile failed. Probably the user is not connected to the "
+"provider and a new authentication is necessary."
+msgstr ""
+
+#: includes/class-yith-social-login.php:595
+msgid "User not connected to the provider."
+msgstr ""
+
+#: includes/class-yith-social-login.php:598
+msgid "Provider does not support this feature."
+msgstr ""
+
+#: init.php:46
+msgid ""
+"You can't activate the free version of YITH Woocommerce Social Login while "
+"you are using the premium one."
+msgstr ""
+
+#: init.php:67
+msgid ""
+"YITH Woocommerce Social Login is enabled but not effective. It requires "
+"WooCommerce in order to work."
+msgstr ""
+
+#: plugin-options/settings-options.php:22
+msgid "Upgrade to the PREMIUM VERSION"
+msgstr ""
+
+#. #-#-#-#-#  init.pot (YITH WooCommerce Social Login 1.2.3)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: plugin-options/settings-options.php:25
+#: plugin-options/settings-options.php:32
+msgid "YITH WooCommerce Social Login"
+msgstr ""
+
+#: plugin-options/settings-options.php:26
+msgid "Discover Advanced Features"
+msgstr ""
+
+#: plugin-options/settings-options.php:27
+msgid ""
+"Upgrade to the PREMIUM VERSION\n"
+"of YITH WooCommerce Social Login to benefit from all features!"
+msgstr ""
+
+#: plugin-options/settings-options.php:34
+msgid "Get Support and Pro Features"
+msgstr ""
+
+#: plugin-options/settings-options.php:35
+msgid ""
+"By purchasing the premium version of the plugin, you will benefit from the "
+"advanced features of the product and you will get one year of free update "
+"and support through our platform available 24h/24."
+msgstr ""
+
+#: plugin-options/settings-options.php:45
+msgid "General settings"
+msgstr ""
+
+#: plugin-options/settings-options.php:51
+msgid "Label"
+msgstr ""
+
+#: plugin-options/settings-options.php:52
+msgid "Change content of the label to display above social login buttons"
+msgstr ""
+
+#: plugin-options/settings-options.php:54
+msgid "Login with:"
+msgstr ""
+
+#: plugin-options/settings-options.php:59
+msgid "Description in checkout page"
+msgstr ""
+
+#: plugin-options/settings-options.php:60
+msgid "Change content of the description in checkout page"
+msgstr ""
+
+#: plugin-options/settings-options.php:62
+msgid "Social sign-in"
+msgstr ""
+
+#: plugin-options/settings-options.php:72
+msgid "Facebook settings"
+msgstr ""
+
+#: plugin-options/settings-options.php:79
+msgid "Enable Facebook Login"
+msgstr ""
+
+#: plugin-options/settings-options.php:87
+msgid "Facebook App Id"
+msgstr ""
+
+#: plugin-options/settings-options.php:95
+msgid "Facebook Secret"
+msgstr ""
+
+#: plugin-options/settings-options.php:108
+msgid "Twitter settings"
+msgstr ""
+
+#: plugin-options/settings-options.php:115
+msgid "Enable Twitter Login"
+msgstr ""
+
+#: plugin-options/settings-options.php:123
+msgid "Twitter Key"
+msgstr ""
+
+#: plugin-options/settings-options.php:131
+msgid "Twitter Secret"
+msgstr ""
+
+#: plugin-options/settings-options.php:143
+msgid "Google settings"
+msgstr ""
+
+#: plugin-options/settings-options.php:151
+msgid "Enable Google Login"
+msgstr ""
+
+#: plugin-options/settings-options.php:159
+msgid "Google ID"
+msgstr ""
+
+#: plugin-options/settings-options.php:167
+msgid "Google secret"
+msgstr ""
+
+#: plugin-options/socials.php:5
+msgid "Facebook"
+msgstr ""
+
+#: plugin-options/socials.php:9
+msgid "Twitter"
+msgstr ""
+
+#: plugin-options/socials.php:13
+msgid "Google"
+msgstr ""
+
+#: templates/request-info.php:10
+msgid "Login"
+msgstr ""
+
+#: templates/request-info.php:15
+msgid "Please, enter your information in the form below to continue"
+msgstr ""
+
+#: templates/request-info.php:27
+msgid "Username"
+msgstr ""
+
+#: templates/request-info.php:33
+msgid "Email"
+msgstr ""
+
+#: templates/request-info.php:39
+msgid "Continue to Login"
+msgstr ""
+
+#: templates/social-buttons-checkout.php:14
+msgid "Click here to login"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://yithemes.com/themes/plugins/yith-woocommerce-social-login/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"<code><strong>YITH WooCommerce Social Login</strong></code> allows your "
+"users and customers to register and log into your store using one of their "
+"favourite social networks, like Facebook, Google, Twitter etc. Perfect for "
+"speeding up the login process on your e-commerce shop. <a href=\"https://"
+"yithemes.com/\" target=\"_blank\">Get more plugins for your e-commerce shop "
+"on <strong>YITH</strong></a>."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "YITH"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://yithemes.com/"
+msgstr ""

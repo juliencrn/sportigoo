@@ -1,0 +1,15 @@
+.activities--categories {
+    background: $light-grey;
+    padding: 50px 0;
+    .activities {
+        &__item-wrapper {
+            height:400px;
+            &:hover {
+                .activities__title {
+                    color:$white;
+                    transform: translateY(0);
+                }
+            }
+        }
+    } 
+}

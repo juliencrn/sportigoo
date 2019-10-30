@@ -1,0 +1,35 @@
+{
+  "name": "woocommerce-follow-up-emails",
+  "description": "Automate your email marketing, and create scheduled newletters to drive customer engagement for WordPress, WooCommerce, and Sensei.",
+  "version": "4.8.4",
+  "title": "Follow-Up Emails",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-contrib-uglify": "^0.9.2",
+    "grunt-contrib-cssmin": "^0.14.0",
+    "grunt-checktextdomain": "^1.0.0",
+    "grunt-wp-i18n": "^0.5.3"
+  },
+  "scripts": {
+    "build": "npm run uglify && npm run less && npm run makepot",
+    "preuglify": "rm -f $npm_package_assets_js_min",
+    "uglify": "for f in $npm_package_assets_js_js; do file=${f%.js}; node_modules/.bin/uglifyjs $f -c -m > $file.min.js; done",
+    "preless": "rm -f $npm_package_assets_styles_css",
+    "less": "for f in $npm_package_assets_styles_less; do file=${f%.less}; node_modules/.bin/lessc $f > $file.css; done && rm -f assets/css/mixins.css",
+    "postless": "for f in $npm_package_assets_styles_css; do file=${f%.css}; node_modules/.bin/cleancss -o $file.css $f; done",
+    "makepot": "php node_modules/grunt-wp-i18n/vendor/wp-i18n-tools/grunt-makepot.php wp-plugin . languages/$npm_package_name.pot",
+    "postmakepot": "sed -i '' \"s/wordpress\\.org\\/support\\/plugin\\/$npm_package_name/docs\\.woocommerce\\.com/g\" languages/$npm_package_name.pot",
+    "po2mo": "rm -f languages/*.mo;",
+    "postpo2mo": "for f in languages/*.po; do file=${f%.po}; msgfmt -o $file.mo $file.po; done",
+    "test": "node node_modules/mocha/bin/mocha tests/js && vendor/bin/phpunit -c phpunit.xml.dist",
+    "test-client": "node node_modules/mocha/bin/mocha tests/js ",
+    "test-api": "vendor/bin/phpunit -c phpunit.xml.dist",
+    "test-e2e": "cross-env NODE_CONFIG_DIR='./tests/e2e/config' BABEL_ENV=commonjs mocha --compilers js:babel-register --recursive tests/e2e"
+  },
+  "engines": {
+    "node": ">=0.8.0",
+    "npm": ">=1.1.0"
+  }
+}

@@ -1,0 +1,12 @@
+.produit_sporti {
+  &__commentaires {
+    background-color: #F5F5F5;
+  }
+
+  section.laws .row {
+    display: flex;
+    & > .cols {
+      margin: auto;
+    }
+  }
+}

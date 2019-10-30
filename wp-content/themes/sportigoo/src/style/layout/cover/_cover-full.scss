@@ -1,0 +1,16 @@
+&--full {
+    height: calc(100vh - 160px);
+    .cover__filter {
+        background: linear-gradient( 0deg, rgba($primary,0.50196) 0%, rgba($black,0.65882) 100%);
+        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+            display: none;
+       }
+    }
+    //@media (#{$bp-smaller-than-desktop}) {
+    //    height: calc(100vh - 250px);
+    //    background-attachment: initial;
+    //}
+    //@media (#{$bp-smaller-than-tablet}) {
+    //    height: calc(100vh - 400px);
+    //}
+}

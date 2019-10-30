@@ -1,0 +1,55 @@
+.faq {
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
+  border-radius: $global-radius;
+  margin-bottom: 25px;
+  fill: $blue;
+  &__item {
+
+    p {
+      font-size: 20px;
+      margin: 0;
+    }
+    &-btn {
+      cursor: pointer;
+      transform: rotate(0deg);
+      -webkit-transition: transform $fast;
+      transition: transform $fast;
+    }
+    &-visible {
+      cursor: pointer;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      p {
+        font-weight: 500;
+      }
+    }
+    &-hidden {
+      background-color: rgba(#c9e1ff, .5);
+      padding: 20px;
+      position: absolute;
+      opacity: 0;
+      visibility: hidden;
+      -webkit-transition: opacity $fast, visibility $fast;
+      transition: opacity $fast, visibility $fast;
+      p {
+        font-weight: 400;
+        opacity: 1;
+      }
+    }
+    &.active {
+      .faq__item-hidden {
+        position: relative;
+        opacity: 1;
+        visibility: visible;
+        cursor: unset;
+      }
+      .faq__item-btn {
+        transform: rotate(180deg);
+        -webkit-transition: transform $fast;
+        transition: transform $fast;
+      }
+    }
+  }
+}

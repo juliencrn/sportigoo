@@ -1,0 +1,1412 @@
+0000.004 (0) Opened log file at time: Thu, 08 Aug 2019 13:33:10 +0000 on https://sportigoo.fr
+0000.018 (0) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.14 WP: 5.2.1 PHP: 7.0.33 (fpm-fcgi, Linux 108737hpv095149.ikexpress.com 3.16.0-4-amd64 #1 SMP Debian 3.16.39-1 (2016-12-30) x86_64) MySQL: 10.0.38-MariaDB-0+deb8u1 WPLANG: fr_FR Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 33.7M | 36M) multisite: N openssl: OpenSSL 1.0.1t  3 May 2016 mcrypt: Y LANG:  ZipArchive::addFile: Y
+0000.026 (0) Free space on disk containing Updraft's temporary directory: 23416.5 MB
+0000.053 (0) Tasks: Backup files: 1 (schedule: weekly) Backup DB:  (schedule: daily)
+0000.068 (0) Processed schedules. Combining jobs from co-inciding events. Tasks now: Backup files: 1 Backup DB: 1
+0000.086 (0) Requesting semaphore lock (fd) (apparently via scheduler: last_scheduled_action_called_at=1564666445, seconds_ago=604745)
+0000.101 (0) Set semaphore last lock (fd) time to 2019-08-08 13:33:10
+0000.106 (0) Semaphore lock (fd) complete
+0000.119 (0) Backup run: resumption=0, nonce=b659346456f9, file_nonce=b659346456f9 begun at=1565271190 (0s ago), job type=backup
+0000.127 (0) Scheduling a resumption (1) after 300 seconds (1565271490) in case this run gets aborted
+0000.155 (0) Checking if we have a zip executable available
+0000.176 (0) Creation of backups of directories: beginning
+0000.201 (0) Beginning creation of dump of plugins (split every: 400 MB)
+0007.548 (0) Total entities for the zip file: 1796 directories, 10786 files (0 skipped as non-modified), 251.5 MB
+0007.561 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 2.0 seconds have passed since the last write (0 MB, 1 (1) files added so far); re-opening (prior size: 0 KB)
+0007.662 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 100 files added (on-disk size: 326.7 KB)
+0007.740 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 200 files added (on-disk size: 326.7 KB)
+0007.785 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 300 files added (on-disk size: 326.7 KB)
+0007.825 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 400 files added (on-disk size: 326.7 KB)
+0007.880 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 500 files added (on-disk size: 326.7 KB)
+0007.890 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (18.9 MB, 10786 files batched, 501 (502) added so far); re-opening (prior size: 326.7 KB)
+0011.372 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 600 files added (on-disk size: 5680.5 KB)
+0011.443 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 700 files added (on-disk size: 5680.5 KB)
+0011.479 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 800 files added (on-disk size: 5680.5 KB)
+0011.540 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 900 files added (on-disk size: 5680.5 KB)
+0011.616 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 1000 files added (on-disk size: 5680.5 KB)
+0011.622 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (1.8 MB, 10786 files batched, 501 (1003) added so far); re-opening (prior size: 5680.5 KB)
+0012.391 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 1100 files added (on-disk size: 6383.4 KB)
+0012.477 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 1200 files added (on-disk size: 6383.4 KB)
+0012.526 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 1300 files added (on-disk size: 6383.4 KB)
+0012.577 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 1400 files added (on-disk size: 6383.4 KB)
+0012.628 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 1500 files added (on-disk size: 6383.4 KB)
+0012.645 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (3.8 MB, 10786 files batched, 501 (1504) added so far); re-opening (prior size: 6383.4 KB)
+0013.819 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 1600 files added (on-disk size: 7513 KB)
+0013.879 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 1700 files added (on-disk size: 7513 KB)
+0013.915 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 1800 files added (on-disk size: 7513 KB)
+0013.953 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 1900 files added (on-disk size: 7513 KB)
+0014.052 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 2000 files added (on-disk size: 7513 KB)
+0014.065 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (12 MB, 10786 files batched, 501 (2005) added so far); re-opening (prior size: 7513 KB)
+0016.413 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 2100 files added (on-disk size: 10954 KB)
+0016.476 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 2200 files added (on-disk size: 10954 KB)
+0016.529 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 2300 files added (on-disk size: 10954 KB)
+0016.568 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 2400 files added (on-disk size: 10954 KB)
+0016.630 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 2500 files added (on-disk size: 10954 KB)
+0016.640 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (5.3 MB, 10786 files batched, 501 (2506) added so far); re-opening (prior size: 10954 KB)
+0017.775 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 2600 files added (on-disk size: 12478 KB)
+0017.813 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 2700 files added (on-disk size: 12478 KB)
+0017.845 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 2800 files added (on-disk size: 12478 KB)
+0017.868 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 2900 files added (on-disk size: 12478 KB)
+0017.873 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 25 MB added on this batch (25 MB, 10786 files batched, 408 (2914) added so far); re-opening (prior size: 12478 KB)
+0020.469 (0) A useful amount of data was added after this amount of zip processing: 3 s (normalised: 3 s, rate: 8583.2 KB/s)
+0020.484 (0) Performance is good - will increase the amount of data we attempt to batch (time=2.983283996582, normalised_time=2.9825744882771, max_time=20.474223136902, data points known=1, old_max_bytes=26214400, new_max_bytes=107971045)
+0020.565 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 3000 files added (on-disk size: 20999.3 KB)
+0020.600 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 3100 files added (on-disk size: 20999.3 KB)
+0020.648 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 3200 files added (on-disk size: 20999.3 KB)
+0020.693 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 3300 files added (on-disk size: 20999.3 KB)
+0020.735 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 3400 files added (on-disk size: 20999.3 KB)
+0020.749 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (2.6 MB, 10786 files batched, 501 (3415) added so far); re-opening (prior size: 20999.3 KB)
+0021.622 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 3500 files added (on-disk size: 21923.3 KB)
+0021.686 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 3600 files added (on-disk size: 21923.3 KB)
+0021.744 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 3700 files added (on-disk size: 21923.3 KB)
+0021.785 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 3800 files added (on-disk size: 21923.3 KB)
+0021.828 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 3900 files added (on-disk size: 21923.3 KB)
+0021.839 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (11.7 MB, 10786 files batched, 501 (3916) added so far); re-opening (prior size: 21923.3 KB)
+0024.624 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 4000 files added (on-disk size: 25268.1 KB)
+0024.653 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 4100 files added (on-disk size: 25268.1 KB)
+0024.687 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 4200 files added (on-disk size: 25268.1 KB)
+0024.723 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 4300 files added (on-disk size: 25268.1 KB)
+0024.749 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 4400 files added (on-disk size: 25268.1 KB)
+0024.770 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (2.9 MB, 10786 files batched, 501 (4417) added so far); re-opening (prior size: 25268.1 KB)
+0025.535 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 4500 files added (on-disk size: 26224.1 KB)
+0025.568 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 4600 files added (on-disk size: 26224.1 KB)
+0025.635 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 4700 files added (on-disk size: 26224.1 KB)
+0025.674 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 4800 files added (on-disk size: 26224.1 KB)
+0025.707 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 4900 files added (on-disk size: 26224.1 KB)
+0025.716 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (3.9 MB, 10786 files batched, 501 (4918) added so far); re-opening (prior size: 26224.1 KB)
+0026.602 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 5000 files added (on-disk size: 27572.7 KB)
+0026.629 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 5100 files added (on-disk size: 27572.7 KB)
+0026.649 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 5200 files added (on-disk size: 27572.7 KB)
+0026.673 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 5300 files added (on-disk size: 27572.7 KB)
+0026.696 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 5400 files added (on-disk size: 27572.7 KB)
+0026.708 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (6.4 MB, 10786 files batched, 501 (5419) added so far); re-opening (prior size: 27572.7 KB)
+0027.861 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 5500 files added (on-disk size: 29758.4 KB)
+0027.899 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 5600 files added (on-disk size: 29758.4 KB)
+0027.939 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 5700 files added (on-disk size: 29758.4 KB)
+0027.980 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 5800 files added (on-disk size: 29758.4 KB)
+0028.013 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 5900 files added (on-disk size: 29758.4 KB)
+0028.025 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (4.5 MB, 10786 files batched, 501 (5920) added so far); re-opening (prior size: 29758.4 KB)
+0028.861 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 6000 files added (on-disk size: 31004.9 KB)
+0028.898 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 6100 files added (on-disk size: 31004.9 KB)
+0028.931 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 6200 files added (on-disk size: 31004.9 KB)
+0028.970 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 6300 files added (on-disk size: 31004.9 KB)
+0029.001 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 6400 files added (on-disk size: 31004.9 KB)
+0029.016 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (13.1 MB, 10786 files batched, 501 (6421) added so far); re-opening (prior size: 31004.9 KB)
+0030.591 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 6500 files added (on-disk size: 35397 KB)
+0030.647 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 6600 files added (on-disk size: 35397 KB)
+0030.685 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 6700 files added (on-disk size: 35397 KB)
+0030.726 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 6800 files added (on-disk size: 35397 KB)
+0030.774 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 6900 files added (on-disk size: 35397 KB)
+0030.789 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (7.5 MB, 10786 files batched, 501 (6922) added so far); re-opening (prior size: 35397 KB)
+0031.952 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 7000 files added (on-disk size: 39870.3 KB)
+0031.983 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 7100 files added (on-disk size: 39870.3 KB)
+0032.034 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 7200 files added (on-disk size: 39870.3 KB)
+0032.075 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 7300 files added (on-disk size: 39870.3 KB)
+0032.128 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 7400 files added (on-disk size: 39870.3 KB)
+0032.141 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (7 MB, 10786 files batched, 501 (7423) added so far); re-opening (prior size: 39870.3 KB)
+0033.799 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 7500 files added (on-disk size: 41896.2 KB)
+0033.852 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 7600 files added (on-disk size: 41896.2 KB)
+0033.905 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 7700 files added (on-disk size: 41896.2 KB)
+0033.955 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 7800 files added (on-disk size: 41896.2 KB)
+0034.016 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 7900 files added (on-disk size: 41896.2 KB)
+0034.041 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (3.5 MB, 10786 files batched, 501 (7924) added so far); re-opening (prior size: 41896.2 KB)
+0035.176 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 8000 files added (on-disk size: 42894.3 KB)
+0035.249 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 8100 files added (on-disk size: 42894.3 KB)
+0035.287 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 8200 files added (on-disk size: 42894.3 KB)
+0035.333 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 8300 files added (on-disk size: 42894.3 KB)
+0035.379 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 8400 files added (on-disk size: 42894.3 KB)
+0035.393 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (3.6 MB, 10786 files batched, 501 (8425) added so far); re-opening (prior size: 42894.3 KB)
+0036.378 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 8500 files added (on-disk size: 44508.6 KB)
+0036.418 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 8600 files added (on-disk size: 44508.6 KB)
+0036.463 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 8700 files added (on-disk size: 44508.6 KB)
+0036.500 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 8800 files added (on-disk size: 44508.6 KB)
+0036.532 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 8900 files added (on-disk size: 44508.6 KB)
+0036.541 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (6.6 MB, 10786 files batched, 501 (8926) added so far); re-opening (prior size: 44508.6 KB)
+0038.289 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 9000 files added (on-disk size: 46964.8 KB)
+0038.321 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 9100 files added (on-disk size: 46964.8 KB)
+0038.359 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 9200 files added (on-disk size: 46964.8 KB)
+0038.396 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 9300 files added (on-disk size: 46964.8 KB)
+0038.439 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 9400 files added (on-disk size: 46964.8 KB)
+0038.454 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (11.9 MB, 10786 files batched, 501 (9427) added so far); re-opening (prior size: 46964.8 KB)
+0040.474 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 9500 files added (on-disk size: 50601.5 KB)
+0040.518 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 9600 files added (on-disk size: 50601.5 KB)
+0040.558 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 9700 files added (on-disk size: 50601.5 KB)
+0040.597 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 9800 files added (on-disk size: 50601.5 KB)
+0040.630 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 9900 files added (on-disk size: 50601.5 KB)
+0040.642 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (9.1 MB, 10786 files batched, 501 (9928) added so far); re-opening (prior size: 50601.5 KB)
+0042.490 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 10000 files added (on-disk size: 53988.8 KB)
+0042.531 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 10100 files added (on-disk size: 53988.8 KB)
+0042.572 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 10200 files added (on-disk size: 53988.8 KB)
+0042.616 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 10300 files added (on-disk size: 53988.8 KB)
+0042.668 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 10400 files added (on-disk size: 53988.8 KB)
+0042.685 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (2.5 MB, 10786 files batched, 501 (10429) added so far); re-opening (prior size: 53988.8 KB)
+0043.607 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 10500 files added (on-disk size: 54755.6 KB)
+0043.662 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 10600 files added (on-disk size: 54755.6 KB)
+0043.706 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip.tmp: 10700 files added (on-disk size: 54755.6 KB)
+0056.735 (0) Created plugins zip (0) - 64923.9 KB in 56.5 s (1148.8 KB/s) (sha1: f242f911670e0c15077f6601abcd77cc708a4e60, sha256: bf2c25cb0cc54792ea156c4c34ebf4fb9b248a5057df01fec1a3ff1bee9718b8)
+0056.752 (0) Beginning creation of dump of themes (split every: 400 MB)
+0056.976 (0) Total entities for the zip file: 75 directories, 375 files (0 skipped as non-modified), 14.1 MB
+0057.007 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-themes.zip.tmp: 100 files added (on-disk size: 0 KB)
+0057.039 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-themes.zip.tmp: 200 files added (on-disk size: 0 KB)
+0057.078 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-themes.zip.tmp: 300 files added (on-disk size: 0 KB)
+0058.221 (0) Created themes zip (0) - 12329.2 KB in 1.5 s (8450.1 KB/s) (sha1: 9183d083e5c8c0c5ff96ce140ba1354bf0caa5ef, sha256: 20babff8029b1d0eb9727fee5dcaa10d715c2ac9cd924e5da24d02885da3d594)
+0058.234 (0) Exclusion option setting (uploads): backup*,*backups,backwpup*,wp-clone,snapshots
+0058.241 (0) Looking for candidates to backup in: /var/www/vhosts/sportigoo.fr/httpdocs/wp-content/uploads
+0058.250 (0) finding files: woocommerce-placeholder-600x600.png: adding to list (1)
+0058.254 (0) finding files: wpseo-redirects: adding to list (2)
+0058.257 (0) finding files: wc-logs: adding to list (3)
+0058.260 (0) finding files: smush-8b6c787b299179c9df55.log: adding to list (4)
+0058.264 (0) finding files: wp-migrate-db: adding to list (5)
+0058.268 (0) finding files: woocommerce-placeholder-150x150.png: adding to list (6)
+0058.271 (0) finding files: woocommerce-placeholder-520x520.png: adding to list (7)
+0058.275 (0) finding files: woocommerce_uploads: adding to list (8)
+0058.279 (0) finding files: woocommerce-placeholder-updraft-pre-smush-original.png: adding to list (9)
+0058.282 (0) finding files: woocommerce-placeholder-100x100.png: adding to list (10)
+0058.290 (0) finding files: woocommerce-placeholder-300x300.png: adding to list (11)
+0058.293 (0) finding files: GeoLite2-Country.mmdb: adding to list (12)
+0058.301 (0) finding files: woocommerce-placeholder-1024x1024.png: adding to list (13)
+0058.305 (0) finding files: wpallimport: adding to list (14)
+0058.308 (0) finding files: fue.log: adding to list (15)
+0058.311 (0) finding files: 2019: adding to list (16)
+0058.313 (0) finding files: 2018: adding to list (17)
+0058.318 (0) finding files: redux: adding to list (18)
+0058.321 (0) finding files: woocommerce-placeholder-768x768.png: adding to list (19)
+0058.326 (0) finding files: 2015: adding to list (20)
+0058.330 (0) finding files: woocommerce-placeholder.png: adding to list (21)
+0058.335 (0) Beginning creation of dump of uploads (split every: 400 MB)
+0062.211 (0) Total entities for the zip file: 32 directories, 14811 files (0 skipped as non-modified), 2136.4 MB
+0062.215 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 2.0 seconds have passed since the last write (0 MB, 1 (1) files added so far); re-opening (prior size: 0 KB)
+0062.258 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 100 files added (on-disk size: 34.7 KB)
+0062.299 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 200 files added (on-disk size: 34.7 KB)
+0062.333 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 300 files added (on-disk size: 34.7 KB)
+0062.362 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 400 files added (on-disk size: 34.7 KB)
+0062.408 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 500 files added (on-disk size: 34.7 KB)
+0062.413 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (34.8 MB, 14811 files batched, 501 (502) added so far); re-opening (prior size: 34.7 KB)
+0067.384 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 600 files added (on-disk size: 29046 KB)
+0067.433 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 700 files added (on-disk size: 29046 KB)
+0067.474 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 800 files added (on-disk size: 29046 KB)
+0067.514 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 900 files added (on-disk size: 29046 KB)
+0067.553 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 1000 files added (on-disk size: 29046 KB)
+0067.557 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (31.4 MB, 14811 files batched, 501 (1003) added so far); re-opening (prior size: 29046 KB)
+0068.718 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 1100 files added (on-disk size: 61358.7 KB)
+0068.753 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 1200 files added (on-disk size: 61358.7 KB)
+0068.790 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 1300 files added (on-disk size: 61358.7 KB)
+0068.830 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 1400 files added (on-disk size: 61358.7 KB)
+0068.867 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 1500 files added (on-disk size: 61358.7 KB)
+0068.874 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (27 MB, 14811 files batched, 501 (1504) added so far); re-opening (prior size: 61358.7 KB)
+0070.138 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 1600 files added (on-disk size: 89134.5 KB)
+0070.171 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 1700 files added (on-disk size: 89134.5 KB)
+0070.202 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 1800 files added (on-disk size: 89134.5 KB)
+0070.237 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 1900 files added (on-disk size: 89134.5 KB)
+0070.277 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 2000 files added (on-disk size: 89134.5 KB)
+0070.283 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (29.9 MB, 14811 files batched, 501 (2005) added so far); re-opening (prior size: 89134.5 KB)
+0071.698 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 2100 files added (on-disk size: 119848 KB)
+0071.722 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 2200 files added (on-disk size: 119848 KB)
+0071.747 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 2300 files added (on-disk size: 119848 KB)
+0071.769 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 2400 files added (on-disk size: 119848 KB)
+0071.792 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 2500 files added (on-disk size: 119848 KB)
+0071.799 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (26.3 MB, 14811 files batched, 501 (2506) added so far); re-opening (prior size: 119848 KB)
+0073.224 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 2600 files added (on-disk size: 146876.8 KB)
+0073.252 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 2700 files added (on-disk size: 146876.8 KB)
+0073.279 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 2800 files added (on-disk size: 146876.8 KB)
+0073.314 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 2900 files added (on-disk size: 146876.8 KB)
+0073.337 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 3000 files added (on-disk size: 146876.8 KB)
+0073.343 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (37.7 MB, 14811 files batched, 501 (3007) added so far); re-opening (prior size: 146876.8 KB)
+0074.974 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 3100 files added (on-disk size: 185536.2 KB)
+0075.009 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 3200 files added (on-disk size: 185536.2 KB)
+0075.043 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 3300 files added (on-disk size: 185536.2 KB)
+0075.081 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 3400 files added (on-disk size: 185536.2 KB)
+0075.114 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 3500 files added (on-disk size: 185536.2 KB)
+0075.122 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (66.6 MB, 14811 files batched, 501 (3508) added so far); re-opening (prior size: 185536.2 KB)
+0077.178 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 3600 files added (on-disk size: 253798.5 KB)
+0077.207 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 3700 files added (on-disk size: 253798.5 KB)
+0077.243 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 3800 files added (on-disk size: 253798.5 KB)
+0077.276 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 3900 files added (on-disk size: 253798.5 KB)
+0077.303 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 4000 files added (on-disk size: 253798.5 KB)
+0077.310 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (57.5 MB, 14811 files batched, 501 (4009) added so far); re-opening (prior size: 253798.5 KB)
+0079.774 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 4100 files added (on-disk size: 312734.4 KB)
+0079.798 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 4200 files added (on-disk size: 312734.4 KB)
+0079.820 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 4300 files added (on-disk size: 312734.4 KB)
+0079.846 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 4400 files added (on-disk size: 312734.4 KB)
+0079.879 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 4500 files added (on-disk size: 312734.4 KB)
+0079.888 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (35.5 MB, 14811 files batched, 501 (4510) added so far); re-opening (prior size: 312734.4 KB)
+0082.996 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 4600 files added (on-disk size: 349179.3 KB)
+0083.021 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 4700 files added (on-disk size: 349179.3 KB)
+0083.042 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 4800 files added (on-disk size: 349179.3 KB)
+0083.078 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 4900 files added (on-disk size: 349179.3 KB)
+0083.111 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 5000 files added (on-disk size: 349179.3 KB)
+0083.120 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (27.4 MB, 14811 files batched, 501 (5011) added so far); re-opening (prior size: 349179.3 KB)
+0085.955 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 5100 files added (on-disk size: 377359.1 KB)
+0085.980 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 5200 files added (on-disk size: 377359.1 KB)
+0086.029 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 5300 files added (on-disk size: 377359.1 KB)
+0086.066 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip.tmp: 5400 files added (on-disk size: 377359.1 KB)
+0086.086 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): possibly approaching split limit (28.6 MB, 484 (5495) files added so far); last ratio: 1; re-opening (prior size: 377359.1 KB)
+0089.205 (0) Zip size is at/near split limit (397.2 MB / 400 MB) - bumping index (from: 0)
+0099.789 (0) Created uploads zip (0) - 406759.1 KB in 30.9 s (13181.3 KB/s) (checksums: sha1: ce58e77b3fdd045d251198850c158fa08807ebae, sha256: 1f59a0fafe64ccd17c1f57402c5281f783f188b7a525ee351d8de7298cf16382)
+0099.809 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 2.0 seconds have passed since the last write (1.6 MB, 1 (5496) files added so far); re-opening (prior size: 0 KB)
+0099.841 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 5500 files added (on-disk size: 1647.5 KB)
+0099.871 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 5600 files added (on-disk size: 1647.5 KB)
+0099.904 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 5700 files added (on-disk size: 1647.5 KB)
+0099.941 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 5800 files added (on-disk size: 1647.5 KB)
+0099.980 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 5900 files added (on-disk size: 1647.5 KB)
+0100.019 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (94.7 MB, 14811 files batched, 501 (5997) added so far); re-opening (prior size: 1647.5 KB)
+0101.795 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 6000 files added (on-disk size: 98734.7 KB)
+0101.830 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 6100 files added (on-disk size: 98734.7 KB)
+0101.858 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 6200 files added (on-disk size: 98734.7 KB)
+0101.893 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 6300 files added (on-disk size: 98734.7 KB)
+0101.928 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 6400 files added (on-disk size: 98734.7 KB)
+0101.960 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (85.3 MB, 14811 files batched, 501 (6498) added so far); re-opening (prior size: 98734.7 KB)
+0103.929 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 6500 files added (on-disk size: 186198 KB)
+0103.972 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 6600 files added (on-disk size: 186198 KB)
+0104.015 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 6700 files added (on-disk size: 186198 KB)
+0104.064 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 6800 files added (on-disk size: 186198 KB)
+0104.105 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 6900 files added (on-disk size: 186198 KB)
+0104.143 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 103 MB added on this batch (103.8 MB, 14811 files batched, 493 (6991) added so far); re-opening (prior size: 186198 KB)
+0106.712 (0) A useful amount of data was added after this amount of zip processing: 3.2 s (normalised: 3.2 s, rate: 32937.7 KB/s)
+0106.724 (0) Performance is good - will increase the amount of data we attempt to batch (time=3.226527929306, normalised_time=3.2012138574836, max_time=106.71451616287, data points known=1, old_max_bytes=107971045, new_max_bytes=209715200)
+0106.749 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 7000 files added (on-disk size: 292546.7 KB)
+0106.783 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 7100 files added (on-disk size: 292546.7 KB)
+0106.817 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 7200 files added (on-disk size: 292546.7 KB)
+0106.853 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 7300 files added (on-disk size: 292546.7 KB)
+0106.889 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 7400 files added (on-disk size: 292546.7 KB)
+0106.929 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (81.6 MB, 14811 files batched, 501 (7492) added so far); re-opening (prior size: 292546.7 KB)
+0110.762 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 7500 files added (on-disk size: 376132.9 KB)
+0110.809 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip.tmp: 7600 files added (on-disk size: 376132.9 KB)
+0110.836 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): possibly approaching split limit (31.3 MB, 149 (7641) files added so far); last ratio: 1; re-opening (prior size: 376132.9 KB)
+0114.501 (0) Zip size is at/near split limit (398.7 MB / 400 MB) - bumping index (from: 1)
+0127.832 (0) Created uploads zip (1) - 408228.4 KB in 14.7 s (27749.7 KB/s) (checksums: sha1: eb0dd4955ae2b4070fd987e6c1ad5e80be8e3c83, sha256: 67177f896e14962943f5baf73ce1cd76766ff830a47f7e603bd95a1117b4b2d9)
+0127.858 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 2.0 seconds have passed since the last write (0.1 MB, 1 (7642) files added so far); re-opening (prior size: 0 KB)
+0128.147 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip.tmp: 7700 files added (on-disk size: 145.7 KB)
+0128.210 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip.tmp: 7800 files added (on-disk size: 145.7 KB)
+0128.267 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip.tmp: 7900 files added (on-disk size: 145.7 KB)
+0128.330 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip.tmp: 8000 files added (on-disk size: 145.7 KB)
+0128.394 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip.tmp: 8100 files added (on-disk size: 145.7 KB)
+0128.426 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (97.9 MB, 14811 files batched, 501 (8143) added so far); re-opening (prior size: 145.7 KB)
+0130.696 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip.tmp: 8200 files added (on-disk size: 100500.6 KB)
+0130.736 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip.tmp: 8300 files added (on-disk size: 100500.6 KB)
+0130.785 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip.tmp: 8400 files added (on-disk size: 100500.6 KB)
+0130.823 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip.tmp: 8500 files added (on-disk size: 100500.6 KB)
+0130.860 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip.tmp: 8600 files added (on-disk size: 100500.6 KB)
+0130.877 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (98.5 MB, 14811 files batched, 501 (8644) added so far); re-opening (prior size: 100500.6 KB)
+0133.584 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip.tmp: 8700 files added (on-disk size: 201465.9 KB)
+0133.625 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip.tmp: 8800 files added (on-disk size: 201465.9 KB)
+0133.666 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip.tmp: 8900 files added (on-disk size: 201465.9 KB)
+0133.702 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip.tmp: 9000 files added (on-disk size: 201465.9 KB)
+0133.747 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip.tmp: 9100 files added (on-disk size: 201465.9 KB)
+0133.776 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (90.1 MB, 14811 files batched, 501 (9145) added so far); re-opening (prior size: 201465.9 KB)
+0137.317 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip.tmp: 9200 files added (on-disk size: 293813.5 KB)
+0137.358 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip.tmp: 9300 files added (on-disk size: 293813.5 KB)
+0137.402 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip.tmp: 9400 files added (on-disk size: 293813.5 KB)
+0137.437 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip.tmp: 9500 files added (on-disk size: 293813.5 KB)
+0137.469 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip.tmp: 9600 files added (on-disk size: 293813.5 KB)
+0137.498 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (91.3 MB, 14811 files batched, 501 (9646) added so far); re-opening (prior size: 293813.5 KB)
+0141.612 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip.tmp: 9700 files added (on-disk size: 387346.3 KB)
+0141.637 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): possibly approaching split limit (19.9 MB, 116 (9762) files added so far); last ratio: 1; re-opening (prior size: 387346.3 KB)
+0144.701 (0) Zip size is at/near split limit (398.1 MB / 400 MB) - bumping index (from: 2)
+0154.258 (0) Created uploads zip (2) - 407695.9 KB in 16.9 s (24172.9 KB/s) (checksums: sha1: ac5b00bc5754665ec7d1f48658b094cc75ad2b89, sha256: 3d77c1ba060d43b7323a012a31d8f81c52cb5dfdd79225c6faaa58552960ff6b)
+0154.279 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 2.0 seconds have passed since the last write (0.2 MB, 1 (9763) files added so far); re-opening (prior size: 0 KB)
+0154.313 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip.tmp: 9800 files added (on-disk size: 253.4 KB)
+0154.339 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip.tmp: 9900 files added (on-disk size: 253.4 KB)
+0154.369 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip.tmp: 10000 files added (on-disk size: 253.4 KB)
+0154.402 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip.tmp: 10100 files added (on-disk size: 253.4 KB)
+0154.437 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip.tmp: 10200 files added (on-disk size: 253.4 KB)
+0154.455 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (100.5 MB, 14811 files batched, 501 (10264) added so far); re-opening (prior size: 253.4 KB)
+0156.141 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip.tmp: 10300 files added (on-disk size: 103217.7 KB)
+0156.182 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip.tmp: 10400 files added (on-disk size: 103217.7 KB)
+0156.220 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip.tmp: 10500 files added (on-disk size: 103217.7 KB)
+0156.260 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip.tmp: 10600 files added (on-disk size: 103217.7 KB)
+0156.296 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip.tmp: 10700 files added (on-disk size: 103217.7 KB)
+0156.314 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (93.6 MB, 14811 files batched, 501 (10765) added so far); re-opening (prior size: 103217.7 KB)
+0158.210 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip.tmp: 10800 files added (on-disk size: 199161.7 KB)
+0158.249 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip.tmp: 10900 files added (on-disk size: 199161.7 KB)
+0158.282 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip.tmp: 11000 files added (on-disk size: 199161.7 KB)
+0158.312 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip.tmp: 11100 files added (on-disk size: 199161.7 KB)
+0158.358 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip.tmp: 11200 files added (on-disk size: 199161.7 KB)
+0158.381 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (93.5 MB, 14811 files batched, 501 (11266) added so far); re-opening (prior size: 199161.7 KB)
+0160.779 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip.tmp: 11300 files added (on-disk size: 295010.8 KB)
+0160.802 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip.tmp: 11400 files added (on-disk size: 295010.8 KB)
+0160.825 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip.tmp: 11500 files added (on-disk size: 295010.8 KB)
+0160.847 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip.tmp: 11600 files added (on-disk size: 295010.8 KB)
+0160.874 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip.tmp: 11700 files added (on-disk size: 295010.8 KB)
+0160.892 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): possibly approaching split limit (101.8 MB, 499 (11765) files added so far); last ratio: 1; re-opening (prior size: 295010.8 KB)
+0164.572 (0) Zip size is at/near split limit (390 MB / 400 MB) - bumping index (from: 3)
+0174.242 (0) Created uploads zip (3) - 399365.4 KB in 10.3 s (38711.7 KB/s) (checksums: sha1: c23b6b5f76f6b09522e69348bb561f91b2190404, sha256: 8725357a690fed8b0d4fad378d577174f1200c6f3ce561641816471ab63519f0)
+0174.264 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 2.0 seconds have passed since the last write (0 MB, 1 (11766) files added so far); re-opening (prior size: 0 KB)
+0174.293 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 11800 files added (on-disk size: 14.1 KB)
+0174.318 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 11900 files added (on-disk size: 14.1 KB)
+0174.342 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 12000 files added (on-disk size: 14.1 KB)
+0174.377 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 12100 files added (on-disk size: 14.1 KB)
+0174.403 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 12200 files added (on-disk size: 14.1 KB)
+0174.425 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (94.7 MB, 14811 files batched, 501 (12267) added so far); re-opening (prior size: 14.1 KB)
+0176.105 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 12300 files added (on-disk size: 97054.3 KB)
+0176.133 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 12400 files added (on-disk size: 97054.3 KB)
+0176.163 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 12500 files added (on-disk size: 97054.3 KB)
+0176.184 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 12600 files added (on-disk size: 97054.3 KB)
+0176.211 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 12700 files added (on-disk size: 97054.3 KB)
+0176.230 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (88.1 MB, 14811 files batched, 501 (12768) added so far); re-opening (prior size: 97054.3 KB)
+0178.122 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 12800 files added (on-disk size: 187382.7 KB)
+0178.164 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 12900 files added (on-disk size: 187382.7 KB)
+0178.194 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 13000 files added (on-disk size: 187382.7 KB)
+0178.221 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 13100 files added (on-disk size: 187382.7 KB)
+0178.249 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 13200 files added (on-disk size: 187382.7 KB)
+0178.283 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (94.6 MB, 14811 files batched, 501 (13269) added so far); re-opening (prior size: 187382.7 KB)
+0180.667 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 13300 files added (on-disk size: 284288.7 KB)
+0180.700 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 13400 files added (on-disk size: 284288.7 KB)
+0180.733 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 13500 files added (on-disk size: 284288.7 KB)
+0180.771 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 13600 files added (on-disk size: 284288.7 KB)
+0180.804 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 13700 files added (on-disk size: 284288.7 KB)
+0180.825 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (90.3 MB, 14811 files batched, 501 (13770) added so far); re-opening (prior size: 284288.7 KB)
+0184.313 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 13800 files added (on-disk size: 376823.3 KB)
+0184.351 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip.tmp: 13900 files added (on-disk size: 376823.3 KB)
+0184.366 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): possibly approaching split limit (29.5 MB, 156 (13926) files added so far); last ratio: 1; re-opening (prior size: 376823.3 KB)
+0187.360 (0) Zip size is at/near split limit (397.5 MB / 400 MB) - bumping index (from: 4)
+0197.261 (0) Created uploads zip (4) - 407062.7 KB in 13.1 s (31026.5 KB/s) (checksums: sha1: 8357d287fb0145a70ee569ea8f44541593c51db4, sha256: ad6a5468e70a23442ff7f7376cc6a265699c6714e9a5b1e18d8ceb5a65374fe8)
+0197.271 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 2.0 seconds have passed since the last write (0 MB, 1 (13927) files added so far); re-opening (prior size: 0 KB)
+0197.291 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads6.zip.tmp: 14000 files added (on-disk size: 3.3 KB)
+0197.322 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads6.zip.tmp: 14100 files added (on-disk size: 3.3 KB)
+0197.351 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads6.zip.tmp: 14200 files added (on-disk size: 3.3 KB)
+0197.387 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads6.zip.tmp: 14300 files added (on-disk size: 3.3 KB)
+0197.413 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads6.zip.tmp: 14400 files added (on-disk size: 3.3 KB)
+0197.425 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 500 files added on this batch (91.6 MB, 14811 files batched, 501 (14428) added so far); re-opening (prior size: 3.3 KB)
+0198.869 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads6.zip.tmp: 14500 files added (on-disk size: 93914.4 KB)
+0198.889 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads6.zip.tmp: 14600 files added (on-disk size: 93914.4 KB)
+0198.912 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads6.zip.tmp: 14700 files added (on-disk size: 93914.4 KB)
+0198.935 (0) Zip: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads6.zip.tmp: 14800 files added (on-disk size: 93914.4 KB)
+0204.543 (0) Created uploads zip (5) - 154290.5 KB in 7.3 s (21195.3 KB/s) (sha1: 68c0685d051f8fcc871261b336943f99344a8523, sha256: 10dd0982caba1409a7c8d494f0f09cc184ef05d7cd41a80acf3d8f13b4aed267)
+0204.573 (0) Beginning backup of other directories found in the content directory (index: 0)
+0204.579 (0) Exclusion option setting (others): upgrade,cache,updraft,backup*,*backups,mysql.sql,debug.log
+0204.587 (0) Looking for candidates to backup in: /var/www/vhosts/sportigoo.fr/httpdocs/wp-content
+0204.592 (0) finding files: index.php: adding to list (1)
+0204.598 (0) finding files: ewww: adding to list (2)
+0204.602 (0) finding files: aiowps_backups: skipping: excluded by options (glob)
+0204.609 (0) finding files: upgrade: skipping: excluded by options
+0204.614 (0) finding files: themes: skipping: this is the themes directory
+0204.620 (0) finding files: languages: adding to list (3)
+0204.626 (0) finding files: uploads: skipping: this is the uploads directory
+0204.631 (0) finding files: advanced-cache.php: adding to list (4)
+0204.635 (0) finding files: updraft: skipping: this is the updraft directory
+0204.641 (0) finding files: cache: skipping: excluded by options
+0204.648 (0) finding files: plugins: skipping: this is the plugins directory
+0204.652 (0) finding files: wp-rocket-config: adding to list (5)
+0204.718 (0) Total entities for the zip file: 5 directories, 71 files (0 skipped as non-modified), 8.3 MB
+0206.565 (0) Created others zip (0) - 2830.7 KB in 1.9 s (1499 KB/s) (sha1: 8b44fedd8485a792a81d032fd6d96b85511fe3f4, sha256: 096f58085007a1bf3a752c07e1c41d0a29ba29f07f407e2df6e407bc57b2189f)
+0206.596 (0) Saving backup status to database (elements: 13)
+0206.628 (0) Beginning creation of database dump (WordPress DB)
+0206.707 (0) Table wsporp_options: Total expected rows (approximate): 961
+0206.857 (0) Table wsporp_options: Total rows added: 1070 in 0.14 seconds
+0206.864 (0) Table wsporp_options: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_options.table.gz - 186.8 KB)
+0206.889 (0) Table wsporp_users: Total expected rows (approximate): 11
+0206.897 (0) Table wsporp_users: Total rows added: 13 in 0.00 seconds
+0206.902 (0) Table wsporp_users: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_users.table.gz - 1.4 KB)
+0206.925 (0) Table wsporp_usermeta: Total expected rows (approximate): 639
+0206.941 (0) Table wsporp_usermeta: Total rows added: 640 in 0.01 seconds
+0206.949 (0) Table wsporp_usermeta: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_usermeta.table.gz - 13.7 KB)
+0206.971 (0) Table wsporp_commentmeta: Total expected rows (approximate): 6
+0206.977 (0) Table wsporp_commentmeta: Total rows added: 6 in 0.00 seconds
+0206.984 (0) Table wsporp_commentmeta: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_commentmeta.table.gz - 0.4 KB)
+0207.014 (0) Table wsporp_comments: Total expected rows (approximate): 65
+0207.026 (0) Table wsporp_comments: Total rows added: 92 in 0.01 seconds
+0207.033 (0) Table wsporp_comments: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_comments.table.gz - 3.1 KB)
+0207.055 (0) Table wsporp_links: Total expected rows (approximate): 0
+0207.062 (0) Table wsporp_links: Total rows added: 0 in 0.00 seconds
+0207.068 (0) Table wsporp_links: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_links.table.gz - 0.4 KB)
+0207.086 (0) Table wsporp_postmeta: Total expected rows (approximate): 47007
+0207.895 (0) Table wsporp_postmeta: Total rows added: 44222 in 0.80 seconds
+0207.902 (0) Table wsporp_postmeta: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_postmeta.table.gz - 930.2 KB)
+0207.926 (0) Table wsporp_posts: Total expected rows (approximate): 1545
+0208.074 (0) Table wsporp_posts: Total rows added: 1676 in 0.14 seconds
+0208.081 (0) Table wsporp_posts: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_posts.table.gz - 252.7 KB)
+0208.111 (0) Table wsporp_term_relationships: Total expected rows (approximate): 4311
+0208.154 (0) Table wsporp_term_relationships: Total rows added: 4466 in 0.03 seconds
+0208.162 (0) Table wsporp_term_relationships: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_term_relationships.table.gz - 12.9 KB)
+0208.180 (0) Table wsporp_term_taxonomy: Total expected rows (approximate): 2738
+0208.213 (0) Table wsporp_term_taxonomy: Total rows added: 2783 in 0.03 seconds
+0208.223 (0) Table wsporp_term_taxonomy: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_term_taxonomy.table.gz - 16.2 KB)
+0208.240 (0) Table wsporp_termmeta: Total expected rows (approximate): 325
+0208.251 (0) Table wsporp_termmeta: Total rows added: 326 in 0.01 seconds
+0208.256 (0) Table wsporp_termmeta: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_termmeta.table.gz - 13.7 KB)
+0208.285 (0) Table wsporp_terms: Total expected rows (approximate): 2503
+0208.330 (0) Table wsporp_terms: Total rows added: 2783 in 0.04 seconds
+0208.336 (0) Table wsporp_terms: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_terms.table.gz - 37.2 KB)
+0208.358 (0) Table wsporp_woocommerce_order_itemmeta: Total expected rows (approximate): 262
+0208.371 (0) Table wsporp_woocommerce_order_itemmeta: Total rows added: 314 in 0.01 seconds
+0208.375 (0) Table wsporp_woocommerce_order_itemmeta: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_order_itemmeta.table.gz - 3.3 KB)
+0208.392 (0) Table wsporp_woocommerce_payment_tokenmeta: Total expected rows (approximate): 8
+0208.398 (0) Table wsporp_woocommerce_payment_tokenmeta: Total rows added: 8 in 0.00 seconds
+0208.402 (0) Table wsporp_woocommerce_payment_tokenmeta: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_payment_tokenmeta.table.gz - 0.5 KB)
+0208.421 (0) Table wsporp_yoast_seo_links: Total expected rows (approximate): 167
+0208.430 (0) Table wsporp_yoast_seo_links: Total rows added: 169 in 0.00 seconds
+0208.433 (0) Table wsporp_yoast_seo_links: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_yoast_seo_links.table.gz - 2.5 KB)
+0208.453 (0) Table wsporp_yoast_seo_meta: Total expected rows (approximate): 619
+0208.464 (0) Table wsporp_yoast_seo_meta: Total rows added: 833 in 0.01 seconds
+0208.471 (0) Table wsporp_yoast_seo_meta: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_yoast_seo_meta.table.gz - 2.5 KB)
+0208.489 (0) Table wsporp_aiowps_events: Total expected rows (approximate): 0
+0208.497 (0) Table wsporp_aiowps_events: Total rows added: 0 in 0.00 seconds
+0208.504 (0) Table wsporp_aiowps_events: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_aiowps_events.table.gz - 0.4 KB)
+0208.521 (0) Table wsporp_aiowps_failed_logins: Total expected rows (approximate): 5119
+0208.585 (0) Table wsporp_aiowps_failed_logins: Total rows added: 5001 in 0.05 seconds
+0208.591 (0) Table wsporp_aiowps_failed_logins: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_aiowps_failed_logins.table.gz - 42.7 KB)
+0208.606 (0) Table wsporp_aiowps_global_meta: Total expected rows (approximate): 0
+0208.611 (0) Table wsporp_aiowps_global_meta: Total rows added: 0 in 0.00 seconds
+0208.617 (0) Table wsporp_aiowps_global_meta: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_aiowps_global_meta.table.gz - 0.4 KB)
+0208.641 (0) Table wsporp_aiowps_login_activity: Total expected rows (approximate): 99
+0208.648 (0) Table wsporp_aiowps_login_activity: Total rows added: 99 in 0.00 seconds
+0208.652 (0) Table wsporp_aiowps_login_activity: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_aiowps_login_activity.table.gz - 1.9 KB)
+0208.672 (0) Table wsporp_aiowps_login_lockdown: Total expected rows (approximate): 0
+0208.678 (0) Table wsporp_aiowps_login_lockdown: Total rows added: 0 in 0.00 seconds
+0208.684 (0) Table wsporp_aiowps_login_lockdown: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_aiowps_login_lockdown.table.gz - 0.4 KB)
+0208.706 (0) Table wsporp_aiowps_permanent_block: Total expected rows (approximate): 0
+0208.713 (0) Table wsporp_aiowps_permanent_block: Total rows added: 0 in 0.00 seconds
+0208.718 (0) Table wsporp_aiowps_permanent_block: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_aiowps_permanent_block.table.gz - 0.4 KB)
+0208.738 (0) Table wsporp_ewwwio_images: Total expected rows (approximate): 7460
+0208.965 (0) Table wsporp_ewwwio_images: Total rows added: 7668 in 0.22 seconds
+0208.971 (0) Table wsporp_ewwwio_images: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_ewwwio_images.table.gz - 171 KB)
+0208.991 (0) Table wsporp_ewwwio_queue: Total expected rows (approximate): 0
+0208.998 (0) Table wsporp_ewwwio_queue: Total rows added: 0 in 0.00 seconds
+0209.008 (0) Table wsporp_ewwwio_queue: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_ewwwio_queue.table.gz - 0.3 KB)
+0209.027 (0) Table wsporp_followup_coupon_logs: Total expected rows (approximate): 0
+0209.034 (0) Table wsporp_followup_coupon_logs: Total rows added: 0 in 0.00 seconds
+0209.040 (0) Table wsporp_followup_coupon_logs: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_coupon_logs.table.gz - 0.4 KB)
+0209.056 (0) Table wsporp_followup_coupons: Total expected rows (approximate): 0
+0209.061 (0) Table wsporp_followup_coupons: Total rows added: 0 in 0.00 seconds
+0209.067 (0) Table wsporp_followup_coupons: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_coupons.table.gz - 0.5 KB)
+0209.094 (0) Table wsporp_followup_customer_carts: Total expected rows (approximate): 26
+0209.101 (0) Table wsporp_followup_customer_carts: Total rows added: 26 in 0.00 seconds
+0209.106 (0) Table wsporp_followup_customer_carts: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_customer_carts.table.gz - 1.9 KB)
+0209.126 (0) Table wsporp_followup_customer_notes: Total expected rows (approximate): 0
+0209.133 (0) Table wsporp_followup_customer_notes: Total rows added: 0 in 0.00 seconds
+0209.140 (0) Table wsporp_followup_customer_notes: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_customer_notes.table.gz - 0.3 KB)
+0209.162 (0) Table wsporp_followup_customer_orders: Total expected rows (approximate): 11
+0209.169 (0) Table wsporp_followup_customer_orders: Total rows added: 17 in 0.00 seconds
+0209.176 (0) Table wsporp_followup_customer_orders: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_customer_orders.table.gz - 0.5 KB)
+0209.198 (0) Table wsporp_followup_customers: Total expected rows (approximate): 15
+0209.203 (0) Table wsporp_followup_customers: Total rows added: 16 in 0.00 seconds
+0209.210 (0) Table wsporp_followup_customers: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_customers.table.gz - 0.7 KB)
+0209.232 (0) Table wsporp_followup_email_excludes: Total expected rows (approximate): 0
+0209.241 (0) Table wsporp_followup_email_excludes: Total rows added: 0 in 0.00 seconds
+0209.250 (0) Table wsporp_followup_email_excludes: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_email_excludes.table.gz - 0.4 KB)
+0209.270 (0) Table wsporp_followup_email_logs: Total expected rows (approximate): 4
+0209.277 (0) Table wsporp_followup_email_logs: Total rows added: 6 in 0.00 seconds
+0209.281 (0) Table wsporp_followup_email_logs: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_email_logs.table.gz - 0.8 KB)
+0209.300 (0) Table wsporp_followup_email_orders: Total expected rows (approximate): 176
+0209.322 (0) Table wsporp_followup_email_orders: Total rows added: 275 in 0.01 seconds
+0209.328 (0) Table wsporp_followup_email_orders: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_email_orders.table.gz - 7.9 KB)
+0209.347 (0) Table wsporp_followup_email_tracking: Total expected rows (approximate): 2
+0209.354 (0) Table wsporp_followup_email_tracking: Total rows added: 3 in 0.00 seconds
+0209.360 (0) Table wsporp_followup_email_tracking: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_email_tracking.table.gz - 0.7 KB)
+0209.381 (0) Table wsporp_followup_followup_history: Total expected rows (approximate): 11
+0209.389 (0) Table wsporp_followup_followup_history: Total rows added: 11 in 0.00 seconds
+0209.396 (0) Table wsporp_followup_followup_history: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_followup_history.table.gz - 1.1 KB)
+0209.415 (0) Table wsporp_followup_order_categories: Total expected rows (approximate): 91
+0209.422 (0) Table wsporp_followup_order_categories: Total rows added: 101 in 0.00 seconds
+0209.427 (0) Table wsporp_followup_order_categories: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_order_categories.table.gz - 0.6 KB)
+0209.449 (0) Table wsporp_followup_order_items: Total expected rows (approximate): 14
+0209.457 (0) Table wsporp_followup_order_items: Total rows added: 20 in 0.00 seconds
+0209.461 (0) Table wsporp_followup_order_items: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_order_items.table.gz - 0.4 KB)
+0209.477 (0) Table wsporp_followup_subscriber_lists: Total expected rows (approximate): 0
+0209.482 (0) Table wsporp_followup_subscriber_lists: Total rows added: 0 in 0.00 seconds
+0209.488 (0) Table wsporp_followup_subscriber_lists: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_subscriber_lists.table.gz - 0.3 KB)
+0209.503 (0) Table wsporp_followup_subscribers: Total expected rows (approximate): 0
+0209.506 (0) Table wsporp_followup_subscribers: Total rows added: 0 in 0.00 seconds
+0209.509 (0) Table wsporp_followup_subscribers: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_subscribers.table.gz - 0.4 KB)
+0209.521 (0) Table wsporp_followup_subscribers_to_lists: Total expected rows (approximate): 0
+0209.527 (0) Table wsporp_followup_subscribers_to_lists: Total rows added: 0 in 0.00 seconds
+0209.530 (0) Table wsporp_followup_subscribers_to_lists: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_subscribers_to_lists.table.gz - 0.3 KB)
+0209.545 (0) Table wsporp_nf3_action_meta: Total expected rows (approximate): 120
+0209.551 (0) Table wsporp_nf3_action_meta: Total rows added: 120 in 0.00 seconds
+0209.554 (0) Table wsporp_nf3_action_meta: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_action_meta.table.gz - 2 KB)
+0209.567 (0) Table wsporp_nf3_actions: Total expected rows (approximate): 4
+0209.573 (0) Table wsporp_nf3_actions: Total rows added: 4 in 0.00 seconds
+0209.576 (0) Table wsporp_nf3_actions: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_actions.table.gz - 0.5 KB)
+0209.589 (0) Table wsporp_nf3_chunks: Total expected rows (approximate): 0
+0209.595 (0) Table wsporp_nf3_chunks: Total rows added: 0 in 0.00 seconds
+0209.602 (0) Table wsporp_nf3_chunks: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_chunks.table.gz - 0.3 KB)
+0209.619 (0) Table wsporp_nf3_field_meta: Total expected rows (approximate): 383
+0209.628 (0) Table wsporp_nf3_field_meta: Total rows added: 383 in 0.01 seconds
+0209.631 (0) Table wsporp_nf3_field_meta: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_field_meta.table.gz - 5.4 KB)
+0209.647 (0) Table wsporp_nf3_fields: Total expected rows (approximate): 8
+0209.653 (0) Table wsporp_nf3_fields: Total rows added: 8 in 0.00 seconds
+0209.656 (0) Table wsporp_nf3_fields: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_fields.table.gz - 0.8 KB)
+0209.664 (0) Table wsporp_nf3_form_meta: Total expected rows (approximate): 115
+0209.672 (0) Table wsporp_nf3_form_meta: Total rows added: 115 in 0.00 seconds
+0209.677 (0) Table wsporp_nf3_form_meta: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_form_meta.table.gz - 1.9 KB)
+0209.690 (0) Table wsporp_nf3_forms: Total expected rows (approximate): 1
+0209.705 (0) Table wsporp_nf3_forms: Total rows added: 1 in 0.00 seconds
+0209.708 (0) Table wsporp_nf3_forms: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_forms.table.gz - 0.5 KB)
+0209.733 (0) Table wsporp_nf3_object_meta: Total expected rows (approximate): 0
+0209.742 (0) Table wsporp_nf3_object_meta: Total rows added: 0 in 0.00 seconds
+0209.745 (0) Table wsporp_nf3_object_meta: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_object_meta.table.gz - 0.3 KB)
+0209.760 (0) Table wsporp_nf3_objects: Total expected rows (approximate): 0
+0209.770 (0) Table wsporp_nf3_objects: Total rows added: 0 in 0.00 seconds
+0209.774 (0) Table wsporp_nf3_objects: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_objects.table.gz - 0.3 KB)
+0209.799 (0) Table wsporp_nf3_relationships: Total expected rows (approximate): 0
+0209.806 (0) Table wsporp_nf3_relationships: Total rows added: 0 in 0.00 seconds
+0209.812 (0) Table wsporp_nf3_relationships: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_relationships.table.gz - 0.4 KB)
+0209.838 (0) Table wsporp_nf3_upgrades: Total expected rows (approximate): 1
+0209.847 (0) Table wsporp_nf3_upgrades: Total rows added: 1 in 0.00 seconds
+0209.853 (0) Table wsporp_nf3_upgrades: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_upgrades.table.gz - 4.7 KB)
+0209.867 (0) Table wsporp_pmxi_files: Total expected rows (approximate): 0
+0209.875 (0) Table wsporp_pmxi_files: Total rows added: 0 in 0.00 seconds
+0209.880 (0) Table wsporp_pmxi_files: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_pmxi_files.table.gz - 0.3 KB)
+0209.894 (0) Table wsporp_pmxi_history: Total expected rows (approximate): 0
+0209.897 (0) Table wsporp_pmxi_history: Total rows added: 0 in 0.00 seconds
+0209.901 (0) Table wsporp_pmxi_history: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_pmxi_history.table.gz - 0.4 KB)
+0209.919 (0) Table wsporp_pmxi_images: Total expected rows (approximate): 0
+0209.926 (0) Table wsporp_pmxi_images: Total rows added: 0 in 0.00 seconds
+0209.931 (0) Table wsporp_pmxi_images: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_pmxi_images.table.gz - 0.3 KB)
+0209.946 (0) Table wsporp_pmxi_imports: Total expected rows (approximate): 0
+0209.951 (0) Table wsporp_pmxi_imports: Total rows added: 0 in 0.00 seconds
+0209.955 (0) Table wsporp_pmxi_imports: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_pmxi_imports.table.gz - 0.6 KB)
+0209.971 (0) Table wsporp_pmxi_posts: Total expected rows (approximate): 0
+0209.976 (0) Table wsporp_pmxi_posts: Total rows added: 0 in 0.00 seconds
+0209.981 (0) Table wsporp_pmxi_posts: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_pmxi_posts.table.gz - 0.4 KB)
+0210.001 (0) Table wsporp_pmxi_templates: Total expected rows (approximate): 0
+0210.008 (0) Table wsporp_pmxi_templates: Total rows added: 0 in 0.00 seconds
+0210.014 (0) Table wsporp_pmxi_templates: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_pmxi_templates.table.gz - 0.4 KB)
+0210.038 (0) Table wsporp_redirection_404: Total expected rows (approximate): 1581
+0210.066 (0) Table wsporp_redirection_404: Total rows added: 1592 in 0.02 seconds
+0210.070 (0) Table wsporp_redirection_404: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_redirection_404.table.gz - 27.7 KB)
+0210.088 (0) Table wsporp_redirection_groups: Total expected rows (approximate): 2
+0210.093 (0) Table wsporp_redirection_groups: Total rows added: 2 in 0.00 seconds
+0210.101 (0) Table wsporp_redirection_groups: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_redirection_groups.table.gz - 0.5 KB)
+0210.123 (0) Table wsporp_redirection_items: Total expected rows (approximate): 18
+0210.131 (0) Table wsporp_redirection_items: Total rows added: 18 in 0.00 seconds
+0210.147 (0) Table wsporp_redirection_items: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_redirection_items.table.gz - 1.3 KB)
+0210.168 (0) Table wsporp_redirection_logs: Total expected rows (approximate): 98
+0210.178 (0) Table wsporp_redirection_logs: Total rows added: 101 in 0.00 seconds
+0210.184 (0) Table wsporp_redirection_logs: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_redirection_logs.table.gz - 2.9 KB)
+0210.203 (0) Table wsporp_smush_dir_images: Total expected rows (approximate): 0
+0210.214 (0) Table wsporp_smush_dir_images: Total rows added: 0 in 0.00 seconds
+0210.220 (0) Table wsporp_smush_dir_images: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_smush_dir_images.table.gz - 0.4 KB)
+0210.238 (0) Table wsporp_tm_taskmeta: Total expected rows (approximate): 0
+0210.244 (0) Table wsporp_tm_taskmeta: Total rows added: 0 in 0.00 seconds
+0210.247 (0) Table wsporp_tm_taskmeta: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_tm_taskmeta.table.gz - 0.4 KB)
+0210.266 (0) Table wsporp_tm_tasks: Total expected rows (approximate): 0
+0210.272 (0) Table wsporp_tm_tasks: Total rows added: 0 in 0.00 seconds
+0210.280 (0) Table wsporp_tm_tasks: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_tm_tasks.table.gz - 0.4 KB)
+0210.294 (0) Table wsporp_wc_booking_relationships: Total expected rows (approximate): 0
+0210.303 (0) Table wsporp_wc_booking_relationships: Total rows added: 0 in 0.00 seconds
+0210.312 (0) Table wsporp_wc_booking_relationships: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_wc_booking_relationships.table.gz - 0.3 KB)
+0210.330 (0) Table wsporp_wc_bookings_availability: Total expected rows (approximate): 0
+0210.338 (0) Table wsporp_wc_bookings_availability: Total rows added: 0 in 0.00 seconds
+0210.344 (0) Table wsporp_wc_bookings_availability: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_wc_bookings_availability.table.gz - 0.5 KB)
+0210.363 (0) Table wsporp_wc_download_log: Total expected rows (approximate): 0
+0210.375 (0) Table wsporp_wc_download_log: Total rows added: 0 in 0.00 seconds
+0210.381 (0) Table wsporp_wc_download_log: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_wc_download_log.table.gz - 0.4 KB)
+0210.397 (0) Table wsporp_wc_product_meta_lookup: Total expected rows (approximate): 109
+0210.403 (0) Table wsporp_wc_product_meta_lookup: Total rows added: 109 in 0.00 seconds
+0210.412 (0) Table wsporp_wc_product_meta_lookup: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_wc_product_meta_lookup.table.gz - 1 KB)
+0210.430 (0) Table wsporp_wc_webhooks: Total expected rows (approximate): 0
+0210.435 (0) Table wsporp_wc_webhooks: Total rows added: 0 in 0.00 seconds
+0210.440 (0) Table wsporp_wc_webhooks: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_wc_webhooks.table.gz - 0.5 KB)
+0210.466 (0) Table wsporp_wcpv_commissions: Total expected rows (approximate): 0
+0210.472 (0) Table wsporp_wcpv_commissions: Total rows added: 0 in 0.00 seconds
+0210.484 (0) Table wsporp_wcpv_commissions: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_wcpv_commissions.table.gz - 0.4 KB)
+0210.513 (0) Table wsporp_wcpv_per_product_shipping_rules: Total expected rows (approximate): 0
+0210.519 (0) Table wsporp_wcpv_per_product_shipping_rules: Total rows added: 0 in 0.00 seconds
+0210.526 (0) Table wsporp_wcpv_per_product_shipping_rules: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_wcpv_per_product_shipping_rules.table.gz - 0.4 KB)
+0210.549 (0) Table wsporp_woocommerce_api_keys: Total expected rows (approximate): 0
+0210.557 (0) Table wsporp_woocommerce_api_keys: Total rows added: 0 in 0.00 seconds
+0210.569 (0) Table wsporp_woocommerce_api_keys: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_api_keys.table.gz - 0.4 KB)
+0210.591 (0) Table wsporp_woocommerce_attribute_taxonomies: Total expected rows (approximate): 0
+0210.599 (0) Table wsporp_woocommerce_attribute_taxonomies: Total rows added: 0 in 0.00 seconds
+0210.605 (0) Table wsporp_woocommerce_attribute_taxonomies: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_attribute_taxonomies.table.gz - 0.4 KB)
+0210.630 (0) Table wsporp_woocommerce_downloadable_product_permissions: Total expected rows (approximate): 0
+0210.638 (0) Table wsporp_woocommerce_downloadable_product_permissions: Total rows added: 0 in 0.00 seconds
+0210.644 (0) Table wsporp_woocommerce_downloadable_product_permissions: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_downloadable_product_permissions.table.gz - 0.5 KB)
+0210.663 (0) Table wsporp_woocommerce_log: Total expected rows (approximate): 0
+0210.671 (0) Table wsporp_woocommerce_log: Total rows added: 0 in 0.00 seconds
+0210.677 (0) Table wsporp_woocommerce_log: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_log.table.gz - 0.4 KB)
+0210.702 (0) Table wsporp_woocommerce_order_items: Total expected rows (approximate): 26
+0210.711 (0) Table wsporp_woocommerce_order_items: Total rows added: 40 in 0.00 seconds
+0210.717 (0) Table wsporp_woocommerce_order_items: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_order_items.table.gz - 0.8 KB)
+0210.739 (0) Table wsporp_woocommerce_payment_tokens: Total expected rows (approximate): 2
+0210.749 (0) Table wsporp_woocommerce_payment_tokens: Total rows added: 2 in 0.00 seconds
+0210.756 (0) Table wsporp_woocommerce_payment_tokens: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_payment_tokens.table.gz - 0.5 KB)
+0210.782 (0) Table wsporp_woocommerce_sessions: Total expected rows (approximate): 70
+0210.792 (0) Table wsporp_woocommerce_sessions: Total rows added: 70 in 0.00 seconds
+0210.801 (0) Table wsporp_woocommerce_sessions: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_sessions.table.gz - 5.9 KB)
+0210.830 (0) Table wsporp_woocommerce_shipping_zone_locations: Total expected rows (approximate): 0
+0210.839 (0) Table wsporp_woocommerce_shipping_zone_locations: Total rows added: 0 in 0.00 seconds
+0210.843 (0) Table wsporp_woocommerce_shipping_zone_locations: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_shipping_zone_locations.table.gz - 0.4 KB)
+0210.872 (0) Table wsporp_woocommerce_shipping_zone_methods: Total expected rows (approximate): 0
+0210.881 (0) Table wsporp_woocommerce_shipping_zone_methods: Total rows added: 0 in 0.00 seconds
+0210.888 (0) Table wsporp_woocommerce_shipping_zone_methods: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_shipping_zone_methods.table.gz - 0.4 KB)
+0210.917 (0) Table wsporp_woocommerce_shipping_zones: Total expected rows (approximate): 0
+0210.924 (0) Table wsporp_woocommerce_shipping_zones: Total rows added: 0 in 0.00 seconds
+0210.931 (0) Table wsporp_woocommerce_shipping_zones: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_shipping_zones.table.gz - 0.3 KB)
+0210.956 (0) Table wsporp_woocommerce_tax_rate_locations: Total expected rows (approximate): 0
+0210.965 (0) Table wsporp_woocommerce_tax_rate_locations: Total rows added: 0 in 0.00 seconds
+0210.971 (0) Table wsporp_woocommerce_tax_rate_locations: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_tax_rate_locations.table.gz - 0.4 KB)
+0210.998 (0) Table wsporp_woocommerce_tax_rates: Total expected rows (approximate): 1
+0211.008 (0) Table wsporp_woocommerce_tax_rates: Total rows added: 1 in 0.00 seconds
+0211.014 (0) Table wsporp_woocommerce_tax_rates: finishing file (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_tax_rates.table.gz - 0.5 KB)
+0211.036 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_options.table.gz (1/83): adding to final database dump
+0211.094 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_users.table.gz (2/83): adding to final database dump
+0211.101 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_usermeta.table.gz (3/83): adding to final database dump
+0211.109 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_commentmeta.table.gz (4/83): adding to final database dump
+0211.115 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_comments.table.gz (5/83): adding to final database dump
+0211.121 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_links.table.gz (6/83): adding to final database dump
+0211.126 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_postmeta.table.gz (7/83): adding to final database dump
+0211.499 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_posts.table.gz (8/83): adding to final database dump
+0211.584 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_term_relationships.table.gz (9/83): adding to final database dump
+0211.599 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_term_taxonomy.table.gz (10/83): adding to final database dump
+0211.613 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_termmeta.table.gz (11/83): adding to final database dump
+0211.627 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_terms.table.gz (12/83): adding to final database dump
+0211.645 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_order_itemmeta.table.gz (13/83): adding to final database dump
+0211.651 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_payment_tokenmeta.table.gz (14/83): adding to final database dump
+0211.657 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_yoast_seo_links.table.gz (15/83): adding to final database dump
+0211.663 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_yoast_seo_meta.table.gz (16/83): adding to final database dump
+0211.675 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_aiowps_events.table.gz (17/83): adding to final database dump
+0211.682 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_aiowps_failed_logins.table.gz (18/83): adding to final database dump
+0211.711 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_aiowps_global_meta.table.gz (19/83): adding to final database dump
+0211.717 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_aiowps_login_activity.table.gz (20/83): adding to final database dump
+0211.724 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_aiowps_login_lockdown.table.gz (21/83): adding to final database dump
+0211.730 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_aiowps_permanent_block.table.gz (22/83): adding to final database dump
+0211.734 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_ewwwio_images.table.gz (23/83): adding to final database dump
+0211.821 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_ewwwio_queue.table.gz (24/83): adding to final database dump
+0211.828 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_coupon_logs.table.gz (25/83): adding to final database dump
+0211.834 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_coupons.table.gz (26/83): adding to final database dump
+0211.840 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_customer_carts.table.gz (27/83): adding to final database dump
+0211.847 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_customer_notes.table.gz (28/83): adding to final database dump
+0211.853 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_customer_orders.table.gz (29/83): adding to final database dump
+0211.861 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_customers.table.gz (30/83): adding to final database dump
+0211.865 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_email_excludes.table.gz (31/83): adding to final database dump
+0211.873 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_email_logs.table.gz (32/83): adding to final database dump
+0211.878 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_email_orders.table.gz (33/83): adding to final database dump
+0211.889 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_email_tracking.table.gz (34/83): adding to final database dump
+0211.896 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_followup_history.table.gz (35/83): adding to final database dump
+0211.905 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_order_categories.table.gz (36/83): adding to final database dump
+0211.914 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_order_items.table.gz (37/83): adding to final database dump
+0211.919 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_subscriber_lists.table.gz (38/83): adding to final database dump
+0211.926 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_subscribers.table.gz (39/83): adding to final database dump
+0211.930 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_followup_subscribers_to_lists.table.gz (40/83): adding to final database dump
+0211.936 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_action_meta.table.gz (41/83): adding to final database dump
+0211.944 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_actions.table.gz (42/83): adding to final database dump
+0211.950 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_chunks.table.gz (43/83): adding to final database dump
+0211.955 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_field_meta.table.gz (44/83): adding to final database dump
+0211.967 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_fields.table.gz (45/83): adding to final database dump
+0211.974 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_form_meta.table.gz (46/83): adding to final database dump
+0211.979 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_forms.table.gz (47/83): adding to final database dump
+0211.985 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_object_meta.table.gz (48/83): adding to final database dump
+0211.992 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_objects.table.gz (49/83): adding to final database dump
+0211.998 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_relationships.table.gz (50/83): adding to final database dump
+0212.002 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_nf3_upgrades.table.gz (51/83): adding to final database dump
+0212.011 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_pmxi_files.table.gz (52/83): adding to final database dump
+0212.017 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_pmxi_history.table.gz (53/83): adding to final database dump
+0212.023 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_pmxi_images.table.gz (54/83): adding to final database dump
+0212.030 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_pmxi_imports.table.gz (55/83): adding to final database dump
+0212.035 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_pmxi_posts.table.gz (56/83): adding to final database dump
+0212.038 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_pmxi_templates.table.gz (57/83): adding to final database dump
+0212.046 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_redirection_404.table.gz (58/83): adding to final database dump
+0212.063 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_redirection_groups.table.gz (59/83): adding to final database dump
+0212.066 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_redirection_items.table.gz (60/83): adding to final database dump
+0212.076 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_redirection_logs.table.gz (61/83): adding to final database dump
+0212.082 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_smush_dir_images.table.gz (62/83): adding to final database dump
+0212.086 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_tm_taskmeta.table.gz (63/83): adding to final database dump
+0212.092 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_tm_tasks.table.gz (64/83): adding to final database dump
+0212.097 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_wc_booking_relationships.table.gz (65/83): adding to final database dump
+0212.100 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_wc_bookings_availability.table.gz (66/83): adding to final database dump
+0212.104 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_wc_download_log.table.gz (67/83): adding to final database dump
+0212.107 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_wc_product_meta_lookup.table.gz (68/83): adding to final database dump
+0212.110 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_wc_webhooks.table.gz (69/83): adding to final database dump
+0212.113 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_wcpv_commissions.table.gz (70/83): adding to final database dump
+0212.116 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_wcpv_per_product_shipping_rules.table.gz (71/83): adding to final database dump
+0212.120 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_api_keys.table.gz (72/83): adding to final database dump
+0212.130 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_attribute_taxonomies.table.gz (73/83): adding to final database dump
+0212.139 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_downloadable_product_permissions.table.gz (74/83): adding to final database dump
+0212.147 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_log.table.gz (75/83): adding to final database dump
+0212.155 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_order_items.table.gz (76/83): adding to final database dump
+0212.162 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_payment_tokens.table.gz (77/83): adding to final database dump
+0212.166 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_sessions.table.gz (78/83): adding to final database dump
+0212.178 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_shipping_zone_locations.table.gz (79/83): adding to final database dump
+0212.186 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_shipping_zone_methods.table.gz (80/83): adding to final database dump
+0212.192 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_shipping_zones.table.gz (81/83): adding to final database dump
+0212.197 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_tax_rate_locations.table.gz (82/83): adding to final database dump
+0212.201 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db-table-wsporp_woocommerce_tax_rates.table.gz (83/83): adding to final database dump
+0212.210 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db.gz: finished writing out complete database file (1752 KB)
+0212.278 (0) Total database tables backed up: 83 (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db.gz, size: 1803310, sha256)
+0212.326 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip: plugins: This file has not yet been successfully uploaded: will queue
+0212.330 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-themes.zip: themes: This file has not yet been successfully uploaded: will queue
+0212.340 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+0212.345 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip: uploads: This file has not yet been successfully uploaded: will queue
+0212.348 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip: uploads: This file has not yet been successfully uploaded: will queue
+0212.352 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip: uploads: This file has not yet been successfully uploaded: will queue
+0212.356 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip: uploads: This file has not yet been successfully uploaded: will queue
+0212.360 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads6.zip: uploads: This file has not yet been successfully uploaded: will queue
+0212.367 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-others.zip: others: This file has not yet been successfully uploaded: will queue
+0212.372 (0) backup_2019-08-08-1533_Sportigoofr_b659346456f9-db.gz: db: This file has not yet been successfully uploaded: will queue
+0212.377 (0) Saving backup history. Total backup size: 2.2 GB
+0212.392 (0) Requesting upload of the files that have not yet been successfully uploaded (10)
+0212.409 (0) Cloud backup selection (1/1): dropbox with instance (1/1) (last)
+0212.417 (0) Beginning dispatch of backup to remote (dropbox) (instance identifier s-6d1526adcf3ff586f5e25920ae7788ba)
+0212.424 (0) Dropbox: begin cloud upload (using API version 2 with OAuth v2 token)
+0212.458 (0) Dropbox: access gained; setting chunk size to: 1024 KB
+0212.791 (0) Dropbox: exception (Dropbox_BadRequestException) occurred whilst getting account info: Error in call to API function "users/get_space_usage": request body: expected null, got value
+0212.795 (0) Dropbox: Attempt to upload: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip to: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip
+0213.908 (0) Dropbox chunked upload: 1.6 % uploaded (AAAAAAAAA8qT51Nd6V953Q, 1048576, 8192 KB)
+0217.260 (0) Dropbox chunked upload: 14.2 % uploaded (AAAAAAAAA8qT51Nd6V953Q, 9437184, 10240 KB)
+0220.770 (0) Dropbox chunked upload: 30 % uploaded (AAAAAAAAA8qT51Nd6V953Q, 19922944, 10240 KB)
+0223.816 (0) Dropbox chunked upload: 45.7 % uploaded (AAAAAAAAA8qT51Nd6V953Q, 30408704, 10240 KB)
+0228.595 (0) Dropbox chunked upload: 61.5 % uploaded (AAAAAAAAA8qT51Nd6V953Q, 40894464, 10240 KB)
+0232.367 (0) Dropbox chunked upload: 77.3 % uploaded (AAAAAAAAA8qT51Nd6V953Q, 51380224, 10240 KB)
+0235.602 (0) Dropbox chunked upload: 93.1 % uploaded (AAAAAAAAA8qT51Nd6V953Q, 61865984, 10240 KB)
+0238.305 (0) Dropbox chunked upload: 100 % uploaded (AAAAAAAAA8qT51Nd6V953Q, 66482121, 10240 KB)
+0240.223 (0) Recording as successfully uploaded: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip
+0240.249 (0) Deleting local file: backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip: OK
+0240.257 (0) Dropbox: File upload success (backup_2019-08-08-1533_Sportigoofr_b659346456f9-plugins.zip): 64923 KB in 27s (2364 KB/s)
+0240.548 (0) Dropbox: exception (Dropbox_BadRequestException) occurred whilst getting account info: Error in call to API function "users/get_space_usage": request body: expected null, got value
+0240.555 (0) Dropbox: Attempt to upload: backup_2019-08-08-1533_Sportigoofr_b659346456f9-themes.zip to: backup_2019-08-08-1533_Sportigoofr_b659346456f9-themes.zip
+0243.697 (0) Dropbox chunked upload: 83.1 % uploaded (AAAAAAAAA8u7GfjAjpVaEQ, 10485760, 10240 KB)
+0245.329 (0) Dropbox chunked upload: 100 % uploaded (AAAAAAAAA8u7GfjAjpVaEQ, 12625075, 10240 KB)
+0246.602 (0) Recording as successfully uploaded: backup_2019-08-08-1533_Sportigoofr_b659346456f9-themes.zip
+0246.621 (0) Deleting local file: backup_2019-08-08-1533_Sportigoofr_b659346456f9-themes.zip: OK
+0246.630 (0) Dropbox: File upload success (backup_2019-08-08-1533_Sportigoofr_b659346456f9-themes.zip): 12329 KB in 6s (2029 KB/s)
+0246.954 (0) Dropbox: exception (Dropbox_BadRequestException) occurred whilst getting account info: Error in call to API function "users/get_space_usage": request body: expected null, got value
+0246.961 (0) Dropbox: Attempt to upload: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip to: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip
+0251.725 (0) Dropbox chunked upload: 2.5 % uploaded (AAAAAAAAA8xOyKat9518og, 10485760, 10240 KB)
+0256.957 (0) The scheduled resumption is within 45 seconds - will reschedule
+0256.976 (0) Rescheduling resumption 1: moving to 345 seconds from now (1565271792)
+0256.995 (0) To decrease the likelihood of overlaps, increasing resumption interval to: 300 + 45 = 345
+0257.004 (0) Dropbox chunked upload: 5 % uploaded (AAAAAAAAA8xOyKat9518og, 20971520, 10240 KB)
+0261.367 (0) Dropbox chunked upload: 7.6 % uploaded (AAAAAAAAA8xOyKat9518og, 31457280, 10240 KB)
+0264.892 (0) Dropbox chunked upload: 10.1 % uploaded (AAAAAAAAA8xOyKat9518og, 41943040, 10240 KB)
+0269.961 (0) Dropbox chunked upload: 12.6 % uploaded (AAAAAAAAA8xOyKat9518og, 52428800, 10240 KB)
+0274.006 (0) Dropbox chunked upload: 15.1 % uploaded (AAAAAAAAA8xOyKat9518og, 62914560, 10240 KB)
+0278.470 (0) Dropbox chunked upload: 17.6 % uploaded (AAAAAAAAA8xOyKat9518og, 73400320, 10240 KB)
+0282.222 (0) Dropbox chunked upload: 20.1 % uploaded (AAAAAAAAA8xOyKat9518og, 83886080, 10240 KB)
+0286.688 (0) Dropbox chunked upload: 22.7 % uploaded (AAAAAAAAA8xOyKat9518og, 94371840, 10240 KB)
+0291.789 (0) Dropbox chunked upload: 25.2 % uploaded (AAAAAAAAA8xOyKat9518og, 104857600, 10240 KB)
+0295.352 (0) Dropbox chunked upload: 27.7 % uploaded (AAAAAAAAA8xOyKat9518og, 115343360, 10240 KB)
+0299.780 (0) Dropbox chunked upload: 30.2 % uploaded (AAAAAAAAA8xOyKat9518og, 125829120, 10240 KB)
+0303.331 (0) Dropbox chunked upload: 32.7 % uploaded (AAAAAAAAA8xOyKat9518og, 136314880, 10240 KB)
+0307.356 (0) Dropbox chunked upload: 35.2 % uploaded (AAAAAAAAA8xOyKat9518og, 146800640, 10240 KB)
+0311.431 (0) Dropbox chunked upload: 37.8 % uploaded (AAAAAAAAA8xOyKat9518og, 157286400, 10240 KB)
+0315.454 (0) The time we have been running (315.4) is approaching the resumption interval (345) - increasing resumption interval to 346
+0315.468 (0) Dropbox chunked upload: 40.3 % uploaded (AAAAAAAAA8xOyKat9518og, 167772160, 10240 KB)
+0318.645 (0) The time we have been running (318.6) is approaching the resumption interval (346) - increasing resumption interval to 349
+0318.657 (0) Dropbox chunked upload: 42.8 % uploaded (AAAAAAAAA8xOyKat9518og, 178257920, 10240 KB)
+0322.229 (0) The time we have been running (322.2) is approaching the resumption interval (349) - increasing resumption interval to 353
+0322.248 (0) Dropbox chunked upload: 45.3 % uploaded (AAAAAAAAA8xOyKat9518og, 188743680, 10240 KB)
+0326.915 (0) The time we have been running (326.9) is approaching the resumption interval (353) - increasing resumption interval to 357
+0326.929 (0) Dropbox chunked upload: 47.8 % uploaded (AAAAAAAAA8xOyKat9518og, 199229440, 10240 KB)
+0330.292 (0) The time we have been running (330.3) is approaching the resumption interval (357) - increasing resumption interval to 361
+0330.307 (0) Dropbox chunked upload: 50.3 % uploaded (AAAAAAAAA8xOyKat9518og, 209715200, 10240 KB)
+0334.820 (0) The time we have been running (334.8) is approaching the resumption interval (361) - increasing resumption interval to 365
+0334.832 (0) Dropbox chunked upload: 52.9 % uploaded (AAAAAAAAA8xOyKat9518og, 220200960, 10240 KB)
+0337.964 (0) The time we have been running (337.9) is approaching the resumption interval (365) - increasing resumption interval to 368
+0337.975 (0) Dropbox chunked upload: 55.4 % uploaded (AAAAAAAAA8xOyKat9518og, 230686720, 10240 KB)
+0341.988 (0) The time we have been running (342) is approaching the resumption interval (368) - increasing resumption interval to 372
+0342.004 (0) Dropbox chunked upload: 57.9 % uploaded (AAAAAAAAA8xOyKat9518og, 241172480, 10240 KB)
+0346.426 (0) The time we have been running (346.4) is approaching the resumption interval (372) - increasing resumption interval to 377
+0346.439 (0) Dropbox chunked upload: 60.4 % uploaded (AAAAAAAAA8xOyKat9518og, 251658240, 10240 KB)
+0349.930 (0) The time we have been running (349.9) is approaching the resumption interval (377) - increasing resumption interval to 380
+0349.946 (0) Dropbox chunked upload: 62.9 % uploaded (AAAAAAAAA8xOyKat9518og, 262144000, 10240 KB)
+0354.569 (0) The time we have been running (354.5) is approaching the resumption interval (380) - increasing resumption interval to 385
+0354.580 (0) Dropbox chunked upload: 65.5 % uploaded (AAAAAAAAA8xOyKat9518og, 272629760, 10240 KB)
+0358.519 (0) The time we have been running (358.5) is approaching the resumption interval (385) - increasing resumption interval to 389
+0358.531 (0) Dropbox chunked upload: 68 % uploaded (AAAAAAAAA8xOyKat9518og, 283115520, 10240 KB)
+0362.616 (0) The time we have been running (362.6) is approaching the resumption interval (389) - increasing resumption interval to 393
+0362.638 (0) Dropbox chunked upload: 70.5 % uploaded (AAAAAAAAA8xOyKat9518og, 293601280, 10240 KB)
+0367.424 (0) The time we have been running (367.4) is approaching the resumption interval (393) - increasing resumption interval to 398
+0367.446 (0) Dropbox chunked upload: 73 % uploaded (AAAAAAAAA8xOyKat9518og, 304087040, 10240 KB)
+0372.028 (0) The time we have been running (372) is approaching the resumption interval (398) - increasing resumption interval to 403
+0372.035 (0) Dropbox chunked upload: 75.5 % uploaded (AAAAAAAAA8xOyKat9518og, 314572800, 10240 KB)
+0376.434 (0) The time we have been running (376.4) is approaching the resumption interval (403) - increasing resumption interval to 407
+0376.447 (0) Dropbox chunked upload: 78 % uploaded (AAAAAAAAA8xOyKat9518og, 325058560, 10240 KB)
+0381.148 (0) The time we have been running (381.1) is approaching the resumption interval (407) - increasing resumption interval to 412
+0381.161 (0) Dropbox chunked upload: 80.6 % uploaded (AAAAAAAAA8xOyKat9518og, 335544320, 10240 KB)
+0385.556 (0) The time we have been running (385.5) is approaching the resumption interval (412) - increasing resumption interval to 416
+0385.566 (0) Dropbox chunked upload: 83.1 % uploaded (AAAAAAAAA8xOyKat9518og, 346030080, 10240 KB)
+0389.396 (0) The time we have been running (389.4) is approaching the resumption interval (416) - increasing resumption interval to 420
+0389.409 (0) Dropbox chunked upload: 85.6 % uploaded (AAAAAAAAA8xOyKat9518og, 356515840, 10240 KB)
+0393.553 (0) The time we have been running (393.5) is approaching the resumption interval (420) - increasing resumption interval to 424
+0393.571 (0) Dropbox chunked upload: 88.1 % uploaded (AAAAAAAAA8xOyKat9518og, 367001600, 10240 KB)
+0398.382 (0) The time we have been running (398.4) is approaching the resumption interval (424) - increasing resumption interval to 429
+0398.395 (0) Dropbox chunked upload: 90.6 % uploaded (AAAAAAAAA8xOyKat9518og, 377487360, 10240 KB)
+0402.384 (0) The time we have been running (402.4) is approaching the resumption interval (429) - increasing resumption interval to 433
+0402.395 (0) Dropbox chunked upload: 93.1 % uploaded (AAAAAAAAA8xOyKat9518og, 387973120, 10240 KB)
+0406.203 (0) The time we have been running (406.2) is approaching the resumption interval (433) - increasing resumption interval to 437
+0406.210 (0) Dropbox chunked upload: 95.7 % uploaded (AAAAAAAAA8xOyKat9518og, 398458880, 10240 KB)
+0411.198 (0) The time we have been running (411.2) is approaching the resumption interval (437) - increasing resumption interval to 442
+0411.218 (0) Dropbox chunked upload: 98.2 % uploaded (AAAAAAAAA8xOyKat9518og, 408944640, 10240 KB)
+0415.445 (0) The time we have been running (415.4) is approaching the resumption interval (442) - increasing resumption interval to 446
+0415.458 (0) Dropbox chunked upload: 100 % uploaded (AAAAAAAAA8xOyKat9518og, 416521304, 10240 KB)
+0417.230 (0) Recording as successfully uploaded: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip
+0417.279 (0) Deleting local file: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip: OK
+0417.289 (0) Dropbox: File upload success (backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads.zip): 406759 KB in 170s (2388 KB/s)
+0417.845 (0) Dropbox: exception (Dropbox_BadRequestException) occurred whilst getting account info: Error in call to API function "users/get_space_usage": request body: expected null, got value
+0417.852 (0) Dropbox: Attempt to upload: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip to: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip
+0421.907 (0) The time we have been running (421.9) is approaching the resumption interval (446) - increasing resumption interval to 452
+0421.925 (0) Dropbox chunked upload: 2.5 % uploaded (AAAAAAAAA8134xah4f4BEA, 10485760, 10240 KB)
+0425.685 (0) The time we have been running (425.7) is approaching the resumption interval (452) - increasing resumption interval to 456
+0425.695 (0) Dropbox chunked upload: 5 % uploaded (AAAAAAAAA8134xah4f4BEA, 20971520, 10240 KB)
+0429.328 (0) The time we have been running (429.3) is approaching the resumption interval (456) - increasing resumption interval to 460
+0429.347 (0) Dropbox chunked upload: 7.5 % uploaded (AAAAAAAAA8134xah4f4BEA, 31457280, 10240 KB)
+0433.548 (0) The time we have been running (433.5) is approaching the resumption interval (460) - increasing resumption interval to 464
+0433.567 (0) Dropbox chunked upload: 10 % uploaded (AAAAAAAAA8134xah4f4BEA, 41943040, 10240 KB)
+0437.369 (0) The time we have been running (437.3) is approaching the resumption interval (464) - increasing resumption interval to 468
+0437.386 (0) Dropbox chunked upload: 12.5 % uploaded (AAAAAAAAA8134xah4f4BEA, 52428800, 10240 KB)
+0440.769 (0) The time we have been running (440.8) is approaching the resumption interval (468) - increasing resumption interval to 471
+0440.780 (0) Dropbox chunked upload: 15.1 % uploaded (AAAAAAAAA8134xah4f4BEA, 62914560, 10240 KB)
+0445.289 (0) The time we have been running (445.3) is approaching the resumption interval (471) - increasing resumption interval to 476
+0445.299 (0) Dropbox chunked upload: 17.6 % uploaded (AAAAAAAAA8134xah4f4BEA, 73400320, 10240 KB)
+0448.894 (0) The time we have been running (448.9) is approaching the resumption interval (476) - increasing resumption interval to 479
+0448.909 (0) Dropbox chunked upload: 20.1 % uploaded (AAAAAAAAA8134xah4f4BEA, 83886080, 10240 KB)
+0452.866 (0) The time we have been running (452.8) is approaching the resumption interval (479) - increasing resumption interval to 483
+0452.879 (0) Dropbox chunked upload: 22.6 % uploaded (AAAAAAAAA8134xah4f4BEA, 94371840, 10240 KB)
+0456.585 (0) The time we have been running (456.6) is approaching the resumption interval (483) - increasing resumption interval to 487
+0456.595 (0) Dropbox chunked upload: 25.1 % uploaded (AAAAAAAAA8134xah4f4BEA, 104857600, 10240 KB)
+0460.883 (0) The time we have been running (460.9) is approaching the resumption interval (487) - increasing resumption interval to 491
+0460.895 (0) Dropbox chunked upload: 27.6 % uploaded (AAAAAAAAA8134xah4f4BEA, 115343360, 10240 KB)
+0465.273 (0) The time we have been running (465.3) is approaching the resumption interval (491) - increasing resumption interval to 496
+0465.291 (0) Dropbox chunked upload: 30.1 % uploaded (AAAAAAAAA8134xah4f4BEA, 125829120, 10240 KB)
+0469.278 (0) The time we have been running (469.3) is approaching the resumption interval (496) - increasing resumption interval to 500
+0469.291 (0) Dropbox chunked upload: 32.6 % uploaded (AAAAAAAAA8134xah4f4BEA, 136314880, 10240 KB)
+0473.378 (0) The time we have been running (473.3) is approaching the resumption interval (500) - increasing resumption interval to 504
+0473.395 (0) Dropbox chunked upload: 35.1 % uploaded (AAAAAAAAA8134xah4f4BEA, 146800640, 10240 KB)
+0476.823 (0) The time we have been running (476.8) is approaching the resumption interval (504) - increasing resumption interval to 507
+0476.834 (0) Dropbox chunked upload: 37.6 % uploaded (AAAAAAAAA8134xah4f4BEA, 157286400, 10240 KB)
+0480.893 (0) The time we have been running (480.9) is approaching the resumption interval (507) - increasing resumption interval to 511
+0480.903 (0) Dropbox chunked upload: 40.1 % uploaded (AAAAAAAAA8134xah4f4BEA, 167772160, 10240 KB)
+0484.847 (0) The time we have been running (484.8) is approaching the resumption interval (511) - increasing resumption interval to 515
+0484.861 (0) Dropbox chunked upload: 42.6 % uploaded (AAAAAAAAA8134xah4f4BEA, 178257920, 10240 KB)
+0489.174 (0) The time we have been running (489.2) is approaching the resumption interval (515) - increasing resumption interval to 520
+0489.186 (0) Dropbox chunked upload: 45.2 % uploaded (AAAAAAAAA8134xah4f4BEA, 188743680, 10240 KB)
+0493.282 (0) The time we have been running (493.3) is approaching the resumption interval (520) - increasing resumption interval to 524
+0493.293 (0) Dropbox chunked upload: 47.7 % uploaded (AAAAAAAAA8134xah4f4BEA, 199229440, 10240 KB)
+0496.846 (0) The time we have been running (496.8) is approaching the resumption interval (524) - increasing resumption interval to 527
+0496.872 (0) Dropbox chunked upload: 50.2 % uploaded (AAAAAAAAA8134xah4f4BEA, 209715200, 10240 KB)
+0500.881 (0) The time we have been running (500.9) is approaching the resumption interval (527) - increasing resumption interval to 531
+0500.895 (0) Dropbox chunked upload: 52.7 % uploaded (AAAAAAAAA8134xah4f4BEA, 220200960, 10240 KB)
+0504.779 (0) The time we have been running (504.7) is approaching the resumption interval (531) - increasing resumption interval to 535
+0504.787 (0) Dropbox chunked upload: 55.2 % uploaded (AAAAAAAAA8134xah4f4BEA, 230686720, 10240 KB)
+0509.632 (0) The time we have been running (509.6) is approaching the resumption interval (535) - increasing resumption interval to 540
+0509.647 (0) Dropbox chunked upload: 57.7 % uploaded (AAAAAAAAA8134xah4f4BEA, 241172480, 10240 KB)
+0513.090 (0) The time we have been running (513.1) is approaching the resumption interval (540) - increasing resumption interval to 544
+0513.105 (0) Dropbox chunked upload: 60.2 % uploaded (AAAAAAAAA8134xah4f4BEA, 251658240, 10240 KB)
+0517.274 (0) The time we have been running (517.3) is approaching the resumption interval (544) - increasing resumption interval to 548
+0517.297 (0) Dropbox chunked upload: 62.7 % uploaded (AAAAAAAAA8134xah4f4BEA, 262144000, 10240 KB)
+0521.185 (0) The time we have been running (521.2) is approaching the resumption interval (548) - increasing resumption interval to 552
+0521.197 (0) Dropbox chunked upload: 65.2 % uploaded (AAAAAAAAA8134xah4f4BEA, 272629760, 10240 KB)
+0524.792 (0) The time we have been running (524.8) is approaching the resumption interval (552) - increasing resumption interval to 555
+0524.809 (0) Dropbox chunked upload: 67.7 % uploaded (AAAAAAAAA8134xah4f4BEA, 283115520, 10240 KB)
+0528.604 (0) The time we have been running (528.6) is approaching the resumption interval (555) - increasing resumption interval to 559
+0528.620 (0) Dropbox chunked upload: 70.2 % uploaded (AAAAAAAAA8134xah4f4BEA, 293601280, 10240 KB)
+0532.860 (0) The time we have been running (532.8) is approaching the resumption interval (559) - increasing resumption interval to 563
+0532.875 (0) Dropbox chunked upload: 72.7 % uploaded (AAAAAAAAA8134xah4f4BEA, 304087040, 10240 KB)
+0536.613 (0) The time we have been running (536.6) is approaching the resumption interval (563) - increasing resumption interval to 567
+0536.628 (0) Dropbox chunked upload: 75.3 % uploaded (AAAAAAAAA8134xah4f4BEA, 314572800, 10240 KB)
+0540.720 (0) The time we have been running (540.7) is approaching the resumption interval (567) - increasing resumption interval to 571
+0540.732 (0) Dropbox chunked upload: 77.8 % uploaded (AAAAAAAAA8134xah4f4BEA, 325058560, 10240 KB)
+0544.693 (0) The time we have been running (544.7) is approaching the resumption interval (571) - increasing resumption interval to 575
+0544.714 (0) Dropbox chunked upload: 80.3 % uploaded (AAAAAAAAA8134xah4f4BEA, 335544320, 10240 KB)
+0549.181 (0) The time we have been running (549.2) is approaching the resumption interval (575) - increasing resumption interval to 580
+0549.194 (0) Dropbox chunked upload: 82.8 % uploaded (AAAAAAAAA8134xah4f4BEA, 346030080, 10240 KB)
+0552.636 (0) The time we have been running (552.6) is approaching the resumption interval (580) - increasing resumption interval to 583
+0552.655 (0) Dropbox chunked upload: 85.3 % uploaded (AAAAAAAAA8134xah4f4BEA, 356515840, 10240 KB)
+0556.697 (0) The time we have been running (556.7) is approaching the resumption interval (583) - increasing resumption interval to 587
+0556.712 (0) The scheduled resumption is within 45 seconds - will reschedule
+0556.726 (0) Rescheduling resumption 1: moving to 632 seconds from now (1565272379)
+0556.743 (0) To decrease the likelihood of overlaps, increasing resumption interval to: 587 + 45 = 632
+0556.749 (0) Dropbox chunked upload: 87.8 % uploaded (AAAAAAAAA8134xah4f4BEA, 367001600, 10240 KB)
+0560.228 (0) Dropbox chunked upload: 90.3 % uploaded (AAAAAAAAA8134xah4f4BEA, 377487360, 10240 KB)
+0564.967 (0) Dropbox chunked upload: 92.8 % uploaded (AAAAAAAAA8134xah4f4BEA, 387973120, 10240 KB)
+0568.727 (0) Dropbox chunked upload: 95.3 % uploaded (AAAAAAAAA8134xah4f4BEA, 398458880, 10240 KB)
+0573.519 (0) Dropbox chunked upload: 97.8 % uploaded (AAAAAAAAA8134xah4f4BEA, 408944640, 10240 KB)
+0577.191 (0) Dropbox chunked upload: 100 % uploaded (AAAAAAAAA8134xah4f4BEA, 418025931, 10240 KB)
+0578.909 (0) Recording as successfully uploaded: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip
+0578.973 (0) Deleting local file: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip: OK
+0578.977 (0) Dropbox: File upload success (backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads2.zip): 408228 KB in 161s (2533 KB/s)
+0579.394 (0) Dropbox: exception (Dropbox_BadRequestException) occurred whilst getting account info: Error in call to API function "users/get_space_usage": request body: expected null, got value
+0579.401 (0) Dropbox: Attempt to upload: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip to: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip
+0582.954 (0) Dropbox chunked upload: 2.5 % uploaded (AAAAAAAAA87zLia8za508A, 10485760, 10240 KB)
+0586.606 (0) Dropbox chunked upload: 5 % uploaded (AAAAAAAAA87zLia8za508A, 20971520, 10240 KB)
+0590.343 (0) Dropbox chunked upload: 7.5 % uploaded (AAAAAAAAA87zLia8za508A, 31457280, 10240 KB)
+0593.665 (0) Dropbox chunked upload: 10 % uploaded (AAAAAAAAA87zLia8za508A, 41943040, 10240 KB)
+0598.118 (0) Dropbox chunked upload: 12.6 % uploaded (AAAAAAAAA87zLia8za508A, 52428800, 10240 KB)
+0601.943 (0) Dropbox chunked upload: 15.1 % uploaded (AAAAAAAAA87zLia8za508A, 62914560, 10240 KB)
+0606.022 (0) The time we have been running (606) is approaching the resumption interval (632) - increasing resumption interval to 636
+0606.035 (0) Dropbox chunked upload: 17.6 % uploaded (AAAAAAAAA87zLia8za508A, 73400320, 10240 KB)
+0610.299 (0) The time we have been running (610.3) is approaching the resumption interval (636) - increasing resumption interval to 641
+0610.314 (0) Dropbox chunked upload: 20.1 % uploaded (AAAAAAAAA87zLia8za508A, 83886080, 10240 KB)
+0614.560 (0) The time we have been running (614.5) is approaching the resumption interval (641) - increasing resumption interval to 645
+0614.577 (0) Dropbox chunked upload: 22.6 % uploaded (AAAAAAAAA87zLia8za508A, 94371840, 10240 KB)
+0618.348 (0) The time we have been running (618.3) is approaching the resumption interval (645) - increasing resumption interval to 649
+0618.362 (0) Dropbox chunked upload: 25.1 % uploaded (AAAAAAAAA87zLia8za508A, 104857600, 10240 KB)
+0622.389 (0) The time we have been running (622.4) is approaching the resumption interval (649) - increasing resumption interval to 653
+0622.402 (0) Dropbox chunked upload: 27.6 % uploaded (AAAAAAAAA87zLia8za508A, 115343360, 10240 KB)
+0626.648 (0) The time we have been running (626.6) is approaching the resumption interval (653) - increasing resumption interval to 657
+0626.659 (0) Dropbox chunked upload: 30.1 % uploaded (AAAAAAAAA87zLia8za508A, 125829120, 10240 KB)
+0629.786 (0) The time we have been running (629.8) is approaching the resumption interval (657) - increasing resumption interval to 660
+0629.796 (0) Dropbox chunked upload: 32.7 % uploaded (AAAAAAAAA87zLia8za508A, 136314880, 10240 KB)
+0632.975 (0) The time we have been running (633) is approaching the resumption interval (660) - increasing resumption interval to 663
+0632.988 (0) Dropbox chunked upload: 35.2 % uploaded (AAAAAAAAA87zLia8za508A, 146800640, 10240 KB)
+0636.666 (0) The time we have been running (636.6) is approaching the resumption interval (663) - increasing resumption interval to 667
+0636.681 (0) Dropbox chunked upload: 37.7 % uploaded (AAAAAAAAA87zLia8za508A, 157286400, 10240 KB)
+0640.520 (0) The time we have been running (640.5) is approaching the resumption interval (667) - increasing resumption interval to 671
+0640.539 (0) Dropbox chunked upload: 40.2 % uploaded (AAAAAAAAA87zLia8za508A, 167772160, 10240 KB)
+0644.542 (0) The time we have been running (644.5) is approaching the resumption interval (671) - increasing resumption interval to 675
+0644.557 (0) Dropbox chunked upload: 42.7 % uploaded (AAAAAAAAA87zLia8za508A, 178257920, 10240 KB)
+0647.786 (0) The time we have been running (647.8) is approaching the resumption interval (675) - increasing resumption interval to 678
+0647.792 (0) Dropbox chunked upload: 45.2 % uploaded (AAAAAAAAA87zLia8za508A, 188743680, 10240 KB)
+0652.021 (0) The time we have been running (652) is approaching the resumption interval (678) - increasing resumption interval to 683
+0652.032 (0) Dropbox chunked upload: 47.7 % uploaded (AAAAAAAAA87zLia8za508A, 199229440, 10240 KB)
+0655.122 (0) The time we have been running (655.1) is approaching the resumption interval (683) - increasing resumption interval to 686
+0655.134 (0) Dropbox chunked upload: 50.2 % uploaded (AAAAAAAAA87zLia8za508A, 209715200, 10240 KB)
+0659.807 (0) The time we have been running (659.8) is approaching the resumption interval (686) - increasing resumption interval to 690
+0659.825 (0) Dropbox chunked upload: 52.7 % uploaded (AAAAAAAAA87zLia8za508A, 220200960, 10240 KB)
+0663.519 (0) The time we have been running (663.5) is approaching the resumption interval (690) - increasing resumption interval to 694
+0663.528 (0) Dropbox chunked upload: 55.3 % uploaded (AAAAAAAAA87zLia8za508A, 230686720, 10240 KB)
+0667.745 (0) The time we have been running (667.7) is approaching the resumption interval (694) - increasing resumption interval to 698
+0667.756 (0) Dropbox chunked upload: 57.8 % uploaded (AAAAAAAAA87zLia8za508A, 241172480, 10240 KB)
+0672.865 (0) The time we have been running (672.8) is approaching the resumption interval (698) - increasing resumption interval to 703
+0672.873 (0) Dropbox chunked upload: 60.3 % uploaded (AAAAAAAAA87zLia8za508A, 251658240, 10240 KB)
+0677.333 (0) The time we have been running (677.3) is approaching the resumption interval (703) - increasing resumption interval to 708
+0677.345 (0) Dropbox chunked upload: 62.8 % uploaded (AAAAAAAAA87zLia8za508A, 262144000, 10240 KB)
+0681.373 (0) The time we have been running (681.4) is approaching the resumption interval (708) - increasing resumption interval to 712
+0681.387 (0) Dropbox chunked upload: 65.3 % uploaded (AAAAAAAAA87zLia8za508A, 272629760, 10240 KB)
+0685.047 (0) The time we have been running (685) is approaching the resumption interval (712) - increasing resumption interval to 716
+0685.055 (0) Dropbox chunked upload: 67.8 % uploaded (AAAAAAAAA87zLia8za508A, 283115520, 10240 KB)
+0689.319 (0) The time we have been running (689.3) is approaching the resumption interval (716) - increasing resumption interval to 720
+0689.333 (0) Dropbox chunked upload: 70.3 % uploaded (AAAAAAAAA87zLia8za508A, 293601280, 10240 KB)
+0693.443 (0) The time we have been running (693.4) is approaching the resumption interval (720) - increasing resumption interval to 724
+0693.456 (0) Dropbox chunked upload: 72.8 % uploaded (AAAAAAAAA87zLia8za508A, 304087040, 10240 KB)
+0696.918 (0) The time we have been running (696.9) is approaching the resumption interval (724) - increasing resumption interval to 727
+0696.935 (0) Dropbox chunked upload: 75.4 % uploaded (AAAAAAAAA87zLia8za508A, 314572800, 10240 KB)
+0701.271 (0) The time we have been running (701.2) is approaching the resumption interval (727) - increasing resumption interval to 732
+0701.290 (0) Dropbox chunked upload: 77.9 % uploaded (AAAAAAAAA87zLia8za508A, 325058560, 10240 KB)
+0704.640 (0) The time we have been running (704.6) is approaching the resumption interval (732) - increasing resumption interval to 735
+0704.654 (0) Dropbox chunked upload: 80.4 % uploaded (AAAAAAAAA87zLia8za508A, 335544320, 10240 KB)
+0708.544 (0) The time we have been running (708.5) is approaching the resumption interval (735) - increasing resumption interval to 739
+0708.555 (0) Dropbox chunked upload: 82.9 % uploaded (AAAAAAAAA87zLia8za508A, 346030080, 10240 KB)
+0712.616 (0) The time we have been running (712.6) is approaching the resumption interval (739) - increasing resumption interval to 743
+0712.636 (0) Dropbox chunked upload: 85.4 % uploaded (AAAAAAAAA87zLia8za508A, 356515840, 10240 KB)
+0716.493 (0) The time we have been running (716.5) is approaching the resumption interval (743) - increasing resumption interval to 747
+0716.510 (0) Dropbox chunked upload: 87.9 % uploaded (AAAAAAAAA87zLia8za508A, 367001600, 10240 KB)
+0719.854 (0) The time we have been running (719.8) is approaching the resumption interval (747) - increasing resumption interval to 750
+0719.861 (0) Dropbox chunked upload: 90.4 % uploaded (AAAAAAAAA87zLia8za508A, 377487360, 10240 KB)
+0723.335 (0) The time we have been running (723.3) is approaching the resumption interval (750) - increasing resumption interval to 754
+0723.346 (0) Dropbox chunked upload: 92.9 % uploaded (AAAAAAAAA87zLia8za508A, 387973120, 10240 KB)
+0726.939 (0) The time we have been running (726.9) is approaching the resumption interval (754) - increasing resumption interval to 757
+0726.953 (0) Dropbox chunked upload: 95.4 % uploaded (AAAAAAAAA87zLia8za508A, 398458880, 10240 KB)
+0731.054 (0) The time we have been running (731) is approaching the resumption interval (757) - increasing resumption interval to 762
+0731.065 (0) Dropbox chunked upload: 98 % uploaded (AAAAAAAAA87zLia8za508A, 408944640, 10240 KB)
+0735.264 (0) The time we have been running (735.2) is approaching the resumption interval (762) - increasing resumption interval to 766
+0735.276 (0) Dropbox chunked upload: 100 % uploaded (AAAAAAAAA87zLia8za508A, 417480575, 10240 KB)
+0736.587 (0) Recording as successfully uploaded: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip
+0736.643 (0) Deleting local file: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip: OK
+0736.653 (0) Dropbox: File upload success (backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads3.zip): 407695 KB in 157s (2592 KB/s)
+0736.979 (0) Dropbox: exception (Dropbox_BadRequestException) occurred whilst getting account info: Error in call to API function "users/get_space_usage": request body: expected null, got value
+0736.985 (0) Dropbox: Attempt to upload: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip to: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip
+0741.149 (0) The time we have been running (741.1) is approaching the resumption interval (766) - increasing resumption interval to 772
+0741.161 (0) Dropbox chunked upload: 2.6 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 10485760, 10240 KB)
+0745.509 (0) The time we have been running (745.5) is approaching the resumption interval (772) - increasing resumption interval to 776
+0745.528 (0) Dropbox chunked upload: 5.1 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 20971520, 10240 KB)
+0748.961 (0) The time we have been running (748.9) is approaching the resumption interval (776) - increasing resumption interval to 779
+0748.970 (0) Dropbox chunked upload: 7.7 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 31457280, 10240 KB)
+0752.295 (0) The time we have been running (752.3) is approaching the resumption interval (779) - increasing resumption interval to 783
+0752.310 (0) Dropbox chunked upload: 10.3 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 41943040, 10240 KB)
+0756.546 (0) The time we have been running (756.5) is approaching the resumption interval (783) - increasing resumption interval to 787
+0756.560 (0) Dropbox chunked upload: 12.8 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 52428800, 10240 KB)
+0760.546 (0) The time we have been running (760.5) is approaching the resumption interval (787) - increasing resumption interval to 791
+0760.563 (0) Dropbox chunked upload: 15.4 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 62914560, 10240 KB)
+0763.875 (0) The time we have been running (763.9) is approaching the resumption interval (791) - increasing resumption interval to 794
+0763.887 (0) Dropbox chunked upload: 17.9 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 73400320, 10240 KB)
+0767.859 (0) The time we have been running (767.8) is approaching the resumption interval (794) - increasing resumption interval to 798
+0767.876 (0) Dropbox chunked upload: 20.5 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 83886080, 10240 KB)
+0772.200 (0) The time we have been running (772.2) is approaching the resumption interval (798) - increasing resumption interval to 803
+0772.213 (0) Dropbox chunked upload: 23.1 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 94371840, 10240 KB)
+0777.374 (0) The time we have been running (777.4) is approaching the resumption interval (803) - increasing resumption interval to 808
+0777.388 (0) Dropbox chunked upload: 25.6 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 104857600, 10240 KB)
+0782.238 (0) The time we have been running (782.2) is approaching the resumption interval (808) - increasing resumption interval to 813
+0782.260 (0) Dropbox chunked upload: 28.2 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 115343360, 10240 KB)
+0788.118 (0) The time we have been running (788.1) is approaching the resumption interval (813) - increasing resumption interval to 819
+0788.138 (0) Dropbox chunked upload: 30.8 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 125829120, 10240 KB)
+0793.426 (0) The time we have been running (793.4) is approaching the resumption interval (819) - increasing resumption interval to 824
+0793.441 (0) Dropbox chunked upload: 33.3 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 136314880, 10240 KB)
+0798.578 (0) The time we have been running (798.5) is approaching the resumption interval (824) - increasing resumption interval to 829
+0798.594 (0) Dropbox chunked upload: 35.9 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 146800640, 10240 KB)
+0803.370 (0) The time we have been running (803.3) is approaching the resumption interval (829) - increasing resumption interval to 834
+0803.388 (0) Dropbox chunked upload: 38.5 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 157286400, 10240 KB)
+0808.586 (0) The time we have been running (808.5) is approaching the resumption interval (834) - increasing resumption interval to 839
+0808.600 (0) Dropbox chunked upload: 41 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 167772160, 10240 KB)
+0812.946 (0) The time we have been running (812.9) is approaching the resumption interval (839) - increasing resumption interval to 843
+0812.962 (0) Dropbox chunked upload: 43.6 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 178257920, 10240 KB)
+0816.736 (0) The time we have been running (816.7) is approaching the resumption interval (843) - increasing resumption interval to 847
+0816.755 (0) Dropbox chunked upload: 46.2 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 188743680, 10240 KB)
+0821.007 (0) The time we have been running (821) is approaching the resumption interval (847) - increasing resumption interval to 851
+0821.021 (0) Dropbox chunked upload: 48.7 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 199229440, 10240 KB)
+0825.368 (0) The time we have been running (825.3) is approaching the resumption interval (851) - increasing resumption interval to 856
+0825.375 (0) Dropbox chunked upload: 51.3 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 209715200, 10240 KB)
+0830.454 (0) The time we have been running (830.4) is approaching the resumption interval (856) - increasing resumption interval to 861
+0830.465 (0) Dropbox chunked upload: 53.8 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 220200960, 10240 KB)
+0834.318 (0) The time we have been running (834.3) is approaching the resumption interval (861) - increasing resumption interval to 865
+0834.328 (0) Dropbox chunked upload: 56.4 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 230686720, 10240 KB)
+0839.444 (0) The time we have been running (839.4) is approaching the resumption interval (865) - increasing resumption interval to 870
+0839.458 (0) Dropbox chunked upload: 59 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 241172480, 10240 KB)
+0843.422 (0) The time we have been running (843.4) is approaching the resumption interval (870) - increasing resumption interval to 874
+0843.441 (0) Dropbox chunked upload: 61.5 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 251658240, 10240 KB)
+0847.057 (0) The time we have been running (847) is approaching the resumption interval (874) - increasing resumption interval to 878
+0847.071 (0) Dropbox chunked upload: 64.1 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 262144000, 10240 KB)
+0851.020 (0) The time we have been running (851) is approaching the resumption interval (878) - increasing resumption interval to 881
+0851.034 (0) Dropbox chunked upload: 66.7 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 272629760, 10240 KB)
+0854.869 (0) The time we have been running (854.8) is approaching the resumption interval (881) - increasing resumption interval to 885
+0854.881 (0) Dropbox chunked upload: 69.2 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 283115520, 10240 KB)
+0858.203 (0) The time we have been running (858.2) is approaching the resumption interval (885) - increasing resumption interval to 889
+0858.218 (0) Dropbox chunked upload: 71.8 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 293601280, 10240 KB)
+0862.226 (0) The time we have been running (862.2) is approaching the resumption interval (889) - increasing resumption interval to 893
+0862.235 (0) Dropbox chunked upload: 74.4 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 304087040, 10240 KB)
+0865.817 (0) The time we have been running (865.8) is approaching the resumption interval (893) - increasing resumption interval to 896
+0865.834 (0) Dropbox chunked upload: 76.9 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 314572800, 10240 KB)
+0870.102 (0) The time we have been running (870.1) is approaching the resumption interval (896) - increasing resumption interval to 901
+0870.115 (0) Dropbox chunked upload: 79.5 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 325058560, 10240 KB)
+0874.115 (0) The time we have been running (874.1) is approaching the resumption interval (901) - increasing resumption interval to 905
+0874.133 (0) Dropbox chunked upload: 82.1 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 335544320, 10240 KB)
+0877.775 (0) The time we have been running (877.8) is approaching the resumption interval (905) - increasing resumption interval to 908
+0877.784 (0) Dropbox chunked upload: 84.6 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 346030080, 10240 KB)
+0881.857 (0) The time we have been running (881.8) is approaching the resumption interval (908) - increasing resumption interval to 912
+0881.868 (0) Dropbox chunked upload: 87.2 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 356515840, 10240 KB)
+0886.141 (0) The time we have been running (886.1) is approaching the resumption interval (912) - increasing resumption interval to 917
+0886.153 (0) Dropbox chunked upload: 89.7 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 367001600, 10240 KB)
+0890.412 (0) The time we have been running (890.4) is approaching the resumption interval (917) - increasing resumption interval to 921
+0890.423 (0) Dropbox chunked upload: 92.3 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 377487360, 10240 KB)
+0894.390 (0) The time we have been running (894.4) is approaching the resumption interval (921) - increasing resumption interval to 925
+0894.401 (0) Dropbox chunked upload: 94.9 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 387973120, 10240 KB)
+0898.346 (0) The time we have been running (898.3) is approaching the resumption interval (925) - increasing resumption interval to 929
+0898.360 (0) Dropbox chunked upload: 97.4 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 398458880, 10240 KB)
+0902.183 (0) The time we have been running (902.2) is approaching the resumption interval (929) - increasing resumption interval to 933
+0902.199 (0) Dropbox chunked upload: 100 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 408944640, 10240 KB)
+0903.139 (0) The time we have been running (903.1) is approaching the resumption interval (933) - increasing resumption interval to 934
+0903.148 (0) Dropbox chunked upload: 100 % uploaded (AAAAAAAAA8-j1VmPwGrHNg, 408950194, 10240 KB)
+0904.529 (0) Recording as successfully uploaded: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip
+0904.584 (0) Deleting local file: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip: OK
+0904.590 (0) Dropbox: File upload success (backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads4.zip): 399365 KB in 167s (2382 KB/s)
+0904.927 (0) Dropbox: exception (Dropbox_BadRequestException) occurred whilst getting account info: Error in call to API function "users/get_space_usage": request body: expected null, got value
+0904.938 (0) Dropbox: Attempt to upload: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip to: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip
+0908.125 (0) The time we have been running (908.1) is approaching the resumption interval (934) - increasing resumption interval to 939
+0908.138 (0) Dropbox chunked upload: 2.5 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 10485760, 10240 KB)
+0911.645 (0) The time we have been running (911.6) is approaching the resumption interval (939) - increasing resumption interval to 942
+0911.656 (0) Dropbox chunked upload: 5 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 20971520, 10240 KB)
+0914.907 (0) The time we have been running (914.9) is approaching the resumption interval (942) - increasing resumption interval to 945
+0914.915 (0) Dropbox chunked upload: 7.5 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 31457280, 10240 KB)
+0919.818 (0) The time we have been running (919.8) is approaching the resumption interval (945) - increasing resumption interval to 950
+0919.827 (0) Dropbox chunked upload: 10.1 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 41943040, 10240 KB)
+0923.916 (0) The time we have been running (923.9) is approaching the resumption interval (950) - increasing resumption interval to 954
+0923.929 (0) Dropbox chunked upload: 12.6 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 52428800, 10240 KB)
+0927.075 (0) The time we have been running (927.1) is approaching the resumption interval (954) - increasing resumption interval to 958
+0927.084 (0) Dropbox chunked upload: 15.1 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 62914560, 10240 KB)
+0931.647 (0) The time we have been running (931.6) is approaching the resumption interval (958) - increasing resumption interval to 962
+0931.658 (0) Dropbox chunked upload: 17.6 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 73400320, 10240 KB)
+0935.404 (0) The time we have been running (935.4) is approaching the resumption interval (962) - increasing resumption interval to 966
+0935.415 (0) Dropbox chunked upload: 20.1 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 83886080, 10240 KB)
+0938.982 (0) The time we have been running (939) is approaching the resumption interval (966) - increasing resumption interval to 969
+0938.991 (0) Dropbox chunked upload: 22.6 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 94371840, 10240 KB)
+0943.654 (0) The time we have been running (943.6) is approaching the resumption interval (969) - increasing resumption interval to 974
+0943.662 (0) Dropbox chunked upload: 25.2 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 104857600, 10240 KB)
+0947.259 (0) The time we have been running (947.2) is approaching the resumption interval (974) - increasing resumption interval to 978
+0947.270 (0) Dropbox chunked upload: 27.7 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 115343360, 10240 KB)
+0951.281 (0) The time we have been running (951.3) is approaching the resumption interval (978) - increasing resumption interval to 982
+0951.295 (0) Dropbox chunked upload: 30.2 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 125829120, 10240 KB)
+0954.945 (0) The time we have been running (954.9) is approaching the resumption interval (982) - increasing resumption interval to 985
+0954.953 (0) Dropbox chunked upload: 32.7 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 136314880, 10240 KB)
+0958.586 (0) The time we have been running (958.6) is approaching the resumption interval (985) - increasing resumption interval to 989
+0958.597 (0) Dropbox chunked upload: 35.2 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 146800640, 10240 KB)
+0964.612 (0) The time we have been running (964.6) is approaching the resumption interval (989) - increasing resumption interval to 995
+0964.620 (0) Dropbox chunked upload: 37.7 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 157286400, 10240 KB)
+0969.333 (0) The time we have been running (969.3) is approaching the resumption interval (995) - increasing resumption interval to 1000
+0969.357 (0) Dropbox chunked upload: 40.2 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 167772160, 10240 KB)
+0972.841 (0) The time we have been running (972.8) is approaching the resumption interval (1000) - increasing resumption interval to 1003
+0972.853 (0) Dropbox chunked upload: 42.8 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 178257920, 10240 KB)
+0977.250 (0) The time we have been running (977.2) is approaching the resumption interval (1003) - increasing resumption interval to 1008
+0977.259 (0) Dropbox chunked upload: 45.3 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 188743680, 10240 KB)
+0981.023 (0) The time we have been running (981) is approaching the resumption interval (1008) - increasing resumption interval to 1011
+0981.040 (0) Dropbox chunked upload: 47.8 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 199229440, 10240 KB)
+0984.300 (0) The time we have been running (984.3) is approaching the resumption interval (1011) - increasing resumption interval to 1015
+0984.308 (0) Dropbox chunked upload: 50.3 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 209715200, 10240 KB)
+0988.321 (0) The time we have been running (988.3) is approaching the resumption interval (1015) - increasing resumption interval to 1019
+0988.335 (0) Dropbox chunked upload: 52.8 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 220200960, 10240 KB)
+0991.517 (0) The time we have been running (991.5) is approaching the resumption interval (1019) - increasing resumption interval to 1022
+0991.531 (0) Dropbox chunked upload: 55.3 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 230686720, 10240 KB)
+0995.435 (0) The time we have been running (995.4) is approaching the resumption interval (1022) - increasing resumption interval to 1026
+0995.449 (0) Dropbox chunked upload: 57.9 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 241172480, 10240 KB)
+0999.195 (0) The time we have been running (999.2) is approaching the resumption interval (1026) - increasing resumption interval to 1030
+0999.204 (0) Dropbox chunked upload: 60.4 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 251658240, 10240 KB)
+1002.438 (0) The time we have been running (1002.4) is approaching the resumption interval (1030) - increasing resumption interval to 1033
+1002.449 (0) Dropbox chunked upload: 62.9 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 262144000, 10240 KB)
+1006.314 (0) The time we have been running (1006.3) is approaching the resumption interval (1033) - increasing resumption interval to 1037
+1006.321 (0) Dropbox chunked upload: 65.4 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 272629760, 10240 KB)
+1009.480 (0) The time we have been running (1009.5) is approaching the resumption interval (1037) - increasing resumption interval to 1040
+1009.494 (0) Dropbox chunked upload: 67.9 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 283115520, 10240 KB)
+1013.288 (0) The time we have been running (1013.3) is approaching the resumption interval (1040) - increasing resumption interval to 1044
+1013.296 (0) Dropbox chunked upload: 70.4 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 293601280, 10240 KB)
+1016.956 (0) The time we have been running (1016.9) is approaching the resumption interval (1044) - increasing resumption interval to 1047
+1016.966 (0) Dropbox chunked upload: 73 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 304087040, 10240 KB)
+1020.229 (0) The time we have been running (1020.2) is approaching the resumption interval (1047) - increasing resumption interval to 1051
+1020.236 (0) Dropbox chunked upload: 75.5 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 314572800, 10240 KB)
+1023.611 (0) The time we have been running (1023.6) is approaching the resumption interval (1051) - increasing resumption interval to 1054
+1023.618 (0) Dropbox chunked upload: 78 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 325058560, 10240 KB)
+1027.109 (0) The time we have been running (1027.1) is approaching the resumption interval (1054) - increasing resumption interval to 1058
+1027.120 (0) Dropbox chunked upload: 80.5 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 335544320, 10240 KB)
+1030.743 (0) The time we have been running (1030.7) is approaching the resumption interval (1058) - increasing resumption interval to 1061
+1030.752 (0) Dropbox chunked upload: 83 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 346030080, 10240 KB)
+1034.509 (0) The time we have been running (1034.5) is approaching the resumption interval (1061) - increasing resumption interval to 1065
+1034.518 (0) Dropbox chunked upload: 85.5 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 356515840, 10240 KB)
+1038.585 (0) The time we have been running (1038.6) is approaching the resumption interval (1065) - increasing resumption interval to 1069
+1038.596 (0) Dropbox chunked upload: 88 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 367001600, 10240 KB)
+1042.162 (0) The time we have been running (1042.1) is approaching the resumption interval (1069) - increasing resumption interval to 1073
+1042.168 (0) Dropbox chunked upload: 90.6 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 377487360, 10240 KB)
+1057.803 (0) The time we have been running (1057.8) is approaching the resumption interval (1073) - increasing resumption interval to 1088
+1057.812 (0) Dropbox chunked upload: 93.1 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 387973120, 10240 KB)
+1061.265 (0) The time we have been running (1061.3) is approaching the resumption interval (1088) - increasing resumption interval to 1092
+1061.278 (0) Dropbox chunked upload: 95.6 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 398458880, 10240 KB)
+1064.780 (0) The time we have been running (1064.8) is approaching the resumption interval (1092) - increasing resumption interval to 1095
+1064.787 (0) Dropbox chunked upload: 98.1 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 408944640, 10240 KB)
+1067.618 (0) The time we have been running (1067.6) is approaching the resumption interval (1095) - increasing resumption interval to 1098
+1067.625 (0) Dropbox chunked upload: 100 % uploaded (AAAAAAAAA9Ao_ukD0shR-g, 416832245, 10240 KB)
+1068.951 (0) Recording as successfully uploaded: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip
+1069.017 (0) Deleting local file: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip: OK
+1069.024 (0) Dropbox: File upload success (backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads5.zip): 407062 KB in 164s (2480 KB/s)
+1069.369 (0) Dropbox: exception (Dropbox_BadRequestException) occurred whilst getting account info: Error in call to API function "users/get_space_usage": request body: expected null, got value
+1069.372 (0) Dropbox: Attempt to upload: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads6.zip to: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads6.zip
+1072.723 (0) The time we have been running (1072.7) is approaching the resumption interval (1098) - increasing resumption interval to 1103
+1072.735 (0) Dropbox chunked upload: 6.6 % uploaded (AAAAAAAAA9Gap_qBdBHW7A, 10485760, 10240 KB)
+1075.375 (0) The time we have been running (1075.4) is approaching the resumption interval (1103) - increasing resumption interval to 1106
+1075.379 (0) Dropbox chunked upload: 13.3 % uploaded (AAAAAAAAA9Gap_qBdBHW7A, 20971520, 10240 KB)
+1078.642 (0) The time we have been running (1078.6) is approaching the resumption interval (1106) - increasing resumption interval to 1109
+1078.649 (0) Dropbox chunked upload: 19.9 % uploaded (AAAAAAAAA9Gap_qBdBHW7A, 31457280, 10240 KB)
+1081.914 (0) The time we have been running (1081.9) is approaching the resumption interval (1109) - increasing resumption interval to 1112
+1081.919 (0) Dropbox chunked upload: 26.5 % uploaded (AAAAAAAAA9Gap_qBdBHW7A, 41943040, 10240 KB)
+1085.771 (0) The time we have been running (1085.8) is approaching the resumption interval (1112) - increasing resumption interval to 1116
+1085.779 (0) Dropbox chunked upload: 33.2 % uploaded (AAAAAAAAA9Gap_qBdBHW7A, 52428800, 10240 KB)
+1089.612 (0) The time we have been running (1089.6) is approaching the resumption interval (1116) - increasing resumption interval to 1120
+1089.622 (0) Dropbox chunked upload: 39.8 % uploaded (AAAAAAAAA9Gap_qBdBHW7A, 62914560, 10240 KB)
+1093.156 (0) The time we have been running (1093.1) is approaching the resumption interval (1120) - increasing resumption interval to 1124
+1093.167 (0) Dropbox chunked upload: 46.5 % uploaded (AAAAAAAAA9Gap_qBdBHW7A, 73400320, 10240 KB)
+1096.250 (0) The time we have been running (1096.2) is approaching the resumption interval (1124) - increasing resumption interval to 1127
+1096.260 (0) Dropbox chunked upload: 53.1 % uploaded (AAAAAAAAA9Gap_qBdBHW7A, 83886080, 10240 KB)
+1100.180 (0) The time we have been running (1100.2) is approaching the resumption interval (1127) - increasing resumption interval to 1131
+1100.196 (0) Dropbox chunked upload: 59.7 % uploaded (AAAAAAAAA9Gap_qBdBHW7A, 94371840, 10240 KB)
+1103.715 (0) The time we have been running (1103.7) is approaching the resumption interval (1131) - increasing resumption interval to 1134
+1103.720 (0) Dropbox chunked upload: 66.4 % uploaded (AAAAAAAAA9Gap_qBdBHW7A, 104857600, 10240 KB)
+1107.464 (0) The time we have been running (1107.5) is approaching the resumption interval (1134) - increasing resumption interval to 1138
+1107.471 (0) Dropbox chunked upload: 73 % uploaded (AAAAAAAAA9Gap_qBdBHW7A, 115343360, 10240 KB)
+1110.989 (0) The time we have been running (1111) is approaching the resumption interval (1138) - increasing resumption interval to 1141
+1110.995 (0) Dropbox chunked upload: 79.6 % uploaded (AAAAAAAAA9Gap_qBdBHW7A, 125829120, 10240 KB)
+1114.705 (0) The time we have been running (1114.7) is approaching the resumption interval (1141) - increasing resumption interval to 1145
+1114.711 (0) Dropbox chunked upload: 86.3 % uploaded (AAAAAAAAA9Gap_qBdBHW7A, 136314880, 10240 KB)
+1117.848 (0) The time we have been running (1117.8) is approaching the resumption interval (1145) - increasing resumption interval to 1148
+1117.856 (0) Dropbox chunked upload: 92.9 % uploaded (AAAAAAAAA9Gap_qBdBHW7A, 146800640, 10240 KB)
+1121.874 (0) The time we have been running (1121.9) is approaching the resumption interval (1148) - increasing resumption interval to 1152
+1121.879 (0) Dropbox chunked upload: 99.6 % uploaded (AAAAAAAAA9Gap_qBdBHW7A, 157286400, 10240 KB)
+1123.146 (0) The time we have been running (1123.1) is approaching the resumption interval (1152) - increasing resumption interval to 1154
+1123.155 (0) Dropbox chunked upload: 100 % uploaded (AAAAAAAAA9Gap_qBdBHW7A, 157993432, 10240 KB)
+1124.476 (0) Recording as successfully uploaded: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads6.zip
+1124.523 (0) Deleting local file: backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads6.zip: OK
+1124.527 (0) Dropbox: File upload success (backup_2019-08-08-1533_Sportigoofr_b659346456f9-uploads6.zip): 154290 KB in 55s (2797 KB/s)
+1124.870 (0) Dropbox: exception (Dropbox_BadRequestException) occurred whilst getting account info: Error in call to API function "users/get_space_usage": request body: expected null, got value
+1124.875 (0) Dropbox: Attempt to upload: backup_2019-08-08-1533_Sportigoofr_b659346456f9-others.zip to: backup_2019-08-08-1533_Sportigoofr_b659346456f9-others.zip
+1131.431 (0) The time we have been running (1131.4) is approaching the resumption interval (1154) - increasing resumption interval to 1162
+1131.452 (0) Dropbox chunked upload: 100 % uploaded (AAAAAAAAA9Jz90MNUDt81w, 2898676, 10240 KB)
+1133.446 (0) Recording as successfully uploaded: backup_2019-08-08-1533_Sportigoofr_b659346456f9-others.zip
+1133.456 (0) Deleting local file: backup_2019-08-08-1533_Sportigoofr_b659346456f9-others.zip: OK
+1133.461 (0) Dropbox: File upload success (backup_2019-08-08-1533_Sportigoofr_b659346456f9-others.zip): 2830 KB in 8s (329 KB/s)
+1133.771 (0) Dropbox: exception (Dropbox_BadRequestException) occurred whilst getting account info: Error in call to API function "users/get_space_usage": request body: expected null, got value
+1133.781 (0) Dropbox: Attempt to upload: backup_2019-08-08-1533_Sportigoofr_b659346456f9-db.gz to: backup_2019-08-08-1533_Sportigoofr_b659346456f9-db.gz
+1134.968 (0) The time we have been running (1135) is approaching the resumption interval (1162) - increasing resumption interval to 1165
+1134.972 (0) Dropbox chunked upload: 100 % uploaded (AAAAAAAAA9OmgL17HgSnVA, 1803310, 10240 KB)
+1136.289 (0) Recording as successfully uploaded: backup_2019-08-08-1533_Sportigoofr_b659346456f9-db.gz
+1136.300 (0) Deleting local file: backup_2019-08-08-1533_Sportigoofr_b659346456f9-db.gz: OK
+1136.311 (0) Dropbox: File upload success (backup_2019-08-08-1533_Sportigoofr_b659346456f9-db.gz): 1761 KB in 2s (695 KB/s)
+1136.332 (0) Retain: beginning examination of existing backup sets; user setting: retain_files=8, retain_db=30
+1136.337 (0) Number of backup sets in history: 36; groups (db): 1
+1136.349 (0) Examining (for databases) backup set with group_id=0, nonce=eba21481b1bb, datestamp=1565271319 (Aug 08 2019 13:35:19)
+1136.356 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.360 (0) Examining (for databases) backup set with group_id=0, nonce=b659346456f9, datestamp=1565271190 (Aug 08 2019 13:33:10)
+1136.360 (0) This backup set is the backup set just made, so will not be deleted.
+1136.360 (0) Examining (for databases) backup set with group_id=0, nonce=c917f09c7168, datestamp=1565184740 (Aug 07 2019 13:32:20)
+1136.360 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.360 (0) Examining (for databases) backup set with group_id=0, nonce=fe5dfcea9c1a, datestamp=1565107354 (Aug 06 2019 16:02:34)
+1136.360 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.360 (0) Examining (for databases) backup set with group_id=0, nonce=6e4fe72132c4, datestamp=1565098406 (Aug 06 2019 13:33:26)
+1136.360 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.361 (0) Examining (for databases) backup set with group_id=0, nonce=873dcd8cf102, datestamp=1565012192 (Aug 05 2019 13:36:32)
+1136.361 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.361 (0) Examining (for databases) backup set with group_id=0, nonce=06b3c25e47ab, datestamp=1564925576 (Aug 04 2019 13:32:56)
+1136.361 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.361 (0) Examining (for databases) backup set with group_id=0, nonce=e6b205fdda8f, datestamp=1564839136 (Aug 03 2019 13:32:16)
+1136.361 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.361 (0) Examining (for databases) backup set with group_id=0, nonce=75537c38ba50, datestamp=1564752928 (Aug 02 2019 13:35:28)
+1136.361 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.361 (0) Examining (for databases) backup set with group_id=0, nonce=7f28986b20fb, datestamp=1564667113 (Aug 01 2019 13:45:13)
+1136.361 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.361 (0) Examining (for databases) backup set with group_id=0, nonce=7be56079ea9c, datestamp=1564666445 (Aug 01 2019 13:34:05)
+1136.361 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+1136.365 (0) Examining (for databases) backup set with group_id=0, nonce=83e7698dec28, datestamp=1564579965 (Jul 31 2019 13:32:45)
+1136.365 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.369 (0) Examining (for databases) backup set with group_id=0, nonce=eab8cdc88234, datestamp=1564493551 (Jul 30 2019 13:32:31)
+1136.369 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.369 (0) Examining (for databases) backup set with group_id=0, nonce=66f10d694e2c, datestamp=1564407402 (Jul 29 2019 13:36:42)
+1136.369 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.370 (0) Examining (for databases) backup set with group_id=0, nonce=b1e64dec0811, datestamp=1564320966 (Jul 28 2019 13:36:06)
+1136.370 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.370 (0) Examining (for databases) backup set with group_id=0, nonce=b4a3266cc3e1, datestamp=1564234558 (Jul 27 2019 13:35:58)
+1136.370 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.370 (0) Examining (for databases) backup set with group_id=0, nonce=f50891cbe214, datestamp=1564148030 (Jul 26 2019 13:33:50)
+1136.370 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.370 (0) Examining (for databases) backup set with group_id=0, nonce=54f56628fc16, datestamp=1564062100 (Jul 25 2019 13:41:40)
+1136.371 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.371 (0) Examining (for databases) backup set with group_id=0, nonce=eeaa5bbeb220, datestamp=1564061659 (Jul 25 2019 13:34:19)
+1136.371 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+1136.374 (0) Examining (for databases) backup set with group_id=0, nonce=e531d5cd6cd4, datestamp=1563975672 (Jul 24 2019 13:41:12)
+1136.374 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.377 (0) Examining (for databases) backup set with group_id=0, nonce=833542956167, datestamp=1563888951 (Jul 23 2019 13:35:51)
+1136.378 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.378 (0) Examining (for databases) backup set with group_id=0, nonce=3981a45242d8, datestamp=1563802368 (Jul 22 2019 13:32:48)
+1136.378 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.378 (0) Examining (for databases) backup set with group_id=0, nonce=65d6fe8389a0, datestamp=1563716544 (Jul 21 2019 13:42:24)
+1136.378 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.378 (0) Examining (for databases) backup set with group_id=0, nonce=2c9c6b2e6e7c, datestamp=1563629556 (Jul 20 2019 13:32:36)
+1136.378 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.379 (0) Examining (for databases) backup set with group_id=0, nonce=2d7089359c9d, datestamp=1563543422 (Jul 19 2019 13:37:02)
+1136.379 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.379 (0) Examining (for databases) backup set with group_id=0, nonce=f34802b63c94, datestamp=1563457760 (Jul 18 2019 13:49:20)
+1136.379 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.379 (0) Examining (for databases) backup set with group_id=0, nonce=5d5520698827, datestamp=1563457028 (Jul 18 2019 13:37:08)
+1136.379 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.380 (0) Examining (for databases) backup set with group_id=0, nonce=8d1e8d3473cb, datestamp=1563456765 (Jul 18 2019 13:32:45)
+1136.380 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+1136.383 (0) Examining (for databases) backup set with group_id=0, nonce=c334cd13377d, datestamp=1563371028 (Jul 17 2019 13:43:48)
+1136.383 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.385 (0) Examining (for databases) backup set with group_id=0, nonce=f5e854b48176, datestamp=1563283993 (Jul 16 2019 13:33:13)
+1136.385 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1136.385 (0) Examining (for databases) backup set with group_id=0, nonce=5b4d13603bdc, datestamp=1563197680 (Jul 15 2019 13:34:40)
+1136.385 (0) 1563197680: db: this set includes a database (backup_2019-07-15-1534_Sportigoofr_5b4d13603bdc-db.gz); db count is now 30
+1136.385 (0) 1563197680: db: over retain limit (30); will delete this database
+1136.385 (0) Delete file: backup_2019-07-15-1534_Sportigoofr_5b4d13603bdc-db.gz, service=dropbox
+1136.389 (0) Dropbox: request deletion: backup_2019-07-15-1534_Sportigoofr_5b4d13603bdc-db.gz
+1136.994 (0) Dropbox: delete succeeded
+1137.008 (0) The time we have been running (1137) is approaching the resumption interval (1165) - increasing resumption interval to 1167
+1137.016 (0) This backup set is now empty; will remove from history
+1137.021 (0) Deleting log file (log.5b4d13603bdc.txt)
+1137.028 (0) Examining (for databases) backup set with group_id=0, nonce=b1eda6d03405, datestamp=1562851983 (Jul 11 2019 13:33:03)
+1137.028 (0) Examining (for databases) backup set with group_id=0, nonce=5e7d7f046e10, datestamp=1562247292 (Jul 04 2019 13:34:52)
+1137.028 (0) Examining (for databases) backup set with group_id=0, nonce=f60f9b4098b3, datestamp=1561642435 (Jun 27 2019 13:33:55)
+1137.028 (0) Examining (for databases) backup set with group_id=0, nonce=e2265072abdf, datestamp=1561038073 (Jun 20 2019 13:41:13)
+1137.028 (0) Examining (for databases) backup set with group_id=0, nonce=2c190e59be67, datestamp=1560432731 (Jun 13 2019 13:32:11)
+1137.028 (0) Number of backup sets in history: 35; groups (files): 1
+1137.031 (0) Examining (for files) backup set with nonce=eba21481b1bb, datestamp=1565271319 (Aug 08 2019 13:35:19)
+1137.031 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.032 (0) Examining (for files) backup set with nonce=b659346456f9, datestamp=1565271190 (Aug 08 2019 13:33:10)
+1137.033 (0) This backup set is the backup set just made, so will not be deleted.
+1137.036 (0) This backup set is the backup set just made, so will not be deleted.
+1137.036 (0) This backup set is the backup set just made, so will not be deleted.
+1137.036 (0) This backup set is the backup set just made, so will not be deleted.
+1137.037 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+1137.040 (0) Examining (for files) backup set with nonce=c917f09c7168, datestamp=1565184740 (Aug 07 2019 13:32:20)
+1137.040 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.043 (0) Examining (for files) backup set with nonce=fe5dfcea9c1a, datestamp=1565107354 (Aug 06 2019 16:02:34)
+1137.043 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.043 (0) Examining (for files) backup set with nonce=6e4fe72132c4, datestamp=1565098406 (Aug 06 2019 13:33:26)
+1137.043 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.044 (0) Examining (for files) backup set with nonce=873dcd8cf102, datestamp=1565012192 (Aug 05 2019 13:36:32)
+1137.044 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.044 (0) Examining (for files) backup set with nonce=06b3c25e47ab, datestamp=1564925576 (Aug 04 2019 13:32:56)
+1137.044 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.044 (0) Examining (for files) backup set with nonce=e6b205fdda8f, datestamp=1564839136 (Aug 03 2019 13:32:16)
+1137.044 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.044 (0) Examining (for files) backup set with nonce=75537c38ba50, datestamp=1564752928 (Aug 02 2019 13:35:28)
+1137.044 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.045 (0) Examining (for files) backup set with nonce=7f28986b20fb, datestamp=1564667113 (Aug 01 2019 13:45:13)
+1137.045 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.045 (0) Examining (for files) backup set with nonce=7be56079ea9c, datestamp=1564666445 (Aug 01 2019 13:34:05)
+1137.045 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+1137.048 (0) Examining (for files) backup set with nonce=83e7698dec28, datestamp=1564579965 (Jul 31 2019 13:32:45)
+1137.048 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.050 (0) Examining (for files) backup set with nonce=eab8cdc88234, datestamp=1564493551 (Jul 30 2019 13:32:31)
+1137.050 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.051 (0) Examining (for files) backup set with nonce=66f10d694e2c, datestamp=1564407402 (Jul 29 2019 13:36:42)
+1137.051 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.051 (0) Examining (for files) backup set with nonce=b1e64dec0811, datestamp=1564320966 (Jul 28 2019 13:36:06)
+1137.051 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.053 (0) Examining (for files) backup set with nonce=b4a3266cc3e1, datestamp=1564234558 (Jul 27 2019 13:35:58)
+1137.053 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.055 (0) Examining (for files) backup set with nonce=f50891cbe214, datestamp=1564148030 (Jul 26 2019 13:33:50)
+1137.055 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.056 (0) Examining (for files) backup set with nonce=54f56628fc16, datestamp=1564062100 (Jul 25 2019 13:41:40)
+1137.056 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.056 (0) Examining (for files) backup set with nonce=eeaa5bbeb220, datestamp=1564061659 (Jul 25 2019 13:34:19)
+1137.056 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+1137.064 (0) Examining (for files) backup set with nonce=e531d5cd6cd4, datestamp=1563975672 (Jul 24 2019 13:41:12)
+1137.064 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.067 (0) Examining (for files) backup set with nonce=833542956167, datestamp=1563888951 (Jul 23 2019 13:35:51)
+1137.067 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.067 (0) Examining (for files) backup set with nonce=3981a45242d8, datestamp=1563802368 (Jul 22 2019 13:32:48)
+1137.067 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.068 (0) Examining (for files) backup set with nonce=65d6fe8389a0, datestamp=1563716544 (Jul 21 2019 13:42:24)
+1137.068 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.068 (0) Examining (for files) backup set with nonce=2c9c6b2e6e7c, datestamp=1563629556 (Jul 20 2019 13:32:36)
+1137.068 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.068 (0) Examining (for files) backup set with nonce=2d7089359c9d, datestamp=1563543422 (Jul 19 2019 13:37:02)
+1137.068 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.069 (0) Examining (for files) backup set with nonce=f34802b63c94, datestamp=1563457760 (Jul 18 2019 13:49:20)
+1137.069 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.069 (0) Examining (for files) backup set with nonce=5d5520698827, datestamp=1563457028 (Jul 18 2019 13:37:08)
+1137.069 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.069 (0) Examining (for files) backup set with nonce=8d1e8d3473cb, datestamp=1563456765 (Jul 18 2019 13:32:45)
+1137.069 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+1137.072 (0) Examining (for files) backup set with nonce=c334cd13377d, datestamp=1563371028 (Jul 17 2019 13:43:48)
+1137.072 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.078 (0) Examining (for files) backup set with nonce=f5e854b48176, datestamp=1563283993 (Jul 16 2019 13:33:13)
+1137.078 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+1137.078 (0) Examining (for files) backup set with nonce=b1eda6d03405, datestamp=1562851983 (Jul 11 2019 13:33:03)
+1137.078 (0) This backup set remains non-empty (f=1/d=0); will retain in history
+1137.081 (0) Examining (for files) backup set with nonce=5e7d7f046e10, datestamp=1562247292 (Jul 04 2019 13:34:52)
+1137.081 (0) This backup set remains non-empty (f=1/d=0); will retain in history
+1137.082 (0) Examining (for files) backup set with nonce=f60f9b4098b3, datestamp=1561642435 (Jun 27 2019 13:33:55)
+1137.082 (0) This backup set remains non-empty (f=1/d=0); will retain in history
+1137.082 (0) Examining (for files) backup set with nonce=e2265072abdf, datestamp=1561038073 (Jun 20 2019 13:41:13)
+1137.083 (0) This backup set remains non-empty (f=1/d=0); will retain in history
+1137.083 (0) Examining (for files) backup set with nonce=2c190e59be67, datestamp=1560432731 (Jun 13 2019 13:32:11)
+1137.083 (0) plugins: over retain limit (8); will delete this file entity
+1137.083 (0) themes: over retain limit (8); will delete this file entity
+1137.083 (0) uploads: over retain limit (8); will delete this file entity
+1137.083 (0) others: over retain limit (8); will delete this file entity
+1137.083 (0) Delete file: backup_2019-06-13-1532_Sportigoofr_2c190e59be67-plugins.zip, service=dropbox
+1137.087 (0) Delete file: backup_2019-06-13-1532_Sportigoofr_2c190e59be67-themes.zip, service=dropbox
+1137.091 (0) Delete file: backup_2019-06-13-1532_Sportigoofr_2c190e59be67-uploads.zip, service=dropbox
+1137.094 (0) Delete file: backup_2019-06-13-1532_Sportigoofr_2c190e59be67-uploads2.zip, service=dropbox
+1137.098 (0) Delete file: backup_2019-06-13-1532_Sportigoofr_2c190e59be67-uploads3.zip, service=dropbox
+1137.104 (0) Delete file: backup_2019-06-13-1532_Sportigoofr_2c190e59be67-uploads4.zip, service=dropbox
+1137.110 (0) Delete file: backup_2019-06-13-1532_Sportigoofr_2c190e59be67-uploads5.zip, service=dropbox
+1137.113 (0) Delete file: backup_2019-06-13-1532_Sportigoofr_2c190e59be67-uploads6.zip, service=dropbox
+1137.117 (0) Delete file: backup_2019-06-13-1532_Sportigoofr_2c190e59be67-others.zip, service=dropbox
+1137.121 (0) Dropbox: request deletion: backup_2019-06-13-1532_Sportigoofr_2c190e59be67-plugins.zip
+1137.865 (0) Dropbox: delete succeeded
+1137.870 (0) Dropbox: request deletion: backup_2019-06-13-1532_Sportigoofr_2c190e59be67-themes.zip
+1138.968 (0) Dropbox: delete succeeded
+1138.973 (0) Dropbox: request deletion: backup_2019-06-13-1532_Sportigoofr_2c190e59be67-uploads.zip
+1139.728 (0) Dropbox: delete succeeded
+1139.748 (0) Dropbox: request deletion: backup_2019-06-13-1532_Sportigoofr_2c190e59be67-uploads2.zip
+1140.499 (0) Dropbox: delete succeeded
+1140.503 (0) Dropbox: request deletion: backup_2019-06-13-1532_Sportigoofr_2c190e59be67-uploads3.zip
+1141.693 (0) Dropbox: delete succeeded
+1141.698 (0) Dropbox: request deletion: backup_2019-06-13-1532_Sportigoofr_2c190e59be67-uploads4.zip
+1142.788 (0) Dropbox: delete succeeded
+1142.792 (0) Dropbox: request deletion: backup_2019-06-13-1532_Sportigoofr_2c190e59be67-uploads5.zip
+1143.501 (0) Dropbox: delete succeeded
+1143.504 (0) Dropbox: request deletion: backup_2019-06-13-1532_Sportigoofr_2c190e59be67-uploads6.zip
+1144.356 (0) Dropbox: delete succeeded
+1144.360 (0) Dropbox: request deletion: backup_2019-06-13-1532_Sportigoofr_2c190e59be67-others.zip
+1145.226 (0) Dropbox: delete succeeded
+1145.245 (0) The time we have been running (1145.2) is approaching the resumption interval (1167) - increasing resumption interval to 1176
+1145.252 (0) This backup set is now empty; will remove from history
+1145.259 (0) Corresponding log file (log.2c190e59be67.txt) not found - must have already been deleted
+1145.262 (0) Retain: saving new backup history (sets now: 34) and finishing retain operation
+1145.277 (0) Resume backup (b659346456f9, 0): finish run
+1145.290 (0) Decremented the semaphore (fd) by 1
+1145.297 (0) Semaphore (fd) unlocked
+1145.299 (0) There were no errors in the uploads, so the 'resume' event (1) is being unscheduled
+1145.311 (0) The backup apparently succeeded and is now complete
+1145.314 (0) No email will/can be sent - the user has not configured an email address.
+1145.319 (0) La sauvegarde a réussie. Elle est maintenant terminée.

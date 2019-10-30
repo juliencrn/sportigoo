@@ -1,0 +1,93 @@
+/*
+   Modify the color styles of the WooCommerce Bookings datepicker calendar.
+   Add any/all of these styles to your theme's custom CSS, but be sure to change
+   the color hex codes to your choice. They're all black here.
+*/
+#wc-bookings-booking-form {
+border: none;
+  padding: 0;
+  fieldset {
+    border: none;
+    padding: 0;
+  }
+  .wc-bookings-date-picker-timezone-block {
+    display: none;
+  }
+
+  .wc-bookings-booking-cost {
+    margin: 0 -30px 50px;
+    padding: 30px;
+  }
+
+  .wc-bookings-date-picker {
+    .ui-datepicker-header {
+      background-color: $blue;/* Month header background color */
+    }
+    .ui-datepicker {
+      .ui-datepicker-next,
+      .ui-datepicker-prev {
+        background-color: $blue;/* Previous/Next month arrow background color */
+      }
+      th {
+        color: $blue;/* Days of the week header font color */
+      }
+      td.bookable a {
+        background-color: $blue !important;/* Available calendar days background color */
+      }
+      td.fully_booked a,
+      td.fully_booked span{
+        background-color: $blue !important;/* Fully booked calendar days */
+      }
+      td.not_bookable {
+        background-color: $white !important;/* Days not bookable based on the availability rules */
+      }
+      td.ui-datepicker-today a {
+        background-color: $blue !important;/* Today's date on calendar background color */
+      }
+      td.ui-datepicker-current-day a {
+        background-color: $blue !important;/* Selected Date*/
+      }
+    }
+  }
+}
+
+select.wc-pao-addon-field.wc-pao-addon-select {
+  background: transparent;
+  padding: 18px 23px;
+  border-radius: 5px;
+  margin-bottom: 50px;
+}
+
+.ui-state-disabled,
+.ui-widget-content .ui-state-disabled,
+.ui-widget-header .ui-state-disabled {
+  opacity: 0.9;/* Previous/Next month arrows if not allowed, and calendar dates that are not available */
+}
+
+.ui-datepicker-calendar {
+  thead {
+    background-color: $blue;/* Days of the week header background color */
+  }
+  tbody {
+    background-color: $blue;/* Past calendar days background color (not available) */
+  }
+}
+
+.wc-bookings-date-picker .ui-datepicker td.partial_booked a:before {
+  border-top: none; /* This style removes the red triangle */
+}
+
+#wc-bookings-booking-form {
+  .block-picker li a {
+    &.selected {
+      background-color: $blue !important;
+      &:hover {
+        //color:$white!important;
+      }
+    }
+    background-color: #FFFFFF !important;/* Time Blocks */
+    &:hover {
+      background-color: $blue !important;/* Time Blocks Hover */
+    }
+  }
+}

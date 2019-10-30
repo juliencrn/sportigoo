@@ -1,0 +1,41 @@
+.actu-item {
+  &__wrapper {
+    display: flex;
+    justify-content: space-around;
+    background-color: $white;
+    transition: background-color $fast;
+    color: black;
+    width: 100%;
+    &:hover {
+      background-color: #F5F5F5;
+      transition: background-color $fast;
+      color: black;
+    }
+  }
+  &__img {
+    margin: auto;
+    padding-left: 20px;
+    img {
+      border-radius: $global-radius;
+      height: auto;
+    }
+  }
+  &__content {
+    text-align: center;
+    margin: auto;
+    padding: 10px 20px 10px 10px;
+    p {
+      margin-bottom: 0;
+      font-weight: 400;
+      small {
+        font-weight: 300;
+        opacity: .8;
+        span {
+
+        }
+      }
+    }
+
+  }
+
+}

@@ -1,0 +1,16 @@
+.go-down {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    @media (#{$bp-smaller-than-desktop}) {
+        bottom: 50px;
+    }
+    svg {
+        fill: $white;
+        transition: transform $fast;
+        &:hover {
+            transform: scale(1.25);
+        }
+    }
+}

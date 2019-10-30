@@ -1,0 +1,154 @@
+/* Variables */
+
+// =============================================================================
+// Breakpoint
+// =============================================================================
+$bp-larger-than-mobile    : "min-width: 375px" !default;
+$bp-larger-than-phablet   : "min-width: 550px" !default;
+$bp-larger-than-tablet    : "min-width: 768px" !default;
+$bp-larger-than-desktop   : "min-width: 1000px" !default;
+$bp-larger-than-desktophd : "min-width: 1366px" !default;
+
+$bp-smaller-than-mobile: "max-width: 374px" !default;
+$bp-smaller-than-phablet: "max-width: 549px" !default;
+$bp-smaller-than-tablet: "max-width: 767px" !default;
+$bp-smaller-than-desktop: "max-width: 999px" !default;
+$bp-smaller-than-desktophd: "max-width: 1365px" !default;
+
+// =============================================================================
+// Colors
+// =============================================================================
+$black: #000 !default;
+$dark: $black !default;
+$white: #FFF !default;
+$light-grey: #ECECEC !default;
+$dark-grey: #57585A !default;
+$grey: #ececec !default;
+$green: #7AB41D !default;
+$blue: #1D467A !default;
+$light-blue: #e4f0ff !default;
+$orange: #E7511E !default;
+$red: #a00!default;
+
+//BLog Colors
+$blog_gris: #57585a;
+$blog_ocre: #b5a179;
+$blog_blueLight: #004894;
+$blog_blue: $blue;
+$blog_orange: $orange;
+$blog_green: #234f1e;
+$blog_purple: #710193;
+
+$primary: $blue !default;
+$secondary: $orange !default;
+
+$font-color: $primary !default;
+
+// =============================================================================
+// Typography
+// =============================================================================
+/* Font-family*/
+$ff-p: 'Gotham',sans-serif !default;
+$ff-h1: 'Gotham',sans-serif !default;
+$ff-h2: 'Gotham',sans-serif !default;
+$ff-h3: 'Gotham',sans-serif !default;
+$ff-h4: 'Gotham',sans-serif !default;
+$ff-h5: 'Gotham',sans-serif !default;
+$ff-h6: 'Gotham',sans-serif !default;
+/* Font-size*/
+$fs-h1: 5rem;
+$fs-h2: 3rem;
+$fs-h3: 2.5rem;
+$fs-h4: 2rem;
+$fs-h5: 2rem;
+$fs-h6: 2rem;
+$fs-p: 1.5rem;
+$fs-sm: 1.1rem;
+/* Font Weight*/
+$fw-h1: 500;
+$fw-h2: 700;
+$fw-h3: 500;
+$fw-h4: 500;
+$fw-h5: 500;
+$fw-h6: 500;
+$fw-p: 400;
+/* Line Height*/
+$flh-h1: 1.2;
+$flh-h2: 1.2;
+$flh-h3: 1.2;
+$flh-h4: 1.2;
+$flh-h5: 1.2;
+$flh-h6: 1.2;
+$flh-p: 1.2;
+
+// =============================================================================
+// Grid Variables
+// =============================================================================
+$container-width: 1140px !default;
+$container-width-larger-than-mobile: 85% !default;
+$container-width-larger-than-phablet: 80% !default;
+$total-columns: 12 !default;
+$column-width: 100 / $total-columns !default; // calculates individual column width based off of # of columns
+$column-margin: 4% !default; // space between columns
+
+// =============================================================================
+// Misc
+// =============================================================================
+$global-radius: 5px !default;
+
+// =============================================================================
+// Button
+// =============================================================================
+$primary-btn: $primary;
+$secondary-btn: $white;
+$transform-btn: scale3d(1.15, 1.1, 1.15);
+$btn-duration: .6s;
+$padding-btn: 15px 25px;
+
+// =============================================================================
+// Form
+// =============================================================================
+$form-border: 2px solid $primary;
+$form-border-hover: 2px solid $secondary;
+$form-border-radius: $global-radius;
+$form-background: $white;
+$form-color: $dark-grey;
+$form-transition: scale3d(1.2, 1.2, 1.2);
+$form-duration: .6s;
+
+// =============================================================================
+// Logo
+// =============================================================================
+$logo-width: auto;
+$logo-height: 25px;
+
+// =============================================================================
+// Navbar
+// =============================================================================
+$nav-background: transparent;
+$nav-color: $white;
+$nav-color-alt: $secondary;
+$link-color: $primary !default;
+$link-color-hover: $secondary;
+$link-decoration: none;
+$nav-padding: 12px 0 15px 0;
+
+// =============================================================================
+// Animation
+// =============================================================================
+$fast:0.4s;
+$slow:1s;
+
+// =============================================================================
+// Selection
+// =============================================================================
+$selection-background:$primary;
+$selection-color:$white;
+
+// =============================================================================
+// Spacing
+// =============================================================================
+$margin-xs:10px;
+$margin-sm:20px;
+$margin-md:30px;
+$margin-lg:50px;

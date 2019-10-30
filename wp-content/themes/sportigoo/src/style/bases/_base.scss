@@ -1,0 +1,57 @@
+// html is set to 62.5% so that all the REM measurements
+// are based on 10px sizing. So basically 1.5rem = 15px :)
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: $fs-p; // currently ems cause chrome bug misinterpreting rems on body element
+  font-weight: $fw-p;
+  font-family: $ff-p;
+  color: $font-color;
+  background: $white;
+  overflow-x: hidden;
+}
+
+// Links
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+a {
+  color: $link-color;
+  text-decoration: $link-decoration;
+  transition: $fast color;
+  &:hover {
+    color: $link-color-hover;
+  }
+}
+
+// Section
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+section {
+  position: relative;
+}
+
+// Image
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+img {
+  border: 0;
+  max-width: 100%;
+  height: auto;
+}
+
+// Text align / Titles
+//--------------------------------------------------
+.t-center {
+  text-align: center;
+}
+.section-title {
+  text-align: center;
+}
+.section-paragraph {
+  text-align: center;
+  font-weight: 500;
+  max-width: 50%;
+  margin: auto;
+  @media (#{$bp-smaller-than-tablet}) {
+    max-width: 100%;
+  }
+}

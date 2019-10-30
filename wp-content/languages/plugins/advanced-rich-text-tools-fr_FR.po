@@ -1,0 +1,28 @@
+# Translation of Plugins - Advanced Rich Text Tools for Gutenberg - Stable (latest release) in French (France)
+# This file is distributed under the same license as the Plugins - Advanced Rich Text Tools for Gutenberg - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-01-24 11:12:48+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: fr\n"
+"Project-Id-Version: Plugins - Advanced Rich Text Tools for Gutenberg - Stable (latest release)\n"
+
+#. Author of the plugin
+msgid "Ella Van Durpe"
+msgstr "Ella Van Durpe"
+
+#. Description of the plugin
+msgid "Adds additional tools for rich text fields such as superscript and subscript."
+msgstr "Ajoute des outils supplémentaires pour les champs de texte riche tels que l’exposant et l’indice."
+
+#. Plugin URI of the plugin
+msgid "https://wordpress.org/plugins/advanced-rich-text-tools/"
+msgstr "https://wordpress.org/plugins/advanced-rich-text-tools/"
+
+#. Plugin Name of the plugin
+msgid "Advanced Rich Text Tools for Gutenberg"
+msgstr "Advanced Rich Text Tools for Gutenberg"
