@@ -17,6 +17,12 @@ if( function_exists('acf_add_options_page') ) {
 //    ));
 
     acf_add_options_sub_page(array(
+      'page_title' 	=> 'Réglages généraux',
+      'menu_title'	=> 'Réglages',
+      'parent_slug'	=> 'theme-general-settings',
+    ));
+
+    acf_add_options_sub_page(array(
         'page_title' 	=> 'Réglages du Footer',
         'menu_title'	=> 'Footer',
         'parent_slug'	=> 'theme-general-settings',
@@ -47,7 +53,7 @@ if( function_exists('acf_add_options_page') ) {
     ));
 
     acf_add_options_sub_page(array(
-        'page_title' 	=> 'Réglages du blob',
+        'page_title' 	=> 'Réglages du blog',
         'menu_title'	=> 'Blog',
         'parent_slug'	=> 'theme-general-settings',
     ));

@@ -103,7 +103,7 @@ if ( !is_product() && !is_shop() && !is_page(35) && !is_page(41) && !is_single()
 <!-- Google Tag Manager (noscript) -->
 <noscript>
   <iframe
-    src="https://www.googletagmanager.com/ns.html?id=GTM-5RVMR6G"
+    src="https://www.googletagmanager.com/ns.html?id=<?php the_field('google_tag_manager', 'option'); ?>"
     height="0"
     width="0"
     style="display:none;visibility:hidden"
