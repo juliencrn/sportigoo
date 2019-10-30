@@ -16,6 +16,8 @@ if ( defined( 'WP_LOCAL_DEV' ) && WP_LOCAL_DEV ) {
             'google-analytics-dashboard-for-wp/gadwp.php',
             'really-simple-ssl/rlrsssl-really-simple-ssl.php',
             'wp-fastest-cache/wpFastestCache.php',
+            'wp-rocket/wp-rocket.php',
+            'accelerated-mobile-pages/accelerated-mobile-pages.php',
             'updraftplus/updraftplus.php',
             'wp-bitly/wp-bitly.php'
         );

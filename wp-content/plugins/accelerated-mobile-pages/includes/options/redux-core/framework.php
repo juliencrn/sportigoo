@@ -581,7 +581,7 @@
 
             public function save_network_page() {
 
-                $data = $this->_validate_options( $_POST[ $this->args['opt_name'] ] );
+                $data = $this->_validate_options( sanitize_text_field($_POST[ $this->args['opt_name'] ]) );
 
                 if ( ! empty ( $data ) ) {
                     $this->set_options( $data );
@@ -2843,7 +2843,7 @@
                     die();
                 }
 
-                $redux = ReduxFrameworkInstances::get_instance( $_POST['opt_name'] );
+                $redux = ReduxFrameworkInstances::get_instance( sanitize_text_field($_POST['opt_name']) );
 
                 if ( ! empty ( $_POST['data'] ) && ! empty ( $redux->args['opt_name'] ) ) {
 
@@ -2863,13 +2863,14 @@
                     //    }
                     //    unset($process);
                     //}
-                    $_POST['data'] = stripslashes( $_POST['data'] );
+
+                    $sanitized_data = filter_var(stripslashes( $_POST['data'] ), FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 
                     // Old method of saving, in case we need to go back! - kp
                     //parse_str( $_POST['data'], $values );
 
                     // New method to avoid input_var nonesense.  Thanks @harunbasic
-                    $values = $this->redux_parse_str( $_POST['data'] );
+                    $values = $this->redux_parse_str( $sanitized_data );
 
                     $values = $values[ $redux->args['opt_name'] ];
 
@@ -3236,7 +3237,16 @@
                     $addClass = ''; $style="";
                     $current_screen = get_current_screen(); 
                     if(is_object($current_screen) && $current_screen->parent_base=='amp_options'){
-                        $enabledOptions = array('automatic-amp-features','basic', 'design', 'opt-go-premium','opt-choose','ampforwp-theme-subsection');
+                        $enabledOptions = array(
+                            esc_html__('automatic-amp-features','accelerated-mobile-pages'),
+                            esc_html__('basic','accelerated-mobile-pages'),
+                            esc_html__('Design','accelerated-mobile-pages'),
+                            esc_html__('opt-go-premium','accelerated-mobile-pages'),
+                            esc_html__('opt-choose','accelerated-mobile-pages'),
+                            esc_html__('ampforwp-theme-subsection','accelerated-mobile-pages')); 
+                        $enabledOptions = apply_filters('ampforwp_enabled_setting_options', $enabledOptions);
+                        $enabledOptions = array_map('remove_accents', $enabledOptions);
+                        $enabledOptions = array_map('strtolower', $enabledOptions);
                         if(!in_array($section['id'], $enabledOptions)){
                             $addClass = 'otherSectionFields';
                             $style="style='display:none;'";
@@ -3269,7 +3279,7 @@
                                 if ( ! $display ) {
                                     continue;
                                 }
-
+                                $sections[ $nextK ] = apply_filters('ampforwp_remove_unused_options',$sections[ $nextK ]);
                                 $hide_sub = '';
                                 if ( isset ( $sections[ $nextK ]['hidden'] ) ) {
                                     $hide_sub = ( $sections[ $nextK ]['hidden'] == true ) ? ' hidden ' : '';
@@ -3320,12 +3330,13 @@
             public function generate_panel() {
                 require_once 'core/panel.php';
                 if(is_admin()){
-                    echo '<div class="a-f-wp-help"><div class="a-f-wp-help-message">
-                        <a target="_blank" href="http://ampforwp.com/support/?utm_source=options-panel&utm_medium=contact_link_btn&utm_campaign=AMP%20Plugin"> <img src="https://ampforwp.com/wp-content/uploads/2017/03/chatbox-img-1.png" /></a>
+                     echo '<div class="a-f-wp-help"><div class="a-f-wp-help-message">
+                        <a target="_blank" href="http://ampforwp.com/support/?utm_source=options-panel&utm_medium=contact_link_btn&utm_campaign=AMP%20Plugin"> <img src="'.AMPFORWP_IMAGE_DIR . '/amp-img-conv.png'.'" /></a>
 
                         </div>
                         <div class="a-f-wp-help-container">
-                          <div class="a-f-wp-help-tear "><span> <i class="dashicons-admin-comments"></i></span></div>
+                          <script type="text/javascript">!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});</script>
+<script type="text/javascript">window.Beacon("init", "15cc2e40-aa70-4571-8e62-09906c77d535")</script>
                         </div></div>';
                 }
                 $panel = new reduxCorePanel ( $this );

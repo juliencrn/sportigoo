@@ -105,22 +105,22 @@ class FUE_Sending_Scheduler {
 	 * @return void
 	 */
 	public static function queue_signup_emails( $user_id ) {
-		$wpdb   = Follow_Up_Emails::instance()->wpdb;
 		$user   = new WP_User( $user_id );
 
 		if ( is_wp_error($user) )
 			return;
 
-		$email_ids = $wpdb->get_col(
-			"SELECT p.ID
-			FROM {$wpdb->posts} p, {$wpdb->postmeta} pm
-			WHERE p.post_type = 'follow_up_email'
-			AND p.post_status = '". FUE_Email::STATUS_ACTIVE ."'
-			AND pm.post_id = p.ID
-			AND pm.meta_key = '_interval_type'
-			AND pm.meta_value = 'signup'
-			ORDER BY menu_order ASC"
-		);
+		$email_ids = get_posts( array(
+			'numberposts'      => -1,
+			'fields'           => 'ids',
+			'post_type'        => 'follow_up_email',
+			'post_status'      => FUE_Email::STATUS_ACTIVE,
+			'meta_key'         => '_interval_type',
+			'meta_value'       => 'signup',
+			'orderby'          => 'menu_order',
+			'order'            => 'ASC',
+			'suppress_filters' => false,
+		) );
 
 		foreach ( $email_ids as $email_id ) {
 			$email = new FUE_Email( $email_id );
@@ -153,23 +153,21 @@ class FUE_Sending_Scheduler {
 	 * @return void
 	 */
 	public static function queue_list_emails_signup( $subscriber_id, $lists = '' ) {
-		$wpdb   = Follow_Up_Emails::instance()->wpdb;
-
 		if ( !empty( $lists ) ) {
 			return;
 		}
 
-
-		$email_ids = $wpdb->get_col(
-			"SELECT p.ID
-			FROM {$wpdb->posts} p, {$wpdb->postmeta} pm
-			WHERE p.post_type = 'follow_up_email'
-			AND p.post_status = '". FUE_Email::STATUS_ACTIVE ."'
-			AND pm.post_id = p.ID
-			AND pm.meta_key = '_interval_type'
-			AND pm.meta_value = 'list_signup'
-			ORDER BY menu_order ASC"
-		);
+		$email_ids = get_posts( array(
+			'numberposts'      => -1,
+			'fields'           => 'ids',
+			'post_type'        => 'follow_up_email',
+			'post_status'      => FUE_Email::STATUS_ACTIVE,
+			'meta_key'         => '_interval_type',
+			'meta_value'       => 'list_signup',
+			'orderby'          => 'menu_order',
+			'order'            => 'ASC',
+			'suppress_filters' => false,
+		) );
 
 		foreach ( $email_ids as $email_id ) {
 			$email      = new FUE_Email( $email_id );
@@ -214,18 +212,17 @@ class FUE_Sending_Scheduler {
 	 * @return void
 	 */
 	public static function queue_list_emails_added_to_list( $subscriber_id, $list_id ) {
-		$wpdb   = Follow_Up_Emails::instance()->wpdb;
-
-		$email_ids = $wpdb->get_col(
-			"SELECT p.ID
-			FROM {$wpdb->posts} p, {$wpdb->postmeta} pm
-			WHERE p.post_type = 'follow_up_email'
-			AND p.post_status = '". FUE_Email::STATUS_ACTIVE ."'
-			AND pm.post_id = p.ID
-			AND pm.meta_key = '_interval_type'
-			AND pm.meta_value = 'list_signup'
-			ORDER BY menu_order ASC"
-		);
+		$email_ids = get_posts( array(
+			'numberposts'      => -1,
+			'fields'           => 'ids',
+			'post_type'        => 'follow_up_email',
+			'post_status'      => FUE_Email::STATUS_ACTIVE,
+			'meta_key'         => '_interval_type',
+			'meta_value'       => 'list_signup',
+			'orderby'          => 'menu_order',
+			'order'            => 'ASC',
+			'suppress_filters' => false,
+		) );
 
 		foreach ( $email_ids as $email_id ) {
 			$email      = new FUE_Email( $email_id );

@@ -123,18 +123,17 @@ class Updraft_File_Logger extends Updraft_Abstract_Logger {
 	/**
 	 * Log message with any level
 	 *
-	 * @param  string $message
 	 * @param  mixed  $level
+	 * @param  string $message
 	 * @param  array  $context
 	 * @return null|void
 	 */
-	public function log($message, $level = 'info', array $context = array()) {
+	public function log($level, $message, array $context = array()) {
 
 		if (!$this->is_enabled()) return false;
 		
 		$message = sprintf("[%s : %s] - %s \n", date("Y-m-d H:i:s"), Updraft_Log_Levels::to_text($level), $this->interpolate($message, $context));
 		
-		// @codingStandardsIgnoreLine
 		if (false == file_put_contents($this->logfile, $message, FILE_APPEND)) {
 			error_log($message);
 		}
@@ -152,7 +151,7 @@ class Updraft_File_Logger extends Updraft_Abstract_Logger {
 			$how_old = "5 days ago";
 		}
 
-		// @codingStandardsIgnoreStart
+		// phpcs:disable
 
 		// We ignore a few lines here to avoid warnings on file operations
 		// WP.VIP does not like us writing directly to the filesystem
@@ -172,6 +171,6 @@ class Updraft_File_Logger extends Updraft_Abstract_Logger {
 		fclose($temp_file);
 
 		return rename(preg_replace("/\.log$/", "-temp.log", $this->logfile), $this->logfile);
-		// @codingStandardsIgnoreEnd
+		// phpcs:enable
 	}
 }

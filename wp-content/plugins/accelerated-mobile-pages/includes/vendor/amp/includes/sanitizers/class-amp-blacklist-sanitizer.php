@@ -20,7 +20,7 @@ class AMP_Blacklist_Sanitizer extends AMP_Base_Sanitizer {
 	public function sanitize() {
 		$blacklisted_tags = $this->get_blacklisted_tags();
 		// Blacklisted tags for non-content #2835
-		if ( isset($this->args['non-content']) && true === $this->args['non-content'] ) {
+		if ( isset($this->args['non-content']) && 'non-content' === $this->args['non-content'] ) {
 			$blacklisted_tags = ampforwp_sidebar_blacklist_tags($blacklisted_tags);
 		}
 		$blacklisted_attributes = $this->get_blacklisted_attributes();
@@ -40,9 +40,17 @@ class AMP_Blacklist_Sanitizer extends AMP_Base_Sanitizer {
 
 		if($node->nodeName=='a' && $node->hasAttribute('href')){
 			$href = $node->getAttribute('href');
-			if ( $href ){
-				$node->setAttribute('href',\ampforwp_findInternalUrl($href));
+			if( strpos($href,'tel:') ){
+				$disallowed = array('http://', 'https://');
+				foreach($disallowed as $d){
+			      if(strpos($href, $d) === 0) {
+			         $href = str_replace($d, '', $href);
+			      }
+			   }
+			   $node->setAttribute('href',$href);
 			}
+			$node->setAttribute('href', \ampforwp_findInternalUrl($href));
+
 		}
 		
 		// Some nodes may contain valid content but are themselves invalid.
@@ -172,8 +180,8 @@ class AMP_Blacklist_Sanitizer extends AMP_Base_Sanitizer {
 			$href = untrailingslashit( get_home_url() ) . $href;
 		}
 
-		$valid_protocols = array( 'http', 'https', 'mailto', 'sms', 'tel', 'viber', 'whatsapp' , 'ftp');
-		$special_protocols = array( 'tel', 'sms' ); // these ones don't valid with `filter_var+FILTER_VALIDATE_URL`
+		$valid_protocols = array( 'http', 'https', 'mailto', 'sms', 'tel', 'viber', 'whatsapp' , 'ftp','skype', 'tg');
+		$special_protocols = array( 'tel', 'sms','skype' ); // these ones don't valid with `filter_var+FILTER_VALIDATE_URL`
 		$protocol = strtok( $href, ':' );
 
 		/* Convert space into %20 and esc url so it can work with the correct 

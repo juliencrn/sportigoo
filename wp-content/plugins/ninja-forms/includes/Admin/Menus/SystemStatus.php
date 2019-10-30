@@ -176,7 +176,7 @@ final class NF_Admin_Menus_SystemStatus extends NF_Abstracts_Submenu
             __( 'Ninja Forms Version','ninja-forms' ) => esc_html( Ninja_Forms::VERSION ),
             __( 'Ninja Forms DB Version', 'ninja-forms' ) => get_option( 'ninja_forms_db_version' ),
             __( 'Ninja Forms Gatekeeper', 'ninja-forms' ) => WPN_Helper::get_zuul(),
-            __( 'Ninja Forms "Dev Mode"', 'ninja-forms' ) => ( $dev_mode ) ? __('Enabeld') : __('Disabled'),
+            __( 'Ninja Forms "Dev Mode"', 'ninja-forms' ) => ( $dev_mode ) ? __('Enabled') : __('Disabled'),
             __( 'WP Version','ninja-forms' ) => $wp_version . ' - ' . $wp_compatible,
             __( 'WP Multisite Enabled','ninja-forms' ) => $multisite,
             __( 'Web Server Info','ninja-forms' ) => esc_html( $_SERVER['SERVER_SOFTWARE'] ),

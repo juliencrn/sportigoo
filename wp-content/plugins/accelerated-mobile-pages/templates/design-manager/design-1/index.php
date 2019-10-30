@@ -43,7 +43,8 @@
 				'paged'               => esc_attr($paged),
 				'post__not_in' 		  => $exclude_ids,
                 'has_password' => false ,
-                'post_status'=> 'publish'
+                'post_status'=> 'publish',
+                'no_found_rows'	=> true
 			);
 			$filtered_args = apply_filters('ampforwp_query_args', $args);
 			$q = new WP_Query( $filtered_args ); 
@@ -55,7 +56,7 @@
 				
 			 if ( $q->have_posts() ) : while ( $q->have_posts() ) : $q->the_post(); ?>
 		        <div class="amp-wp-content amp-wp-article-header amp-loop-list">
-		        	<h1 class="amp-wp-title"><?php  $ampforwp_post_url = get_permalink(); ?><a href="<?php echo ampforwp_url_controller( $ampforwp_post_url ); ?>"><?php the_title() ?></a></h1>
+		        	<h2 class="amp-wp-title"><?php  $ampforwp_post_url = get_permalink(); ?><a href="<?php echo ampforwp_url_controller( $ampforwp_post_url ); ?>"><?php the_title() ?></a></h2>
 
 					<div class="amp-wp-content-loop">
 						<div class="amp-wp-meta">

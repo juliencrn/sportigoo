@@ -276,7 +276,15 @@ final class NF_Database_FieldsController
          * Loop over each of our $this->db_columns to create a value list for our SQL statement.
          */
         foreach ( $this->db_columns as $column_name => $setting_name ) {
+
             $value = $settings[ $column_name ];
+
+            // For new fields, specify the `id` as NULL for insert.
+            if('id' == $column_name && is_null($value)){
+                $this->insert_fields .= "NULL,";
+                continue;
+            }
+            
             $this->db->escape_by_ref( $value );
             if ( is_numeric( $value ) ) {
                 $this->insert_fields .= "{$value},";

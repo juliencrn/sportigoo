@@ -52,9 +52,10 @@ if ( class_exists( 'WooCommerce' ) ) {
     require $inc . "woocommerce/taxonomy-lieu.php";
 
     // Block woocommerce updates
-    add_filter('site_transient_update_plugins', function( $value ) {
-      unset( $value->response['woocommerce/woocommerce.php']);
-    });
+//    add_filter('site_transient_update_plugins', function( $value ) {
+//      unset( $value->response['woocommerce/woocommerce.php']);
+//      var_dump(plugin_basename(__FILE__));
+//    });
 }
 
 

@@ -7,14 +7,34 @@ if ( ! defined( 'ABSPATH' ) ) {
 add_action( 'template_redirect', 'ampforwp_redirection', 10 );
 function ampforwp_redirection() {
   global $redux_builder_amp, $wp, $post;
-  $hide_cats_amp = $url = $archive_check = $go_to_url = '';
+  $hide_cats_amp = $url = $archive_check = $go_to_url = $archive_check_tax = '';
   $hide_cats_amp = is_category_amp_disabled();
+  // No redirection if Post/Page is AMP Disabled #3287
+  if ( ( is_singular() || ampforwp_is_front_page() || ampforwp_is_blog() ) && 'hide-amp' == get_post_meta( ampforwp_get_the_ID(),'ampforwp-amp-on-off',true) ) {
+    return;
+  }
   // Redirection for Homepage and Archive Pages when Turned Off from options panel
   if ( ampforwp_is_amp_endpoint() ) {
-     if( (is_archive() && 0 == ampforwp_get_setting('ampforwp-archive-support')) || (is_category() && 0 == ampforwp_get_setting('ampforwp-archive-support-cat')) || (is_tag() && 0 == ampforwp_get_setting('ampforwp-archive-support-tag')) ){
-        $archive_check = true;
+     if(is_tax()){
+        $term_id = get_queried_object()->term_id;
+        $term = get_term( $term_id );
+        $taxonomy_name = $term->taxonomy;
+        
+        $custom_taxonomies = ampforwp_get_setting('ampforwp-custom-taxonomies');
+        if(!empty($custom_taxonomies)){
+          if(( is_archive() && !in_array( $taxonomy_name,$custom_taxonomies) ) ){
+              $archive_check_tax = true;
+          }
+        }
+      }else{
+          if( ( (function_exists('is_shop') && !is_shop() ) && is_archive() &&  0 == ampforwp_get_setting('ampforwp-archive-support')) || ( !function_exists('is_shop') &&is_archive() &&  0 == ampforwp_get_setting('ampforwp-archive-support')) || (is_category() && 0 == ampforwp_get_setting('ampforwp-archive-support-cat')) || (is_tag() && 0 == ampforwp_get_setting('ampforwp-archive-support-tag')) ){
+          $archive_check = true;
+        }
       }
-    if ( ( true == $archive_check ) || true == $hide_cats_amp || ((ampforwp_is_home() || ampforwp_is_front_page()) && 0 == ampforwp_get_setting('ampforwp-homepage-on-off-support')) ) {
+      if( !function_exists('amp_woocommerce_pro_add_woocommerce_support') && ( (function_exists('is_product_category') && is_product_category()) || (function_exists('is_product_tag') && is_product_tag()) || (function_exists('is_shop') && is_shop() ) )){
+            $archive_check = true;
+       }
+    if ( (true == $archive_check_tax) || ( true == $archive_check ) || true == $hide_cats_amp || ((ampforwp_is_home() || ampforwp_is_front_page()) && 0 == ampforwp_get_setting('ampforwp-homepage-on-off-support')) ) {
       $url = $wp->request;
       if( ampforwp_is_home() && get_query_var('amp') ) {
         $url = 'amp';
@@ -28,7 +48,26 @@ function ampforwp_redirection() {
       exit;
     }
   }
-
+  // Redirect ?nonamp=1 to normal url #3269
+  $current_url = $check = '';
+  $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 
+                "https" : "http") . "://" . AMPFROWP_HOST_NAME .  
+                $_SERVER['REQUEST_URI'];              
+  $current_url = explode('/', $current_url);
+  $check    =  '?nonamp=1';
+  if (( isset($_GET['nonamp']) && 1 == $_GET['nonamp'] ) ){
+        session_start();
+        $_SESSION['ampforwp_mobile'] = 'exit';     
+  }
+  if (in_array( $check  , $current_url ) ) {
+      $current_url = array_flip($current_url);
+      unset($current_url['?nonamp=1']);
+      $current_url = array_flip($current_url);
+      $current_url = implode('/', $current_url);
+      $current_url = user_trailingslashit($current_url);
+      wp_safe_redirect( $current_url );
+      exit;
+  }
   //Auto redirect /amp to ?amp when 'Change End Point to ?amp' option is enabled #2480
   if ( ampforwp_is_amp_endpoint() && true == ampforwp_get_setting('amp-core-end-point') ){
     $current_url = $endpoint = $new_url = '';
@@ -125,7 +164,11 @@ function ampforwp_redirection() {
     if ( ( is_single() && $redux_builder_amp['amp-on-off-for-all-posts'] ) || ( is_page() && $redux_builder_amp['amp-on-off-for-all-pages'] ) ) {
       $redirection_location = get_the_permalink();
     }
-
+    $ampforwp_amp_post_on_off_meta = "";
+    $ampforwp_amp_post_on_off_meta = get_post_meta( $post_id,'ampforwp-amp-on-off',true);
+    if(false == $ampforwp_amp_post_on_off_meta){ 
+      return;
+    }
     /* Fallback, if for any reason, $redirection_location is still NULL
      * then redirect it to homepage. 
      */
@@ -218,7 +261,7 @@ function ampforwp_redirection() {
         session_start();
     }
 
-    if ( isset( $_SESSION['ampforwp_mobile'] ) && 'mobile-on' == $_SESSION['ampforwp_amp_mode'] && 'exit' == $_SESSION['ampforwp_mobile'] ) {
+    if ( isset( $_SESSION['ampforwp_mobile'] ) && (isset($_SESSION['ampforwp_amp_mode']) && 'mobile-on' == $_SESSION['ampforwp_amp_mode']) && 'exit' == $_SESSION['ampforwp_mobile'] ) {
         return;
     }
 
@@ -237,7 +280,10 @@ function ampforwp_redirection() {
     }
     // Check if we are on Mobile phones then start redirection process
     if ( $redirectToAMP ) {
-        if ( ! isset($_SESSION['ampforwp_amp_mode']) || ! isset($_GET['nonamp']) ) {
+      if(!isset($_GET['nonamphead']) && isset($_SESSION['nonamphead']) && in_array($url_to_redirect, $_SESSION['nonamphead'])){
+           return;
+        }
+        if (( ! isset($_SESSION['ampforwp_amp_mode']) || ! isset($_GET['nonamp'])) && !isset($_GET['nonamphead']) ) {
 
           $_SESSION['ampforwp_amp_mode'] = 'mobile-on';
 
@@ -257,42 +303,34 @@ function ampforwp_redirection() {
       $url = home_url( $wp->request );
     }
     $nonamp_checker = get_query_var( 'nonamp');
+    $nonamphead_checker = get_query_var( 'nonamphead');
      if($url){
-     if( $nonamp_checker == 1 ){ 
-        $go_to_url = remove_query_arg('nonamp', $url);
-        $go_to_url = explode('/', $go_to_url);
-        $go_to_url = array_flip($go_to_url);
-        if( true == ampforwp_get_setting('amp-core-end-point') || isset($go_to_url['?amp']) ){
-          unset($go_to_url['?amp']);
+        if( $nonamp_checker == 1 ){ 
+            $go_to_url = remove_query_arg('nonamp', $url);
+            $go_to_url = explode('/', $go_to_url);
+            $go_to_url = array_flip($go_to_url);
+            if(true == ampforwp_get_setting('amp-core-end-point') || isset($go_to_url['?amp']) ){
+              unset($go_to_url['?amp']);
+            }
+            if(isset($go_to_url['amp'])){
+              unset($go_to_url['amp']);
+            }
+            $go_to_url = array_flip($go_to_url);     
+            $go_to_url  = implode('/', $go_to_url);
+            
+          wp_safe_redirect( $go_to_url, 301 );
+          exit;
+        }elseif($nonamphead_checker == 1){
+            $go_to_url = home_url( $wp->request );
+            if($go_to_url){
+                $_SESSION['nonamphead'][ampforwp_url_controller($go_to_url)] = ampforwp_url_controller($go_to_url);
+              }
+              wp_safe_redirect( $go_to_url, 301 );
+              exit;
+        }else{
+          return;
         }
-        if( isset($go_to_url['amp']) ){
-          unset($go_to_url['amp']);
-        }
-        $go_to_url = array_flip($go_to_url);     
-        $go_to_url  = implode('/', $go_to_url);
- 
-      wp_safe_redirect( $go_to_url, 301 );
-      exit;
-  }    
-    else{
-      return;
     }
-  }
-  if ( ampforwp_is_amp_endpoint() && true == ampforwp_get_setting('amp-core-end-point') ){
-    $current_url = $endpoint = $new_url = '';
-    $current_url = home_url($wp->request);
-    $amp = AMPFORWP_AMP_QUERY_VAR;
-    $endpoint = '?'.$amp;
-    $checker =  explode('/', $current_url); 
-    $amp_check = in_array($amp, $checker);
-    if ( true == $amp_check && $amp == end($checker) ) {
-      $pos = strrpos( $current_url , '/'.$amp);
-      $search_length  = strlen('/'.$amp);
-      $new_url    = substr_replace( $current_url , $endpoint , $pos , $search_length );
-      wp_safe_redirect( $new_url );
-      exit;
-    }
-  }
   session_destroy();
   return;
   }
@@ -302,6 +340,7 @@ function ampforwp_redirection() {
 add_filter( 'query_vars', 'ampforwp_custom_query_var' );
 function ampforwp_custom_query_var($vars) {
   $vars[] = 'nonamp';
+  $vars[] = 'nonamphead';
   return $vars;
 }
 // #1947 ends here

@@ -106,11 +106,11 @@ if(!class_exists('Aq_Resize')) {
                 elseif(!strncmp($url,$relative_prefix,strlen($relative_prefix))){ //if url begins with // make $upload_url begin with // as well
                     $upload_url = str_replace(array( 0 => "$http_prefix", 1 => "$https_prefix"),$relative_prefix,$upload_url);
                 }
-                $is_cdn  = '';
+                $is_cdn  = false;
                 $cdn_url = '';
+                $cdn_url_main = '';
 
-
-                // Check if $img_url is local.
+                // Check if $img_url is not local.
                 if ( false === strpos( $url, $upload_url ) ) {
                     $is_cdn  = true;
                     $cdn_url_main = $cdn_url = $url;
@@ -120,21 +120,30 @@ if(!class_exists('Aq_Resize')) {
                     $dir_baseurl    = explode('/', $dir_baseurl);
                     $dir_name       = end($dir_baseurl); 
                     $cdn_url        = explode($dir_name, $cdn_url);
-                    
+                    if ( ! isset($cdn_url[1]) ) {
+                       $cdn_url = array();
+                       $cdn_url[1] = '';
+                    }
                     $hybid_url = $upload_url . $cdn_url[1];
                     // this will append crop path in the url to generate the image locally 
                     $url = $hybid_url;
                 }
                 // Define path of image.
                 $rel_path = str_replace( $upload_url, '', $url );
+                $img_path = '';
                 if($rel_path){
                     $img_path = $upload_dir . $rel_path;
                 }
 
                 // Check if img path exists, and is an image indeed.
-                if ( ! file_exists( $img_path ) or ! getimagesize( $img_path ) )
-                    throw new Aq_Exception('Image file does not exist (or is not an image): ' . $img_path);
-
+                if ( ! file_exists( $img_path ) or ! getimagesize( $img_path ) ){
+                    // Return the Original CDN array
+                    return array (
+                                0 => $cdn_url_main,
+                                1 => $width,
+                                2 => $height
+                            );
+                }
                 // Get image info.
                 $info = pathinfo( $img_path );
                 $ext = $info['extension'];
@@ -307,6 +316,9 @@ if(!function_exists('ampforwp_aq_resize')) {
                         2 => $height
                     );
             return $image;
+        }
+        elseif( function_exists('fifu_activate') || is_plugin_active('fifu-premium/fifu-premium.php') ){
+            return fifu_amp_url($url, $width, $height); 
         } 
         else {
             $aq_resize = Aq_Resize::getInstance();

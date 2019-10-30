@@ -51,10 +51,10 @@ class AIOWPSecurity_List_Account_Activity extends AIOWPSecurity_List_Table {
     function get_columns(){
         $columns = array(
             'cb' => '<input type="checkbox" />', //Render a checkbox
-            'user_id' => 'User ID',
-            'user_login' => 'Username',
-            'login_date' => 'Login Date',
-            'logout_date' => 'Logout Date',
+            'user_id' => __('User ID', 'all-in-one-wp-security-and-firewall'),
+            'user_login' => __('Username', 'all-in-one-wp-security-and-firewall'),
+            'login_date' => __('Login Date', 'all-in-one-wp-security-and-firewall'),
+            'logout_date' => __('Logout Date', 'all-in-one-wp-security-and-firewall'),
             'login_ip' => 'IP'
         );
         return $columns;

@@ -42,11 +42,11 @@ function enable_amp_pagebuilder(){
         die;
 	}
 	if(isset($_POST['postId'])){
-		$postId = $_POST['postId'];
+		$postId = intval($_POST['postId']);
 	}else{
 		echo json_encode(array('status'=>"500", 'Message'=>"post id not found"));
 	}
-	if(isset($postId) && get_post_meta($postId,'use_ampforwp_page_builder', true)!=='yes'){
+	if(isset($postId) && get_post_meta($postId,'use_ampforwp_page_builder', true)!=='yes' && current_user_can('edit_posts')){
 		update_post_meta($postId, 'use_ampforwp_page_builder','yes');
 		echo json_encode(array('status'=>200, 'Message'=>"Pagebuilder Started successfully"));
 	}else{
@@ -69,8 +69,14 @@ function amppb_export_layout_data(){
 	header( 'content-type: application/json' );
 	header( 'Content-Disposition: attachment; filename=layout-' . date( 'dmY' ) . '.json' );
 	
-	$export_data = wp_unslash( $_POST['export_layout_data'] );
-	echo $export_data;
+	if ( function_exists('sanitize_textarea_field') ) {
+		$export_data = sanitize_textarea_field(wp_unslash( $_POST['export_layout_data'] ));
+	}
+	else{
+		$unsan_export_data = wp_unslash( $_POST['export_layout_data'] );
+		$export_data = implode( "\n", array_map( 'sanitize_text_field', explode( "\n", $unsan_export_data ) ));
+	}
+	echo $export_data; // escaped above
 	
 	wp_die();
 }
@@ -99,7 +105,7 @@ function amppb_save_layout_data(){
 
 	$allPostLayout = array();
 	$args = array(
-				'posts_per_page'   => -1,
+				'posts_per_page'   => 200,
 				'orderby'          => 'date',
 				'order'            => 'DESC',
 				'post_type'        => 'amppb_layout',
@@ -120,32 +126,39 @@ function amppb_save_layout_data(){
 
 add_action( 'wp_ajax_amppb_remove_saved_layout_data', 'amppb_remove_saved_layout_data');
 function amppb_remove_saved_layout_data(){
-
-	$layoutid = esc_attr($_POST['layoutid']);
-	$is_delete = wp_delete_post($layoutid);
-	$allPostLayout = array();
-	$args = array(
-				'posts_per_page'   => -1,
-				'orderby'          => 'date',
-				'order'            => 'DESC',
-				'post_type'        => 'amppb_layout',
-				'post_status'      => 'publish'
-				);
-	$posts_array = get_posts( $args );
-	if(count($posts_array)>0){
-		foreach ($posts_array as $key => $layoutData) {
-		$allPostLayout[] = array('post_title'=>$layoutData->post_title,
-								'post_id'=>$layoutData->ID,
-								'post_content'=>$layoutData->post_content,
-									);
+	check_ajax_referer( 'verify_pb', 'verify_nonce' );
+	$users = wp_get_current_user();
+	$roles = $users->roles;
+	if(in_array("administrator", $roles) || in_array("editor", $roles)||in_array("author", $roles)|| in_array("contributor", $roles)){
+		$layoutid = intval($_POST['layoutid']);
+		$is_delete = wp_delete_post($layoutid);
+		$allPostLayout = array();
+		$args = array(
+					'posts_per_page'   => 200,
+					'orderby'          => 'date',
+					'order'            => 'DESC',
+					'post_type'        => 'amppb_layout',
+					'post_status'      => 'publish'
+					);
+		$posts_array = get_posts( $args );
+		if(count($posts_array)>0){
+			foreach ($posts_array as $key => $layoutData) {
+			$allPostLayout[] = array('post_title'=>$layoutData->post_title,
+									'post_id'=>$layoutData->ID,
+									'post_content'=>$layoutData->post_content,
+										);
+			}
 		}
-	}
-	if ( $is_delete ) {
-		echo json_encode(array("status"=>200,"data"=>$allPostLayout));
-		exit;
-	}
-	else{
-		echo json_encode(array("status"=>404,"data"=>$allPostLayout));
+		if ( $is_delete ) {
+			echo json_encode(array("status"=>200,"data"=>$allPostLayout));
+			exit;
+		}
+		else{
+			echo json_encode(array("status"=>404,"data"=>$allPostLayout));
+			exit;
+		}	
+	}else{
+		echo json_encode(array("status"=>403,"data"=>array()));
 		exit;
 	}	
 }
@@ -177,9 +190,10 @@ function ampforwp_get_image() {
 				}
 			}
 		}else{
-			$image = wp_get_attachment_image( $_GET['id'], 'full', false, array( 'id' => 'ampforwp-preview-image' ) );
-			$image_src = ampforwp_get_attachment_id($_GET['id'],'thumbnail');
-			$image_src_full = ampforwp_get_attachment_id($_GET['id'],'full');
+			$id = intval($_GET['id']);
+			$image = wp_get_attachment_image( $id, 'full', false, array( 'id' => 'ampforwp-preview-image' ) );
+			$image_src = ampforwp_get_attachment_id($id,'thumbnail');
+			$image_src_full = ampforwp_get_attachment_id($id,'full');
 			$svg = pathinfo($image_src_full[0], PATHINFO_EXTENSION) == 'svg' ? true : false;
 			if ( $svg ) {
 				$image_src_full[1] = 50;
@@ -227,7 +241,7 @@ function ampforwp_pb_cats(){
     }
 	$cats = $taxs = array();
 	$post = '';
-	$post = $_POST['selected_val'];
+	$post = sanitize_text_field($_POST['selected_val']);
 	$taxs = get_object_taxonomies( $post );
 	if(!empty($taxs)){
  		$cats = get_terms($taxs['0'],array(   

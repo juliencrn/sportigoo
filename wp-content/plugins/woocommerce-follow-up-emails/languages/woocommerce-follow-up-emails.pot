@@ -1,16 +1,18 @@
-# <!=Copyright (C) 2019 WooCommerce
-# This file is distributed under the GNU General Public License v3.0.=!>
+# Copyright (C) 2019 WooCommerce
+# This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: Follow-Up Emails 4.8.11\n"
-"Report-Msgid-Bugs-To: https://docs.woocommerce.com\n"
-"POT-Creation-Date: 2019-05-08 19:08:39+00:00\n"
+"Project-Id-Version: Follow-Up Emails 4.8.17\n"
+"Report-Msgid-Bugs-To: "
+"https://wordpress.org/support/plugin/woocommerce-follow-up-emails\n"
+"POT-Creation-Date: 2019-10-23 09:08:11+00:00\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: node-wp-i18n 1.2.3\n"
 
 #: includes/addons/class-fue-addon-bookings.php:81
 msgid "Before Booked Date"
@@ -38,7 +40,9 @@ msgstr ""
 
 #: includes/addons/class-fue-addon-bookings.php:96
 #: includes/addons/class-fue-addon-bookings.php:97
-msgid "Send follow-up emails to customers that book appointments, services or rentals."
+msgid ""
+"Send follow-up emails to customers that book appointments, services or "
+"rentals."
 msgstr ""
 
 #: includes/addons/class-fue-addon-bookings.php:108
@@ -102,10 +106,10 @@ msgstr ""
 msgid "No. of persons"
 msgstr ""
 
-#: includes/addons/class-fue-addon-bookings.php:991
+#: includes/addons/class-fue-addon-bookings.php:990
 #: includes/addons/class-fue-addon-woocommerce-order-importer.php:185
 #: includes/addons/class-fue-addon-woocommerce-order-importer.php:277
-#: includes/addons/class-fue-addon-woocommerce.php:874
+#: includes/addons/class-fue-addon-woocommerce.php:929
 msgid "Email queued: %s scheduled on %s<br/>Trigger: %s"
 msgstr ""
 
@@ -172,7 +176,9 @@ msgstr ""
 
 #: includes/addons/class-fue-addon-points-and-rewards.php:62
 #: includes/addons/class-fue-addon-points-and-rewards.php:63
-msgid "Points and Rewards emails will send to a user based upon the point earnings status you define when creating your emails."
+msgid ""
+"Points and Rewards emails will send to a user based upon the point earnings "
+"status you define when creating your emails."
 msgstr ""
 
 #: includes/addons/class-fue-addon-points-and-rewards.php:98
@@ -183,19 +189,19 @@ msgstr ""
 msgid "Points &amp; Rewards: Customers that have under N points"
 msgstr ""
 
-#: includes/addons/class-fue-addon-points-and-rewards.php:250
+#: includes/addons/class-fue-addon-points-and-rewards.php:255
 msgid "The current user's number of points"
 msgstr ""
 
-#: includes/addons/class-fue-addon-points-and-rewards.php:251
+#: includes/addons/class-fue-addon-points-and-rewards.php:256
 msgid "The number of points earned"
 msgstr ""
 
-#: includes/addons/class-fue-addon-points-and-rewards.php:252
+#: includes/addons/class-fue-addon-points-and-rewards.php:257
 msgid "The description of the action"
 msgstr ""
 
-#: includes/addons/class-fue-addon-points-and-rewards.php:354
+#: includes/addons/class-fue-addon-points-and-rewards.php:359
 msgid "%d %s %s %d"
 msgstr ""
 
@@ -299,7 +305,9 @@ msgstr ""
 
 #: includes/addons/class-fue-addon-sensei.php:120
 #: includes/addons/class-fue-addon-sensei.php:121
-msgid "Create emails to send based upon the quiz/course/lesson/test status you define for Sensei."
+msgid ""
+"Create emails to send based upon the quiz/course/lesson/test status you "
+"define for Sensei."
 msgstr ""
 
 #: includes/addons/class-fue-addon-sensei.php:305
@@ -382,26 +390,30 @@ msgstr ""
 msgid "View the lesson quiz"
 msgstr ""
 
-#: includes/addons/class-fue-addon-subscriptions-v2.php:1518
+#: includes/addons/class-fue-addon-subscriptions-v2.php:1524
 msgid "Subscription payment failed for #%s"
 msgstr ""
 
-#: includes/addons/class-fue-addon-subscriptions-v2.php:1519
-msgid "<p>A subscription payment has failed. The subscription has now been automatically put on hold.</p><p><a href=\"%s\">View Subscription</a></p>"
+#: includes/addons/class-fue-addon-subscriptions-v2.php:1525
+msgid ""
+"<p>A subscription payment has failed. The subscription has now been "
+"automatically put on hold.</p><p><a href=\"%s\">View Subscription</a></p>"
 msgstr ""
 
-#: includes/addons/class-fue-addon-subscriptions-v2.php:1722
+#: includes/addons/class-fue-addon-subscriptions-v2.php:1728
 #: includes/addons/class-fue-addon-subscriptions.php:1923
 msgid "Until cancelled"
 msgstr ""
 
-#: includes/addons/class-fue-addon-subscriptions-v2.php:1743
+#: includes/addons/class-fue-addon-subscriptions-v2.php:1749
 #: includes/addons/class-fue-addon-subscriptions.php:1903
 msgid "1 %s"
 msgstr ""
 
-#: includes/addons/class-fue-addon-subscriptions-v2.php:1816
-msgid "The email &quot;%s&quot; has been removed due to the order status changing to active."
+#: includes/addons/class-fue-addon-subscriptions-v2.php:1822
+msgid ""
+"The email &quot;%s&quot; has been removed due to the order status changing "
+"to active."
 msgstr ""
 
 #: includes/addons/class-fue-addon-subscriptions.php:136
@@ -415,7 +427,9 @@ msgstr ""
 
 #: includes/addons/class-fue-addon-subscriptions.php:141
 #: includes/class-fue-install.php:106
-msgid "It is strongly recommended that you backup your database before proceeding. Are you sure you wish to run the updater now?"
+msgid ""
+"It is strongly recommended that you backup your database before proceeding. "
+"Are you sure you wish to run the updater now?"
 msgstr ""
 
 #: includes/addons/class-fue-addon-subscriptions.php:184
@@ -472,7 +486,9 @@ msgstr ""
 
 #: includes/addons/class-fue-addon-subscriptions.php:202
 #: includes/addons/class-fue-addon-subscriptions.php:203
-msgid "Create emails to send to a user based upon the subscription statuses of your customers."
+msgid ""
+"Create emails to send to a user based upon the subscription statuses of "
+"your customers."
 msgstr ""
 
 #: includes/addons/class-fue-addon-subscriptions.php:215
@@ -546,13 +562,17 @@ msgid "Subscription payment failed for Order %s"
 msgstr ""
 
 #: includes/addons/class-fue-addon-subscriptions.php:1337
-msgid "A subscription payment for the order %s has failed. The subscription has now been automatically put on hold."
+msgid ""
+"A subscription payment for the order %s has failed. The subscription has "
+"now been automatically put on hold."
 msgstr ""
 
 #: includes/addons/class-fue-addon-twitter.php:109
 #: includes/addons/class-fue-addon-twitter.php:144
 #: includes/addons/class-fue-addon-twitter.php:145
-msgid "Collect @twitter usernames from your customers and create followups that tweet messages to your customers."
+msgid ""
+"Collect @twitter usernames from your customers and create followups that "
+"tweet messages to your customers."
 msgstr ""
 
 #: includes/addons/class-fue-addon-twitter.php:140
@@ -642,11 +662,15 @@ msgid "don't show this again"
 msgstr ""
 
 #: includes/addons/class-fue-addon-woocommerce-admin.php:138
-msgid "It is strongly recommended that you backup your database before proceeding. Are you sure you wish to run the scanner now?"
+msgid ""
+"It is strongly recommended that you backup your database before proceeding. "
+"Are you sure you wish to run the scanner now?"
 msgstr ""
 
 #: includes/addons/class-fue-addon-woocommerce-admin.php:144
-msgid "Not scanning your existing orders may cause customer and conditional emails to not work accurately. Do you wish to continue?"
+msgid ""
+"Not scanning your existing orders may cause customer and conditional emails "
+"to not work accurately. Do you wish to continue?"
 msgstr ""
 
 #: includes/addons/class-fue-addon-woocommerce-admin.php:182
@@ -688,11 +712,15 @@ msgid "Displays a list of purchased items, quantities, and prices with thumbnail
 msgstr ""
 
 #: includes/addons/class-fue-addon-woocommerce-admin.php:753
-msgid "Displays a list of the purchased items with their quantities, codes, and prices."
+msgid ""
+"Displays a list of the purchased items with their quantities, codes, and "
+"prices."
 msgstr ""
 
 #: includes/addons/class-fue-addon-woocommerce-admin.php:754
-msgid "Displays a list of the purchased items, with their quantities, prices, and categories."
+msgid ""
+"Displays a list of the purchased items, with their quantities, prices, and "
+"categories."
 msgstr ""
 
 #: includes/addons/class-fue-addon-woocommerce-admin.php:756
@@ -722,7 +750,9 @@ msgid "The code number of the purchased item."
 msgstr ""
 
 #: includes/addons/class-fue-addon-woocommerce-admin.php:780
-msgid "The URL of the purchased item. Only works when the product is specified in the trigger setting."
+msgid ""
+"The URL of the purchased item. Only works when the product is specified in "
+"the trigger setting."
 msgstr ""
 
 #: includes/addons/class-fue-addon-woocommerce-admin.php:782
@@ -963,7 +993,7 @@ msgstr ""
 
 #: includes/addons/class-fue-addon-woocommerce-order-importer.php:128
 #: includes/addons/class-fue-addon-woocommerce-order-importer.php:238
-#: includes/addons/class-fue-addon-woocommerce.php:835
+#: includes/addons/class-fue-addon-woocommerce.php:890
 msgid "Importing failed. Invalid order (#%d)"
 msgstr ""
 
@@ -973,12 +1003,12 @@ msgstr ""
 
 #: includes/addons/class-fue-addon-woocommerce-order-importer.php:173
 #: includes/addons/class-fue-addon-woocommerce-order-importer.php:265
-#: includes/addons/class-fue-addon-woocommerce.php:862
+#: includes/addons/class-fue-addon-woocommerce.php:917
 msgid "Importing failed. %s"
 msgstr ""
 
 #: includes/addons/class-fue-addon-woocommerce-order-importer.php:293
-#: includes/addons/class-fue-addon-woocommerce.php:890
+#: includes/addons/class-fue-addon-woocommerce.php:945
 msgid "Importing failed. Could not load order (#%d)"
 msgstr ""
 
@@ -1065,7 +1095,9 @@ msgstr ""
 
 #: includes/addons/class-fue-addon-woocommerce.php:265
 #: includes/addons/class-fue-addon-woocommerce.php:266
-msgid "Send a thank you, a reminder about an abandoned cart, or any other order-related information to your customers."
+msgid ""
+"Send a thank you, a reminder about an abandoned cart, or any other "
+"order-related information to your customers."
 msgstr ""
 
 #: includes/addons/class-fue-addon-woocommerce.php:272
@@ -1078,7 +1110,9 @@ msgstr ""
 
 #: includes/addons/class-fue-addon-woocommerce.php:276
 #: includes/addons/class-fue-addon-woocommerce.php:277
-msgid "Reconnect with customers to bring them back to your store, or share product related news."
+msgid ""
+"Reconnect with customers to bring them back to your store, or share product "
+"related news."
 msgstr ""
 
 #: includes/addons/class-fue-addon-woocommerce.php:284
@@ -1113,14 +1147,18 @@ msgstr ""
 
 #: includes/addons/class-fue-addon-wootickets.php:98
 msgid ""
-"Create emails based upon the event/ticket status for The Events Calendar.<br />Increase revenue with a\n"
-"\t\t\t\tcustom lifecycle marketing program from Outbound Commerce. It’s email marketing for busy eCommerce\n"
-"\t\t\t\tbusinesses built by experienced eCommerce and marketing professionals."
+"Create emails based upon the event/ticket status for The Events "
+"Calendar.<br />Increase revenue with a\n"
+"\t\t\t\tcustom lifecycle marketing program from Outbound Commerce. It’s "
+"email marketing for busy eCommerce\n"
+"\t\t\t\tbusinesses built by experienced eCommerce and marketing "
+"professionals."
 msgstr ""
 
 #: includes/addons/class-fue-addon-wootickets.php:104
 msgid ""
-"Not sure where to start? Let Outbound Commerce help. Get email marketing for busy eCommerce businesses\n"
+"Not sure where to start? Let Outbound Commerce help. Get email marketing "
+"for busy eCommerce businesses\n"
 "\t\t\t\tbuilt by experienced eCommerce and marketing professionals."
 msgstr ""
 
@@ -1209,7 +1247,9 @@ msgid "The description of the ticket"
 msgstr ""
 
 #: includes/addons/class-fue-addon-wootickets.php:682
-msgid "Do not send email if a customer books a ticket %s days before the event starts."
+msgid ""
+"Do not send email if a customer books a ticket %s days before the event "
+"starts."
 msgstr ""
 
 #: includes/addons/class-fue-addon-wootickets.php:1213
@@ -1529,37 +1569,33 @@ msgstr ""
 msgid "No emails selected"
 msgstr ""
 
-#. translators: how many emails activated by activation action
-
 #: includes/class-fue-admin-actions.php:243
 #: templates/email-list/class-wc-fue-list-table.php:363
+#. translators: how many emails activated by activation action
 msgid "%d email activated"
 msgid_plural "%d emails activated"
 msgstr[0] ""
 msgstr[1] ""
 
-#. translators: how many emails deactivated by deactivation action
-
 #: includes/class-fue-admin-actions.php:255
 #: templates/email-list/class-wc-fue-list-table.php:376
+#. translators: how many emails deactivated by deactivation action
 msgid "%d email deactivated"
 msgid_plural "%d emails deactivated"
 msgstr[0] ""
 msgstr[1] ""
 
-#. translators: how many emails archived by archivation action
-
 #: includes/class-fue-admin-actions.php:267
 #: templates/email-list/class-wc-fue-list-table.php:389
+#. translators: how many emails archived by archivation action
 msgid "%d email archived"
 msgid_plural "%d emails archived"
 msgstr[0] ""
 msgstr[1] ""
 
-#. translators: how many emails deleted by deletion action
-
 #: includes/class-fue-admin-actions.php:279
 #: templates/email-list/class-wc-fue-list-table.php:402
+#. translators: how many emails deleted by deletion action
 msgid "%d email deleted"
 msgid_plural "%d emails deleted"
 msgstr[0] ""
@@ -1645,10 +1681,7 @@ msgstr ""
 msgid "Follow-Up"
 msgstr ""
 
-#: includes/class-fue-admin-controller.php:14
-#: includes/class-fue-admin-controller.php:190
-#: includes/class-fue-post-types.php:87 includes/class-fue-privacy.php:147
-#: templates/email-list/email-list.php:5
+#. Plugin Name of the plugin/theme
 msgid "Follow-Up Emails"
 msgstr ""
 
@@ -1715,11 +1748,6 @@ msgstr ""
 msgid "batches"
 msgstr ""
 
-#: includes/class-fue-admin-controller.php:235
-msgctxt "Data updater action label"
-msgid "processed"
-msgstr ""
-
 #: includes/class-fue-admin-controller.php:283
 #: includes/class-fue-admin-controller.php:302 templates/updater.php:14
 msgid "Data Update"
@@ -1741,7 +1769,9 @@ msgid "Processing request..."
 msgstr ""
 
 #: includes/class-fue-admin-controller.php:468
-msgid "A follow-up email with the same settings already exists. Do you want to create it anyway?"
+msgid ""
+"A follow-up email with the same settings already exists. Do you want to "
+"create it anyway?"
 msgstr ""
 
 #: includes/class-fue-admin-controller.php:469
@@ -1945,11 +1975,15 @@ msgid "checking for new messages"
 msgstr ""
 
 #: includes/class-fue-ajax.php:1167
-msgid "<span class=\"dashicons dashicons-no\"></span> Unable to receive test message! Please check your settings."
+msgid ""
+"<span class=\"dashicons dashicons-no\"></span> Unable to receive test "
+"message! Please check your settings."
 msgstr ""
 
 #: includes/class-fue-ajax.php:1191
-msgid "<span class=\"dashicons dashicons-yes\"></span> Your bounce server is configured!"
+msgid ""
+"<span class=\"dashicons dashicons-yes\"></span> Your bounce server is "
+"configured!"
 msgstr ""
 
 #: includes/class-fue-ajax.php:1290
@@ -1966,14 +2000,17 @@ msgstr ""
 
 #: includes/class-fue-ajax.php:2498
 msgid ""
-"Warning: Your WordPress memory limit is less than the recommended 64MB. If importing fails, please try increasing this value.\n"
+"Warning: Your WordPress memory limit is less than the recommended 64MB. If "
+"importing fails, please try increasing this value.\n"
 "\n"
 "Do you wish to continue?"
 msgstr ""
 
 #: includes/class-fue-ajax.php:2501
 msgid ""
-"Warning: You are attempting to import a large number of orders. Please set your WordPress memory limit to at least 128MB. Continuing may lead to the importing process getting interrupted due to the lack of memory.\n"
+"Warning: You are attempting to import a large number of orders. Please set "
+"your WordPress memory limit to at least 128MB. Continuing may lead to the "
+"importing process getting interrupted due to the lack of memory.\n"
 "\n"
 "Do you still wish to continue?"
 msgstr ""
@@ -2003,7 +2040,9 @@ msgid "Error getting the trigger. %s is not a valid type"
 msgstr ""
 
 #: includes/class-fue-email.php:364
-msgid "<p>Email attributes updated:</p><p><strong>status</strong> from <em>%1$s</em> to <em>%2$s</em></p>"
+msgid ""
+"<p>Email attributes updated:</p><p><strong>status</strong> from "
+"<em>%1$s</em> to <em>%2$s</em></p>"
 msgstr ""
 
 #: includes/class-fue-followup-logger.php:110
@@ -2016,7 +2055,9 @@ msgid "Please enter a valid email address"
 msgstr ""
 
 #: includes/class-fue-front-handler.php:51
-msgid "The email (%1$s) is already unsubscribed from receiving emails regarding Order %2$d"
+msgid ""
+"The email (%1$s) is already unsubscribed from receiving emails regarding "
+"Order %2$d"
 msgstr ""
 
 #: includes/class-fue-front-handler.php:53
@@ -2040,7 +2081,9 @@ msgid "Thanks for installing Follow-Up Emails."
 msgstr ""
 
 #: includes/class-fue-install.php:87
-msgid "Before diving in, we highly recommend taking the time to read about %1$semail types%2$s and %3$scampaigns%2$s in the %4$sdocumentation%2$s."
+msgid ""
+"Before diving in, we highly recommend taking the time to read about "
+"%1$semail types%2$s and %3$scampaigns%2$s in the %4$sdocumentation%2$s."
 msgstr ""
 
 #: includes/class-fue-install.php:87
@@ -2056,7 +2099,9 @@ msgid "Follow-Up Emails Staging Mode"
 msgstr ""
 
 #: includes/class-fue-install.php:124
-msgid "Follow-Up Emails is in staging mode. All emails will be prevented from being sent out."
+msgid ""
+"Follow-Up Emails is in staging mode. All emails will be prevented from "
+"being sent out."
 msgstr ""
 
 #: includes/class-fue-install.php:136
@@ -2216,11 +2261,6 @@ msgstr ""
 msgid "Follow-Up Email"
 msgstr ""
 
-#: includes/class-fue-post-types.php:89
-msgctxt "Admin menu name"
-msgid "Follow-Up Emails"
-msgstr ""
-
 #: includes/class-fue-post-types.php:90
 msgid "Add Follow-up"
 msgstr ""
@@ -2249,38 +2289,21 @@ msgstr ""
 msgid "No Follow-ups found in trash"
 msgstr ""
 
-#: includes/class-fue-post-types.php:118
-msgctxt "Email status"
-msgid "Inactive"
-msgstr ""
-
-#. translators: view that shows only the inactive emails
-
 #: includes/class-fue-post-types.php:123
 #: templates/email-list/class-wc-fue-list-table.php:98
+#. translators: view that shows only the inactive emails
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-fue-post-types.php:127
-msgctxt "Email status"
-msgid "Active"
-msgstr ""
-
-#. translators: view that shows only the active emails
-
 #: includes/class-fue-post-types.php:132
 #: templates/email-list/class-wc-fue-list-table.php:86
+#. translators: view that shows only the active emails
 msgid "Active <span class=\"count\">(%s)</span>"
 msgid_plural "Active <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
-
-#: includes/class-fue-post-types.php:136
-msgctxt "Email status"
-msgid "Archived"
-msgstr ""
 
 #: includes/class-fue-post-types.php:141
 msgid "Archived <span class=\"count\">(%s)</span>"
@@ -2300,9 +2323,8 @@ msgstr ""
 msgid "Custom field deleted."
 msgstr ""
 
-#. translators: %s: date and time of the revision
-
 #: includes/class-fue-post-types.php:164
+#. translators: %s: date and time of the revision
 msgid "Email restored to revision from %s"
 msgstr ""
 
@@ -2318,9 +2340,8 @@ msgstr ""
 msgid "Email scheduled for: <strong>%1$s</strong>."
 msgstr ""
 
-#. translators: Publish box date format, see http:php.net/date
-
 #: includes/class-fue-post-types.php:171
+#. translators: Publish box date format, see http:php.net/date
 msgid "M j, Y @ G:i"
 msgstr ""
 
@@ -2372,15 +2393,17 @@ msgstr ""
 msgid "WooCommerce Follow-Up Emails Customer Data"
 msgstr ""
 
-#. translators: 1: URL to Privacy policy
-
 #: includes/class-fue-privacy.php:201
-msgid "By using this extension, you may be storing personal data or sharing data with an external service. <a href=\"%s\" target=\"_blank\">Learn more about how this works, including what you may want to include in your privacy policy.</a>"
+#. translators: 1: URL to Privacy policy
+msgid ""
+"By using this extension, you may be storing personal data or sharing data "
+"with an external service. <a href=\"%s\" target=\"_blank\">Learn more about "
+"how this works, including what you may want to include in your privacy "
+"policy.</a>"
 msgstr ""
 
-#. translators: 1: Data description
-
 #: includes/class-fue-privacy.php:289
+#. translators: 1: Data description
 msgid "%s Removed."
 msgstr ""
 
@@ -2706,7 +2729,9 @@ msgid "Non-repeating"
 msgstr ""
 
 #: includes/lib/action-scheduler/classes/ActionScheduler_ListTable.php:314
-msgid "Maximum simultaneous batches already in progress (%s queues). No actions will be processed until the current batches are complete."
+msgid ""
+"Maximum simultaneous batches already in progress (%s queues). No actions "
+"will be processed until the current batches are complete."
 msgstr ""
 
 #: includes/lib/action-scheduler/classes/ActionScheduler_ListTable.php:329
@@ -2821,22 +2846,19 @@ msgstr[1] ""
 msgid "The claim has been lost. Aborting current batch."
 msgstr ""
 
-#. translators: %s refers to the action ID
-
 #: includes/lib/action-scheduler/classes/ActionScheduler_WPCLI_QueueRunner.php:138
+#. translators: %s refers to the action ID
 msgid "Started processing action %s"
 msgstr ""
 
-#. translators: %s refers to the action ID
-
 #: includes/lib/action-scheduler/classes/ActionScheduler_WPCLI_QueueRunner.php:150
+#. translators: %s refers to the action ID
 msgid "Completed processing action %s"
 msgstr ""
 
+#: includes/lib/action-scheduler/classes/ActionScheduler_WPCLI_QueueRunner.php:165
 #. translators: %1$s refers to the action ID, %2$s refers to the Exception
 #. message
-
-#: includes/lib/action-scheduler/classes/ActionScheduler_WPCLI_QueueRunner.php:165
 msgid "Error processing action %1$s: %2$s"
 msgstr ""
 
@@ -2850,31 +2872,27 @@ msgstr[1] ""
 msgid "Attempting to reduce used memory..."
 msgstr ""
 
-#. translators: %d refers to how many scheduled taks were found to run
-
 #: includes/lib/action-scheduler/classes/ActionScheduler_WPCLI_Scheduler_command.php:87
+#. translators: %d refers to how many scheduled taks were found to run
 msgid "Found %d scheduled task"
 msgid_plural "Found %d scheduled tasks"
 msgstr[0] ""
 msgstr[1] ""
 
-#. translators: %d refers to the total number of batches executed
-
 #: includes/lib/action-scheduler/classes/ActionScheduler_WPCLI_Scheduler_command.php:104
+#. translators: %d refers to the total number of batches executed
 msgid "%d batch executed."
 msgid_plural "%d batches executed."
 msgstr[0] ""
 msgstr[1] ""
 
-#. translators: %s refers to the exception error message.
-
 #: includes/lib/action-scheduler/classes/ActionScheduler_WPCLI_Scheduler_command.php:123
+#. translators: %s refers to the exception error message.
 msgid "There was an error running the action scheduler: %s"
 msgstr ""
 
-#. translators: %d refers to the total number of taskes completed
-
 #: includes/lib/action-scheduler/classes/ActionScheduler_WPCLI_Scheduler_command.php:140
+#. translators: %d refers to the total number of taskes completed
 msgid "%d scheduled task completed."
 msgid_plural "%d scheduled tasks completed."
 msgstr[0] ""
@@ -2919,21 +2937,11 @@ msgstr ""
 msgid "Invalid action ID. No status found."
 msgstr ""
 
-#: includes/lib/action-scheduler/classes/ActionScheduler_wpPostStore_PostStatusRegistrar.php:36
-msgctxt "post"
-msgid "Failed"
-msgstr ""
-
 #: includes/lib/action-scheduler/classes/ActionScheduler_wpPostStore_PostStatusRegistrar.php:37
 msgid "Failed <span class=\"count\">(%s)</span>"
 msgid_plural "Failed <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
-
-#: includes/lib/action-scheduler/classes/ActionScheduler_wpPostStore_PostStatusRegistrar.php:50
-msgctxt "post"
-msgid "In-Progress"
-msgstr ""
 
 #: includes/lib/action-scheduler/classes/ActionScheduler_wpPostStore_PostStatusRegistrar.php:51
 msgid "In-Progress <span class=\"count\">(%s)</span>"
@@ -2947,11 +2955,6 @@ msgstr ""
 
 #: includes/lib/action-scheduler/classes/ActionScheduler_wpPostStore_PostTypeRegistrar.php:31
 msgid "Scheduled Action"
-msgstr ""
-
-#: includes/lib/action-scheduler/classes/ActionScheduler_wpPostStore_PostTypeRegistrar.php:32
-msgctxt "Admin menu name"
-msgid "Scheduled Actions"
 msgstr ""
 
 #: includes/lib/action-scheduler/classes/ActionScheduler_wpPostStore_PostTypeRegistrar.php:34
@@ -3029,7 +3032,7 @@ msgid "Click Rate (%)"
 msgstr ""
 
 #: includes/reports/class-fue-reports.php:626
-#: includes/sending/class-fue-sending-scheduler.php:461
+#: includes/sending/class-fue-sending-scheduler.php:458
 msgid "Follow-up emails summary"
 msgstr ""
 
@@ -3108,11 +3111,15 @@ msgid "Cannot send emails without a message. Email has been deactivated"
 msgstr ""
 
 #: includes/sending/class-fue-sending-mailer.php:164
-msgid "This email is locked due to a previous attempt in sending the email. Sending has been rescheduled to avoid duplicate emails."
+msgid ""
+"This email is locked due to a previous attempt in sending the email. "
+"Sending has been rescheduled to avoid duplicate emails."
 msgstr ""
 
 #: includes/sending/class-fue-sending-mailer.php:177
-msgid "The customer opted out of recieving non-order related emails. Email has been deleted."
+msgid ""
+"The customer opted out of recieving non-order related emails. Email has "
+"been deleted."
 msgstr ""
 
 #: includes/sending/class-fue-sending-mailer.php:189
@@ -3236,31 +3243,31 @@ msgstr ""
 msgid "Email sent successfully"
 msgstr ""
 
-#: includes/sending/class-fue-sending-scheduler.php:928
+#: includes/sending/class-fue-sending-scheduler.php:925
 msgid "Email has been added to the queue (Queue ID #%d)"
 msgstr ""
 
-#: includes/sending/class-fue-sending-scheduler.php:945
+#: includes/sending/class-fue-sending-scheduler.php:942
 msgid "Cannot schedule an email with a missing message"
 msgstr ""
 
-#: includes/sending/class-fue-sending-scheduler.php:973
+#: includes/sending/class-fue-sending-scheduler.php:970
 msgid "One-time email has already been sent to %s"
 msgstr ""
 
-#: includes/sending/class-fue-sending-scheduler.php:1006
+#: includes/sending/class-fue-sending-scheduler.php:1003
 msgid "Similar queue item found (#%d). Adjusting schedule to send on %s"
 msgstr ""
 
-#: includes/sending/class-fue-sending-scheduler.php:1019
+#: includes/sending/class-fue-sending-scheduler.php:1016
 msgid "The email \"%s\" has been added to the queue (Queue ID #%d)"
 msgstr ""
 
-#: includes/sending/class-fue-sending-scheduler.php:1069
+#: includes/sending/class-fue-sending-scheduler.php:1066
 msgid "Email is scheduled to be sent on %s"
 msgstr ""
 
-#: includes/sending/class-fue-sending-scheduler.php:1089
+#: includes/sending/class-fue-sending-scheduler.php:1086
 msgid "Email has been removed from the scheduler"
 msgstr ""
 
@@ -3282,172 +3289,6 @@ msgstr ""
 
 #: includes/shortcodes/class-fue-shortcode-subscribe.php:33
 msgid "Thank you. You are now subscribed to our list."
-msgstr ""
-
-#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:3
-#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:5
-#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:9
-#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:10
-#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:14
-#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:15
-#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:4
-#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:6
-#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:10
-#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:11
-#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:15
-#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:16
-#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:3
-#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:5
-#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:9
-#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:10
-#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:14
-#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:15
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:3
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:5
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:9
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:10
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:14
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:15
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:3
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:5
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:9
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:10
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:14
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:15
-#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:3
-#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:5
-#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:9
-#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:10
-#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:14
-#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:15
-#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:4
-#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:6
-#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:10
-#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:11
-#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:15
-#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:16
-msgid "Hello World"
-msgstr ""
-
-#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:4
-#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:6
-#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:11
-#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:16
-#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:5
-#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:7
-#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:12
-#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:17
-#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:4
-#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:6
-#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:11
-#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:16
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:4
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:6
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:11
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:16
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:4
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:6
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:11
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:16
-#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:4
-#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:6
-#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:11
-#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:16
-#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:5
-#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:7
-#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:12
-#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:17
-msgctxt "verb"
-msgid "Post"
-msgstr ""
-
-#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:20
-#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:24
-#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:21
-#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:25
-#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:20
-#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:24
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:20
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:24
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:20
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:24
-#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:20
-#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:24
-#: node_modules/grunt-checktextdomain/test/fixtures/plurals.php:3
-#: node_modules/grunt-checktextdomain/test/fixtures/plurals.php:8
-#: node_modules/grunt-checktextdomain/test/fixtures/plurals.php:15
-#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:21
-#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:25
-msgid "%d apple"
-msgid_plural "%d apples"
-msgstr[0] ""
-msgstr[1] ""
-
-#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:21
-#: node_modules/grunt-checktextdomain/test/expected/incorrect-domain-autocorrect.php:25
-#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:22
-#: node_modules/grunt-checktextdomain/test/expected/variable-domain-autocorrect.php:26
-#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:21
-#: node_modules/grunt-checktextdomain/test/fixtures/correct-domain.php:25
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:21
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain-autocorrect.php:25
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:21
-#: node_modules/grunt-checktextdomain/test/fixtures/incorrect-domain.php:25
-#: node_modules/grunt-checktextdomain/test/fixtures/missing-domain.php:25
-#: node_modules/grunt-checktextdomain/test/fixtures/plurals.php:4
-#: node_modules/grunt-checktextdomain/test/fixtures/plurals.php:9
-#: node_modules/grunt-checktextdomain/test/fixtures/plurals.php:16
-#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:22
-#: node_modules/grunt-checktextdomain/test/fixtures/variable-domain-autocorrect.php:26
-msgctxt "noun, job positions"
-msgid "%d post"
-msgid_plural "%d posts"
-msgstr[0] ""
-msgstr[1] ""
-
-#: node_modules/grunt-wp-i18n/test/fixtures/basic-theme/exclude/file.php:3
-#: node_modules/grunt-wp-i18n/test/fixtures/plugin-include/plugin-include.php:6
-msgid "Exclude"
-msgstr ""
-
-#: node_modules/grunt-wp-i18n/test/fixtures/plugin-include/include/file.php:2
-msgid "Include"
-msgstr ""
-
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/add-domain.php:2
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-all-domains.php:2
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-all-domains.php:3
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-all-domains.php:4
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-domains.php:2
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-domains.php:3
-msgid "String"
-msgstr ""
-
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-all-domains.php:6
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-all-domains.php:7
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-all-domains.php:8
-msgctxt "a string"
-msgid "String"
-msgstr ""
-
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-all-domains.php:9
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-all-domains.php:10
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-all-domains.php:11
-msgid "1 Star"
-msgid_plural "%s Stars"
-msgstr[0] ""
-msgstr[1] ""
-
-#. translators: A single line translators comment.
-
-#: node_modules/grunt-wp-i18n/test/fixtures/translator-comments/translator-comments.php:7
-msgid "A"
-msgstr ""
-
-#. translators: A multiline translators comment.
-
-#: node_modules/grunt-wp-i18n/test/fixtures/translator-comments/translator-comments.php:15
-msgid "B"
 msgstr ""
 
 #: templates/add-ons/notifications.php:2 templates/settings/notifications.php:2
@@ -3596,7 +3437,10 @@ msgid "Guide to getting your API keys"
 msgstr ""
 
 #: templates/add-ons/twitter/settings.php:12
-msgid "To get your API Keys, create a <a href=\"https://developer.twitter.com/en/apps\">new Twitter App</a> and set the following values:"
+msgid ""
+"To get your API Keys, create a <a "
+"href=\"https://developer.twitter.com/en/apps\">new Twitter App</a> and set "
+"the following values:"
 msgstr ""
 
 #: templates/add-ons/twitter/settings.php:15
@@ -3604,11 +3448,15 @@ msgid "Your app's name"
 msgstr ""
 
 #: templates/add-ons/twitter/settings.php:16
-msgid "Your application description, which will be shown in user-facing authorization screens"
+msgid ""
+"Your application description, which will be shown in user-facing "
+"authorization screens"
 msgstr ""
 
 #: templates/add-ons/twitter/settings.php:17
-msgid "Your application's publicly accessible home page, where users can go to download, make use of, or find out more information about your application"
+msgid ""
+"Your application's publicly accessible home page, where users can go to "
+"download, make use of, or find out more information about your application"
 msgstr ""
 
 #: templates/add-ons/twitter/settings.php:18
@@ -3620,7 +3468,9 @@ msgid "Set to <code>Read and Write</code>"
 msgstr ""
 
 #: templates/add-ons/twitter/settings.php:22
-msgid "After creating your app, click on the Keys and Access Tokens tab to get your Consumer Key and Consumer Secret."
+msgid ""
+"After creating your app, click on the Keys and Access Tokens tab to get "
+"your Consumer Key and Consumer Secret."
 msgstr ""
 
 #: templates/add-ons/twitter/settings.php:30
@@ -3747,7 +3597,12 @@ msgid "Allow free shipping"
 msgstr ""
 
 #: templates/coupons/coupon-form.php:101
-msgid "Check this box if the coupon grants free shipping. The <a href=\"admin.php?page=wc-settings&tab=shipping&section=WC_Shipping_Free_Shipping\">free shipping method</a> must be enabled and be set to require \"a valid free shipping coupon\" (see the \"Free Shipping Requires\" setting)."
+msgid ""
+"Check this box if the coupon grants free shipping. The <a "
+"href=\"admin.php?page=wc-settings&tab=shipping&section=WC_Shipping_Free_"
+"Shipping\">free shipping method</a> must be enabled and be set to require "
+"\"a valid free shipping coupon\" (see the \"Free Shipping Requires\" "
+"setting)."
 msgstr ""
 
 #: templates/coupons/coupon-form.php:106
@@ -3783,7 +3638,9 @@ msgid "No maximum"
 msgstr ""
 
 #: templates/coupons/coupon-form.php:133
-msgid "This field allows you to set the maximum subtotal allowed when using the coupon."
+msgid ""
+"This field allows you to set the maximum subtotal allowed when using the "
+"coupon."
 msgstr ""
 
 #: templates/coupons/coupon-form.php:138
@@ -3791,7 +3648,9 @@ msgid "Individual use"
 msgstr ""
 
 #: templates/coupons/coupon-form.php:140
-msgid "Check this box if the coupon cannot be used in conjunction with other coupons"
+msgid ""
+"Check this box if the coupon cannot be used in conjunction with other "
+"coupons"
 msgstr ""
 
 #: templates/coupons/coupon-form.php:144
@@ -3799,7 +3658,10 @@ msgid "Exclude sale items"
 msgstr ""
 
 #: templates/coupons/coupon-form.php:146
-msgid "Check this box if the coupon should not apply to items on sale. Per-item coupons will only work if the item is not on sale. Per-cart coupons will only work if there are no sale items in the cart."
+msgid ""
+"Check this box if the coupon should not apply to items on sale. Per-item "
+"coupons will only work if the item is not on sale. Per-cart coupons will "
+"only work if there are no sale items in the cart."
 msgstr ""
 
 #: templates/coupons/coupon-form.php:153
@@ -3808,7 +3670,9 @@ msgid "Products"
 msgstr ""
 
 #: templates/coupons/coupon-form.php:179
-msgid "Products which need to be in the cart to use this coupon or, for &quot;Product Discounts&quot;, which products are discounted."
+msgid ""
+"Products which need to be in the cart to use this coupon or, for "
+"&quot;Product Discounts&quot;, which products are discounted."
 msgstr ""
 
 #: templates/coupons/coupon-form.php:182
@@ -3816,7 +3680,9 @@ msgid "Exclude Products"
 msgstr ""
 
 #: templates/coupons/coupon-form.php:207
-msgid "Products which must not be in the cart to use this coupon or, for &quot;Product Discounts&quot;, which products are not discounted."
+msgid ""
+"Products which must not be in the cart to use this coupon or, for "
+"&quot;Product Discounts&quot;, which products are not discounted."
 msgstr ""
 
 #: templates/coupons/coupon-form.php:212
@@ -3824,7 +3690,10 @@ msgid "Product Categories"
 msgstr ""
 
 #: templates/coupons/coupon-form.php:221
-msgid "A product must be in this category for the coupon to remain valid or, for &quot;Product Discounts&quot;, products in these categories will be discounted."
+msgid ""
+"A product must be in this category for the coupon to remain valid or, for "
+"&quot;Product Discounts&quot;, products in these categories will be "
+"discounted."
 msgstr ""
 
 #: templates/coupons/coupon-form.php:224
@@ -3832,7 +3701,10 @@ msgid "Exclude Categories"
 msgstr ""
 
 #: templates/coupons/coupon-form.php:233
-msgid "Product must not be in this category for the coupon to remain valid or, for &quot;Product Discounts&quot;, products in these categories will not be discounted."
+msgid ""
+"Product must not be in this category for the coupon to remain valid or, for "
+"&quot;Product Discounts&quot;, products in these categories will not be "
+"discounted."
 msgstr ""
 
 #: templates/coupons/coupon-form.php:239
@@ -3848,7 +3720,9 @@ msgid "Usage limit per user"
 msgstr ""
 
 #: templates/coupons/coupon-form.php:246
-msgid "How many times this coupon can be used by an individual user. Uses billing email for guests, and user ID for logged in users."
+msgid ""
+"How many times this coupon can be used by an individual user. Uses billing "
+"email for guests, and user ID for logged in users."
 msgstr ""
 
 #: templates/coupons/coupon-form.php:264
@@ -3864,7 +3738,11 @@ msgid "Add Coupon"
 msgstr ""
 
 #: templates/coupons/coupon-list-table.php:11
-msgid "Add customized and automated coupons to your follow-ups. You must create the coupon in this menu first, then select to include it in your Follow-up. The coupon code generation feature used here allows coupons to be created that are are unique for each user."
+msgid ""
+"Add customized and automated coupons to your follow-ups. You must create "
+"the coupon in this menu first, then select to include it in your Follow-up. "
+"The coupon code generation feature used here allows coupons to be created "
+"that are are unique for each user."
 msgstr ""
 
 #: templates/coupons/coupon-list-table.php:30
@@ -3893,11 +3771,15 @@ msgid "Coupon Code"
 msgstr ""
 
 #: templates/coupons/coupon-list-table.php:112
-msgid "This is the unique coupon code generated by the follow-up email for this specific email address"
+msgid ""
+"This is the unique coupon code generated by the follow-up email for this "
+"specific email address"
 msgstr ""
 
 #: templates/coupons/coupon-list-table.php:113
-msgid "This is the name of the follow-up email that generated the coupon that was sent to this specific email address"
+msgid ""
+"This is the name of the follow-up email that generated the coupon that was "
+"sent to this specific email address"
 msgstr ""
 
 #: templates/coupons/coupon-list-table.php:116
@@ -3905,7 +3787,9 @@ msgid "Used"
 msgstr ""
 
 #: templates/coupons/coupon-list-table.php:116
-msgid "This tells you if this specific coupon code generated and sent via follow-up emails has been used, and if it has, it includes the date and time"
+msgid ""
+"This tells you if this specific coupon code generated and sent via "
+"follow-up emails has been used, and if it has, it includes the date and time"
 msgstr ""
 
 #: templates/coupons/coupon-list-table.php:122 templates/reports/bounces.php:7
@@ -3914,7 +3798,9 @@ msgid "Date Sent"
 msgstr ""
 
 #: templates/coupons/coupon-list-table.php:122
-msgid "This is the date and time that this specific coupon code was sent to this email address"
+msgid ""
+"This is the date and time that this specific coupon code was sent to this "
+"email address"
 msgstr ""
 
 #: templates/coupons/coupon-list-table.php:133 templates/reports/bounces.php:15
@@ -3945,7 +3831,7 @@ msgid "Delete Selected"
 msgstr ""
 
 #: templates/coupons/form-fields.php:9 templates/coupons/form-fields.php:15
-msgid "Generate &amp; Send a Coupon Code"
+msgid "Generate a Coupon Code"
 msgstr ""
 
 #: templates/coupons/form-fields.php:17
@@ -4230,7 +4116,9 @@ msgid "Select categories&hellip;"
 msgstr ""
 
 #: templates/email-form/woocommerce/excluded-customers.php:2
-msgid "Do not send to customers who have previously purchased the selected products or products in the selected categories"
+msgid ""
+"Do not send to customers who have previously purchased the selected "
+"products or products in the selected categories"
 msgstr ""
 
 #: templates/email-form/woocommerce/excluded-customers.php:26
@@ -4285,7 +4173,9 @@ msgid "Unsubscribe after purchasing"
 msgstr ""
 
 #: templates/email-form/woocommerce/signup-options.php:7
-msgid "Enabling this option will stop customers from getting this email once they have made a purchase."
+msgid ""
+"Enabling this option will stop customers from getting this email once they "
+"have made a purchase."
 msgstr ""
 
 #: templates/email-form/woocommerce/test-fields-storewide.php:3
@@ -4296,9 +4186,8 @@ msgstr ""
 msgid "as an Order"
 msgstr ""
 
-#. translators: view that shows all emails in a list
-
 #: templates/email-list/class-wc-fue-list-table.php:74
+#. translators: view that shows all emails in a list
 msgid "All <span class=\"count\">(%s)</span>"
 msgid_plural "All <span class=\"count\">(%s)</span>"
 msgstr[0] ""
@@ -4393,9 +4282,8 @@ msgstr ""
 msgid "All dates"
 msgstr ""
 
-#. translators: 1: month name, 2: 4-digit year
-
 #: templates/email-list/class-wp-list-table.php:581
+#. translators: 1: month name, 2: 4-digit year
 msgid "%1$s %2$d"
 msgstr ""
 
@@ -4449,11 +4337,6 @@ msgstr ""
 #: templates/email-list/class-wp-list-table.php:790
 #: templates/email-list/class-wp-list-table.php:793
 msgid "Current Page"
-msgstr ""
-
-#: templates/email-list/class-wp-list-table.php:799
-msgctxt "paging"
-msgid "%1$s of %2$s"
 msgstr ""
 
 #: templates/email-list/class-wp-list-table.php:806
@@ -4597,7 +4480,9 @@ msgid "Always Send"
 msgstr ""
 
 #: templates/meta-boxes/email-settings.php:9
-msgid "Always send this email, regardless of other initial rules. Use carefully, as this could result in multiple emails being sent per order."
+msgid ""
+"Always send this email, regardless of other initial rules. Use carefully, "
+"as this could result in multiple emails being sent per order."
 msgstr ""
 
 #: templates/meta-boxes/email-settings.php:18
@@ -4605,7 +4490,9 @@ msgid "Send once per customer"
 msgstr ""
 
 #: templates/meta-boxes/email-settings.php:22
-msgid "A customer will only receive this email once, even if purchased multiple times at different dates"
+msgid ""
+"A customer will only receive this email once, even if purchased multiple "
+"times at different dates"
 msgstr ""
 
 #: templates/meta-boxes/email-settings.php:27
@@ -4613,7 +4500,9 @@ msgid "Delay existing email"
 msgstr ""
 
 #: templates/meta-boxes/email-settings.php:31
-msgid "If the customer already has this email scheduled, it will delay that scheduled email to the new future date."
+msgid ""
+"If the customer already has this email scheduled, it will delay that "
+"scheduled email to the new future date."
 msgstr ""
 
 #: templates/meta-boxes/email-settings.php:38
@@ -4665,7 +4554,9 @@ msgstr ""
 
 #: templates/meta-boxes/email-variables.php:12
 #: templates/send_manual_form.php:150
-msgid "Renders a <em>View in browser</em> link that points to the web version of the email."
+msgid ""
+"Renders a <em>View in browser</em> link that points to the web version of "
+"the email."
 msgstr ""
 
 #: templates/meta-boxes/email-variables.php:13
@@ -4698,7 +4589,9 @@ msgstr ""
 
 #: templates/meta-boxes/email-variables.php:19
 #: templates/send_manual_form.php:157
-msgid "The URL/Address of your store with path added at the end. Ex. {store_url=/categories}"
+msgid ""
+"The URL/Address of your store with path added at the end. Ex. "
+"{store_url=/categories}"
 msgstr ""
 
 #: templates/meta-boxes/email-variables.php:20
@@ -4971,7 +4864,9 @@ msgid "Clicked"
 msgstr ""
 
 #: templates/reports/user_view.php:54
-msgid "<span class=\"dashicons dashicons-visibility\" style=\"color:#7AD03A;\"></span> Yes"
+msgid ""
+"<span class=\"dashicons dashicons-visibility\" "
+"style=\"color:#7AD03A;\"></span> Yes"
 msgstr ""
 
 #: templates/reports/user_view.php:54
@@ -4979,7 +4874,9 @@ msgid "<span class=\"dashicons dashicons-hidden\" style=\"color:#EEE;\"></span> 
 msgstr ""
 
 #: templates/reports/user_view.php:55
-msgid "<span class=\"dashicons dashicons-carrot\" style=\"color:#7AD03A;\"></span> Yes"
+msgid ""
+"<span class=\"dashicons dashicons-carrot\" style=\"color:#7AD03A;\"></span> "
+"Yes"
 msgstr ""
 
 #: templates/reports/user_view.php:55
@@ -5293,7 +5190,9 @@ msgid "Optional. Used if your key is encrypted."
 msgstr ""
 
 #: templates/settings/settings-auth.php:61
-msgid "To generate new keys, please enable the OpenSSL extension in your PHP installation."
+msgid ""
+"To generate new keys, please enable the OpenSSL extension in your PHP "
+"installation."
 msgstr ""
 
 #: templates/settings/settings-auth.php:64
@@ -5350,7 +5249,9 @@ msgid "Check SPF Record"
 msgstr ""
 
 #: templates/settings/settings-auth.php:153
-msgid "SPF record found for <code id=\"spf_result_domain\"></code> - <code id=\"spf_result_data\"></code>"
+msgid ""
+"SPF record found for <code id=\"spf_result_domain\"></code> - <code "
+"id=\"spf_result_data\"></code>"
 msgstr ""
 
 #: templates/settings/settings-auth.php:161
@@ -5374,7 +5275,9 @@ msgid "Sensei Settings"
 msgstr ""
 
 #: templates/settings/settings-sensei.php:19
-msgid "Send email to the course creator when all learners have taken and passed the course"
+msgid ""
+"Send email to the course creator when all learners have taken and passed "
+"the course"
 msgstr ""
 
 #: templates/settings/settings-sensei.php:35
@@ -5383,7 +5286,9 @@ msgid "Email Variables"
 msgstr ""
 
 #: templates/settings/settings-sensei.php:50
-msgid "Send an email to the course creator when there are learners who haven't completed a course in "
+msgid ""
+"Send an email to the course creator when there are learners who haven't "
+"completed a course in "
 msgstr ""
 
 #: templates/settings/settings-subscribers.php:5
@@ -5391,7 +5296,10 @@ msgid "Upload CSV of Emails"
 msgstr ""
 
 #: templates/settings/settings-subscribers.php:7
-msgid "Import your existing mailing lists and email addresses. Then go to <a href=\"admin.php?page=followup-emails-subscribers\">Subscribers</a> to assign to lists and manage your addresses."
+msgid ""
+"Import your existing mailing lists and email addresses. Then go to <a "
+"href=\"admin.php?page=followup-emails-subscribers\">Subscribers</a> to "
+"assign to lists and manage your addresses."
 msgstr ""
 
 #: templates/settings/settings-subscribers.php:13
@@ -5433,7 +5341,9 @@ msgid "Permissions"
 msgstr ""
 
 #: templates/settings/settings-system.php:19
-msgid "Select the User Roles that will be given permission to manage Follow-Up Emails."
+msgid ""
+"Select the User Roles that will be given permission to manage Follow-Up "
+"Emails."
 msgstr ""
 
 #: templates/settings/settings-system.php:24
@@ -5445,7 +5355,9 @@ msgid "Daily Emails Summary"
 msgstr ""
 
 #: templates/settings/settings-system.php:54
-msgid "Turn on a daily summary of all emails sent to users, and sent the email addresses that you want to be notified with this summary."
+msgid ""
+"Turn on a daily summary of all emails sent to users, and sent the email "
+"addresses that you want to be notified with this summary."
 msgstr ""
 
 #: templates/settings/settings-system.php:59
@@ -5474,7 +5386,9 @@ msgid "Email Settings"
 msgstr ""
 
 #: templates/settings/settings-system.php:114
-msgid "You can change the default from and reply-to name and email for all your emails. You can also customize these on every individual email."
+msgid ""
+"You can change the default from and reply-to name and email for all your "
+"emails. You can also customize these on every individual email."
 msgstr ""
 
 #: templates/settings/settings-system.php:120
@@ -5510,7 +5424,9 @@ msgid "Bounce Settings"
 msgstr ""
 
 #: templates/settings/settings-system.php:161
-msgid "Which email address should all of your bounced emails be sent to? No premium version needed."
+msgid ""
+"Which email address should all of your bounced emails be sent to? No "
+"premium version needed."
 msgstr ""
 
 #: templates/settings/settings-system.php:167
@@ -5526,7 +5442,9 @@ msgid "Automatic Bounce Handling"
 msgstr ""
 
 #: templates/settings/settings-system.php:184
-msgid "To enable the automatic handling of bounced emails, enter the POP3 account of the bounce address above."
+msgid ""
+"To enable the automatic handling of bounced emails, enter the POP3 account "
+"of the bounce address above."
 msgstr ""
 
 #: templates/settings/settings-system.php:189
@@ -5562,7 +5480,9 @@ msgid "Soft Bounces"
 msgstr ""
 
 #: templates/settings/settings-system.php:243
-msgid "Attemp to resend up to %s times with an interval of %s minutes between each send before marking as a Hard Bounce."
+msgid ""
+"Attemp to resend up to %s times with an interval of %s minutes between each "
+"send before marking as a Hard Bounce."
 msgstr ""
 
 #: templates/settings/settings-system.php:254
@@ -5578,7 +5498,12 @@ msgid "Single Emails Sending Schedule"
 msgstr ""
 
 #: templates/settings/settings-system.php:262
-msgid "Sending manual emails at to large numbers of recipients could cause mail server issues with your host. For example, Gmail limits you to 500 sends per day to limit spam. <a href=\"http://www.75nineteen.com/how-many-emails-can-i-send-at-once-with-follow-up-emails/\">Read here for more</a>."
+msgid ""
+"Sending manual emails at to large numbers of recipients could cause mail "
+"server issues with your host. For example, Gmail limits you to 500 sends "
+"per day to limit spam. <a "
+"href=\"http://www.75nineteen.com/how-many-emails-can-i-send-at-once-with-"
+"follow-up-emails/\">Read here for more</a>."
 msgstr ""
 
 #: templates/settings/settings-system.php:268
@@ -5644,7 +5569,10 @@ msgid "Action Scheduler Logging"
 msgstr ""
 
 #: templates/settings/settings-tools.php:76
-msgid "The Action Scheduler, by default, logs completed actions to the comments for debugging purposes. Some users have inquired, but this is not a bug. You can turn off, and/or delete the actions log with the settings below."
+msgid ""
+"The Action Scheduler, by default, logs completed actions to the comments "
+"for debugging purposes. Some users have inquired, but this is not a bug. "
+"You can turn off, and/or delete the actions log with the settings below."
 msgstr ""
 
 #: templates/settings/settings-tools.php:79
@@ -5708,11 +5636,18 @@ msgid "Remove WooCommerce Email Styles"
 msgstr ""
 
 #: templates/settings/settings-woocommerce-integrations.php:5
-msgid "You can easily remove WooCommerce email styles to quickly be able to add full HTML to your emails directly in the email editor. Simply check this box, and the default WooCommerce styling will be removed from the emails you send via Follow-up Emails. Conversely, you can create your own templates and choose them instead of the default WooCommerce template."
+msgid ""
+"You can easily remove WooCommerce email styles to quickly be able to add "
+"full HTML to your emails directly in the email editor. Simply check this "
+"box, and the default WooCommerce styling will be removed from the emails "
+"you send via Follow-up Emails. Conversely, you can create your own "
+"templates and choose them instead of the default WooCommerce template."
 msgstr ""
 
 #: templates/settings/settings-woocommerce-integrations.php:12
-msgid "Click here to disable the wrapping of styles in the WooCommerce email templates."
+msgid ""
+"Click here to disable the wrapping of styles in the WooCommerce email "
+"templates."
 msgstr ""
 
 #: templates/settings/settings-woocommerce-integrations.php:20
@@ -5938,16 +5873,15 @@ msgstr ""
 #: templates/updater.php:18
 msgid "Data update in progress. Please be patient."
 msgstr ""
-#. Plugin Name of the plugin/theme
-msgid "Follow-Up Emails"
-msgstr ""
 
 #. Plugin URI of the plugin/theme
 msgid "https://woocommerce.com/products/follow-up-emails/"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Automate your email marketing, and create scheduled newletters to drive customer engagement for WordPress, WooCommerce, and Sensei."
+msgid ""
+"Automate your email marketing, and create scheduled newletters to drive "
+"customer engagement for WordPress, WooCommerce, and Sensei."
 msgstr ""
 
 #. Author of the plugin/theme
@@ -5956,4 +5890,49 @@ msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "https://woocommerce.com"
+msgstr ""
+
+#: includes/class-fue-admin-controller.php:235
+msgctxt "Data updater action label"
+msgid "processed"
+msgstr ""
+
+#: includes/class-fue-post-types.php:89
+msgctxt "Admin menu name"
+msgid "Follow-Up Emails"
+msgstr ""
+
+#: includes/lib/action-scheduler/classes/ActionScheduler_wpPostStore_PostTypeRegistrar.php:32
+msgctxt "Admin menu name"
+msgid "Scheduled Actions"
+msgstr ""
+
+#: includes/class-fue-post-types.php:118
+msgctxt "Email status"
+msgid "Inactive"
+msgstr ""
+
+#: includes/class-fue-post-types.php:127
+msgctxt "Email status"
+msgid "Active"
+msgstr ""
+
+#: includes/class-fue-post-types.php:136
+msgctxt "Email status"
+msgid "Archived"
+msgstr ""
+
+#: includes/lib/action-scheduler/classes/ActionScheduler_wpPostStore_PostStatusRegistrar.php:36
+msgctxt "post"
+msgid "Failed"
+msgstr ""
+
+#: includes/lib/action-scheduler/classes/ActionScheduler_wpPostStore_PostStatusRegistrar.php:50
+msgctxt "post"
+msgid "In-Progress"
+msgstr ""
+
+#: templates/email-list/class-wp-list-table.php:799
+msgctxt "paging"
+msgid "%1$s of %2$s"
 msgstr ""

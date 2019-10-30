@@ -44,6 +44,7 @@ function ampforwp_notice_bar_options($opt_name){
            'required' => array('amp-enable-notifications', '=' , '1'),
            'default'  => esc_html__('This website uses cookies.','accelerated-mobile-pages'),
            'placeholder' => esc_html__('Enter Text here','accelerated-mobile-pages'),
+           'tooltip-subtitle' => esc_html__('Enter the message you want to show in the notice bar. You can also paste HTML in it but only <span><a><b><i><br> tags are allowed.', 'accelerated-mobile-pages'),
            ),
            array(
            'class' => 'child_opt',
@@ -186,15 +187,7 @@ function ampforwp_notice_bar_options($opt_name){
                'required' => array('amp-gdpr-compliance-switch', '=' , '1'),
            ),
            array(
-            'id' => 'ampforwp-notice_popup',
-            'type' => 'section',
-            'title' => esc_html__('PopUp for AMP', 'accelerated-mobile-pages'),
-            'indent' => true,
-            'layout_type' => 'accordion',
-            'accordion-open'=> 1,
-                  ),
-           array(
-           'class' => 'child_opt child_opt_arrow',
+           'class' => 'amp-popup-fld',
            'id'   => 'info_normal_amp_popup',
            'type'     => 'info',
             'desc' => '<a href="https://ampforwp.com/amp-popup/"  target="_blank"><img class="ampforwp-ad-img-banner" src="'.AMPFORWP_IMAGE_DIR . '/popup_ext.png" width="560" height="85" /></a>',   

@@ -1,7 +1,21 @@
 <?php global $redux_builder_amp;
   wp_reset_postdata();?>
   <footer class="footer_wrapper container">
-      <div id="footer">      
+      <div id="footer">
+      <?php if ( is_active_sidebar( 'swift-footer-widget-area'  ) ) : ?>
+          <div class="f-w-blk">
+              <div class="d3f-w">
+                <?php 
+                $sanitized_sidebar = ampforwp_sidebar_content_sanitizer('swift-footer-widget-area');
+                if ( $sanitized_sidebar) {
+                  $sidebar_output = $sanitized_sidebar->get_amp_content();
+                  $sidebar_output = apply_filters('ampforwp_modify_sidebars_content',$sidebar_output);
+                } 
+                echo do_shortcode($sidebar_output); 
+                ?>
+              </div>
+          </div>
+        <?php endif; ?>       
         <?php if ( has_nav_menu( 'amp-footer-menu' ) ) { ?>
           <div class="footer_menu">
            <nav>
@@ -72,7 +86,7 @@
             } ?>
             <p class="rightslink"><?php
              $allowed_tags = '<p><a><b><strong><i><u><ul><ol><li><h1><h2><h3><h4><h5><h6><table><tr><th><td><em><span>'; 
-              echo strip_tags( ampforwp_translation($redux_builder_amp['amp-translator-footer-text'], 'Footer') ,$allowed_tags );
+              echo strip_tags( ampforwp_translation($redux_builder_amp['amp-translator-footer-text'], 'All Rights Reserved') ,$allowed_tags );
               if ( '1' == $redux_builder_amp['amp-footer-link-non-amp-page'] ) {
                 if ( $redux_builder_amp['amp-translator-footer-text'] ) { ?> | <?php ampforwp_view_nonamp(); }
                 else {

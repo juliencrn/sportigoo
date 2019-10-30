@@ -3,9 +3,9 @@
 Plugin Name: Ninja Forms
 Plugin URI: http://ninjaforms.com/
 Description: Ninja Forms is a webform builder with unparalleled ease of use and features.
-Version: 3.4.13
+Version: 3.4.20
 Author: The WP Ninjas
-Author URI: http://ninjaforms.com
+Author URI: http://ninjaforms.com/?utm_source=Ninja+Forms+Plugin&utm_medium=Plugins+WP+Dashboard
 Text Domain: ninja-forms
 Domain Path: /lang/
 
@@ -59,7 +59,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
          * @since 3.0
          */
 
-        const VERSION = '3.4.13';
+        const VERSION = '3.4.20';
         
         /**
          * @since 3.4.0
@@ -335,6 +335,12 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
                  */
                 add_filter('template_include', array(self::$instance, 'maybe_load_public_form'));
 
+
+                /*
+                 * Log queries that affect our CPT.
+                 */
+                add_filter( 'query', array( self::$instance, 'log_postmeta_query' ) );
+
                 /*
                  * Shortcodes
                  */
@@ -486,6 +492,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
         public function init()
         {
             do_action( 'nf_init', self::$instance );
+            $this->register_rewrite_rules();
         }
 
         public function flush_rewrite_rules()
@@ -524,7 +531,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
             global $wpdb;
             $sql = "SELECT COUNT( `id` ) AS total FROM `{$wpdb->prefix}nf3_forms`;";
             $result = $wpdb->get_results( $sql, 'ARRAY_A' );
-            $threshold = 30; // Threshold percentage for our required updates.
+            $threshold = 0; // Threshold percentage for our required updates.
             if ( get_transient( 'ninja_forms_prevent_updates' ) ) {
                 update_option( 'ninja_forms_needs_updates', 0 );
             }
@@ -543,6 +550,37 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
                 // Record that there are no required updates.
                 update_option( 'ninja_forms_needs_updates', 0 );
             }
+        }
+
+        function log_postmeta_query( $query )
+        {
+            // Record a copy of the original query so we don't modify it by accident.
+            $origin = $query;
+            // Avoid catching this method in an infinite loop.
+            if ( false === strpos( $query, 'nf3_object' ) ) {
+                /*
+                 * If this query affects our CPT,
+                 * log that query and a stack trace.
+                 */
+                if ( false !== strpos( $query, 'postmeta' ) ) {
+                    if ( false !== strpos( $query, '_field_' ) ) {
+                        global $wpdb;
+                        $table = $wpdb->prefix . 'nf3_objects';
+                        $meta_table = $wpdb->prefix . 'nf3_object_meta';
+                        $sql = "INSERT INTO {$table} (type) VALUES ('log');";
+                        $wpdb->query( $sql );
+                        $id = $wpdb->insert_id;
+                        $sql = "INSERT INTO {$meta_table} ( parent_id, `key`, `value`) VALUES ";
+                        $trace = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS );
+                        $trace = maybe_serialize( json_encode( $trace ) );
+                        $wpdb->escape_by_ref( $query );
+                        $sql .= "({$id}, 'query', '{$query}'), ";
+                        $sql .= "({$id}, 'trace', '{$trace}');";
+                        $wpdb->query( $sql );
+                    }
+                }
+            }
+         return $origin;
         }
 
         function maybe_load_public_form($template) {
@@ -1078,7 +1116,22 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
 					// Remove it from the list.
 					unset( $updates[ $slug ] );
 				}
-			}			
+            }
+            
+            if( isset( $updates[ 'CacheCollateFields' ] ) 
+                && isset( $updates[ 'CacheFieldReconcilliation' ] ) 
+                && !isset( $processed[ 'CacheFieldReconcilliation' ] ) ) {
+
+                unset( $updates[ 'CacheFieldReconcilliation' ] );
+
+                date_default_timezone_set( 'UTC' );
+                $now = date( "Y-m-d H:i:s" );
+                // Append the current update to the array.
+                $processed[ 'CacheFieldReconcilliation' ] = $now;
+                // Save it.
+                update_option( 'ninja_forms_required_updates', $processed );
+            }
+
 			return $updates;
         }
         
@@ -1253,14 +1306,6 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
      * @since 3.3.17
      */
     function nf_update_marketing_feed() {
-        // Fetch our membership data.
-        $data = wp_remote_get( 'http://api.ninjaforms.com/feeds/?fetch=memberships' );
-        // If we got a valid response...
-        if ( 200 == $data[ 'response' ][ 'code' ] ) {
-            // Save the data to our option.
-            $data = wp_remote_retrieve_body( $data );
-            update_option( 'ninja_forms_memberships_feed', $data, false );
-        }
         // Fetch our addon data.
         $data = wp_remote_get( 'http://api.ninjaforms.com/feeds/?fetch=addons' );
         // If we got a valid response...

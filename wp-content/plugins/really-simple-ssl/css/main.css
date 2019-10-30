@@ -25,9 +25,37 @@
 .activate-ssl .button {
   margin-bottom:20px;
 }
-.really-simple-ssl-table td {
-  vertical-align: top;
+
+.really-simple-ssl-table {
+  display: flex;
+  flex-direction: column;
+  max-width: 1140px;
 }
+
+.rsssl-table-td-main-content {
+  width: 100%;
+}
+
+.really-simple-ssl-table tr:first-child {
+  border-top-left-radius: .55rem;
+  border-top-right-radius: .55rem;
+}
+
+.really-simple-ssl-table tr:last-child {
+  margin-bottom: 0;
+  border-bottom-left-radius: .55rem;
+  border-bottom-right-radius: .55rem;
+}
+
+.really-simple-ssl-table tr {
+  position: relative;
+  display: block;
+  padding: .75rem 1.25rem;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,.125);
+}
+
 .debug-log {
   background-color: #fff;
   padding:15px;
@@ -37,6 +65,24 @@
 .rsssl-icons {
   width:15px;
   height:15px;
+}
+
+.rsssl-update-count {
+  margin-left: 4px !important;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  margin: 1px 0 -1px 2px;
+  padding: 0 5px;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  background-color: #ca4a1f;
+  color: #fff;
+  font-size: 11px;
+  line-height: 1.6;
+  text-align: center;
+  z-index: 26
 }
 
 /* rsssl-rsssl-tooltip for settings page */
@@ -523,4 +569,55 @@ input:disabled + .rsssl-slider {
 }
 input:focus + .rsssl-slider {
   box-shadow: 0 0 1px #2DAAE1;
+}
+
+.debug-log {
+  width: 90%;
+}
+
+.rsssl-dismiss-text {
+  font-size: 1em;
+  color: #0073aa;
+  margin-left: 6px;
+}
+
+.rsssl-dashboard-plusone {
+  margin-left: 8px;
+}
+
+.rsssl-highlight {
+  border-left: 4px solid #46B450;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
+  background-image:none !important;
+  -o-animation: fadeIt 5s ease-in-out;
+  animation: fadeIt 5s ease-in-out;}
+
+@-o-keyframes fadeIt {
+  0%   { background-color: #FFFFFF; }
+  30%  { background-color: #d6efd6; }
+  100% { background-color: inherit; }
+}
+@keyframes fadeIt {
+  0%   { background-color: #FFFFFF; }
+  30%  { background-color: #d6efd6; }
+  100% { background-color: inherit; }
+}
+
+.form-table th {
+  padding-left: 10px;
+}
+
+.rsssl-dashboard-dismiss .close {
+  all: initial;
+}
+
+.rsssl-dashboard-dismiss span {
+  font-size: 1.5em;
+  color: darkgrey;
+  font-family: sans-serif;
+}
+
+.rsssl-dashboard-dismiss span:hover {
+  cursor: pointer;
+  color: grey;
 }

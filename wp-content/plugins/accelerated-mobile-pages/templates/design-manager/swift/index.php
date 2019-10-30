@@ -28,12 +28,17 @@
 			    	<?php amp_loop_category(); ?>
 				    <?php amp_loop_title(); ?>
 				    <div class="at-dt">
-					    <?php amp_loop_date(); ?>
-					     <?php amp_author_box( 
+					    <?php 
+				    	if( true == ampforwp_get_setting('amforwp-homepage-date-switch')){	amp_loop_date();
+						} 
+						?>
+					    <?php amp_author_box( 
 										array('author_pub_name'=>true,)
 										); ?>
 					</div>
-				    <?php if( ampforwp_check_excerpt() ) { amp_loop_excerpt(50); } ?>
+				    <?php if( ampforwp_check_excerpt() ) { 
+				    amp_loop_excerpt(ampforwp_get_setting('amp-swift-excerpt-len'));
+			    	} ?>
 			    </div>
 			</div>
 		<?php } else { 
@@ -56,9 +61,11 @@
 				    <?php if( ampforwp_check_excerpt() ) { 
 				    amp_loop_excerpt(ampforwp_get_setting('amp-swift-excerpt-len'));
 			    	} ?>	
+				    <?php if( true == ampforwp_get_setting('amforwp-homepage-date-switch')){?>
 				    <div class="pt-dt">
 				    	<?php amp_loop_date(); ?>
 				    </div>
+					<?php }?>
 			    </div>
 			</div>
 		<?php } $i++; ?>
@@ -73,8 +80,8 @@
 			if ( $sanitized_sidebar) {
 				$sidebar_output = $sanitized_sidebar->get_amp_content();
 				$sidebar_output = apply_filters('ampforwp_modify_sidebars_content',$sidebar_output);
+			echo $sidebar_output; // amphtml content, no kses
 			}
-            echo $sidebar_output; // amphtml content, no kses
 			?>
 		</div>
 	<?php } ?>

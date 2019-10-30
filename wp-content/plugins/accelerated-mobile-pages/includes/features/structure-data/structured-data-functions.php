@@ -10,11 +10,12 @@
 	        $ampforwp_sd_width = '';
 	        $ampforwp_sd_height = ampforwp_get_setting('ampforwp-sd-logo-height');
 	        $ampforwp_sd_width = ampforwp_get_setting('ampforwp-sd-logo-width');
+	        $ampforwp_sd_logo =  ampforwp_get_setting('amp-structured-data-logo','url');
 	        if (! empty( $redux_builder_amp['opt-media']['url'] ) ) {
 	          $structured_data_main_logo = $redux_builder_amp['opt-media']['url'];
 	        }
-	        if (! empty( $redux_builder_amp['amp-structured-data-logo']['url'] ) ) {
-	          $structured_data_logo = __($redux_builder_amp['amp-structured-data-logo']['url'], 'accelerated-mobile-pages');
+	        if (! empty( $ampforwp_sd_logo ) ) {
+	          $structured_data_logo = esc_url( __(ampforwp_get_setting('amp-structured-data-logo','url'), 'accelerated-mobile-pages') );
 	        }
 	        if ( $structured_data_logo ) {
 	          $structured_data_logo = $structured_data_logo;
@@ -30,7 +31,7 @@
 
 	        //code for adding 'description' meta from Yoast SEO
 
-	        if($redux_builder_amp['ampforwp-seo-yoast-description']){
+	       	if('yoast' == ampforwp_get_setting('ampforwp-seo-selection') && ampforwp_get_setting('ampforwp-seo-yoast-description')){
 	         if ( class_exists('WPSEO_Frontend') ) {
 	           $front = WPSEO_Frontend::get_instance();
 	           $desc = $front->metadesc( false );
@@ -68,11 +69,12 @@
 			$structured_data_image = wp_get_attachment_image_src( $post_image_id, 'full' );
 			$post_image_check = $structured_data_image;
 			$structured_data_image_url = '';
+			$ampforwp_sd_img_placeholder = ampforwp_get_setting('amp-structured-data-placeholder-image','url');
 
 			if ( $post_image_check == false) {
 
-				if (! empty( ampforwp_get_setting('amp-structured-data-placeholder-image','url') ) ) {
-					$structured_data_image_url = esc_url(ampforwp_get_setting('amp-structured-data-placeholder-image','url'));
+				if (! empty( $ampforwp_sd_img_placeholder ) ) {
+					$structured_data_image_url = esc_url(__(ampforwp_get_setting('amp-structured-data-placeholder-image','url'), 'accelerated-mobile-pages') );
 				}
 					$structured_data_image = $structured_data_image_url;
 					$structured_data_height = intval(ampforwp_get_setting('amp-structured-data-placeholder-image-height'));
@@ -87,7 +89,7 @@
 			}
 			// Custom Structured Data information for Archive, Categories and tag pages.
 			if ( is_archive() ) {
-					$structured_data_image = esc_url( ampforwp_get_setting('amp-structured-data-placeholder-image','url') );
+					$structured_data_image = esc_url( __(ampforwp_get_setting('amp-structured-data-placeholder-image','url'), 'accelerated-mobile-pages') );
 					$structured_data_height = intval(ampforwp_get_setting('amp-structured-data-placeholder-image-height'));
 					$structured_data_width = intval(ampforwp_get_setting('amp-structured-data-placeholder-image-width'));
 					$structured_data_archive_title 	= esc_html(get_the_archive_title());
@@ -110,25 +112,26 @@
 					);
 					$metadata['headline'] = $structured_data_archive_title;
 			}
+			if ( ! function_exists('amp_activate') ) {
+				// Get Image metadata from the Custom Field
+				if(ampforwp_is_custom_field_featured_image() && ampforwp_cf_featured_image_src()){
+					$metadata['image'] = array(
+							'@type' 	=> 'ImageObject',
+							'url' 		=> ampforwp_cf_featured_image_src('url') ,
+							'width' 	=> ampforwp_cf_featured_image_src('width'),
+							'height' 	=> ampforwp_cf_featured_image_src('height'),
+					);	
+				}
 
-			// Get Image metadata from the Custom Field
-			if(ampforwp_is_custom_field_featured_image() && ampforwp_cf_featured_image_src()){
-				$metadata['image'] = array(
-						'@type' 	=> 'ImageObject',
-						'url' 		=> ampforwp_cf_featured_image_src('url') ,
-						'width' 	=> ampforwp_cf_featured_image_src('width'),
-						'height' 	=> ampforwp_cf_featured_image_src('height'),
-				);	
-			}
-
-			// Get image metadata from The Content
-			if( true == $redux_builder_amp['ampforwp-featured-image-from-content'] && ampforwp_get_featured_image_from_content() ){
-				$metadata['image'] = array(
-						'@type' 	=> 'ImageObject',
-						'url' 		=> ampforwp_get_featured_image_from_content('url') ,
-						'width' 	=> ampforwp_get_featured_image_from_content('width'),
-						'height' 	=> ampforwp_get_featured_image_from_content('height'),
-				);
+				// Get image metadata from The Content
+				if( true == $redux_builder_amp['ampforwp-featured-image-from-content'] && ampforwp_get_featured_image_from_content() ){
+					$metadata['image'] = array(
+							'@type' 	=> 'ImageObject',
+							'url' 		=> ampforwp_get_featured_image_from_content('url') ,
+							'width' 	=> ampforwp_get_featured_image_from_content('width'),
+							'height' 	=> ampforwp_get_featured_image_from_content('height'),
+					);
+				}
 			}
 
 			if( in_array( "image" , $metadata )  ) {
@@ -162,9 +165,10 @@ function ampforwp_search_or_homepage_or_staticpage_metadata( $metadata, $post ) 
 			// creating this to prevent errors
 			$structured_data_image_url = '';
 			$page = '';
+			$ampforwp_sd_img_placeholder = ampforwp_get_setting('amp-structured-data-placeholder-image','url');
 			// placeholder Image area
-			if (! empty( ampforwp_get_setting('amp-structured-data-placeholder-image','url') ) ) {
-				$structured_data_image_url = esc_url(ampforwp_get_setting('amp-structured-data-placeholder-image','url'));
+			if (! empty( $ampforwp_sd_img_placeholder ) ) {
+				$structured_data_image_url = esc_url(__(ampforwp_get_setting('amp-structured-data-placeholder-image','url'), 'accelerated-mobile-pages'));
 			}
 			$structured_data_image =  $structured_data_image_url; //  Placeholder Image URL
 			$structured_data_height = intval(ampforwp_get_setting('amp-structured-data-placeholder-image-height')); //  Placeholder Image width
@@ -251,7 +255,9 @@ function ampforwp_structured_data_type( $metadata ) {
 	$set_sd_post 	= ampforwp_get_setting('ampforwp-sd-type-posts');
 	$set_sd_page 	= ampforwp_get_setting('ampforwp-sd-type-pages');
  	$post_types 	= ampforwp_get_all_post_types();
-
+ 	if((function_exists('activate_wp_recipe_maker') || function_exists('activate_wp_recipe_maker_premium')) && (isset($set_sd_post) && $set_sd_post == 'Recipe')){
+		return;
+	}
 	if ( $post_types ) { // If there are any custom public post types.
     	foreach ( $post_types  as $post_type ) {
 
@@ -260,18 +266,27 @@ function ampforwp_structured_data_type( $metadata ) {
         	}
         	
 	       	if ( isset( $post->post_type ) && $post->post_type == $post_type ) {
-        		if ( empty( $redux_builder_amp['ampforwp-sd-type-'.$post_type.''] ) && $redux_builder_amp['ampforwp-seo-yoast-description'] == 0 ) {
+	       		if( empty( ampforwp_get_setting('ampforwp-sd-type-'.esc_attr($post_type)) ) ){
+	       			return;
+	       		}
+        		if ( empty( ampforwp_get_setting('ampforwp-sd-type-'.esc_attr($post_type)) ) && ampforwp_get_setting('ampforwp-seo-yoast-description') == 0 ) {
 					return;
 				}
 				if(isset($metadata['@type']) && $metadata['@type']){
-        			$metadata['@type'] = $redux_builder_amp['ampforwp-sd-type-'.$post_type.''];
+        			$metadata['@type'] = ampforwp_get_setting('ampforwp-sd-type-'.esc_attr($post_type));
         		}
         		return $metadata;
         	}
         }
     }
 
-	if ( empty( $set_sd_post ) && is_single() && $redux_builder_amp['ampforwp-seo-yoast-description'] == 0 ) {;
+    if( isset( $post->post_type ) && $post->post_type == "post" && empty( $set_sd_post )){
+    	return;
+    }elseif(isset( $post->post_type ) && $post->post_type == "page" && empty( $set_sd_page )) {
+    	return;
+    }
+
+	if( empty($set_sd_post) && is_single() && ampforwp_get_setting('ampforwp-seo-yoast-description') == 0) {
 		return;
 	}
 
@@ -317,10 +332,11 @@ if ( ! function_exists('ampforwp_structured_data_video_thumb') ) {
 			$post_image_id = get_post_thumbnail_id( get_the_ID() );
 			$post_image = wp_get_attachment_image_src( $post_image_id, 'full' );
 			$structured_data_video_thumb_url = '';
+			$ampforwp_sd_video_thumb = ampforwp_get_setting('amporwp-structured-data-video-thumb-url','url') ;
 			// If there's no featured image, take default from settings
 			if ( false == $post_image ) {
-				if ( ! empty( $redux_builder_amp['amporwp-structured-data-video-thumb-url']['url'] ) ) {
-						$structured_data_video_thumb_url = __($redux_builder_amp['amporwp-structured-data-video-thumb-url']['url'], 'accelerated-mobile-pages');
+				if ( ! empty( $sd_video_thumb ) ) {
+						$structured_data_video_thumb_url = esc_url( __(ampforwp_get_setting('amporwp-structured-data-video-thumb-url','url'), 'accelerated-mobile-pages') );
 					}
 			}
 			// If featured image is present, take it as thumbnail
@@ -385,7 +401,7 @@ if ( ! function_exists('ampforwp_sd_multiple_images') ) {
 				$image3_height = 300;
 				$image3 = ampforwp_aq_resize( $metadata['image']['url'], $image3_width, $image3_height, true, false, true );
 				$image3_url = $image3[0];
-				$metadata['image'] = array($image3_url, $image2_url, $image1_url); 
+				$metadata['image'] = array($image1_url, $image2_url, $image3_url); 
 			}
 		}
 		return $metadata;

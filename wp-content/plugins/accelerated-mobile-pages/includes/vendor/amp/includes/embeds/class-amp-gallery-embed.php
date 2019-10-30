@@ -123,7 +123,8 @@ class AMP_Gallery_Embed_Handler extends AMP_Base_Embed_Handler {
 						{{amp_image_lightbox}}',
 						'image-with-caption-html'=>'<figure><div class="ampforwp-gallery-item amp-carousel-container">{{main_images}} </div><figcaption {{openbrack}}class{{closebrack}}="expanded? \'expanded\' : \'\'" on="tap:AMP.setState({expanded: !expanded})" tabindex="0" role="button" >{{main_images_caption}}<span {{openbrack}}text{{closebrack}}="expanded ? \'less\' : \'more\'">more</span> </figcaption></figure>',
 						'image-without-caption-html' =>'<div class="ampforwp-gallery-item amp-carousel-container">{{main_images}} </div>',
-						'gallery_css' => '',
+						'gallery_css' => '.cls-btn { background: #0d0d0d; border: none;position: absolute;right: 10px;}
+						.cls-btn:after{content:"X";display:inline-block;color:#fff;font-size:20px;padding:20px;}',
 
 						'scripts' => array()
 									),
@@ -138,6 +139,8 @@ class AMP_Gallery_Embed_Handler extends AMP_Base_Embed_Handler {
 							.carousel-preview button{padding:0;}
 							.carousel-preview amp-img{height:40px;width:60px;position:relative;}
 							.carousel-preview {width: 100%;display: inline-block;text-align: center;margin: 20px 0px;}
+							.cls-btn { background: #0d0d0d; border: none;position: absolute;right: 10px;}
+							.cls-btn:after{content:"X";display:inline-block;color:#fff;font-size:20px;padding:20px;}
 							',
 						'scripts' => array()
 									),
@@ -225,6 +228,10 @@ class AMP_Gallery_Embed_Handler extends AMP_Base_Embed_Handler {
 				// Replace the openbrack with [ and closebrack with ]
 				$returnHtml = str_replace('{{openbrack}}', '[', $returnHtml);
 				$returnHtml = str_replace('{{closebrack}}', ']', $returnHtml);
+				if( strlen($caption) < 200){
+					$returnHtml = str_replace('<span [text]="expanded ? \'less\' : \'more\'">more</span>', '', $returnHtml);
+					$returnHtml = preg_replace('/<span(.*?)>(.*?)<\/span>/', '', $returnHtml);
+				}
 			}
 			elseif( isset($markup['image-without-caption-html']) ){
 				// If there is no caption
@@ -276,36 +283,6 @@ class AMP_Gallery_Embed_Handler extends AMP_Base_Embed_Handler {
 }// Class closed
 
 // Add Caption in the Gallery Image
-add_filter('amp_gallery_images','AMPforWP\\AMPVendor\\ampforwp_new_gallery_images', 10, 3);
-function ampforwp_new_gallery_images($images_markup, $image, $markup_arr){
-	add_action('amp_post_template_css', 'AMPforWP\\AMPVendor\\ampforwp_additional_gallery_style');
-	add_filter('ampforwp_post_template_data','ampforwp_carousel_bind_script');
-	add_action('amp_post_template_css', 'ampforwp_additional_style_carousel_caption');
-	return $images_markup;
-}
+add_filter('amp_gallery_images','ampforwp_new_gallery_images', 10, 3);
 
-if( ! function_exists( 'ampforwp_additional_gallery_style' ) ){
-	function ampforwp_additional_gallery_style(){
-		global $redux_builder_amp,$carousel_markup_all;
-		$design_type = '';
-		$design_type = $redux_builder_amp['ampforwp-gallery-design-type'];
-		
-		if(isset($design_type) && $design_type!==''){
-			echo $carousel_markup_all[$design_type]['gallery_css'];
-		}
-	}
-}
-
-add_filter('amp_thumbnail_images','AMPforWP\\AMPVendor\\ampforwp_new_thumbnail_images',10,3);
-function ampforwp_new_thumbnail_images($amp_images, $uniqueid, $markup_arr){
-	if(!isset($markup_arr['carousel_with_thumbnail_html'])){return '';}
-	$amp_thumb_image_buttons = '';
-	foreach ($amp_images as $key => $value) {
-		$returnHtml = $markup_arr['carousel_with_thumbnail_html'];
-		$returnHtml = str_replace('{{thumbnail}}', $value , $returnHtml);
-		$returnHtml = str_replace('{{unique_id}}', $uniqueid , $returnHtml);
-		$returnHtml = str_replace('{{unique_index}}', $key , $returnHtml);
-		$amp_thumb_image_buttons[$key] = $returnHtml;
-	}
-	return $amp_thumb_image_buttons;
-}
+add_filter('amp_thumbnail_images','ampforwp_new_thumbnail_images',10,3);

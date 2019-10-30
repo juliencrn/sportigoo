@@ -39,7 +39,7 @@ if ( get_query_var( 'paged' ) ) {
 <?php if( $redux_builder_amp['amp-design-3-featured-slider'] == 1 && $paged === 1 ) {
 		$num_posts = 4;$autoplay = 'autoplay';$delay = 'delay="4000"';
 		if ( isset($redux_builder_amp['ampforwp-featur-slider-autop-delay']) && $redux_builder_amp['ampforwp-featur-slider-autop-delay'] ) {
-			$delay = 'delay="'.$redux_builder_amp["ampforwp-featur-slider-autop-delay"].'"';
+			$delay = 'delay="'.esc_attr( ampforwp_get_setting("ampforwp-featur-slider-autop-delay") ).'"';
 		}
 		if ( isset($redux_builder_amp['ampforwp-featur-slider-num-posts']) && $redux_builder_amp['ampforwp-featur-slider-num-posts'] ) {
 			$num_posts = $redux_builder_amp['ampforwp-featur-slider-num-posts'];
@@ -54,7 +54,7 @@ if ( get_query_var( 'paged' ) ) {
 		  <amp-carousel width="450"
 		      height="270" layout="responsive"
 		      type="slides" <?php echo esc_attr($autoplay.' ');
-		      echo $delay; ?> >
+		      echo $delay; //escaped above ?> >
 		<?php
 		  global $redux_builder_amp;
 		  if( ( isset($redux_builder_amp['amp-design-3-featured-content']) && $redux_builder_amp['amp-design-3-featured-content'] == '1' ) && (isset($redux_builder_amp['amp-design-3-category-selector']) && $redux_builder_amp['amp-design-3-category-selector'] ) ){
@@ -104,7 +104,7 @@ if ( get_query_var( 'paged' ) ) {
 		            	$post_date =  human_time_diff( get_the_time('U', get_the_ID() ), current_time('timestamp') ) .' '. ampforwp_translation( $redux_builder_amp['amp-translator-ago-date-text'],'ago' );
                     	$post_date = apply_filters('ampforwp_modify_post_date',$post_date);
                     	echo esc_attr($post_date); ?></div>
-		            <h1><?php the_title() ?></h1>
+		            <h2><?php the_title() ?></h2>
 		        </div>
                   </a>
 		      </div>
@@ -126,6 +126,7 @@ if ( get_query_var( 'paged' ) ) {
 				'paged'               => esc_attr($paged),
 				'post__not_in' 		  => $exclude_ids,
 				'has_password' => false,
+				'no_found_rows' 	  => true,
 				'post_status'=> 'publish'
 			);
 
@@ -144,6 +145,14 @@ if ( get_query_var( 'paged' ) ) {
 				$thumb_url 	  	= ampforwp_get_post_thumbnail('url');
 				$thumb_width  	= ampforwp_get_post_thumbnail('width');
 				$thumb_height 	= ampforwp_get_post_thumbnail('height');
+				if(ampforwp_get_setting('ampforwp-homepage-posts-image-modify-size')){
+					$thumb_id 			= get_post_thumbnail_id();
+					$thumb_width  	= ampforwp_get_setting('ampforwp-design-3-homepage-posts-width');
+					$thumb_height 	= ampforwp_get_setting('ampforwp-design-3-homepage-posts-height');
+					$thumb_url_modify 	= wp_get_attachment_image_src($thumb_id, 'full' , true);
+ 					$thumb_crop_url = ampforwp_aq_resize( $thumb_url_modify[0], $thumb_width , $thumb_height , true, false );
+					$thumb_url = $thumb_crop_url[0];
+				}
 				if($thumb_url){
 					?>
 					<div class="home-post_image">

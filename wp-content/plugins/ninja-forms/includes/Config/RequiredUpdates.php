@@ -27,5 +27,10 @@ return apply_filters( 'ninja_forms_required_updates', array(
         'requires' => array( 'CacheCollateObjects' ),
         'nicename' => __( 'Cleanup Orphan Records', 'ninja-forms' ),
     ),
+    'CacheFieldReconcilliation' => array(
+        'class_name' => 'NF_Updates_CacheFieldReconcilliation',
+        'requires' => array( 'CacheCollateCleanup' ),
+        'nicename' => __( 'Field Meta Cleanup.', 'ninja-forms' ),
+    ),
 
 ));

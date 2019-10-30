@@ -3,9 +3,11 @@
 Contributors: PressLabs
 Donate link: https://www.presslabs.com/gitium/
 Tags: git, version, versioning, deployment, version-control, github, bitbucket, travis, code, revision, testing, development, branch, production, staging, debug, plugin, gitium, presslabs, simple
-Requires at least: 4.0
-Tested up to: 5.0
+Requires at least: 3.9
+Tested up to: 5.2.2
+Requires PHP: 5.6
 License: GPLv2
+Stable tag: 1.0.3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Automatic git version control and deployment for your plugins and themes integrated into wp-admin.
@@ -67,15 +69,22 @@ The behavior in case of conflicts is to overwrite the changes on the `origin` re
 
 You can ping the webhook url after a push to automatically deploy the new code. The webhook url can be found under `Gitium` menu, `Settings` section. This url also plays well with Github or Bitbucket webhooks.
 
-= Does it work on multi site setups? =
+= Does it works on multi site setups? =
 
-Yes, Gitium is working on multi site setups.
+Gitium does not support multisite setups at the moment.
 
 = How does gitium handle submodules? =
 
 Submodules are currently not supported.
 
+== Upgrade Notice ==
+= 1.0.3 =
+Fixed wrong redirection for multisite installations during initial setup
+
 == Changelog ==
+= 1.0.3 =
+* Fixed wrong redirection for multisite installations during initial setup
+
 = 1.0.2 =
 * Full PHP 7+ compatibility
 * Hotfix - Fixed the blank pages being displayed instead of success of failure messages;

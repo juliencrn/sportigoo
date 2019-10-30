@@ -557,7 +557,7 @@ class FUE_Addon_Woocommerce {
 	 */
 	public function display_subscription_preferences_block() {
 		$lists = Follow_Up_Emails::instance()->newsletter->get_public_lists();
-		fue_get_template( '/myaccount/account-subscriptions.php', array('lists' => $lists), 'follow-up-emails', FUE_TEMPLATES_DIR );
+		fue_get_template( '/myaccount/account-subscriptions.php', array( 'lists' => $lists ), 'follow-up-emails', FUE_TEMPLATES_DIR );
 	}
 
 	/**
@@ -578,6 +578,79 @@ class FUE_Addon_Woocommerce {
 	}
 
 	/**
+	 * Retrieve the followup customer from the database.
+	 * @param int $user_id
+	 * @param WC_Order $order
+	 * @return object
+	 */
+	public static function get_customer( $user_id, $order ) {
+		$wpdb = Follow_Up_Emails::instance()->wpdb;
+
+		if ( $user_id > 0 ) {
+			$user       = new WP_User( $user_id );
+			$email      = $user->user_email;
+			$customer   = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}followup_customers WHERE user_id = %d", $user_id ) );
+
+			if ( ! $customer ) {
+				$email      = WC_FUE_Compatibility::get_order_prop( $order, 'billing_email' );
+				$customer   = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}followup_customers WHERE email_address = %s", $email ) );
+
+				if ( $customer ) {
+					self::update_customer( $user_id, $customer );
+				}
+			}
+		} else {
+			$user_id    = 0;
+			$email      = WC_FUE_Compatibility::get_order_prop( $order, 'billing_email' );
+			$customer   = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}followup_customers WHERE email_address = %s", $email ) );
+		}
+		return $customer;
+	}
+
+	/**
+	 * Insert a new followup customer into the database.
+	 * @param WC_Order $order
+	 * @param int $user_id
+	 * @return object $customer
+	 */
+	public static function create_customer( $order, $user_id ) {
+
+		$wpdb  = Follow_Up_Emails::instance()->wpdb;
+		$email = WC_FUE_Compatibility::get_order_prop( $order, 'billing_email' );
+
+		$insert = array(
+			'user_id'               => $user_id,
+			'email_address'         => $email,
+			'total_purchase_price'  => 0,
+			'total_orders'          => 1,
+		);
+
+		$wpdb->insert( $wpdb->prefix . 'followup_customers', $insert );
+		$customer_id = $wpdb->insert_id;
+		$customer = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}followup_customers WHERE id = %d", $customer_id ) );
+
+		return $customer;
+	}
+
+	/**
+	 * Update a followup customer in the database.
+	 * e.g. purchased as guest previously but checkouts with the same email as a user.
+	 * @param int $user_id
+	 * @param object $customer
+	 * @return void
+	 */
+	public static function update_customer( $user_id, $customer ) {
+
+		$wpdb = Follow_Up_Emails::instance()->wpdb;
+
+		$wpdb->update(
+			$wpdb->prefix . 'followup_customers',
+			array( 'user_id' => $user_id ),
+			array( 'id' => $customer->id )
+			);
+	}
+
+	/**
 	 * Extract data from an order and mark it as 'recorded' so we don't make
 	 * the mistake of processing it again and giving us duplicate and unreliable data
 	 *
@@ -588,13 +661,13 @@ class FUE_Addon_Woocommerce {
 		$wpdb = Follow_Up_Emails::instance()->wpdb;
 
 		$order_categories   = array();
-		$wc2                = WC_FUE_Compatibility::is_wc_version_gt('2.0');
+		$wc2                = WC_FUE_Compatibility::is_wc_version_gt( '2.0' );
 		$order_id           = WC_FUE_Compatibility::get_order_prop( $order, 'id' );
 		$user_id            = WC_FUE_Compatibility::get_order_user_id( $order );
 
 		$recorded = get_post_meta( $order_id, '_fue_recorded', true );
 
-		if ( $recorded == 1 && !$force ) {
+		if ( 1 == $recorded && ! $force ) {
 			return;
 		}
 
@@ -606,35 +679,17 @@ class FUE_Addon_Woocommerce {
 			$order_increment = 1;
 		}
 
-		if ( $user_id > 0 ) {
-			$user       = new WP_User( $user_id );
-			$email      = $user->user_email;
+		$customer = self::get_customer( $user_id, $order );
 
-			$customer   = $wpdb->get_row( $wpdb->prepare("SELECT * FROM {$wpdb->prefix}followup_customers WHERE user_id = %d", $user_id) );
-		} else {
-			$user_id    = 0;
-			$email      = WC_FUE_Compatibility::get_order_prop( $order, 'billing_email' );
-			$customer   = $wpdb->get_row( $wpdb->prepare("SELECT * FROM {$wpdb->prefix}followup_customers WHERE email_address = %s", $email) );
-		}
-
-		if (! $customer ) {
-			$insert = array(
-				'user_id'               => $user_id,
-				'email_address'         => $email,
-				'total_purchase_price'  => 0,
-				'total_orders'          => 1
-			);
-
-			$wpdb->insert( $wpdb->prefix .'followup_customers', $insert );
-			$customer_id = $wpdb->insert_id;
-			$customer = $wpdb->get_row( $wpdb->prepare("SELECT * FROM {$wpdb->prefix}followup_customers WHERE id = %d", $customer_id) );
+		if ( ! $customer ) {
+			$customer = self::create_customer( $order, $user_id );
 		}
 
 		// record order
-		$order_recorded = $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->prefix}followup_customer_orders WHERE order_id = {$order_id}");
+		$order_recorded = $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->prefix}followup_customer_orders WHERE order_id = {$order_id}" );
 
 		if ( 0 == $order_recorded ) {
-			$wpdb->insert( $wpdb->prefix .'followup_customer_orders', array('followup_customer_id' => $customer->id, 'order_id' => $order_id, 'price' => WC_FUE_Compatibility::get_order_prop( $order, 'order_total' )) );
+			$wpdb->insert( $wpdb->prefix . 'followup_customer_orders', array( 'followup_customer_id' => $customer->id, 'order_id' => $order_id, 'price' => WC_FUE_Compatibility::get_order_prop( $order, 'order_total' ) ) );
 		}
 
 		// update order totals
@@ -646,9 +701,9 @@ class FUE_Addon_Woocommerce {
 		$total_purchases = $customer->total_purchase_price + $order_total;
 
 		$wpdb->update(
-			$wpdb->prefix .'followup_customers',
-			array('total_purchase_price' => $total_purchases, 'total_orders' => $total_orders),
-			array('id' => $customer->id)
+			$wpdb->prefix . 'followup_customers',
+			array( 'total_purchase_price' => $total_purchases, 'total_orders' => $total_orders ),
+			array( 'id' => $customer->id )
 		);
 
 		// if items and categories have been previously recorded,

@@ -13,24 +13,19 @@ require_once(AMP_PAGE_BUILDER."config/moduleTemplate.php");
 add_action('add_meta_boxes','ampforwp_pagebuilder_content_meta_register', 10 ,1);
 function ampforwp_pagebuilder_content_meta_register($post_type){
 	global $redux_builder_amp;
-
-    $user_level = '';
-    $user_level = current_user_can( 'manage_options' );
-
-    if (  isset( $redux_builder_amp['amp-meta-permissions'] ) && $redux_builder_amp['amp-meta-permissions'] == 'all' ) {
-    	$user_level = true;
-    }
-
-    if ( $user_level && ( current_user_can('edit_posts') || current_user_can('edit_pages') ) ) {
+	global $post_id;
+    
+    if ( ampforwp_role_based_access_options() == true && ( current_user_can('edit_posts') || current_user_can('edit_pages') ) ) {
 		// Page builder for posts
-	  	if( $redux_builder_amp['amp-on-off-for-all-posts'] && $post_type == 'post' ) {
+	  	if( ampforwp_get_setting('amp-on-off-for-all-posts') && $post_type == 'post' ) {
 	  		add_meta_box( 'pagebilder_content', esc_html__( 'AMP Page Builder', 'accelerated-mobile-pages' ), 'amp_content_pagebuilder_title_callback',  'post' , 'normal', 'default' );
 	  	}
+	  	$frontpage_id = ampforwp_get_the_ID();
 	  	// Page builder for pages
-	  	if ( $redux_builder_amp['amp-on-off-for-all-pages'] && $post_type == 'page' ) {
+	  	if ( ( true == ampforwp_get_setting('amp-on-off-for-all-pages') && $post_type == 'page' ) || ( true == ampforwp_get_setting('amp-frontpage-select-option') && $post_id == $frontpage_id )) {
 	  		add_meta_box( 'pagebilder_content', esc_html__( 'AMP Page Builder', 'accelerated-mobile-pages' ), 'amp_content_pagebuilder_title_callback',  'page' , 'normal', 'default' );
 	  	}
-	  	if( (isset($redux_builder_amp['ampforwp-custom-type']) && is_array($redux_builder_amp['ampforwp-custom-type'] ) ) && in_array($post_type, $redux_builder_amp['ampforwp-custom-type']) ){
+	  	if(  is_array(ampforwp_get_setting('ampforwp-custom-type') ) && in_array($post_type, ampforwp_get_setting('ampforwp-custom-type')) ){
 	  		add_meta_box( 'pagebilder_content', esc_html__( 'AMP Page Builder', 'accelerated-mobile-pages' ), 'amp_content_pagebuilder_title_callback',  $post_type , 'normal', 'default' );
 	  	}
 	  	
@@ -43,7 +38,8 @@ function amp_content_pagebuilder_title_callback( $post ){
     }
 	global $post;
 	$amp_current_post_id = $post->ID;
-	$content 		= get_post_meta ( $amp_current_post_id, 'ampforwp_custom_content_editor', true );
+	$content 	= get_post_meta ( $amp_current_post_id, 'ampforwp_custom_content_editor', true );
+	$content 	= html_entity_decode($content);
 	
 	//previous data stored compatible
 	if(get_post_meta($amp_current_post_id ,'use_ampforwp_page_builder',true)==null && 
@@ -74,7 +70,8 @@ function ampforwp_call_page_builder(){
 		$postId = $post->ID;
 	}
 	if(isset($_GET['post_id'])){
-		$postId = sanitize_text_field( wp_unslash($_GET['post_id']));
+		$id = intval($_GET['post_id']);
+		$postId = sanitize_text_field( wp_unslash($id));
 	}
 	add_thickbox();
 	
@@ -132,7 +129,7 @@ function ampforwp_call_page_builder(){
 	wp_nonce_field( basename( __FILE__) , 'amp_content_editor_nonce' );
 	
 	if(class_exists('WPSEO_Frontend') && true == ampforwp_get_setting('ampforwp-yoast-seo-analysis') && true == ampforwp_get_setting('ampforwp-amp-takeover') ) { ?>
-		<div class="hide" id="amp-page-builder-ready"><?php echo stripcslashes( amppb_post_content('') ); ?></div>
+		<script type="text/template" class="hide" id="amp-page-builder-ready"><?php echo stripcslashes( amppb_post_content('') ); ?></script>
 	<?php } ?>
 	<div id="ampForWpPageBuilder_container">
 		<div id="start_amp_pb_post" class="start_amp_pb" data-postId="<?php echo esc_attr(get_the_ID()) ?>" v-if="startPagebuilder==0" @click="amppb_startFunction($event)"><?php echo esc_html__('Start the AMP Page Builder','accelerated-mobile-pages'); ?></div>
@@ -142,7 +139,7 @@ function ampforwp_call_page_builder(){
 		</div>
 		<div id="amp-page-builder" v-if="startPagebuilder==1">
 	 		<?php wp_nonce_field( "amppb_nonce_action", "amppb_nonce" ) ?>
-	        <input type="hidden" name="amp-page-builder" id="amp-page-builder-data" class="amp-data" v-model="JSON.stringify(mainContent)" value='<?php echo $previousData; ?>'>
+	        <input type="hidden" name="amp-page-builder" id="amp-page-builder-data" class="amp-data" v-model="JSON.stringify(mainContent)" value='<?php echo $previousData; // nothing to escaped ?>'>
 	        <?php /* This is where we gonna add & manage rows */ ?>
 			<div id="sorted_rows" class="amppb-rows drop" >
 				<drop class="drop" :class="{'row-dropping':rowOverDrop}" @drop="handleDrop" @dragover="rowOverDrop = true"
@@ -276,7 +273,7 @@ function ampforwp_call_page_builder(){
 		</div><!-- .amppb-rows -->
 
 		<div class="modules-options">
-         	<div class="amppb-actions" id="amppb-actions-container" data-containerid="<?php echo $totalRows; ?>">
+         	<div class="amppb-actions" id="amppb-actions-container" data-containerid="<?php echo $totalRows; // nothing to escaped ?>">
 	        	<drag class="drag" :transfer-data='{type: "column",value: "col-1",rowSettingJson:<?php echo json_encode($backendRowSetting); ?>}' :draggable="true" :effect-allowed="'copy'">
 				    <span id="action-col-1" class="amppb-add-row button-primary button-large module-col-1" data-template="col-1"
 				    >1 Column</span>

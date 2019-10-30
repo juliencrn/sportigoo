@@ -45,16 +45,23 @@ if( ! class_exists('AMPforWP_Infinite_Scroll') ) {
 			return false;
 		}
 		public function is_loop() {
+			$script = true;
 			if ( (ampforwp_is_home() || is_archive()) && true == ampforwp_get_setting('ampforwp-infinite-scroll-home') ) {
-				return true;
+				if( function_exists('is_product_category') && is_product_category() || function_exists('is_product_tag') && is_product_tag() || function_exists('is_shop') && is_shop()){
+					$script = false;
+				}
+				$script = apply_filters('ampforwp_modify_infinite_scroll_script', $script);
+				return $script;
 			}
 			return false;
 		} 
 		public function paged() {
-			if ( get_query_var( 'paged' ) ) {
-			    return get_query_var('paged');
-			} elseif ( get_query_var( 'page' ) ) {
-			    return get_query_var('page');
+			$paged = get_query_var( 'paged' );
+			$page = get_query_var( 'page' );
+			if ( $paged ) {
+			    return intval($paged);
+			} elseif ( $page ) {
+			    return intval($page);
 			} else {
 			    return 1;
 			}
@@ -112,7 +119,8 @@ if( ! class_exists('AMPforWP_Infinite_Scroll') ) {
 				'post__not_in' 		  => $exclude_ids,
 				'has_password' => false ,
 				'post_status'=> 'publish',
-				'posts_per_page' => 2
+				'posts_per_page' => 2,
+				'no_found_rows'	=> true
 			  );
 			$query = new WP_Query( $query_args );
 			while ($query->have_posts()) {
@@ -148,7 +156,7 @@ if( ! class_exists('AMPforWP_Infinite_Scroll') ) {
 			if ( 4 == $design ) {
 				$classes = array(".p-m-fl",".loop-pagination",".footer",".r-pf",".srp ul",".srp h3","#pagination",".h_m_w", ".f-w");
 			}
-
+			$classes = (array) apply_filters('ampforwp_infinite_scroll_exclude_items', $classes);
 			return json_encode($classes);
 		}
 		public function next_posts_link( $next_link , $paged ) {

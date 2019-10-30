@@ -1,16 +1,14 @@
 <?php
 /**
  * @package Crisp
- * @version 0.24
+ * @version 0.25
  * Plugin Name: Crisp
  * Plugin URI: http://wordpress.org/plugins/crisp/
  * Description: Crisp is a Livechat plugin
  * Author: Crisp
- * Version: 0.24
+ * Version: 0.25
  * Author URI: https://crisp.chat
- *
  * Text Domain: crisp
- * Domain Path: /languages/
 */
 
 add_action('admin_menu', 'crisp_create_menu');
@@ -19,6 +17,11 @@ function crisp_create_menu() {
   add_menu_page(__('Crisp Settings', 'crisp'), __('Crisp Settings', 'crisp'), 'administrator', __FILE__, 'crisp_plugin_settings_page' , 'https://crisp.chat/favicon.png');
   add_action('admin_init', 'register_crisp_plugin_settings' );
   add_action('admin_init', 'register_crisp_plugin_onboarding');
+  add_action('plugins_loaded', 'register_crisp_plugin_textdomain' );
+}
+
+function register_crisp_plugin_textdomain() {
+  load_plugin_textdomain( 'crisp', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
 }
 
 function register_crisp_plugin_onboarding() {

@@ -59,7 +59,7 @@ class UpdraftPlus_Filesystem_Functions {
 	 */
 	public static function ensure_wp_filesystem_set_up_for_restore($url_parameters = array()) {
 	
-		global $wp_filesystem;
+		global $wp_filesystem, $updraftplus;
 
 		$build_url = UpdraftPlus_Options::admin_page().'?page=updraftplus&action=updraft_restore';
 		
@@ -67,18 +67,24 @@ class UpdraftPlus_Filesystem_Functions {
 			$build_url .= '&'.$k.'='.$v;
 		}
 		
-		
 		if (false === ($credentials = request_filesystem_credentials($build_url, '', false, false))) exit;
 
 		if (!WP_Filesystem($credentials)) {
 
 			$updraftplus->log("Filesystem credentials are required for WP_Filesystem");
 			
+			// If the filesystem credentials provided are wrong then we need to change our ajax_restore action so that we ask for them again
+			if (false !== strpos($build_url, 'updraftplus_ajax_restore=do_ajax_restore')) $build_url = str_replace('updraftplus_ajax_restore=do_ajax_restore', 'updraftplus_ajax_restore=continue_ajax_restore', $build_url);
+			
 			request_filesystem_credentials($build_url, '', true, false);
 			
 			if ($wp_filesystem->errors->get_error_code()) {
-				echo '<p><em><a href="' . apply_filters('updraftplus_com_link', "https://updraftplus.com/faqs/asked-ftp-details-upon-restorationmigration-updates/") . '" target="_blank">' . __('Why am I seeing this?', 'updraftplus') . '</a></em></p>';
+				echo '<div class="restore-credential-errors">';
+				echo '<p class="restore-credential-errors--link"><em><a href="' . apply_filters('updraftplus_com_link', "https://updraftplus.com/faqs/asked-ftp-details-upon-restorationmigration-updates/") . '" target="_blank">' . __('Why am I seeing this?', 'updraftplus') . '</a></em></p>';
+				echo '<div class="restore-credential-errors--list">';
 				foreach ($wp_filesystem->errors->get_error_messages() as $message) show_message($message);
+				echo '</div>';
+				echo '</div>';
 				exit;
 			}
 		}
@@ -528,6 +534,8 @@ class UpdraftPlus_Filesystem_Functions {
 			$updraftplus->log(sprintf(__('Unzip progress: %d out of %d files', 'updraftplus').' (%s, %s)', $i+1, $num_files, UpdraftPlus_Manipulation_Functions::convert_numeric_size_to_text($size_written), $info['name']), 'notice-restore');
 			$updraftplus->log(sprintf('Unzip progress: %d out of %d files (%s, %s)', $i+1, $num_files, UpdraftPlus_Manipulation_Functions::convert_numeric_size_to_text($size_written), $info['name']), 'notice');
 			
+			do_action('updraftplus_unzip_progress_restore_info', $file, $i, $size_written, $num_files);
+
 			$last_logged_bytes = $size_written;
 			$last_logged_index = $i;
 			$last_logged_time = time();

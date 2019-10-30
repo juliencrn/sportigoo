@@ -17,10 +17,7 @@ class NF_Display_PagePublicLink extends NF_Display_Page
 	 */
 	public function get_content()
 	{
-		ob_start();
-		echo do_shortcode("[ninja_forms id='$this->form_id']");
-		$content = ob_get_clean();
-		return $content;
+		return "[ninja_forms id='$this->form_id']";
 	}
 
 	/**

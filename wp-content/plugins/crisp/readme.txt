@@ -3,9 +3,9 @@ Contributors: crisp.chat
 Donate link: https://crisp.chat
 Tags:  livechat, chat, live chat, crisp, free-live-chat, free live chat, live-chat, live chat, live support, chat-plugin, woocommerce, chat plugin
 Requires at least: 3.0.1
-Tested up to: 4.9
+Tested up to: 5.1
 Requires PHP: 5.3
-Stable tag: trunk
+Stable tag: 0.25
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 A Free one-click-to-install Live Chat plugin. No coding skills required. Used by more than 10 000 customers on WordPress.

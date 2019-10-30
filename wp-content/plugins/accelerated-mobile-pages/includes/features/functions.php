@@ -10,10 +10,16 @@ function ampforwp_include_aqresizer(){
     //Removed Jetpack Mobile theme option #2584
     remove_action('option_stylesheet', 'jetpack_mobile_stylesheet');
     require AMPFORWP_PLUGIN_DIR  .'includes/vendor/aq_resizer.php';
+    /*
+    Enable Treeshaking
+    */
+    if( ampforwp_get_setting('ampforwp_css_tree_shaking') ){ 
+        add_filter('ampforwp_the_content_last_filter','ampforwp_tree_shaking_purify_amphtml',11);
+    }
 }
  //  Some Extra Styling for Admin area
 add_action( 'admin_enqueue_scripts', 'ampforwp_add_admin_styling' );
-function ampforwp_add_admin_styling(){
+function ampforwp_add_admin_styling($hook_suffix){
     global $redux_builder_amp;
     // Style file to add or modify css inside admin area
     wp_register_style( 'ampforwp_admin_css', untrailingslashit(AMPFORWP_PLUGIN_DIR_URI) . '/includes/admin-style.css', false, AMPFORWP_VERSION );
@@ -23,7 +29,15 @@ function ampforwp_add_admin_styling(){
     wp_register_script( 'ampforwp_admin_js', untrailingslashit(AMPFORWP_PLUGIN_DIR_URI) . '/includes/admin-script.js', false, AMPFORWP_VERSION );
 
     // Localize the script with new data
-    wp_localize_script( 'ampforwp_admin_js', 'redux_data', $redux_builder_amp );
+    $redux_data = array();
+    if( current_user_can("manage_options") && $hook_suffix=='toplevel_page_amp_options' ){
+        $redux_data = $redux_builder_amp;
+    }
+    if( current_user_can("manage_options") && $hook_suffix == 'options-reading.php' && 0 == $redux_builder_amp['amp-frontpage-select-option']) {
+        $redux_data['frontpage'] = 'false';
+        $redux_data['admin_url'] = esc_url(admin_url("admin.php?page=amp_options&tabid=opt-text-subsection#redux_builder_amp-ampforwp-homepage-on-off-support"));
+    }
+    wp_localize_script( 'ampforwp_admin_js', 'redux_data', $redux_data );
     wp_localize_script( 'ampforwp_admin_js', 'ampforwp_nonce', wp_create_nonce('ampforwp-verify-request') );
     wp_enqueue_script( 'ampforwp_admin_js' );
 }
@@ -44,7 +58,12 @@ function ampforwp_is_front_page(){
     if ( ampforwp_get_setting('amp-frontpage-select-option-pages') ) {
         $get_amp_custom_frontpage_id      =  $redux_builder_amp['amp-frontpage-select-option-pages'];
     }
-
+    // Passing Frontpage id true for polylang static pages
+    if ( (class_exists('polylang') || class_exists('Polylang_Pro')) && function_exists('poly_archive_url') ) {
+        if( !ampforwp_get_setting('amp-frontpage-select-option-pages') && $get_custom_frontpage_settings  && 'page' === get_option( 'show_on_front' )){
+            $get_amp_custom_frontpage_id = true;
+        }
+    }
     // TRUE: When we have "Your latest posts" in reading settings and custom frontpage in amp
     if ( 'posts' == get_option( 'show_on_front') && is_home() && $get_amp_homepage_settings && $get_custom_frontpage_settings)
         return true;
@@ -136,8 +155,14 @@ function ampforwp_the_content_filter_full( $content_buffer ) {
         $content_buffer = preg_replace("/onclick=[^>]*/", "", $content_buffer);
         $content_buffer = preg_replace("/<\\/?thrive_headline(.|\\s)*?>/",'',$content_buffer);
         // Remove Extra styling added by other Themes/ Plugins
-        $content_buffer = preg_replace('/(<style(.*?)>(.*?)<\/style>)<!doctype html>/','<!doctype html>',$content_buffer);
-        $content_buffer = preg_replace('/(<style(.*?)>(.*?)<\/style>)(\/\*)/','$4',$content_buffer);
+        preg_match('/(<style(.*?)>(.*?)<\/style>)<!doctype html>/', $content_buffer, $m1);
+        if($m1){
+            $content_buffer = preg_replace('/(<style(.*?)>(.*?)<\/style>)<!doctype html>/','<!doctype html>',$content_buffer);
+        }
+        preg_match('/(<style(.*?)>(.*?)<\/style>)(\/\*)/', $content_buffer, $m2);
+        if($m2){
+            $content_buffer = preg_replace('/(<style(.*?)>(.*?)<\/style>)(\/\*)/','$4',$content_buffer);
+        }
         $content_buffer = preg_replace("/<\\/?g(.|\\s)*?>/",'',$content_buffer);
         $content_buffer = preg_replace('/(<[^>]+) spellcheck="false"/', '$1', $content_buffer);
         $content_buffer = preg_replace('/(<[^>]+) spellcheck="true"/', '$1', $content_buffer);
@@ -151,8 +176,15 @@ function ampforwp_the_content_filter_full( $content_buffer ) {
         $content_buffer = preg_replace('/!important/', '' , $content_buffer);
         //  Compatibility with the footnotes plugin. #2447
         if(class_exists('MCI_Footnotes')){
+        $footnote_collapse_link = '';
+        $footnote_collapse = MCI_Footnotes_Convert::toBool(MCI_Footnotes_Settings::instance()->get(MCI_Footnotes_Settings::C_BOOL_REFERENCE_CONTAINER_COLLAPSE));
+        if( $footnote_collapse == true ){
+            $footnote_collapse_link = 'on="tap:footnote_references_container.show" role="click" tabindex="1" ';
+            $content_buffer = preg_replace( '/<div id=(.*?)footnote_references_container(.*?)\s/m','<div id=$1footnote_references_container$2 hidden ',$content_buffer);
+            $content_buffer = preg_replace( '/<div\s(.*?)<a\s(.*?)\+(.*)/m','<div $1 <a on="tap:footnote_references_container.show" $2 + <span on="tap:footnote_references_container.hide" id="fn_span" role="click" tabindex="2" > - </span> $3',$content_buffer);
+        }
         $content_buffer = preg_replace( '/<sup(.*?)id="footnote_plugin_tooltip_(.*?)"(.*?)class="footnote_plugin_tooltip_text"(.*?)>(.*?)<\/sup>/m',  '
-        <sup$1id="footnote_plugin_tooltip_$2"$3class="footnote_plugin_tooltip_text"$4><a href="#footnote_plugin_reference_$2">$5</a></sup>', $content_buffer);
+        <sup$1id="footnote_plugin_tooltip_$2" '.$footnote_collapse_link.' $3class="footnote_plugin_tooltip_text"$4><a href="#footnote_plugin_reference_$2" id="fn_plugin_refer" >$5</a></sup>', $content_buffer);
         }
         $content_buffer = apply_filters('ampforwp_the_content_last_filter', $content_buffer);
 
@@ -162,7 +194,7 @@ function ampforwp_the_content_filter_full( $content_buffer ) {
     }
     return $content_buffer;
 }
-add_action('wp_loaded', function(){ ob_start('ampforwp_the_content_filter_full'); }, 999);
+add_action('wp', function(){ ob_start('ampforwp_the_content_filter_full'); }, 999);
 
 
 // 74. Featured Image check from Custom Fields
@@ -180,7 +212,7 @@ function ampforwp_generate_meta_desc($json=""){
     global $post, $redux_builder_amp;
     $desc = $post_id = '';
     $post_id = ampforwp_get_the_ID();
-    if ( true == ampforwp_get_setting('ampforwp-seo-meta-description') || !empty($json) ) {
+    if ( true == ampforwp_get_setting('ampforwp-seo-meta-desc') || !empty($json) ) {
         if ( ampforwp_is_home() || ampforwp_is_blog() ) {
             $desc = addslashes( strip_tags( get_bloginfo( 'description' ) ) );
         }
@@ -205,7 +237,7 @@ function ampforwp_generate_meta_desc($json=""){
         }
 
         // Yoast 
-        if ( class_exists('WPSEO_Frontend') && ('yoast' || 1) == $redux_builder_amp['ampforwp-seo-selection'] ) {
+        if ( class_exists('WPSEO_Frontend') && ('yoast' == ampforwp_get_setting('ampforwp-seo-selection') || 1 == ampforwp_get_setting('ampforwp-seo-selection'))) {
             $front = $yoast_desc = '';
             $front = WPSEO_Frontend::get_instance();
             $yoast_desc = addslashes( strip_tags( $front->metadesc( false ) ) );
@@ -229,7 +261,7 @@ function ampforwp_generate_meta_desc($json=""){
         } 
 
         // All in One SEO
-        if ( class_exists('All_in_One_SEO_Pack') && (2 || 'aioseo') == $redux_builder_amp['ampforwp-seo-selection'] ) {
+        if ( class_exists('All_in_One_SEO_Pack') && ( 'aioseo'  == ampforwp_get_setting('ampforwp-seo-selection') || 2 == ampforwp_get_setting('ampforwp-seo-selection'))) {
             $aisop_class = $aisop_desc = $opts = '';
             $aisop_class = new All_in_One_SEO_Pack();
             if ( ampforwp_is_home() ) {
@@ -307,15 +339,21 @@ function ampforwp_generate_meta_desc($json=""){
         }
         // Rank Math SEO #2701
         if ( defined( 'RANK_MATH_FILE' ) && 'rank_math' == ampforwp_get_setting('ampforwp-seo-selection') ) {
-            $rank_math_desc = '';
             $rank_math_desc = RankMath\Post::get_meta( 'description', $post_id );
-            if ( $rank_math_desc ) {
-                $desc = $rank_math_desc;
-            }
+            $desc           = $rank_math_desc ? $rank_math_desc : $desc;
         }
         //Bridge Qode SEO Compatibility #2538 
         if ( function_exists('qode_header_meta') && 'bridge' == ampforwp_get_setting('ampforwp-seo-selection')){
         $desc = get_post_meta($post_id, "qode_seo_description", true);
+        }
+        // The SEO Framework
+        if ( function_exists( 'the_seo_framework' ) && 'seo_framework' == ampforwp_get_setting('ampforwp-seo-selection') ) {
+            $tsf_desc = $ampforwp_tsf = '';
+            $ampforwp_tsf   = \the_seo_framework();
+            $tsf_desc       = $ampforwp_tsf->get_description();
+            if ( $tsf_desc ) {
+                $desc = $tsf_desc;
+            }
         }
         // strip_shortcodes  strategy not working here so had to do this way
         // strips shortcodes
@@ -373,12 +411,14 @@ if( !function_exists('ampforwp_get_blog_details') ) {
 
     // 56. Multi Translation Feature #540
 function ampforwp_translation( $redux_style_translation , $pot_style_translation ) {
- global $redux_builder_amp;
- $single_translation_enabled = $redux_builder_amp['amp-use-pot'];
+ $single_translation_enabled = ampforwp_get_setting('amp-use-pot');
    if ( !$single_translation_enabled ) {
      return $redux_style_translation;
    } else {
-     return __($pot_style_translation,'accelerated-mobile-pages');
+        if(!empty($redux_style_translation)){
+            $pot_style_translation = $redux_style_translation;
+        }
+        return __($pot_style_translation,'accelerated-mobile-pages');
    }
 }
 
@@ -405,10 +445,15 @@ if ( ! function_exists( 'ampforwp_isexternal ') ) {
         if ( empty($components['host']) ) return false;  
         
         // url host looks exactly like the local host
-        if ( strcasecmp($components['host'], $_SERVER['HTTP_HOST']) === 0 ) return false; 
+        if ( strcasecmp($components['host'], AMPFROWP_HOST_NAME) === 0 ) return false; 
         
         // check if the url host is a subdomain
-        return strrpos(strtolower($components['host']), $_SERVER['HTTP_HOST']) !== strlen($components['host']) - strlen($_SERVER['HTTP_HOST']); 
+        $check =  strrpos(strtolower($components['host']), $_SERVER['HTTP_HOST']) !== strlen($components['host']) - strlen($_SERVER['HTTP_HOST']);// #3561 - it's returing empty that is why it's creating broken link. So checking empty condition and returning 1 to not create amp link.
+        if($check==""){ 
+            return 1;
+        }else{
+            return $check; 
+        }
     }
 } // end ampforwp_isexternal
 
@@ -539,6 +584,7 @@ function ampforwp_url_purifier($url){
     $queried_var                = "";
     $quried_value               = "";
     $query_arg                  = "";
+    $wpml_lang_checker          = true;
     $endpoint                   = AMPFORWP_AMP_QUERY_VAR;
     $get_permalink_structure = get_option('permalink_structure');
     $checker = $redux_builder_amp['amp-core-end-point'];
@@ -576,7 +622,87 @@ function ampforwp_url_purifier($url){
         if ( is_singular() && true == $checker ) {
             $url = untrailingslashit($url);
         }
-        if ( is_home() || is_archive() || is_front_page() ) {
+        // WPML compatibility
+        if( class_exists('SitePress') ){
+        if( get_option('permalink_structure') ){
+            global $sitepress_settings, $wp;
+            $wpml_lang_checker = false;
+            if($sitepress_settings[ 'language_negotiation_type' ] == 3){
+                if( is_singular() ){
+                    $active_langs = $sitepress_settings['active_languages'];
+                    $found = '';
+                    $wpml_url =get_permalink( get_queried_object_id() );
+                    $untrail_wpml_url = untrailingslashit($wpml_url);
+                    $explode_url = explode('/', $untrail_wpml_url);
+                    $append_amp = AMPFORWP_AMP_QUERY_VAR;
+                    foreach ($active_langs as $active_lang) {
+                        foreach($explode_url as $a) {
+                             if (stripos('?lang='.$active_lang ,$a) !== false){
+                                    $url = add_query_arg('amp','1',$wpml_url);
+                                    $found = 'found';
+                                    break 2;
+                            }
+                        }
+                    }
+                    if($found == ''){
+                        array_splice( $explode_url, count($explode_url), 0, $append_amp );
+                        $impode_url = implode('/', $explode_url);
+                        $url = user_trailingslashit($impode_url);
+                    }
+                }
+                if ( is_home()  || is_archive() ){
+                    global $wp;
+                    $current_archive_url = home_url( $wp->request );
+                    $explode_path   = explode("/",$current_archive_url);
+                    $inserted       = array(AMPFORWP_AMP_QUERY_VAR);
+                    $query_arg_array = $wp->query_vars;
+                    if( array_key_exists( 'paged' , $query_arg_array ) ) {
+                        $active_langs = $sitepress_settings['active_languages'];
+                         $found = '';
+                        foreach ($active_langs as $active_lang) {
+                             
+                            foreach($explode_path as $a) {
+                                 if (stripos('?lang='.$active_lang ,$a) !== false){
+                                        $url = add_query_arg('amp','1',$current_archive_url);
+                                        $found = 'found';
+                                        break 2;
+                                }
+                            }
+                         }
+                        if($found == ''){
+                            array_splice( $explode_path, count($explode_path), 0, $inserted );
+                            $impode_url = implode('/', $explode_path);
+                            $url = user_trailingslashit($impode_url);
+                         
+                        }
+                    }
+                    else{
+                        $active_langs = $sitepress_settings['active_languages'];
+                         $found = '';
+                        foreach ($active_langs as $active_lang) {
+                             
+                            foreach($explode_path as $a) {
+                                 if (stripos('?lang='.$active_lang ,$a) !== false){
+                                    $url = add_query_arg('amp','1',$current_archive_url);
+                                    $found = 'found';
+                                    break 2;
+                                }
+                            }
+                         }
+                        if($found == ''){
+                            array_splice( $explode_path, count($explode_path), 0, $inserted );
+                            $impode_url = implode('/', $explode_path);
+                            $url = $impode_url;
+                         
+                        }
+                    }
+                }
+            }else{
+                $wpml_lang_checker = true;
+            }
+            }
+        }
+        if ( true == $wpml_lang_checker && ( is_home() || is_archive() || is_front_page() ) ) {
             if ( ( is_archive() || is_home() ) && get_query_var('paged') > 1 ) {
                 if ( true == $checker )
                     $url = trailingslashit($url).$endpointq;
@@ -607,10 +733,7 @@ function ampforwp_url_purifier($url){
         else{
             $query_name = isset($wp_query->query['pagename'])?$wp_query->query['pagename']:'';
         }
-        if( $query_name && ampforwp_is_query_post_same( $_SERVER['QUERY_STRING'],$query_name) && isset( $query_arg['q'] ) ){
-            unset($query_arg['q']);
-        }
-        else if ( $query_name && isset( $query_arg['q'] ) ){ 
+        if ( $query_name && isset( $query_arg['q'] ) ){ 
             unset($query_arg['q']); 
         }      
         $url     = add_query_arg( $query_arg, $url);
@@ -719,17 +842,152 @@ if(!function_exists('ampforwp_amp_nonamp_convert')){
                                                 'onClick="ampforwp_gdrp_set()"',
                                                 )
                                             , $ampData);
+                // CSS
+                
+                if( false !== strpos($returnData, 'amp-carousel') ) {
+                    $galleryCss = '* {box-sizing: border-box}.mySlides{display: none}
+                        /* Slideshow container */
+                        .slideshow-container {
+                          max-width: 1000px;
+                          position: relative;
+                          margin: auto;
+                        }
+                        /* Next & previous buttons */
+                        .nonamp-prev, .nonamp-next {
+                            cursor: pointer;
+                            position: absolute;
+                            top: 50%;
+                            width: auto;
+                            padding: 10px 15px 10px 15px;
+                            margin-top: 0;
+                            color: white;
+                            font-weight: bold;
+                            font-size: 16px;
+                            transition: 0.6s ease;
+                            border-radius: 0 3px 3px 0;
+                            user-select: none;
+                            background-color: rgba(0,0,0,0.5);
+                        }
+                        /* Position the "next button" to the right */
+                        .nonamp-next {
+                          right: 0;
+                          border-radius: 3px 0 0 3px;
+                        }
+                        .nonamp-prev{
+                            left:0;
+                            border-radius: 3px 0 0 3px;
+                        }
+                        /* On hover, add a black background color with a little bit see-through */
+                        .nonamp-prev:hover, .nonamp-next:hover {
+                          color:#fff;
+                        }
+                        /* Caption text */
+                        .text {
+                          color: #f2f2f2;
+                          font-size: 15px;
+                          padding: 8px 12px;
+                          position: absolute;
+                          bottom: 8px;
+                          width: 100%;
+                          text-align: center;
+                        }
+                        /* Number text (1/3 etc) */
+                        .numbertext {
+                          color: #f2f2f2;
+                          font-size: 12px;
+                          padding: 8px 12px;
+                          position: absolute;
+                          top: 0;
+                        }
+                        /* The dots/bullets/indicators */
+                        .dot {
+                          cursor: pointer;
+                          height: 15px;
+                          width: 15px;
+                          margin: 0 2px;
+                          background-color: #bbb;
+                          border-radius: 50%;
+                          display: inline-block;
+                          transition: background-color 0.6s ease;
+                        }
+                        .active, .dot:hover {
+                          background-color: #717171;
+                        }
+                        /* Fading animation */
+                        .fade {
+                          -webkit-animation-name: fade;
+                          -webkit-animation-duration: 1.5s;
+                          animation-name: fade;
+                          animation-duration: 1.5s;
+                        }
+                        @-webkit-keyframes fade {
+                          from {opacity: .4} 
+                          to {opacity: 1}
+                        }
+                        @keyframes fade {
+                          from {opacity: .4} 
+                          to {opacity: 1}
+                        }
+                        /* On smaller screens, decrease text size */
+                        @media only screen and (max-width: 300px) {
+                          .nonamp-prev, .nonamp-next,.text {font-size: 11px}
+                        }';
+                    $galleryJs = '<script>
+                                    var slideIndex = 0;
+                                    showSlides(slideIndex);
+                                    function plusSlides(n) {
+                                      showSlides(slideIndex += n);
+                                    }
+                                    function currentSlide(n) {
+                                      showSlides(slideIndex = n);
+                                    }
+                                    function showSlides(n) {
+                                      var i;
+                                      var slides = document.getElementsByClassName("mySlides");
+                                      var dots = document.getElementsByClassName("dot");
+                                      var heads = document.getElementsByClassName("heads");
+                                      if (n >= slides.length) {slideIndex = 0}    
+                                      if (n < 0) {slideIndex = slides.length-1}
+                                      for (i = 0; i < slides.length; i++) {
+                                          slides[i].style.display = "none";  
+                                      }
+                                      for (i = 0; i < dots.length; i++) {
+                                          dots[i].className = dots[i].className.replace(" how-current", "");
+                                      }
+                                      for (i = 0; i < heads.length; i++) {
+                                          heads[i].className = heads[i].className.replace(" how-current", "");
+                                      }
+                                      slides[slideIndex].style.display = "block";  
+                                      dots[slideIndex].className += " how-current";
+                                      heads[slideIndex].className += " how-current";
+                                    }
+                                    function currentDiv(n) {
+                                      showDivs(slideIndex = n);
+                                    }
+                                    function showDivs(n) {
+                                      var i;
+                                      var x = document.getElementsByClassName("mySlides");
+                                      if (n > x.length) {slideIndex = 1}
+                                      if (n < 0) {slideIndex = x.length}
+                                      for (i = 0; i < x.length; i++) {
+                                        x[i].style.display = "none";
+                                      }
+                                      x[slideIndex].style.display = "block";
+                                    }
+                                    </script>';
+                }
 
                 $nonampCss = '
-                .cntr img{height:auto !important;}
+                .cntr img{width:100%;height:auto !important;}
                 img{height:auto;}
+                .slid-prv{width:100%;text-align: center;margin-top: 10px;display: inline-block;}
                 .amp-featured-image img{width:100%;height:auto;}
                 .content-wrapper, .header, .header-2, .header-3{width:100% !important;}
                 .image-mod img{width:100%;}
                 
                 ';
                 $re = '/<style\s*type="text\/css">(.*?)<\/style>/si';
-                $subst = "<style type=\"text/css\">$1 ".$nonampCss."</style>";
+                $subst = "<style type=\"text/css\">$1 ".$nonampCss.$galleryCss."</style>";
                 $returnData = preg_replace($re, $subst, $returnData);
                 $returnData = preg_replace(
                 '/<amp-youtube\sdata-videoid="(.*?)"(.*?)><\/amp-youtube>/',
@@ -739,6 +997,11 @@ if(!function_exists('ampforwp_amp_nonamp_convert')){
                 function($matches){
                     return '<iframe src="'.esc_url($matches[2]).'" style="width:100%;height:400px;" ></iframe>';
                 }, $returnData);
+                $returnData = preg_replace_callback('/<amp-carousel\s(.*?)>(.*?)<\/amp-carousel>/s', 'ampforwp_non_amp_gallery', $returnData );
+                $returnData = preg_replace('/on="tap(.*?).goToSlide(.*?)"/', 'onclick="currentDiv$2"', $returnData);
+                $returnData = preg_replace('/<span on="tap:AMP\.setState\((.*?)\s:\showSectionSelected\.howSlide - 1(.*?)\)(.*?)/', '<span onclick="plusSlides(-1)$3"', $returnData);
+                $returnData = preg_replace('/<span on="tap:AMP\.setState\((.*?)\s:\showSectionSelected\.howSlide \+ 1(.*?)\)(.*?)>/', '<span onclick="plusSlides(+1)$3">', $returnData);
+                $returnData = str_replace('</footer>', '</footer>'.$galleryJs, $returnData);
             break;
         }
         return $returnData;
@@ -758,7 +1021,7 @@ if ( ! function_exists('ampforwp_wp_update_nav_menu') ) {
     }
 }
 // Delete Menu Transients on Saving AMP Settings #3052
-if ( function_exists('ampforwp_menu_transient_on_save') ){
+if ( ! function_exists('ampforwp_menu_transient_on_save') ){
     function ampforwp_menu_transient_on_save($redux_builder_amp, $this_transients_changed_values) {
         if ( isset($this_transients_changed_values['amp-design-selector']) ) {
             if ( false != get_transient('ampforwp_header_menu') ) {
@@ -803,7 +1066,7 @@ function checkAMPforPageBuilderStatus($postId){
 
       $ampforwp_pagebuilder_enable = get_post_meta($postId,'ampforwp_page_builder_enable', true);
       
-        if( $ampforwp_pagebuilder_enable=='yes' && true == ampforwp_get_setting('ampforwp-pagebuilder')){
+        if( $ampforwp_pagebuilder_enable=='yes' && true == ampforwp_get_setting('ampforwp-pagebuilder') && ( function_exists('amppb_post_content') && !empty(amppb_post_content(''))) ){
             $response = true;
         }else{
             $response = false;
@@ -811,4 +1074,99 @@ function checkAMPforPageBuilderStatus($postId){
       $response = apply_filters( 'ampforwp_pagebuilder_status_modify', $response, $postId );
     }
     return $response;
+}
+
+// Gallery Code #3296   
+function ampforwp_new_gallery_images($images_markup, $image, $markup_arr){
+    add_action('amp_post_template_css', 'ampforwp_additional_gallery_style');
+    add_filter('amp_post_template_data','ampforwp_carousel_bind_script');
+    add_action('amp_post_template_css', 'ampforwp_additional_style_carousel_caption');
+    return $images_markup;
+}
+if( ! function_exists( 'ampforwp_additional_gallery_style' ) ){
+    function ampforwp_additional_gallery_style(){
+        global $redux_builder_amp,$carousel_markup_all;
+        $design_type = '';
+        $design_type = $redux_builder_amp['ampforwp-gallery-design-type'];
+        
+        if(isset($design_type) && $design_type!==''){
+            echo $carousel_markup_all[$design_type]['gallery_css'];
+        }
+    }
+}
+// amp-bind for carousel with captions
+function ampforwp_carousel_bind_script($data){
+    if( 1 == ampforwp_get_setting('ampforwp-gallery-design-type') || 2 == ampforwp_get_setting('ampforwp-gallery-design-type') ){
+        if ( empty( $data['amp_component_scripts']['amp-bind'] ) ) {
+            $data['amp_component_scripts']['amp-bind'] = 'https://cdn.ampproject.org/v0/amp-bind-0.1.js';
+        }   
+    }
+    if( 3 == ampforwp_get_setting('ampforwp-gallery-design-type') || true == ampforwp_get_setting('ampforwp-gallery-lightbox') ){
+        if ( empty( $data['amp_component_scripts']['amp-image-lightbox'] ) ) {
+            $data['amp_component_scripts']['amp-image-lightbox'] = 'https://cdn.ampproject.org/v0/amp-image-lightbox-0.1.js';
+        }
+    }
+    return $data;
+}
+function ampforwp_new_thumbnail_images($amp_images, $uniqueid, $markup_arr){
+    if(!isset($markup_arr['carousel_with_thumbnail_html'])){return '';}
+    $amp_thumb_image_buttons = array();
+    foreach ($amp_images as $key => $value) {
+        $returnHtml = $markup_arr['carousel_with_thumbnail_html'];
+        $returnHtml = str_replace('{{thumbnail}}', $value , $returnHtml);
+        $returnHtml = str_replace('{{unique_id}}', $uniqueid , $returnHtml);
+        $returnHtml = str_replace('{{unique_index}}', $key , $returnHtml);
+        $amp_thumb_image_buttons[$key] = $returnHtml;
+    }
+    return $amp_thumb_image_buttons;
+}
+// Gallery Styling
+if( ! function_exists( 'ampforwp_additional_style_carousel_caption' ) ){
+  function ampforwp_additional_style_carousel_caption(){ ?>
+    .collapsible-captions {--caption-height: 32px; --image-height: 100%; --caption-padding:1rem; --button-size: 28px; --caption-color: #f5f5f5;; --caption-bg-color: #111;}
+    .collapsible-captions * {
+      -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+      box-sizing: border-box;
+    }
+    .collapsible-captions .amp-carousel-container  {position: relative; width: 100%;}
+    .collapsible-captions amp-img img {object-fit: contain; }
+    .collapsible-captions figure { margin: 0; padding: 0; }
+    .collapsible-captions figcaption { position: absolute; bottom: 0;width: 100%;
+      max-height: var(--caption-height);margin-bottom:0;
+      line-height: var(--caption-height);
+      padding: 0 var(--button-size) 0 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: max-height 200ms cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1000;
+      color: var(--caption-color);
+      background: rgba(0, 0, 0, 0.6);   
+    }
+    .collapsible-captions figcaption.expanded {
+      line-height: inherit;
+      white-space: normal;
+      text-overflow: auto;
+      max-height: 100px;
+      overflow: auto;
+    }
+    .collapsible-captions figcaption:focus { outline: none; border: none; }
+    .collapsible-captions figcaption span { display: block; position: absolute;
+      top: calc((var(--caption-height) - var(--button-size)) / 2);
+      right: 2px; width: var(--button-size); height: var(--button-size);
+      line-height: var(--button-size); text-align: center; font-size: 12px; color: inherit;
+      cursor: pointer; }
+  figcaption{ margin-bottom: 20px; }
+<?php }
+ }
+
+ function ampforwp_role_based_access_options(){
+    $currentUser = wp_get_current_user();
+    $amp_roles = ampforwp_get_setting('ampforwp-role-based-access');
+    $currentuserrole = (array) $currentUser->roles;
+    $hasrole = array_intersect( $currentuserrole, $amp_roles );
+    if( empty($hasrole)){
+        return false;
+    }
+    return true;
 }

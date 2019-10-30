@@ -3,7 +3,7 @@
 Plugin Name: Redirection
 Plugin URI: https://redirection.me/
 Description: Manage all your 301 redirects and monitor 404 errors
-Version: 4.2.3
+Version: 4.4.2
 Author: John Godley
 Author URI: https://johngodley.com
 Text Domain: redirection
@@ -34,8 +34,8 @@ if ( version_compare( phpversion(), '5.4' ) < 0 ) {
 	add_action( 'plugin_action_links_' . basename( dirname( REDIRECTION_FILE ) ) . '/' . basename( REDIRECTION_FILE ), 'red_deprecated_php', 10, 4 );
 
 	function red_deprecated_php( $links ) {
-		/* translators: 1: PHP version */
-		array_unshift( $links, '<a href="https://redirection.me/support/problems/php-version/" style="color: red; text-decoration: underline">' . sprintf( __( 'Disabled! Detected PHP %s, need PHP 5.4+', 'redirection' ), phpversion() ) . '</a>' );
+		/* translators: 1: server PHP version. 2: required PHP version. */
+		array_unshift( $links, '<a href="https://redirection.me/support/problems/php-version/" style="color: red; text-decoration: underline">' . sprintf( __( 'Disabled! Detected PHP %1$s, need PHP %2$s+', 'redirection' ), phpversion(), '5.4' ) . '</a>' );
 		return $links;
 	}
 
@@ -95,14 +95,3 @@ if ( red_is_wpcli() ) {
 
 add_action( 'rest_api_init', 'red_start_rest' );
 add_action( 'init', 'redirection_locale' );
-
-// This is causing a lot of problems with the REST API - disable qTranslate
-add_filter( 'qtranslate_language_detect_redirect', function( $lang, $url ) {
-	$url = Redirection_Request::get_request_url();
-
-	if ( strpos( $url, '/wp-json/' ) !== false || strpos( $url, 'index.php?rest_route' ) !== false ) {
-		return false;
-	}
-
-	return $lang;
-}, 10, 2 );

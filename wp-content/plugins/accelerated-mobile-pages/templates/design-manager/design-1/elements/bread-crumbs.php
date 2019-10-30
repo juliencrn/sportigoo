@@ -88,12 +88,15 @@ if ( ( (is_single() && 1 == ampforwp_get_setting('ampforwp-bread-crumb')) || (is
                         $tag_id = $post_obj->term_id;
                         $tag_name = $post_obj->name;
                         $tag_link = get_tag_link($tag_id);
-                        $tags_breadcrumbs .= '<li class="item-tag item-tag-' . esc_attr($tag_id) . ' item-tag-' . esc_attr($tag_name) . '"><a class="bread-tag bread-tag-' . esc_attr($tag_id) . ' bread-tag-' . esc_attr($tag_name) . '" href="' . ampforwp_url_controller( $tag_link, $archive_non_amp ) . '" title="' . esc_attr($tag_name) . '">' . esc_html($tag_name) . '</a></li>';                
+                        if(ampforwp_get_setting('ampforwp-archive-support-tag') == true && ampforwp_get_setting('ampforwp-archive-support') == true){
+                            $tag_link = ampforwp_url_controller( $tag_link );
+                        }
+                        $tags_breadcrumbs .= '<li class="item-tag item-tag-' . esc_attr($tag_id) . ' item-tag-' . esc_attr($tag_name) . '"><a class="bread-tag bread-tag-' . esc_attr($tag_id) . ' bread-tag-' . esc_attr($tag_name) . '" href="' . esc_url($tag_link) . '" title="' . esc_attr($tag_name) . '">' . esc_html($tag_name) . '</a></li>';                
                     }
                     if(ampforwp_get_setting('ampforwp-bread-crumb-post')){
                         $tags_breadcrumbs .='<li class="item-post item-post-' . esc_attr(ampforwp_get_the_ID()) . '"><span class="bread-post">'.wp_kses_data( get_the_title(ampforwp_get_the_ID()) ). '</span></li>';
                     }
-                    echo $tags_breadcrumbs;
+                    echo $tags_breadcrumbs; // escaped above
                 }
             }
             
@@ -108,15 +111,26 @@ if ( ( (is_single() && 1 == ampforwp_get_setting('ampforwp-bread-crumb')) || (is
                     $last_category = end($last_category);
                       $category_name = get_category($last_category);
                     // Get parent any categories and create array
-                    $get_cat_parents = rtrim(get_category_parents($last_category->term_id, false, ','),',');
-                    $cat_parents = explode(',',$get_cat_parents);
+                    $get_cat_parents = rtrim(get_category_parents($last_category->term_id, false, '/'),'/');
+                    if(class_exists( 'WPSEO_Options' )){
+                        $primary_cateogory = get_post_meta(ampforwp_get_the_ID(), '_yoast_wpseo_primary_category', true);
+                    if(isset($primary_cateogory) && $primary_cateogory!=""){
+                        $pcname = get_the_category_by_ID($primary_cateogory);
+                        $category_name = $pcname;
+                        $get_cat_parents = rtrim(get_category_parents($primary_cateogory, false, '/'),'/');
+                       }
+                   }
+                    $cat_parents = explode('/',$get_cat_parents);
                       
                     // Loop through parent categories and store in variable $cat_display
                     $cat_display = '';
                     foreach($cat_parents as $parents) {
                         $cat_id = get_cat_ID( $parents);
                         $cat_link = get_category_link($cat_id);
-                        $cat_display .= '<li class="item-cat item-cat-' . esc_attr($cat_id) . '"><a class="bread-cat bread-cat-' . esc_attr($cat_id) . ' bread-cat-' . esc_attr($parents). '" href="'. ampforwp_url_controller( $cat_link, $archive_non_amp ).'" title="' . esc_attr($parents) . '">' . esc_html($parents) . '</a></li>';
+                        if(ampforwp_get_setting('ampforwp-archive-support-cat') == true && ampforwp_get_setting('ampforwp-archive-support') == true){
+                            $cat_link = ampforwp_url_controller( $cat_link );
+                        }
+                        $cat_display .= '<li class="item-cat item-cat-' . $cat_id . '"><a class="bread-cat bread-cat-' . $cat_id . ' bread-cat-' . $parents. '" href="'. esc_url($cat_link).'" title="'.esc_attr($parents).'">'.esc_html($parents).'</a></li>';
                         if(ampforwp_get_setting('ampforwp-bread-crumb-post')){
                             $cat_display .='<li class="item-post item-post-' . esc_attr(ampforwp_get_the_ID()) . '"><span class="bread-post">'.wp_kses_data( get_the_title(ampforwp_get_the_ID()) ). '</span></li>';
                         } 
@@ -141,7 +155,7 @@ if ( ( (is_single() && 1 == ampforwp_get_setting('ampforwp-bread-crumb')) || (is
               
             // Check if the post is in a category
             if(!empty($last_category)) {
-                echo $cat_display;
+                echo $cat_display; // escaped above
     
             // Else if post is in a custom taxonomy
             } else if(!empty($cat_id)) {
@@ -171,7 +185,7 @@ if ( ( (is_single() && 1 == ampforwp_get_setting('ampforwp-bread-crumb')) || (is
                 }
                    
                 // Display parent pages
-                echo $parents;
+                echo $parents; // escaped above
                    
                 // Current page
                    
@@ -184,7 +198,7 @@ if ( ( (is_single() && 1 == ampforwp_get_setting('ampforwp-bread-crumb')) || (is
             // Get tag information
             $term_id        = get_query_var('tag_id');
             $taxonomy       = 'post_tag';
-            $args           = 'include=' . $term_id;
+            $args           = 'include=' . intval($term_id);
             $terms          = get_terms( $taxonomy, $args );
             $get_term_id    = $terms[0]->term_id;
             $get_term_slug  = $terms[0]->slug;

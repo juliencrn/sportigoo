@@ -6,13 +6,13 @@ $coupons    = self::get_coupons();
 		<p class="form-field">
 			<?php if (! empty($coupons) ): ?>
 				<label for="send_coupon" class="long">
-					<?php _e('Generate &amp; Send a Coupon Code', 'follow_up_emails'); ?>
+					<?php _e('Generate a Coupon Code', 'follow_up_emails'); ?>
 				</label>
 				<input type="checkbox" name="send_coupon" id="send_coupon" value="1" <?php if ($email->send_coupon == 1) echo 'checked'; ?> />
 			<?php
 			else:
 				?>
-				<label for="send_coupon" class="long"><?php _e('Generate &amp; Send a Coupon Code', 'follow_up_emails'); ?></label>
+				<label for="send_coupon" class="long"><?php _e('Generate a Coupon Code', 'follow_up_emails'); ?></label>
 				<a href="<?php echo admin_url( 'admin.php?page=followup-emails-coupons&action=new-coupon' );?>" class="button-secondary">
 					<?php _e('No coupons found. Create a Coupon', 'follow_up_emails'); ?>
 				</a>

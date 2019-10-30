@@ -109,128 +109,18 @@
   </div>
 </script>
 
-<!-- Section: Apps -->
-<script id="tmpl-nf-apps" type="text/template">
-    <!-- TODO: Create static template -->
-    <?php
-     Ninja_Forms()->menus['add-ons']->display();
-    ?>
-</script>
 
-<!-- Section: Memberships -->
-<script id="tmpl-nf-memberships" type="text/template">
-    <?php
-        $saved = get_option( 'ninja_forms_memberships_feed', false );
-        if ( ! $saved ) {
-    ?>
-    <div class="widget widget-memberships">
-        <div class="pricing-container">
-            <div class="pricing-block widget">
-                <div class="pricing-header">
-                    <div class="pricing-title"><?php _e( 'Agency', 'ninja-forms' ); ?></div>
-                    <div class="pricing-price">$499</div>
-                    <div class="pricing-savings"><?php _e( 'Save', 'ninja-forms' ); ?> $2000+</div>
-                    <div class="pricing-cta"><a target="_blank" href="https://ninjaforms.com/checkout/?edd_action=add_to_cart&download_id=203757&utm_medium=plugin&utm_source=plugin-dashboard&utm_campaign=Ninja+Forms+Memberships&utm_content=Agency+Membership" class="nf-button primary"><?php _e( 'Buy Now', 'ninja-forms' ); ?></a></div>
-                </div>
-                <div class="pricing-body">
-                    <div>
-                        <i class="fa fa-users" aria-hidden="true"></i>
-                        <span class="pricing-body-title"><?php _e( 'Unlimited Sites', 'ninja-forms' ); ?></span>
-                        <span><?php _e( 'Updates & Support', 'ninja-forms' ); ?></span>
-                    </div>
-                    <div>
-                        <i class="fa fa-rocket" aria-hidden="true"></i>
-                        <span class="pricing-body-title"><?php _e( 'Fastest Support', 'ninja-forms' ); ?></span>
-                        <span><?php _e( '1 Year of Updates & Support', 'ninja-forms' ); ?></span>
-                    </div>
-                    <div>
-                        <i class="fa fa-trophy" aria-hidden="true"></i>
-                        <span class="pricing-body-title"><?php _e( 'All add-ons included!', 'ninja-forms' ); ?></span>
-                        <ul>
-                            <li><?php _e( 'Builder PRO Pack', 'ninja-forms' ); ?></li>
-                            <li><?php _e( 'PDF Form Submissions', 'ninja-forms' ); ?></li>
-                            <li><?php _e( 'Zapier', 'ninja-forms' ); ?></li>
-                            <li><?php _e( 'Newsletters (MailChimp, etc.)', 'ninja-forms' ); ?></li>
-                            <li><?php _e( 'CRMs (Saleforce, etc.)', 'ninja-forms' ); ?></li>
-                            <li><?php _e( 'Payments (PayPal, etc.)', 'ninja-forms' ); ?></li>
-                            <li><?php _e( 'And so much more...', 'ninja-forms' ); ?></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="pricing-block widget highlight">
-                <!-- <div class="callout">
-                    Most Popular
-                </div> -->
-                <div class="pricing-header">
-                    <div class="pricing-title"><?php _e( 'Professional', 'ninja-forms' ); ?></div>
-                    <div class="pricing-price">$199</div>
-                    <div class="pricing-savings"><?php _e( 'Save $197', 'ninja-forms' ); ?></div>
-                    <div class="pricing-cta"><a target="_blank" href="https://ninjaforms.com/checkout/?edd_action=add_to_cart&download_id=471355&utm_medium=plugin&utm_source=plugin-dashboard&utm_campaign=Ninja+Forms+Memberships&utm_content=Professional+Membership" class="nf-button primary"><?php _e( 'Buy Now', 'ninja-forms' ); ?></a></div>
-                </div>
-                <div class="pricing-body">
-                    <div>
-                        <i class="fa fa-users" aria-hidden="true"></i>
-                        <span class="pricing-body-title"><?php _e( '20 Sites', 'ninja-forms' ); ?></span>
-                        <span><?php _e( 'Updates & Support', 'ninja-forms' ); ?></span>
-                    </div>
-                    <div>
-                        <i class="fa fa-plane" aria-hidden="true"></i>
-                        <span class="pricing-body-title"><?php _e( 'Faster Support', 'ninja-forms' ); ?></span>
-                    </div>
-                    <div>
-                        <i class="fa fa-wrench" aria-hidden="true"></i>
-                        <span class="pricing-body-title"><?php _e( 'Builder Pro Pack', 'ninja-forms' ); ?></span>
-                        <span><?php _e( 'Layout & Styles, Multi-Part Forms, Conditional Logic, File Uploads', 'ninja-forms' ); ?></span>
-                    </div>
-                    <div>
-                        <i class="fa fa-percent" aria-hidden="true"></i>
-                        <span>Plus <strong>40% off</strong><br /><?php _e( 'Additional Add-Ons', 'ninja-forms' ); ?></span>
-                    </div>
-                </div>
-            </div>
-            <div class="pricing-block widget">
-                <div class="pricing-header">
-                    <div class="pricing-title"><?php _e( 'Personal', 'ninja-forms' ); ?></div>
-                    <div class="pricing-price">$99</div>
-                    <div class="pricing-savings"><?php _e( 'Save $57', 'ninja-forms' ); ?></div>
-                    <div class="pricing-cta"><a target="_blank" href="https://ninjaforms.com/checkout/?edd_action=add_to_cart&download_id=471356&utm_medium=plugin&utm_source=plugin-dashboard&utm_campaign=Ninja+Forms+Memberships&utm_content=Personal+Membership" class="nf-button primary"><?php _e( 'Buy Now', 'ninja-forms' ); ?></a></div>
-                </div>
-                <div class="pricing-body">
-                    <div>
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                        <span class="pricing-body-title"><?php _e( '1 Site', 'ninja-forms' ); ?></span>
-                        <span><?php _e( 'Updates & Support', 'ninja-forms' ); ?></span>
-                    </div>
-                    <div>
-                        <i class="fa fa-car" aria-hidden="true"></i>
-                        <span class="pricing-body-title"><?php _e( 'Fast Support', 'ninja-forms' ); ?></span>
-                    </div>
-                    <div>
-                        <i class="fa fa-wrench" aria-hidden="true"></i>
-                        <span class="pricing-body-title"><?php _e( 'Builder Pro Pack', 'ninja-forms' ); ?></span>
-                        <span><?php _e( 'Layout & Styles, Multi-Part Forms, Conditional Logic, File Uploads', 'ninja-forms' ); ?></span>
-                    </div>
-                    <div>
-                        <i class="fa fa-percent" aria-hidden="true"></i>
-                        <span>Plus <strong>20% off</strong><br /><?php _e( 'Additional Add-Ons', 'ninja-forms' ); ?></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- Section: apps and Integrations -->
+<script id="tmpl-nf-apps" type="text/template">
 
     <div class="widget widget-plan-notice">
-        <p class="widget-title"><?php _e( 'That sounds amazing! What else comes with Ninja Forms?', 'ninja-forms' ); ?></p>
-        <a href="https://ninjaforms.com/features/?utm_medium=plugin&utm_source=plugin-dashboard&utm_campaign=Ninja+Forms+Memberships&utm_content=Features" target="_blank" class="nf-button primary feature-list-link"><?php _e( 'We\'re glad you asked! Checkout our full list of features!', 'ninja-forms' ); ?> <i class="fa fa-chevron-circle-right" aria-hidden="true"></i></a>
-        <div><em><?php _e( 'All plans include a 14 day money back guarantee.', 'ninja-forms' ); ?></em></div>
-        <div><?php _e( 'Requires a current active license and subject to our', 'ninja-forms' ); ?> <a target="_blank" href="https://ninjaforms.com/terms-conditions/?utm_medium=plugin&utm_source=plugin-dashboard&utm_campaign=Ninja+Forms+Memberships&utm_content=Terms+Conditions"><?php _e( 'Terms & Conditions', 'ninja-forms' ); ?></a>.</div>
+        <p class="widget-title">What else comes with Ninja Forms?</p>
+        <a class="nf-button primary feature-list-link" href="https://ninjaforms.com/features/?utm_source=Ninja+Forms+Plugin&utm_medium=Apps+and+Integrations&utm_campaign=Dashboard+Features+Link" target="_blank" rel="noopener">We're glad you asked! Checkout our full list of features! <i class="fa fa-chevron-circle-right" aria-hidden="true"></i></a>
+        <div><em>All plans include a 14 day money back guarantee.</em></div>
+        <div>Requires a current active license and subject to our <a href="https://ninjaforms.com/terms-conditions/?utm_medium=plugin&utm_source=plugin-dashboard&utm_campaign=Ninja+Forms+Memberships&utm_content=Terms+Conditions" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</div>
     </div>
-    <?php
-    } else {
-        echo( $saved );
-    }
-    ?>
+
+    <?php Ninja_Forms()->menus[ 'add-ons']->display(); ?>
 </script>
 
 <!-- Section: Required Updates -->

@@ -48,6 +48,9 @@ jQuery(function($) {
                             return false;
                         }
                         var item = $(this);
+                        if(item.hasClass('hide')){
+                            return false;
+                        }
                         var isMatch = true,
                             text = $(this).find('.redux_field_th').text().toLowerCase();
                         if ( !text || text == "" ) {
@@ -63,8 +66,7 @@ jQuery(function($) {
                              $(this).parents('div.redux-group-tab').css('display','block');
                         }
                         return isMatch;
-                    }).show( function() { }); 
-
+                    }).show( function() { });
                     parent.find('.redux-group-tab').each(function() {
                         if (searchString != "") {
                             $(this).find("div.redux-section-field").each(function(){
@@ -79,6 +81,10 @@ jQuery(function($) {
                             });
                         } else {
                             $(this).find("div.redux-section-field").each(function(){
+                                var item = $(this);
+                                if(item.hasClass('hide')){
+                                    return false;
+                                }
                                 var divSectionId = $(this).attr('id');
                                 var splitResult = divSectionId.split("-");
                                 splitResult.splice(1, 0, "table");
@@ -88,6 +94,17 @@ jQuery(function($) {
                                     $(this).show();
                                 }
                             });
+                            $(this).find('.form-table-section tbody').each(function(){
+                                $(this).find('tr').each(function (i, el) {
+                                    var item = $(this);
+                                    if(item.hasClass('hide')){
+                                        item.hide();
+                                    }
+                                    if(item.hasClass('redux-section-indent-start')){
+                                        item.hide();
+                                    }
+                                });
+                            });
                         }
                     }); // parent.find('.redux-group-tab') Closed
                 },
@@ -96,7 +113,23 @@ jQuery(function($) {
                 captureLength:0
             });
         }
+    $('.redux-container').each(function() {
+        if (!$(this).hasClass('redux-no-sections')) {
+            $(this).find('.display_header').append('<span class="search-wrapper"><input  class="redux_field_search" name="" type="text" placeholder="Search the controls" style="display:none"/><span class="redux-amp-search-icon"><i class="dashicons-before dashicons-search"></i></span></span>');
+            $('.redux-amp-search-icon').click(function(){
+                $('.redux_field_search').toggle('slide');
+            });
+            reduxOptionSearch();
+        }
+    });
 
+    $(".redux_field_search").keypress(function (evt) {
+        //Deterime where our character code is coming from within the event
+        var charCode = evt.charCode || evt.keyCode;
+        if (charCode  == 13) { //Enter key's keycode
+            return false;
+        }
+    });
     //option panel Section Division
     var optionSectionDevision = function(){
         $('.afw-accordion-header').click(function(){
@@ -160,7 +193,17 @@ jQuery(function($) {
             })
         }
     }//Cloesed function  = optionSectionDevision
-
+    // Dismiss button functionlaity
+    $('#ampforwp-automattic-notice').on('click', 'button', function(){
+        var nonce = $('#ampforwp-automattic-notice').attr('data-nonce');
+        var data_notice = {
+            'action': 'ampforwp_automattic_notice_delete',
+            'security': nonce,
+        };
+        jQuery.post(ajaxurl, data_notice, function(response) {   
+    
+        });
+    });
     var hideReduxLeftTabs = function(){
          jQuery('ul.redux-group-menu > li.redux-group-tab-link-li').siblings('.redux-group-tab-link-li').each(function(key,Data){
            if(key>3 && jQuery(this).hasClass("otherSectionFields")){
@@ -464,7 +507,20 @@ var reduxOptionTab = function(){
     });
 } 
 //reduxOptionTab();   
-
+ $( '.redux-action_bar input' ).on('click', function( e ) {
+    if($(".amp-ls-solve").length){
+        $(".amp-ls-solve").each(function(k,v){
+            var license = $(this).val();
+            if(license){
+                var patt = new RegExp("^([A-Za-z0-9+\/]{4})*([A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{2}==)?$");
+                if( patt.test(window.atob(license)) ){
+                   license = window.atob(license);
+                   $(this).val(license);
+                }
+            }
+        });//$(".amp-ls-solve") each closed
+   }
+});
 $(".redux-ampforwp-ext-activate").click(function(){
     var currentThis = $(this);
     var plugin_id = currentThis.attr("id");
@@ -473,7 +529,7 @@ $(".redux-ampforwp-ext-activate").click(function(){
     var license = $('input[name="redux_builder_amp[amp-license]['+plugin_id+'][license]"]').val();
 
     if(newlicense!='' && newlicense.indexOf("**")<0){
-        license = newlicense;
+        license = window.btoa(newlicense);
         $('input[name="redux_builder_amp[amp-license]['+plugin_id+'][license]"]').val(license);
     }
 
@@ -486,7 +542,7 @@ $(".redux-ampforwp-ext-activate").click(function(){
         method: 'post',
         data: {action: 'ampforwp_get_licence_activate_update',
                ampforwp_license_activate:plugin_id,
-               license:license,
+               license:window.atob(license),
                item_name:item_name,
                store_url:store_url,
                plugin_active_path:plugin_active_path,
@@ -496,6 +552,7 @@ $(".redux-ampforwp-ext-activate").click(function(){
         success: function(response){
             currentThis.parents("li").find('.afw-license-response-message').remove();
             if(response.status=='200'){
+                $('#redux_builder_amp_amp-license_'+plugin_id+'_license').remove();
                 currentThis.parents("li").removeClass("not-active").removeClass("invalid").addClass("active").addClass("valid");
                 currentThis.html("Deactivate");
                 currentThis.after("<div class='afw-license-response-message'>"+response.message+'</div>');
@@ -624,6 +681,36 @@ function getQueryStringValue (key) {
   return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
 }  
 
+jQuery(document).ready(function($){
+    // Dismiss button functionlaity
+    $('#ampforwp-wizard-notice').on('click', 'button', function(){
+        var notice = {
+            'action': 'ampforwp_notice_delete',
+        };
+        jQuery.post(ajaxurl, notice, function(response) {     
+        });
+    });
+
+    // AMP FrontPage notice in Reading Settings #2348
+    if ( 'false' == redux_data.frontpage){
+        $('#page_on_front').parent('label').append('<p class="afp" style="display:none"><b>We have detected that you have not setup the FrontPage for AMP, </b><a href="'+redux_data.admin_url+'">Click here to setup</a></span>');
+    }
+    $('#front-static-pages input[type=radio][name=show_on_front]').on('change', function(e) {
+       if ( this.value == 'page') {
+        $('.afp').show();
+       } else {
+        $('.afp').hide();
+       }
+    });
+    var sfp  = $('#front-static-pages input[type=radio][checked=checked]');
+    if ( sfp[0] ) {
+        if(sfp[0].value == 'page'){
+            $('.afp').show();
+        }
+    }
+
+});//(document).ready Closed
+
 jQuery(window).on("YoastSEO:ready",function(){
 AmpForWpYoastAnalysis = function() {
   YoastSEO.app.registerPlugin( 'ampForWpYoastAnalysis', {status: 'ready'} );
@@ -658,14 +745,52 @@ AmpForWpYoastAnalysis = function() {
     new AmpForWpYoastAnalysis();
 }); 
 jQuery(document).ready(function($){
-$("#redux_builder_amp-swift-sidebar").on( 'change', function(){
-var value = $('#redux_builder_amp-swift-sidebar #swift-sidebar').val();
-if(value == 1){
-$("#single-design-type_2").attr('checked', true);
-}else {
-    $("#single-design-type_1").attr('checked', true);
-}
-
-});
-
+    $("#redux_builder_amp-swift-sidebar").on( 'change', function(){
+        var value = $('#redux_builder_amp-swift-sidebar #swift-sidebar').val();
+        if(value == 1){
+        $("#single-design-type_2").attr('checked', true);
+        }else {
+            $("#single-design-type_1").attr('checked', true);
+        }
+    });
+    //Toggle Post and Page comments panel based on options
+    if($('#ampforwp-display-on-pages').length>0 && $('#ampforwp-display-on-posts').length>0){
+        var pageComments = $('#ampforwp-display-on-pages').val();
+        var postComments = $('#ampforwp-display-on-posts').val();
+        if( pageComments ==0 && postComments == 0 ){
+            $('#section-ampforwp-comments').hide();
+            $('#section-table-ampforwp-comments tbody').hide();
+        }
+    }
+    $("#redux_builder_amp-ampforwp-display-on-posts").on('change','input[type=checkbox]', function(){
+        var pageComments = $('#ampforwp-display-on-pages').val();
+            if($(this).is(":checked")) {
+                $('#section-ampforwp-comments').show();
+                $('#section-table-ampforwp-comments tbody').show();
+            }else{
+                if(pageComments==0){
+                    $('#section-ampforwp-comments').hide();
+                    $('#section-table-ampforwp-comments tbody').hide();
+                }else{
+                    $('#section-ampforwp-comments').show();
+                    $('#section-table-ampforwp-comments tbody').show();
+                }
+            }
+    });
+    $("#redux_builder_amp-ampforwp-display-on-pages").on('change','input[type=checkbox]', function(){
+        var postComments = $('#ampforwp-display-on-posts').val();
+            if($(this).is(":checked")) {
+                $('#section-ampforwp-comments').show();
+                $('#section-table-ampforwp-comments tbody').show();
+            }else{
+                if(postComments == 0){
+                    $('#section-ampforwp-comments').hide();
+                    $('#section-table-ampforwp-comments tbody').hide();
+                }else{
+                    $('#section-ampforwp-comments').show();
+                    $('#section-table-ampforwp-comments tbody').show();
+                }
+              
+            }
+    });
 });

@@ -214,8 +214,9 @@ class AMP_Tag_And_Attribute_Sanitizer extends AMP_Base_Sanitizer {
 				$version
 			);
 		}
-		$checking_scripts = array("amp-carousel","amp-accordion");
-		$script_intersect = array_intersect($checking_scripts,$scriptArray);	
+		$present_scripts = array_flip($scriptArray);
+		$checking_scripts = array("amp-accordion","amp-carousel");
+		$script_intersect = array_intersect($checking_scripts,$present_scripts);
 		if(count($script_intersect)>0){
 			remove_filter('the_content', 'wpautop');
 		}
@@ -541,7 +542,7 @@ class AMP_Tag_And_Attribute_Sanitizer extends AMP_Base_Sanitizer {
 	private function validate_cdata_for_node( $element, $cdata_spec ) {
 		if ( isset( $cdata_spec['blacklisted_cdata_regex'] ) ) {
 			if ( preg_match( '@' . $cdata_spec['blacklisted_cdata_regex']['regex'] . '@u', $element->textContent ) ) {
-				return new WP_Error( $cdata_spec['blacklisted_cdata_regex']['error_message'] );
+				return new \WP_Error( $cdata_spec['blacklisted_cdata_regex']['error_message'] );
 			}
 		}
 		return true;

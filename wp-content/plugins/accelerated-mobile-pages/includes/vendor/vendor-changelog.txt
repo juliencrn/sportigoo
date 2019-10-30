@@ -73,3 +73,17 @@ Reason: To extend the functionality of sidebars and Pagebuilder
 45. Class-amp-gallery-block-sanitizer file Updated for new Gallery Designs #2868
 45. Added class-amp-gallery-block-sanitizer.php, class-amp-block-sanitizer.php in Vendor AMP Sanitizers and class-amp-core-block-handler.php in Vendor AMP Embed Handlers #2427
 45. Added a filter called ampforwp_featured_image_size, so users can change the default size of featured image in single post. #2896
+46. Class-amp-gallery-block-sanitizer file updated for Gallery with GIF Image not working issue #3304
+47. class-amp-allowed-tag-generated.php added amp-recaptcha-input support #3315
+48. Image sanitizer updated #3112
+49. class-amp-blacklist-sanitizer.php updated #3276
+50. Added id atttribute allowed in amp-video sanitizer #3406
+51. amp_get_permalink() function updated for the post id zero #3381
+52. Added code for Image is not loading when source of it starting from ../wp-content issue in class-amp-wistia-embed.php #3403
+53. Updated class-amp-wistia-embed.php #3386
+54. Added class_exists('SQ_Classes_ObjController') condition to amp_post_template_add_schemaorg_metadata for Squirrly SEO Compatibility #3421
+55. class-amp-content.php updated #3422
+56. whitelisted skype in anchor tags #3475
+57. Telegram links has been whitelisted in anchor tags #3578
+58. Improvement in iframe #3563
+59. Condition added in Wistia sanitizer to disable scripts when AMP Page Builder is enabled. #3587

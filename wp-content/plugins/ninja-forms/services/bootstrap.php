@@ -153,3 +153,34 @@ add_filter( 'http_request_args', function( $args, $url ){
   return $args;
 }, 10, 2 );
 */
+add_action( 'wp_ajax_nf_update_cache_mode', function() {
+  $use_cache = false;
+  $response = array();
+
+  check_ajax_referer( 'ninja_forms_dashboard_nonce', 'security' );
+
+  if( ! current_user_can('manage_options') ) {
+    $response[ 'errors' ] = array( "Current user doesn't have permission." );
+
+    echo json_encode( $response );
+    die();
+  }
+
+  
+
+  if(!isset( $_POST[ 'cache_mode' ] ) ) {
+    $response[ 'errors' ] = array( 'No cache mode value given' );
+
+    echo json_encode( $response );
+    die();
+  }
+
+  $use_cache = ( intval($_POST[ 'cache_mode' ]) === 1 ) ? true : false;
+
+  update_option( 'ninja_forms_cache_mode', $use_cache );
+
+  $response['message'] = 'Cache mode successfully saved';
+
+  echo json_encode($response);
+  die();
+});

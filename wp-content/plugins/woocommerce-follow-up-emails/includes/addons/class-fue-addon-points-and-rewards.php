@@ -186,6 +186,11 @@ class FUE_Addon_Points_And_Rewards {
 	 * @param int       $order_id
 	 */
 	public function after_points_increased( $user_id, $points, $event_type, $data = null, $order_id = 0 ) {
+		// P&R can sometimes pass null order_id, but this column is required by db structure, so we need to save it as 0.
+		if( null === $order_id ) {
+			$order_id = 0;
+		}
+		
 		$emails = fue_get_emails( 'points_and_rewards', FUE_Email::STATUS_ACTIVE, array(
 			'meta_query'    => array(
 				array(

@@ -489,7 +489,7 @@ class FUE_Coupons {
 
 		// Look for used coupons.
 		$order   = wc_get_order( $order_id );
-		$coupons = $order->get_used_coupons();
+		$coupons = version_compare( WC_VERSION, '3.7', 'ge' ) ? $order->get_coupon_codes() : $order->get_used_coupons();
 
 		if ( empty( $coupons ) ) {
 			return;

@@ -59,7 +59,8 @@ function ampforwp_related_post_loop_query(){
     'orderby' => $orderby,
     'ignore_sticky_posts'=>1,
 	'has_password' => false ,
-	'post_status'=> 'publish'
+	'post_status'=> 'publish',
+	'no_found_rows'	=> true
 	);
 	if($redux_builder_amp['ampforwp-single-select-type-of-related']==2 && 'post' == $post->post_type ){
 	    $categories = get_the_category($post->ID);
@@ -95,6 +96,7 @@ function ampforwp_related_post_loop_query(){
 					            	)
 					       		); 
 	}
+	$args = apply_filters('ampforwp_component_related_post_args' , $args );
 	$my_query = new wp_query( $args );
 
 	return $my_query;
@@ -154,6 +156,7 @@ function ampforwp_get_relatedpost_image( $imagetype ='thumbnail', $data=array() 
 
 function ampforwp_get_relatedpost_content($argsdata=array()){
 	global $redux_builder_amp;
+	$title = get_the_title();
 	$related_post_permalink = ampforwp_url_controller( get_permalink() );
 	if ( ampforwp_get_setting('ampforwp-single-related-posts-link') ) {
 		$related_post_permalink = get_permalink();
@@ -163,7 +166,7 @@ function ampforwp_get_relatedpost_content($argsdata=array()){
 	}
 	?>
 	<div class="related_link">
-        <a href="<?php echo esc_url( $related_post_permalink ); ?>"><?php the_title(); ?></a>
+        <a href="<?php echo esc_url( $related_post_permalink ); ?>" title="<?php echo esc_html( $title ); ?>"><?php the_title(); ?></a>
         <?php
         $show_excerpt = (isset($argsdata['show_excerpt'])? $argsdata['show_excerpt'] : true);
         if($show_excerpt){
@@ -172,10 +175,19 @@ function ampforwp_get_relatedpost_content($argsdata=array()){
 				}else{
 					$content = get_the_content();
 				}
-		?><p><?php 
-		echo (wp_trim_words( strip_shortcodes( $content ) , 15 )); 
-		?></p><?php 
-		} 
+		?><p><?php $excerpt_length = ampforwp_get_setting('enable-excerpt-single-related-posts');
+		if(empty($excerpt_length)){
+			$excerpt_length = 15;
+		}
+		if (true == ampforwp_get_setting('excerpt-option-rp-read-more')){
+				$content .= '...';
+		}
+		echo wp_trim_words( strip_shortcodes( $content ) , $excerpt_length ); 
+		?>
+		<?php if (true == ampforwp_get_setting('excerpt-option-rp-read-more')){?>
+		<a class="readmore-rp" href="<?php echo esc_url( $related_post_permalink ); ?>"><?php echo ampforwp_translation(ampforwp_get_setting('amp-translator-read-more'),'Read More') ?></a></p>
+		<?php
+		} }
 		$show_author = (isset($argsdata['show_author'])? $argsdata['show_author'] : true);
 		if($show_author){
 			$author_args = isset($argsdata['author_args'])? $argsdata['author_args'] : array();

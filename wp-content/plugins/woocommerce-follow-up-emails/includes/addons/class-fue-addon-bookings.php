@@ -347,7 +347,7 @@ class FUE_Addon_Bookings {
 
 			if ( $booking->get_persons_total() > 0 ) {
 				$booking_persons = $booking->get_persons();
-				$persons_html = '<p><strong>' . esc_html( __( 'No. of persons', 'follow_up_emails' ) ) . '</strong>';
+				$persons_html = '<strong>' . esc_html( __( 'No. of persons', 'follow_up_emails' ) ) . '</strong>';
 
 				if ( $booking_product->has_person_types() ) {
 					$persons_html .= '<br /><ul>';
@@ -359,10 +359,9 @@ class FUE_Addon_Bookings {
 					$persons_html .= '</ul>';
 				} else {
 					// No person types are used
-					$persons_html .= array_sum( $booking_persons );
+					$persons_html .= ' ' . array_sum( $booking_persons );
 				}
 
-				$persons_html .= '</p>';
 				$booking_persons = $persons_html;
 			}
 

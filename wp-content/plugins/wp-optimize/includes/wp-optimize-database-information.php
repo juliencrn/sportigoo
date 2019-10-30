@@ -8,7 +8,6 @@ class WP_Optimize_Database_Information {
 	const MARIA_DB = 'MariaDB';
 	const PERCONA_DB = 'Percona';
 	// for some reason coding standard parser give error here WordPress.DB.RestrictedFunctions.mysql_mysql_db
-	// @codingStandardsIgnoreLine
 	const MYSQL_DB = 'MysqlDB';
 
 	const MYISAM_ENGINE = 'MyISAM';
@@ -381,6 +380,8 @@ class WP_Optimize_Database_Information {
 	 */
 	public function is_table_needing_repair($table_name) {
 		$table_statuses = $this->check_all_tables();
+
+		if (!$this->is_table_type_repair_supported($table_name)) return false;
 
 		if (is_array($table_statuses) && array_key_exists($table_name, $table_statuses) && $table_statuses[$table_name]['corrupted']) {
 			return true;

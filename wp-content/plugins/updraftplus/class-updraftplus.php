@@ -284,24 +284,24 @@ class UpdraftPlus {
 	/**
 	 * Ensure that the indicated phpseclib classes are available
 	 *
-	 * @param String|Array $classes		- a class, or list of classes
-	 * @param String|Array $class_paths - paths to include
+	 * @param String|Array $classes - a class, or list of classes. There used to be a second parameter with paths to include; but this is now inferred from $classes; and there's no backwards compatibility problem because sending more parameters than are used is acceptable in PHP.
 	 *
 	 * @return Boolean|WP_Error
 	 */
-	public function ensure_phpseclib($classes = array(), $class_paths = array()) {
+	public function ensure_phpseclib($classes = array()) {
 
+		$classes = (array) $classes;
+	
 		$this->no_deprecation_warnings_on_php7();
 
-		if (!empty($classes)) {
-			$any_missing = false;
-			if (is_string($classes)) $classes = array($classes);
-			foreach ($classes as $cl) {
-				if (!class_exists($cl)) $any_missing = true;
-			}
-			if (!$any_missing) return true;
+		$any_missing = false;
+		
+		foreach ($classes as $cl) {
+			if (!class_exists($cl)) $any_missing = true;
 		}
 
+		if (!$any_missing) return true;
+		
 		$ret = true;
 		
 		// From phpseclib/phpseclib/phpseclib/bootstrap.php - we nullify it there, but log here instead
@@ -315,13 +315,11 @@ class UpdraftPlus {
 			}
 		}
 		
-		if (!empty($class_paths)) {
-			$phpseclib_dir = UPDRAFTPLUS_DIR.'/vendor/phpseclib/phpseclib/phpseclib';
-			if (false === strpos(get_include_path(), $phpseclib_dir)) set_include_path(get_include_path().PATH_SEPARATOR.$phpseclib_dir);
-			if (is_string($class_paths)) $class_paths = array($class_paths);
-			foreach ($class_paths as $cp) {
-				include_once($phpseclib_dir.'/'.$cp.'.php');
-			}
+		$phpseclib_dir = UPDRAFTPLUS_DIR.'/vendor/phpseclib/phpseclib/phpseclib';
+		if (false === strpos(get_include_path(), $phpseclib_dir)) set_include_path(get_include_path().PATH_SEPARATOR.$phpseclib_dir);
+		foreach ($classes as $cl) {
+			$path = str_replace('_', '/', $cl);
+			if (!class_exists($cl)) include_once($phpseclib_dir.'/'.$path.'.php');
 		}
 		
 		return $ret;
@@ -893,6 +891,39 @@ class UpdraftPlus {
 	}
 
 	/**
+	 * This function will read the next chunk from the log file and return it's contents and last read byte position
+	 *
+	 * @param string $nonce - the UpdraftPlus file nonce
+	 *
+	 * @return array - an empty array if there is no log file or an array with log file contents and last read byte position
+	 */
+	public function get_last_log_chunk($nonce) {
+		
+		$updraft_dir = $this->backups_dir_location();
+		$this->logfile_name = $updraft_dir."/log.$nonce.txt";
+
+		if (file_exists($this->logfile_name)) {
+			$contents = '';
+			$seek_to = max(0, $this->jobdata_get('clone_first_byte', 0));
+			$first_byte = $seek_to;
+			$handle = fopen($this->logfile_name, 'r');
+			if (is_resource($handle)) {
+				// Returns 0 on success
+				if (0 === @fseek($handle, $seek_to)) {
+					while (strlen($contents) < 1048576 && ($buffer = fgets($handle, 262144)) !== false) {
+						$contents .= $buffer;
+						$seek_to += 262144;
+					}
+					$this->jobdata_set('clone_first_byte', $seek_to);
+				}
+				fclose($handle);
+			}
+			return array('log_contents' => $contents, 'first_byte' => $first_byte);
+		}
+		return array();
+	}
+
+	/**
 	 *
 	 * Verifies that the indicated amount of memory is available
 	 *
@@ -922,7 +953,7 @@ class UpdraftPlus {
 	 * The uniq_id field is also used with PHP event detection - it is set then to 'php_event' - which is useful for anything hooking the action to detect
 	 *
 	 * @param  string  $line 	   the log line
-	 * @param  string  $level      the log level: notice, warning, error. If suffixed with a hypen and a destination, then the default destination is changed too.
+	 * @param  string  $level      the log level: notice, warning, error. If suffixed with a hyphen and a destination, then the default destination is changed too.
 	 * @param  boolean $uniq_id    each of these will only be logged once
 	 * @param  boolean $skip_dblog if true, then do not write to the database
 	 * @return null
@@ -934,7 +965,7 @@ class UpdraftPlus {
 			$level = $matches[1];
 			$destination = $matches[2];
 		}
-	
+
 		if ('error' == $level || 'warning' == $level) {
 			if ('error' == $level && 0 == $this->error_count()) $this->log('An error condition has occurred for the first time during this job');
 			if ($uniq_id) {
@@ -1036,6 +1067,45 @@ class UpdraftPlus {
 	}
 
 	/**
+	 * This function will construct the restore information log line using the passed in parameters and then log the line using $this->log();
+	 *
+	 * @param array $restore_information - an array of restore information
+	 *
+	 * @return void
+	 */
+	public function log_restore_update($restore_information) {
+		$this->log("RINFO:".json_encode($restore_information), 'notice-progress');
+	}
+
+	/**
+	 * Outputs data to the browser.
+	 * Will also fill the buffer on nginx systems after a specified amount of time.
+	 *
+	 * @param string $line The text to output
+	 * @return void
+	 */
+	public function output_to_browser($line) {
+		echo $line;
+		if (false === stripos($_SERVER['SERVER_SOFTWARE'], 'nginx')) return;
+		static $strcount = 0;
+		static $time = 0;
+		$buffer_size = 65536; // The default NGINX config uses a buffer size of 32 or 64k, depending on the system. So we use 64K.
+		if (0 == $time) $time = time();
+		$strcount += strlen($line);
+		if ((time() - $time) >= 8) {
+			// if the string count is > the buffer size, we reset, as it's likely the string was already sent.
+			if ($strcount > $buffer_size) {
+				$time = time();
+				$strcount = $strcount - $buffer_size;
+				return;
+			}
+			echo str_repeat(" ", ($buffer_size-$strcount));
+			// reset values
+			$time = time();
+			$strcount = 0;
+		}
+	}
+	/**
 	 * Get the maximum packet size on the WPDB MySQL connection, in bytes, after (optionally) attempting to raise it to 32MB if it appeared to be lower.
 	 * A default value equal to 1MB is returned if the true value could not be found - it has been found reasonable to assume that at least this is available.
 	 *
@@ -1123,7 +1193,7 @@ class UpdraftPlus {
 	 * Method for helping remote storage methods to upload files in chunks without needing to duplicate all the overhead
 	 *
 	 * @param	object  $caller        the object to call back to do the actual network API calls; needs to have a chunked_upload() method.
-	 * @param	string  $file          the full path to the file
+	 * @param	string  $file          the basename of the file
 	 * @param	string  $cloudpath     this is passed back to the callback function; within this function, it is used only for logging
 	 * @param	string  $logname       the prefix used on log lines. Also passed back to the callback function.
 	 * @param	integer $chunk_size    the size, in bytes, of each upload chunk
@@ -1222,7 +1292,7 @@ class UpdraftPlus {
 					$uploaded = (!isset($uploaded->log) || $uploaded->log) ? true : 1;
 				}
 				
-				// The joys of PHP: is_wp_error() is not false-y.
+				// The joys of WP/PHP: is_wp_error() is not false-y.
 				if ($uploaded && !is_wp_error($uploaded)) {
 					$perc = round(100*($upload_end + 1)/max($orig_file_size, 1), 1);
 					// Consumers use a return value of (int)1 (rather than (bool)true) to suppress logging
@@ -1907,6 +1977,11 @@ class UpdraftPlus {
 	 */
 	public function backup_resume($resumption_no, $bnonce) {
 
+		// Theoretically (N.B. has been seen in the real world), the WP scheduler might call us more than once within the same context (e.g. an incremental run followed by a main backup resumption), leaving us with incorrect internal state if we don't reset.
+		static $last_bnonce = null;
+		if ($last_bnonce) $this->jobdata_reset();
+		$last_bnonce = $bnonce;
+	
 		set_error_handler(array($this, 'php_error'), E_ALL & ~E_STRICT);
 
 		$this->current_resumption = $resumption_no;
@@ -1927,7 +2002,7 @@ class UpdraftPlus {
 
 		if (0 == $resumption_no) {
 			$label = $this->jobdata_get('label');
-			if ($label) $resumption_extralog = ", label=$label";
+			if ($label) $resumption_extralog = apply_filters('updraftplus_autobackup_extralog', ", label=$label");
 		} else {
 			$this->nonce = $bnonce;
 			$file_nonce = $this->jobdata_get('file_nonce');
@@ -1969,21 +2044,11 @@ class UpdraftPlus {
 				if (isset($time_passed[$i])) $last_successful_resumption = $i;
 			}
 			
-			$fail_on_resume = $this->jobdata_get('fail_on_resume');
-
 			if (isset($time_passed[$prev_resumption])) {
+				// N.B. A check-in occurred; we haven't yet tested if it was useful
 				$resumption_extralog = ", previous check-in=".round($time_passed[$prev_resumption], 1)."s";
-				if ($fail_on_resume) $this->jobdata_delete('fail_on_resume');
-			} else {
-				$this->no_checkin_last_time = true;
-				if ($fail_on_resume == $this->current_resumption) {
-					$this->log('The backup is being aborted for a repeated failure to progress.', 'updraftplus');
-					$this->log(__('The backup is being aborted for a repeated failure to progress.', 'updraftplus'), 'error');
-					$this->backup_finish(true, true);
-					die;
-				}
 			}
-
+			
 			// This is just a simple test to catch restorations of old backup sets where the backup includes a resumption of the backup job
 			if ($time_now - $this->backup_time > 172800 && true == apply_filters('updraftplus_check_obsolete_backup', true, $time_now, $this)) {
 			
@@ -2000,9 +2065,12 @@ class UpdraftPlus {
 						}
 					}
 				}
-			
-				$this->log("This backup task (".$this->nonce.") is either complete or began over 2 days ago: ending ($time_now, ".$this->backup_time.") (existing jobdata keys: ".implode(', ', array_keys($this->jobdata)).")");
-				die;
+
+				// If we are doing a local upload then we do not want to abort the backup as it's possible they are uploading a backup that is older than two days
+				if (empty($this->jobdata['local_upload'])) {
+					$this->log("This backup task (" . $this->nonce . ") is either complete or began over 2 days ago: ending ($time_now, " . $this->backup_time . ") (existing jobdata keys: " . implode(', ', array_keys($this->jobdata)) . ")");
+					die;
+				}
 			}
 
 		}
@@ -2025,7 +2093,7 @@ class UpdraftPlus {
 		$updraft_dir = $this->backups_dir_location();
 
 		$time_ago = time()-$btime;
-
+		
 		$this->log("Backup run: resumption=$resumption_no, nonce=$bnonce, file_nonce=".$this->file_nonce." begun at=$btime (${time_ago}s ago), job type=$job_type".$resumption_extralog);
 
 		// This works round a bizarre bug seen in one WP install, where delete_transient and wp_clear_scheduled_hook both took no effect, and upon 'resumption' the entire backup would repeat.
@@ -2094,17 +2162,37 @@ class UpdraftPlus {
 				$schedule_resumption = true;
 			}
 		} else {
+		
 			// We're in over-time - we only reschedule if something useful happened last time (used to be that we waited for it to happen this time - but that meant that temporary errors, e.g. Google 400s on uploads, scuppered it all - we'd do better to have another chance
 			$useful_checkin = $this->jobdata_get('useful_checkin');
 			$last_resumption = $resumption_no-1;
-
+			$fail_on_resume = $this->jobdata_get('fail_on_resume');
+			
 			if (empty($useful_checkin) || $useful_checkin < $last_resumption) {
-				$this->log(sprintf('The current run is resumption number %d, and there was nothing useful done on the last run (last useful run: %s) - will not schedule a further attempt until we see something useful happening this time', $resumption_no, $useful_checkin));
-				// Internally, we do actually schedule a resumption; but only in order to be able to nicely handle and log the failure, which otherwise may not be logged
-				$this->jobdata_set('fail_on_resume', $next_resumption);
-				$schedule_resumption = 1;
+				if (empty($fail_on_resume)) {
+					$this->log(sprintf('The current run is resumption number %d, and there was nothing useful done on the last run (last useful run: %s) - will not schedule a further attempt until we see something useful happening this time', $resumption_no, $useful_checkin));
+					// Internally, we do actually schedule a resumption; but only in order to be able to nicely handle and log the failure, which otherwise may not be logged
+					$this->jobdata_set('fail_on_resume', $next_resumption);
+					$schedule_resumption = 1;
+				}
 			} else {
+				// Something useful happened last time
+				if (!empty($fail_on_resume)) {
+					$this->jobdata_delete('fail_on_resume');
+					$fail_on_resume = false;
+				}
 				$schedule_resumption = true;
+			}
+			
+			if (!isset($time_passed[$prev_resumption])) {
+				$this->no_checkin_last_time = true;
+			}
+			
+			if (!empty($fail_on_resume) && $fail_on_resume == $this->current_resumption) {
+				$this->log('The backup is being aborted for a repeated failure to progress.', 'updraftplus');
+				$this->log(__('The backup is being aborted for a repeated failure to progress.', 'updraftplus'), 'error');
+				$this->backup_finish(true, true);
+				die;
 			}
 		}
 
@@ -2306,10 +2394,8 @@ class UpdraftPlus {
 					} else {
 						$this->log("$file: $key: This file was already queued for upload (this condition should never be seen)");
 					}
-				} elseif ('incremental' == $job_type && 'db' == substr($key, 0, 2)) {
-					// Here we check if this is an incremental backup and if so then mark the db files as already uploaded as db files are not part of incremental file backups
-					$this->log("$file: $key: This is an incremental backup; this file will be marked as successfully uploaded.");
-					$this->uploaded_file($file, true);
+				} elseif (!$this->is_ours_to_upload($file, $key)) {
+					$this->log("$file: $key: This file is not ours to upload and has been/will be handled by another job.");
 				} else {
 					$this->log("$file: $key: Note: This file was not marked as successfully uploaded, but does not exist on the local filesystem; now marking as uploaded ($updraft_dir/$file)");
 					$this->uploaded_file($file, true);
@@ -2339,6 +2425,9 @@ class UpdraftPlus {
 				$updraftplus_backup->do_prune_standalone();
 				$allow_email = true;
 			}
+
+			$this->check_upload_completed();
+
 			$this->backup_finish(true, $allow_email);
 			restore_error_handler();
 			return;
@@ -2453,7 +2542,7 @@ class UpdraftPlus {
 	}
 
 	/**
-	 * Reset the job data for the currently active job
+	 * Reset the job data for the currently active job (forcing a re-fetch from the database, if there is any)
 	 */
 	public function jobdata_reset() {
 		$this->jobdata = null;
@@ -2485,9 +2574,17 @@ class UpdraftPlus {
 			$options['clone_id'] = $request['clone_id'];
 			$options['secret_token'] = $request['secret_token'];
 		}
-
+		
 		if (isset($request['clone_url'])) $options['clone_url'] = $request['clone_url'];
 		if (isset($request['key'])) $options['key'] = $request['key'];
+		if (isset($request['backup_nonce']) && isset($request['backup_timestamp'])) {
+			if ('current' != $request['backup_nonce'] && 'current' != $request['backup_timestamp']) {
+				$options['use_nonce'] = $request['backup_nonce'];
+				$options['use_timestamp'] = $request['backup_timestamp'];
+			} else {
+				$options['clone_backup'] = 'current';
+			}
+		}
 
 		return $options;
 	}
@@ -2502,7 +2599,6 @@ class UpdraftPlus {
 	 * @return array               - the modified jobdata
 	 */
 	public function updraftplus_clone_backup_jobdata($jobdata, $options, $split_every) {
-		global $updraftplus;
 
 		if (!is_array($jobdata)) return $jobdata;
 
@@ -2519,6 +2615,13 @@ class UpdraftPlus {
 
 		$service_key = array_search('service', $jobdata) + 1;
 		$jobdata[$service_key] = array('remotesend');
+
+		$backup_database_key = array_search('backup_database', $jobdata) + 1;
+		$db_backups = $jobdata[$backup_database_key];
+
+		foreach (array_keys($db_backups) as $key) {
+			if ('wp' != $key) unset($db_backups[$key]);
+		}
 		
 		$jobdata[] = 'clone_job';
 		$jobdata[] = true;
@@ -2532,6 +2635,37 @@ class UpdraftPlus {
 		$jobdata[] = $options['key'];
 		$jobdata[] = 'remotesend_info';
 		$jobdata[] = array('url' => $options['clone_url']);
+		$jobdata[$backup_database_key] = $db_backups;
+
+		// if clone_backup is set and is 'current' then theres nothing more that needs to be done, otherwise we need to tweak some more jobdata to skip to the upload stage and use the specified clone backup
+		if (isset($options['clone_backup']) && 'current' == $options['clone_backup']) return $jobdata;
+
+		global $updraftplus_admin;
+
+		add_filter('updraftplus_get_backup_file_basename_from_time', array($updraftplus_admin, 'upload_local_backup_name'), 10, 3);
+
+		$backup_history = UpdraftPlus_Backup_History::get_history();
+		$backup = $backup_history[$options['use_timestamp']];
+
+		$jobstatus_key = array_search('jobstatus', $jobdata) + 1;
+		$backup_time_key = array_search('backup_time', $jobdata) + 1;
+		$backup_files_key = array_search('backup_files', $jobdata) + 1;
+
+		$db_backups = $jobdata[$backup_database_key];
+		$db_backup_info = $this->update_database_jobdata($db_backups, $backup);
+		$skip_entities = array('more', 'wpcore');
+		$file_backups = $this->update_files_jobdata($backup, $skip_entities);
+
+		$jobdata[$jobstatus_key] = 'clouduploading';
+		$jobdata[$backup_time_key] = $options['use_timestamp'];
+		$jobdata[$backup_files_key] = 'finished';
+		$jobdata[] = 'backup_files_array';
+		$jobdata[] = $file_backups;
+		$jobdata[] = 'blog_name';
+		$jobdata[] = $db_backup_info['blog_name'];
+		$jobdata[$backup_database_key] = $db_backup_info['db_backups'];
+		$jobdata[] = 'local_upload';
+		$jobdata[] = true;
 
 		return $jobdata;
 	}
@@ -2583,6 +2717,29 @@ class UpdraftPlus {
 		$backup_database_info['db_backups'] = $db_backups;
 
 		return $backup_database_info;
+	}
+
+	/**
+	 * This function will update the files backup jobdata by constructing the backup entities and their sizes from the backup
+	 *
+	 * @param array $backup        - the backup array
+	 * @param array $skip_entities - an array of entities to skip
+	 *
+	 * @return array - the files backup array
+	 */
+	public function update_files_jobdata($backup, $skip_entities = array()) {
+
+		$file_backups = array();
+		$backupable_entities = $this->get_backupable_file_entities(true);
+
+		// We need to construct the expected files array here, this gets added to the jobdata much later in the backup process but we need this before we start
+		foreach ($backupable_entities as $entity => $path) {
+			if (in_array($entity, $skip_entities)) continue;
+			if (isset($backup[$entity])) $file_backups[$entity] = $backup[$entity];
+			if (isset($backup[$entity . '-size'])) $file_backups[$entity . '-size'] = $backup[$entity . '-size'];
+		}
+
+		return $file_backups;
 	}
 
 	public function backup_files() {
@@ -3063,7 +3220,6 @@ class UpdraftPlus {
 			}
 			if ($remote_sent && !$force_abort) {
 				$final_message .= empty($clone_job) ? '. '.__('To complete your migration/clone, you should now log in to the remote site and restore the backup set.', 'updraftplus') : '. '.__('Your clone will now deploy this data to re-create your site.', 'updraftplus');
-				do_action('updraftplus_remotesend_upload_complete');
 			}
 			if ($do_cleanup) $delete_jobdata = apply_filters('updraftplus_backup_complete', $delete_jobdata);
 		} elseif (false == $this->newresumption_scheduled || $this->current_resumption + 1 == $this->jobdata_get('fail_on_resume')) {
@@ -3515,6 +3671,95 @@ class UpdraftPlus {
 	public function is_uploaded($file, $service = '', $instance_id = '') {
 		$hash = $service.(('' == $service) ? '' : '-').$instance_id.(('' == $instance_id) ? '' : '-').md5($file);
 		return ('yes' === $this->jobdata_get("uploaded_$hash")) ? true : false;
+	}
+
+	/**
+	 * This function will mark the passed in service and instance id upload as complete
+	 *
+	 * @param String $service     - the service identifier
+	 * @param String $instance_id - the instance identifier
+	 *
+	 * @return void
+	 */
+	public function mark_upload_complete($service, $instance_id = '') {
+		
+		$upload_completed = $this->jobdata_get('upload_completed', array());
+
+		if (empty($instance_id)) {
+			$upload_completed[$service] = 1;
+		} else {
+			if (!is_array($upload_completed[$service])) $upload_completed[$service] = array();
+			$upload_completed[$service][$instance_id] = 1;
+		}
+
+		$this->jobdata_set('upload_completed', $upload_completed);
+	}
+
+	/**
+	 * This function will check all the remote storage options for this job and ensure that each has completed the upload, if they have mark them as done if they have not completed then call upload_completed() for that service if it exists, otherwise mark as complete.
+	 *
+	 * @return boolean
+	 */
+	private function check_upload_completed() {
+		
+		$job_services = $this->jobdata_get('service');
+		$services = $this->get_canonical_service_list($job_services);
+		$sent_to_cloud = empty($services) ? false : true;
+
+		if (!$sent_to_cloud) return;
+
+		$storage_objects_and_ids = UpdraftPlus_Storage_Methods_Interface::get_storage_objects_and_ids($services);
+
+		foreach ($services as $service) {
+
+			if ('email' == $service || 'none' == $service || !$service) continue;
+
+			$remote_obj = $storage_objects_and_ids[$service]['object'];
+			$upload_completed = $this->jobdata_get('upload_completed', array());
+
+			if (isset($upload_completed[$service]) && !is_array($upload_completed[$service])) continue;
+
+			if (!empty($remote_obj) && !$remote_obj->supports_feature('multi_options')) {
+
+				if (is_callable(array($remote_obj, 'upload_completed'))) {
+					$result = $remote_obj->upload_completed();
+					if ($result) $this->mark_upload_complete($service);
+				} else {
+					$this->mark_upload_complete($service);
+				}
+			} elseif (!empty($storage_objects_and_ids[$service]['instance_settings'])) {
+
+				foreach ($storage_objects_and_ids[$service]['instance_settings'] as $instance_id => $options) {
+
+					if (isset($upload_completed[$service][$instance_id])) continue;
+
+					$remote_obj->set_options($options, true, $instance_id);
+					if (is_callable(array($remote_obj, 'upload_completed'))) {
+						$remote_obj->upload_completed();
+					} else {
+						$this->mark_upload_complete($service, $instance_id);
+					}
+				}
+			}
+		}
+	}
+	/**
+	 * This function will check if the passed-in file is this job's responsibility to upload. Potentially files can belong to a different job, when running an incremental backup run
+	 *
+	 * @param string $file - the name of the file
+	 * @param string $type - the file entity type (db, plugins, themes etc)
+	 *
+	 * @return boolean - whether this is a file this job should upload (at some point)
+	 */
+	private function is_ours_to_upload($file, $type) {
+
+		if ('db' == $type) return false;
+
+		$previous_backup_files_array = $this->jobdata_get('previous_backup_files_array', array());
+
+		if (isset($previous_backup_files_array[$type]) && in_array($file, $previous_backup_files_array[$type])) return false;
+		
+		return true;
 	}
 
 	private function delete_local($file) {
@@ -4200,11 +4445,8 @@ class UpdraftPlus {
 		// We limit the time that we spend scanning the file for character sets
 		$db_charset_collate_scan_timeout = (defined('UPDRAFTPLUS_DB_CHARSET_COLLATE_SCAN_TIMEOUT') && is_numeric(UPDRAFTPLUS_DB_CHARSET_COLLATE_SCAN_TIMEOUT)) ? UPDRAFTPLUS_DB_CHARSET_COLLATE_SCAN_TIMEOUT : 10;
 		$charset_scan_start_time = microtime(true);
-		$db_supported_character_sets_res = $GLOBALS['wpdb']->get_results('SHOW CHARACTER SET', OBJECT_K);
-		$db_supported_character_sets = (null !== $db_supported_character_sets_res) ? $db_supported_character_sets_res : array();
-		$db_charsets_found = array();
-		$db_supported_collations_res = $GLOBALS['wpdb']->get_results('SHOW COLLATION', OBJECT_K);
-		$db_supported_collations = (null !== $db_supported_collations_res) ? $db_supported_collations_res : array();
+		$db_supported_character_sets = (array) $GLOBALS['wpdb']->get_results('SHOW CHARACTER SET', OBJECT_K);
+		$db_supported_collations = (array) $GLOBALS['wpdb']->get_results('SHOW COLLATION', OBJECT_K);
 		$db_charsets_found = array();
 		$db_collates_found = array();
 		$db_supported_charset_related_to_unsupported_collation = false;
@@ -4212,7 +4454,7 @@ class UpdraftPlus {
 		while ((($is_plain && !feof($dbhandle)) || (!$is_plain && !gzeof($dbhandle))) && ($line<100 || (!$header_only && count($wanted_tables)>0) || ((microtime(true) - $charset_scan_start_time) < $db_charset_collate_scan_timeout && !empty($db_supported_character_sets)))) {
 			$line++;
 			// Up to 1MB
-			$buffer = ($is_plain) ? rtrim(fgets($dbhandle, 1048576)) : rtrim(gzgets($dbhandle, 1048576));
+			$buffer = $is_plain ? rtrim(fgets($dbhandle, 1048576)) : rtrim(gzgets($dbhandle, 1048576));
 			// Comments are what we are interested in
 			if (substr($buffer, 0, 1) == '#') {
 				$processing_create = false;
@@ -4458,7 +4700,7 @@ class UpdraftPlus {
 					$similar_type_collate = UpdraftPlus_Manipulation_Functions::get_matching_str_from_array_elems($db_unsupported_collate_unique, array_keys($db_supported_collations), false);
 				}
 
-				$collate_select_html = '<label>'.__('Your chosen replacement collation', 'updraftplus').':</label>';
+				$collate_select_html = '<div class="notice below-h2 updraft-restore-option"><label>'.__('Your chosen replacement collation', 'updraftplus').':</label>';
 				$collate_select_html .= '<select name="updraft_restorer_collate" id="updraft_restorer_collate">';
 				$db_charsets_found_unique = array_unique($db_charsets_found);
 				foreach ($db_supported_collations as $collate => $collate_info_obj) {
@@ -4484,6 +4726,7 @@ class UpdraftPlus {
 					$collate_select_html .= '<option value="choose_a_default_for_each_table" selected="selected">'.__('Choose a default for each table', 'updraftplus').'</option>';
 				}
 				$collate_select_html .= '</select>';
+				$collate_select_html .= '</div>';
 				
 				$info['addui'] = empty($info['addui']) ? $collate_select_html : $info['addui'].'<br>'.$collate_select_html;
 				
@@ -4935,6 +5178,23 @@ class UpdraftPlus {
 		return function_exists('posix_geteuid') && function_exists('posix_getuid') && function_exists('posix_getegid') && function_exists('posix_getgid');
 	}
 
+	/**
+	 * Wipe state-related data (e.g. on wiping settings, or on a restore). Note that there is some internal knowledge within the method below of how it is being used (if not including locks, then check for an active job)
+	 *
+	 * @param Boolean $include_locks
+	 */
+	public function wipe_state_data($include_locks = false) {
+		// These aren't in get_settings_keys() because they are always in the options table, regardless of context
+		global $wpdb;
+		if ($include_locks) {
+			$wpdb->query("DELETE FROM $wpdb->options WHERE (option_name LIKE 'updraftplus_unlocked_%' OR option_name LIKE 'updraftplus_locked_%' OR option_name LIKE 'updraftplus_last_lock_time_%' OR option_name LIKE 'updraftplus_semaphore_%' OR option_name LIKE 'updraft_jobdata_%' OR option_name LIKE 'updraft_last_scheduled_%' )");
+		} else {
+			$sql = "DELETE FROM $wpdb->options WHERE option_name LIKE 'updraft_jobdata_%'";
+			if (!empty($this->nonce)) $sql .= " AND option_name != 'updraft_jobdata_".$this->nonce."'";
+			$wpdb->query($sql);
+		}
+	}
+	
 	/**
 	 * Checks whether debug mode is on or not. If it is on then unminified script will be used.
 	 *

@@ -970,20 +970,26 @@ class FUE_Addon_Subscriptions_V2 {
 				$subscription   = wcs_get_subscription( $meta['subs_key'] );
 
 				if ( $subscription ) {
+					$resubscribe_order_ids = $subscription->get_related_orders( 'ids', 'resubscribe' );
 
-					if ( $email->interval_type == 'subs_suspended' && $subscription->get_status() != 'on-hold' ) {
+					$already_resubscribed = ! empty( $resubscribe_order_ids );
+
+					if ( $email->interval_type == 'subs_suspended' && $subscription->get_status() != 'on-hold'  ) {
 						$delete = true;
 						$skip = true;
-					} elseif ( $email->interval_type == 'subs_expired' && $subscription->get_status() != 'expired' ) {
+					} elseif ( $email->interval_type == 'subs_expired' && ( $subscription->get_status() != 'expired' || $already_resubscribed ) ) {
 						$delete = true;
 						$skip = true;
 					} elseif ( ($email->interval_type == 'subs_activated' || $email->interval_type == 'subs_renewed' || $email->interval_type == 'subs_reactivated') && $subscription->get_status() != 'active' ) {
 						$delete = true;
 						$skip = true;
-					} elseif ( $email->interval_type == 'subs_cancelled' && $subscription->get_status() != 'cancelled' ) {
+					} elseif ( $email->interval_type == 'subs_cancelled' && ( $subscription->get_status() != 'cancelled' || $already_resubscribed ) ) {
 						$delete = true;
 						$skip = true;
 					} elseif ( $email->interval_type == 'subs_before_renewal' && $subscription->get_status() != 'active' ) {
+						$delete = true;
+						$skip = true;
+					} elseif ( $email->interval_type == 'subs_before_expire' && ( $subscription->get_status() != 'active' || $already_resubscribed ) ) {
 						$delete = true;
 						$skip = true;
 					}

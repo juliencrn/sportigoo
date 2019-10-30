@@ -63,7 +63,7 @@ function amppbbase_admin_scripts( $hook_suffix ){
 			$totalmodules = 1;
 			if(!empty($previousData)){
 				$jsonData = json_decode($previousData,true);
-				if(count($jsonData['rows'])>0){
+				if((isset($jsonData['rows']) && count($jsonData['rows']))>0){
 					$totalRows = $jsonData['totalrows'];
 					$totalmodules = $jsonData['totalmodules'];
 					$previousData = ($jsonData);
@@ -84,7 +84,7 @@ function amppbbase_admin_scripts( $hook_suffix ){
 
 			$allPostLayout = array();
 			$args = array(
-						'posts_per_page'   => -1,
+						'posts_per_page'   => 500,
 						'orderby'          => 'date',
 						'order'            => 'DESC',
 						'post_type'        => 'amppb_layout',

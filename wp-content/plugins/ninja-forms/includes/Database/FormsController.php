@@ -21,7 +21,13 @@ final class NF_Database_FormsController
             ";
             $forms_data = $this->db->get_results($forms_sql, OBJECT_K);
 
-            $public_form_keys_sql = "SELECT `parent_id` as 'form_id', `value`as 'public_link_key' FROM {$this->db->prefix}nf3_form_meta WHERE `key` = 'public_link_key'";
+            $public_form_keys_sql = "SELECT link.parent_id as 'form_id', link.value as 'public_link_key'
+            FROM `{$this->db->prefix}nf3_form_meta` as link
+            LEFT JOIN `{$this->db->prefix}nf3_form_meta` as allowed
+            ON allowed.parent_id = link.parent_id
+            WHERE link.key = 'public_link_key'
+            AND allowed.key = 'allow_public_link'
+            AND allowed.value = '1';";
             $public_form_keys = $this->db->get_results($public_form_keys_sql, OBJECT_K);
 
             foreach($public_form_keys as $public_form_key){

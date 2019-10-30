@@ -109,7 +109,9 @@ class WooCommerceSettings
         }
         $wpUrl = sprintf('<a href="%s" target="_blank">%s</a>', get_home_url(), get_home_url());
 
-        $message = file_get_contents(dirname(dirname(dirname(__FILE__))) . '/templates/confirm-subscription-email.php');
+        $subscriptionTemplate = apply_filters('mailjet_confirmation_email_filename', dirname(dirname(dirname(__FILE__))) . '/templates/confirm-subscription-email.php');
+        $message = file_get_contents($subscriptionTemplate);
+
         $emailParams = array(
             '__EMAIL_TITLE__' => __('Please confirm your subscription', 'mailjet-for-wordpress'),
             '__EMAIL_HEADER__' => sprintf(__('To receive newsletters from %s please confirm your subscription by clicking the following button:', 'mailjet-for-wordpress'), $wpUrl),
@@ -123,7 +125,7 @@ class WooCommerceSettings
             $message = str_replace($key, $value, $message);
         }
 
-        $email_subject = __('Subscription Confirmation', 'mailjet');
+        $email_subject = __('Subscription Confirmation', 'mailjet-for-wordpress');
         add_filter('wp_mail_content_type', array(new SubscriptionOptionsSettings(), 'set_html_content_type'));
         $res = wp_mail($user_email, $email_subject, $message,
             array('From: ' . get_option('blogname') . ' <' . get_option('admin_email') . '>'));

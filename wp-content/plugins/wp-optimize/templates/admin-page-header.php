@@ -28,15 +28,17 @@
 			$sqlversion = (string) $wp_optimize->get_db_info()->get_version();
 			echo '<strong>WP-Optimize '.($wp_optimize->is_premium() ? __('Premium', 'wp-optimize') : '' ).' <span class="wpo-version">'.WPO_VERSION.'</span></strong>';
 		?>
-		<span class="wpo-subheader"><?php _e('The #1 optimization plugin!', 'wp-optimize'); ?></span>
+		<span class="wpo-subheader"><?php echo htmlspecialchars(__('Make your site fast & efficient', 'wp-optimize')); ?></span>
 	</div>
 	<?php
 	$wp_optimize->include_template('pages-menu.php', false, array('menu_items' => WP_Optimize()->get_submenu_items()));
 	?>
 </header>
 <?php
-	// This is to display the notices.
-	$wp_optimize_notices->do_notice();
+	if ($show_notices) {
+		// This is to display the notices.
+		$wp_optimize_notices->do_notice();
+	}
 ?>
 
 <script type="text/javascript">

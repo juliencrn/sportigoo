@@ -6,12 +6,13 @@ add_filter('ampforwp_content_module_args','ampforwp_content_module_pagination',1
 function ampforwp_content_module_pagination($args, $fieldValues){
   if(isset($fieldValues['pagination']) && $fieldValues['pagination'] == 1 ){
       if( isset($_GET['pageno']) && $_GET['pageno']!=''){
-          $paged = $_GET['pageno'];
+          $paged = intval($_GET['pageno']);
       }else{
           $paged = 1;
       }
-      
+      $offset = ( $paged - 1 ) * $args['posts_per_page'] + $args['offset'];
       $args['paged'] = $paged;
+      $args['offset'] = $offset;
       
     return $args;
   }else{
@@ -20,7 +21,7 @@ function ampforwp_content_module_pagination($args, $fieldValues){
   }
 }
  $output = '{{if_condition_content_layout_type==1}}
-            <div {{if_id}}id="{{id}}"{{ifend_id}} class="pb_mod cat_mod {{user_class}}"><h4>{{content_title}}</h4>   
+            <div {{if_id}}id="{{id}}"{{ifend_id}} class="pb_mod cm {{user_class}}"><h4>{{content_title}}</h4>   
                 <div class="wrap"><ul>{{category_selection}}</ul></div>
                 {{pagination_links}}    
             </div>
@@ -31,28 +32,32 @@ function ampforwp_content_module_pagination($args, $fieldValues){
  $frontCss = '
 {{if_condition_content_layout_type==1}}
 .wrap{width:100%;display:inline-block;margin-top:10px;}
-.cat_mod ul{display: flex;flex-wrap: wrap;margin: -15px;padding:0;list-style-type:none;}
-.cat_mod ul li {margin: 15px 15px 25px 15px;flex-basis: calc(33.33% - 30px);}
-.cat_mod .cat_mod_l{line-height:0;}
-.cat_mod {margin:{{margin_css}};padding:{{padding_css}};}
-.cat_mod h4{border-bottom: 2px solid #eee;padding-bottom: 8px;margin-bottom: 5px;font-size:18px;color: #191919;font-weight: 600;}
-.cat_mod .cat_mod_r{display:flex;flex-direction: column;margin-top: 6px;}
-.cat_mod .cat_mod_r a{font-size: 16px;line-height: 1.3;font-weight: 500;color: #000;margin: 0px 0px 5px 0px;}
-.cat_mod .cat_mod_r p{color: {{text_color_picker}};font-size: 13px;line-height: 20px;letter-spacing: 0.10px;margin-bottom:0;}
-.cat_mod .cat_mod_l{width:100%;}
-.pagination a {
+.cm ul{display: flex;flex-wrap: wrap;margin: -15px;padding:0;list-style-type:none;}
+.cm ul li {margin: 15px 15px 25px 15px;flex-basis: calc(33.33% - 30px);}
+.cm .cml{line-height:0;}
+.cm {margin:{{margin_css}};padding:{{padding_css}};}
+.cm h4{border-bottom: 2px solid #eee;padding-bottom: 8px;margin-bottom: 5px;font-size:18px;color: #191919;font-weight: 600;}
+.cm .cmr{display:flex;flex-direction: column;margin-top: 6px;}
+.cm .cmr a{font-size: 16px;line-height: 1.3;font-weight: 500;color: #000;margin: 0px 0px 5px 0px;}
+.cm .cmr p{color: {{text_color_picker}};font-size: 13px;line-height: 20px;letter-spacing: 0.10px;margin-bottom:0;}
+.cm .cml{width:100%;}
+.cm .cmr p a{
+  font-size:13px;
+  color:#005be2;
+}
+.cmp a {
     color: black;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
     transition: background-color .3s;
 }
-.pagination a.active {
+.cmp a.active {
     background-color: dodgerblue;
     color: white;
 }
-.pagination a:hover:not(.active) {background-color: #ddd;}
-.pagination{
+.cmp a:hover:not(.active) {background-color: #ddd;}
+.cmp{
     width: 100%;
     margin: 30px 0px 0px 0px;
     display: flex;
@@ -61,20 +66,20 @@ function ampforwp_content_module_pagination($args, $fieldValues){
     justify-content: center;
 }
 @media(max-width:768px){
-  .cat_mod ul li {flex-basis: calc(100% - 30px);margin: 10px 15px;}
-  .cat_mod_l amp-img{width:100%;}
-  .cat_mod .cat_mod_l{width: 40%;float: left;margin-right: 20px;}
-  .cat_mod .cat_mod_r{width: 54%;float: left;margin-top: 0;}
+  .cm ul li {flex-basis: calc(100% - 30px);margin: 10px 15px;}
+  .cml amp-img{width:100%;}
+  .cm .cml{width: 40%;float: left;margin-right: 20px;}
+  .cm .cmr{width: 54%;float: left;margin-top: 0;}
 }
 @media(max-width:767px){
-  .pagination a{
+  .cmp a{
     padding:5px 12px;
     font-size:16px;
   }
 }
 @media (max-width: 480px){
-  .cat_mod .cat_mod_l{width: 100%;float: none;margin-right: 0px;}
-  .cat_mod .cat_mod_r{width: 100%;float: none;margin-top:6px;}
+  .cm .cml{width: 100%;float: none;margin-right: 0px;}
+  .cm .cmr{width: 100%;float: none;margin-top:6px;}
 }
 {{ifend_condition_content_layout_type_1}}
 ';
@@ -234,6 +239,15 @@ if ( is_admin() ) {
             'required'  => array('ampforwp_show_excerpt' => 'yes'),
             ),
             array(    
+            'type'    =>'text',
+            'name'    =>"ampforwp_read_more",
+            'label'   =>esc_html__("Read More Text","accelerated-mobile-pages"),
+            'tab'     =>'customizer',
+            'default' =>'',    
+            'content_type'=>'html',
+            'required'  => array('ampforwp_show_excerpt' => 'yes'),
+            ),
+            array(    
             'type'    =>'text',   
             'name'    =>"img-width-1",    
             'label'   =>'Image Width',
@@ -282,11 +296,11 @@ if ( is_admin() ) {
     'front_loop_content'=>'  {{if_condition_content_layout_type==1}}
                           <li> 
 
-                              <div class="cat_mod_l"> 
+                              <div class="cml"> 
                                <a href="{{ampforwp_post_url}}">
                                {{if_image}}<amp-img  class="ampforwp_wc_shortcode_img"  src="{{image}}" width="{{width}}" height="{{height}}" layout="responsive" alt="{{image_alt}}"> </amp-img>{{ifend_image}}</a>
                               </div>
-                              <div class="cat_mod_r">
+                              <div class="cmr">
                                 <a href="{{ampforwp_post_url}}">{{title}}</a>
                                 {{excerptContent}}
                                 {{loopdate}}
@@ -307,8 +321,12 @@ if ( is_admin() ) {
   if ( $the_query->have_posts() ) { 
          while ( $the_query->have_posts() ) {   
              $the_query->the_post();    
-             $ampforwp_post_url = get_permalink();  
-             $ampforwp_post_url = trailingslashit($ampforwp_post_url) . AMPFORWP_AMP_QUERY_VAR;
+             $ampforwp_post_url = get_permalink();
+             if(ampforwp_get_setting('ampforwp-amp-takeover') == true){ 
+             $ampforwp_post_url = trailingslashit($ampforwp_post_url);
+             }else{
+              $ampforwp_post_url = trailingslashit($ampforwp_post_url) . AMPFORWP_AMP_QUERY_VAR;
+             }
              $image = $height = $width = $image_alt = ""; 
              if ( has_post_thumbnail() ) {  
                    $thumb_id = get_post_thumbnail_id();   
@@ -384,14 +402,17 @@ if ( is_admin() ) {
               }
 
               $excerptContent = "";
+              $readMore = "";
               if( $ampforwp_show_excerpt == 'yes' ) {     
                    if( has_excerpt() ) {    
                      $content = get_the_excerpt();    
                    } else {   
                      $content = get_the_content();    
                    }  
-                 $excerptContent = ' 
-                 <p>'.wp_trim_words( strip_tags( strip_shortcodes( $content ) ) , (int) $ampforwp_excerpt_length ).'</p>';   
+                 if(isset($fieldValues['ampforwp_read_more']) && !empty($fieldValues['ampforwp_read_more']) ){
+                    $readMore = $fieldValues['ampforwp_read_more'];
+                  }   
+                 $excerptContent = '<p>'.wp_trim_words( strip_tags( strip_shortcodes( $content ) ) , (int) $ampforwp_excerpt_length ).'<a href="'.esc_url($ampforwp_post_url).'" > '.esc_html($readMore).'</a></p>';
               }
                $loopdate = "";
                $loopdate =  human_time_diff(
@@ -416,6 +437,7 @@ if ( is_admin() ) {
                                 "{{height}}",
                                 "{{title}}",
                                 "{{excerptContent}}",
+                                "{{readMore}}",
                                 "{{loopdate}}",
                                 "{{authorname}}",
                                 "{{postdate}}",
@@ -429,6 +451,7 @@ if ( is_admin() ) {
                                 $height,
                                 $title,
                                 $excerptContent,
+                                $readMore,
                                 $loopdate,
                                 $author,
                                 $postdate,
@@ -442,6 +465,7 @@ if ( is_admin() ) {
             $rawhtml = ampforwp_replaceIfContentConditional("height", $height, $rawhtml);
             $rawhtml = ampforwp_replaceIfContentConditional("title", $title, $rawhtml);
             $rawhtml = ampforwp_replaceIfContentConditional("excerptContent", $excerptContent, $rawhtml);
+            $rawhtml = ampforwp_replaceIfContentConditional("readMore", $readMore, $rawhtml);
             $rawhtml = ampforwp_replaceIfContentConditional("loopdate", $loopdate, $rawhtml);
             $rawhtml = ampforwp_replaceIfContentConditional("authorname", $author, $rawhtml);
             $rawhtml = ampforwp_replaceIfContentConditional("postdate", $postdate, $rawhtml);
@@ -466,17 +490,21 @@ if ( is_admin() ) {
  function  ampforwp_cat_pagination_links($the_query,$fieldValues){
         $pagination_links = '';
         $pagination_text = 'pageno';
-        $queryUrl = esc_url( ampforwp_url_controller(get_permalink(get_the_ID())) );
+        if( ampforwp_is_front_page()){
+          $queryUrl = esc_url( ampforwp_url_controller(home_url()) );
+        }else{
+          $queryUrl = esc_url(ampforwp_url_controller(get_permalink(ampforwp_get_the_ID())));
+        }
         if( isset($fieldValues['pagination']) && $fieldValues['pagination'] == 1){
       
         /*Pagination Sart*/
         $total_num_pages = $the_query->max_num_pages;
         if(isset($_GET[$pagination_text]) && $_GET[$pagination_text]!='' ){
-            $paged = $_GET[$pagination_text];
+            $paged = intval($_GET[$pagination_text]);
         }else{
             $paged = 1;
         }
-        $pagination_links .= '<div class="pagination">';
+        $pagination_links .= '<div class="cmp">';
         if( $paged > 1){
           
           $first_page = add_query_arg( array( $pagination_text => 1 ), $queryUrl );

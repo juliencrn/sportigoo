@@ -35,6 +35,14 @@ require_once( AMP__VENDOR__DIR__ . '/includes/embeds/class-amp-wistia-embed.php'
 require_once( AMP__VENDOR__DIR__ . '/includes/embeds/class-amp-core-block-handler.php' );
 require_once( AMP__VENDOR__DIR__ . '/includes/embeds/class-amp-playlist-embed-handler.php' );
 
+if ( file_exists( AMPFORWP_PLUGIN_DIR .'includes/vendor/css-parser/autoload.php' ) ) {
+	require_once AMPFORWP_PLUGIN_DIR .'includes/vendor/css-parser/autoload.php';
+}
+
+require_once( AMP__VENDOR__DIR__ . 'includes/sanitizers/class-amp-tree-style-sanitizer.php' );
+
+require_once( AMPFORWP_PLUGIN_DIR . 'includes/vendor/css-parser/parser-helper-function.php' );
+
 class AMP_Post_Template {
 	const SITE_ICON_SIZE = 32;
 	const CONTENT_MAX_WIDTH = 600;
@@ -202,13 +210,15 @@ class AMP_Post_Template {
 				'name' => $this->get( 'blog_name' ),
 			),
 			'headline' => $post_title,
-			'datePublished' => mysql2date( 'c', $this->post->post_date_gmt, false ),
 			'author' => array(
 				'@type' => 'Person',
 				'name' => $post_author_name,
 				'image' => $post_author_image,
 			),
 		);
+		if(isset($this->post->post_date_gmt) && $this->post->post_date_gmt ){
+			$metadata['datePublished'] = mysql2date( 'c', $this->post->post_date_gmt, false );
+		}
 		if(isset($this->post->post_modified_gmt) && $this->post->post_modified_gmt ){
 			$metadata['dateModified'] = mysql2date( 'c', $this->post->post_modified_gmt, false );
 		}
@@ -349,7 +359,7 @@ class AMP_Post_Template {
 
 		$this->add_data_by_key( 'featured_image', array(
 			'amp_html' => $sanitized_html,
-			'caption' => $featured_image->post_excerpt,
+			'caption' => isset($featured_image)? $featured_image->post_excerpt : '',
 		) );
 
 		if ( $featured_scripts ) {

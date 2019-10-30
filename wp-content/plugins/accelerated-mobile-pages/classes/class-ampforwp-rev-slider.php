@@ -26,105 +26,129 @@ class AMP_Rev_Slider_Embed_Handler extends AMPforWP\AMPVendor\AMP_Base_Embed_Han
 	}
 
 	public function shortcode( $args, $mid_content = null ) {
-		extract(shortcode_atts(array('alias' => ''), $args, 'rev_slider'));
+		global $post,$revSliderVersion;
+		extract(shortcode_atts(array('alias'	=> ''), $args, 'rev_slider'));
 		extract(shortcode_atts(array('settings' => ''), $args, 'rev_slider'));
-		extract(shortcode_atts(array('order' => ''), $args, 'rev_slider'));
-		
-		if($settings !== '') $settings = json_decode(str_replace(array('({', '})', "'"), array('[', ']', '"'), $settings) ,true);
-		if($order !== '') $order = explode(',', $order);
-		
-        $sliderAlias = ($alias != '') ? $alias : RevSliderFunctions::getVal($args,0);
-		
-		$gal_ids = RevSliderFunctionsWP::check_for_shortcodes($mid_content); 
-		ob_start();
-		if(!empty($gal_ids)){ //add a gallery based slider
-			$slider = RevSliderOutput::putSlider($sliderAlias, '', $gal_ids);
-		}else{
-			$slider = RevSliderOutput::putSlider($sliderAlias, '', array(), $settings, $order);
-		}
-		$content = ob_get_contents();
-		ob_clean();
-		ob_end_clean();
-		$ids = array();
-		$slides = $slider->getSlidesForOutput(true,'',$gal_ids);
-		foreach ($slides as $slide) {
-			$ids[] = $slide->getImageID();
-
-		}
-		$attr['ids'] = implode(',', $ids);
-
-		if ( ! empty( $attr['ids'] ) ) {
-			// 'ids' is explicitly ordered, unless you specify otherwise.
-			if ( empty( $attr['orderby'] ) ) {
-				$attr['orderby'] = 'post__in';
+		extract(shortcode_atts(array('order'	=> ''), $args, 'rev_slider'));
+		// Below version 6.0
+		if( !empty($revSliderVersion) && 6 > $revSliderVersion ){
+			if($settings !== '') $settings = json_decode(str_replace(array('({', '})', "'"), array('[', ']', '"'), $settings) ,true);
+			if($order !== '') $order = explode(',', $order);
+			
+	        $sliderAlias = ($alias != '') ? $alias : RevSliderFunctions::getVal($args,0);
+			$gal_ids = RevSliderFunctionsWP::check_for_shortcodes($mid_content); 
+			ob_start();
+			if(!empty($gal_ids)){ //add a gallery based slider
+				$slider = RevSliderOutput::putSlider($sliderAlias, '', $gal_ids);
+			}else{
+				$slider = RevSliderOutput::putSlider($sliderAlias, '', array(), $settings, $order);
 			}
-			$attr['include'] = $attr['ids'];
-		}
-
-		$atts = shortcode_atts( array(
-			'order'      => 'ASC',
-			'orderby'    => 'menu_order ID',
-			'id'         => $post ? $post->ID : 0,
-			'include'    => '',
-			'exclude'    => '',
-			//'size'       => array( $this->args['width'], $this->args['height'] ),
-			//'size'		=> isset($attr['size'])? $attr['size']:'thumbnail',
-			'size'		=> 'large'
-		), $attr, 'gallery' );
-
-		$id = intval( $atts['id'] );
-
-		if ( ! empty( $atts['include'] ) ) {
-			$attachments = get_posts( array(
-				'include' => $atts['include'],
-				'post_status' => 'inherit',
-				'post_type' => 'attachment',
-				'post_mime_type' => 'image',
-				'order' => $atts['order'],
-				'orderby' => $atts['orderby'],
-				'fields' => 'ids',
-			) );
-		} elseif ( ! empty( $atts['exclude'] ) ) {
-			$attachments = get_children( array(
-				'post_parent' => $id,
-				'exclude' => $atts['exclude'],
-				'post_status' => 'inherit',
-				'post_type' => 'attachment',
-				'post_mime_type' => 'image',
-				'order' => $atts['order'],
-				'orderby' => $atts['orderby'],
-				'fields' => 'ids',
-			) );
-		} else {
-			$attachments = get_children( array(
-				'post_parent' => $id,
-				'post_status' => 'inherit',
-				'post_type' => 'attachment',
-				'post_mime_type' => 'image',
-				'order' => $atts['order'],
-				'orderby' => $atts['orderby'],
-				'fields' => 'ids',
-			) );
-		}
-
-		if ( empty( $attachments ) ) {
-			return '';
-		}
-
-		$urls = array();
-		foreach ( $attachments as $attachment_id ) {
-			list( $url, $width, $height ) = wp_get_attachment_image_src( $attachment_id, $atts['size'], true );
-
-			if ( ! $url ) {
-				continue;
+			$content = ob_get_contents();
+			ob_clean();
+			ob_end_clean();
+			$ids = array();
+			$slides = $slider->getSlidesForOutput(true,'',$gal_ids);
+			foreach ($slides as $slide) {
+				$bgtype = $slide->getParam('background_type', 'image');
+				$img_data = wp_get_attachment_metadata( $slide->getImageID() );
+				
+				if($bgtype == 'external'){
+					$url = esc_url($slide->getParam('slide_bg_external', ''));
+					$imgalt = esc_attr($slide->getParam('alt_attr', ''));
+					$img_title = esc_attr($slide->getParam('title_attr', ''));
+					$img_w = $slide->getParam('ext_width', '1920');
+					$img_h = $slide->getParam('ext_height', '1080');
+					$urls[] = apply_filters('amp_gallery_image_params', array(
+						'url' => $url,
+						'width' => intval($img_w),
+						'height' => intval($img_h),
+						'bgtype' => esc_attr($bgtype)
+					),$attachment_id);
+				}elseif( $bgtype == 'image'){
+					$img_data = wp_get_attachment_metadata( $slide->getImageID() );
+					$url = $slide->getImageUrl();
+					$attachment_id = $slide->getImageID();
+					$urls[] = apply_filters('amp_gallery_image_params', array(
+						'url' => $url,
+						'width' => intval($img_data['width']),
+						'height' => intval($img_data['height']),
+						'bgtype' => esc_attr($bgtype)
+					),$attachment_id);
+				}elseif( $bgtype == 'youtube' ){
+					$youtube_id = $slide->getParam('slide_bg_youtube', '');
+					$cover_img = $slide->getImageUrl();
+					$urls[] = apply_filters('amp_gallery_image_params', array(
+						'url' => $youtube_id,
+						'width' => '480',
+						'height' => '270',
+						'bgtype' => esc_attr($bgtype),
+						'cover_img' => $cover_img
+					),$attachment_id);
+				}
 			}
-
-			$urls[] = apply_filters('amp_gallery_image_params', array(
-				'url' => $url,
-				'width' => $width,
-				'height' => $height,
-			),$attachment_id);
 		}
+		// Version 6.0+
+		elseif ( defined('RS_REVISION') && 6.0 <= RS_REVISION ) {
+			extract(shortcode_atts(array('alias'	=> ''), $args, 'rev_slider'));
+			extract(shortcode_atts(array('settings' => ''), $args, 'rev_slider'));
+			extract(shortcode_atts(array('order'	=> ''), $args, 'rev_slider'));
+			extract(shortcode_atts(array('usage'	=> ''), $args, 'rev_slider'));
+			$output = new RevSliderOutput();
+			$slider_alias = ($alias != '') ? $alias : $output->get_val($args, 0); //backwards compatibility
+			
+			$output->set_custom_order($order);
+			$output->set_custom_settings($settings);
+
+			$gallery_ids = $output->check_for_shortcodes($mid_content); //check for example on gallery shortcode and do stuff
+			if($gallery_ids !== false) $output->set_gallery_ids($gallery_ids);
+			
+			ob_start();
+			$slider = $output->add_slider_to_stage($slider_alias, $usage);
+			$content = ob_get_contents();
+			ob_clean();
+			ob_end_clean();
+			$slides = $slider->get_slides_for_output(true,'',$gallery_ids);
+			foreach ($slides as $slide) {
+				$bgtype = $slide->get_param(array('bg', 'type'),'');
+				$image_id = $slide->image_id;
+				$url = $slide->image_url;
+				if ( '' == $image_id ) {
+					$image_id = attachment_url_to_postid($url);
+				}
+				$img_data = wp_get_attachment_metadata( $image_id );
+				if($bgtype == 'external'){
+					$url = esc_url($slide->get_param(array('bg','externalSrc'), ''));
+					$imgalt = esc_attr($slide->get_param('alt_attr', ''));
+					$img_title = esc_attr($slide->get_param('title_attr', ''));
+					$img_w = $slide->get_param('ext_width', '1920');
+					$img_h = $slide->get_param('ext_height', '1080');
+					$urls[] = apply_filters('amp_gallery_image_params', array(
+						'url' => $url,
+						'width' => intval($img_w),
+						'height' => intval($img_h),
+						'bgtype' => esc_attr($bgtype)
+					),$image_id);
+				}elseif( $bgtype == 'image'){
+					$urls[] = apply_filters('amp_gallery_image_params', array(
+						'url' => $url,
+						'width' => intval($img_data['width']),
+						'height' => intval($img_data['height']),
+						'bgtype' => esc_attr($bgtype)
+					),$image_id);
+				}elseif( $bgtype == 'youtube' ){
+					$youtube_id = $slide->get_param(array('bg','youtube'), '');
+					$cover_img = $slide->get_param(array('bg','image'), '');
+					$urls[] = apply_filters('amp_gallery_image_params', array(
+						'url' => esc_url($youtube_id),
+						'width' => '480',
+						'height' => '270',
+						'bgtype' => esc_attr($bgtype),
+						'cover_img' => esc_attr($cover_img)
+					),$image_id);
+				}
+			}
+		}
+		
 		return $this->render( array(
 			'images' => $urls,
 		) );
@@ -151,7 +175,8 @@ class AMP_Rev_Slider_Embed_Handler extends AMPforWP\AMPVendor\AMP_Base_Embed_Han
 						{{amp_image_lightbox}}',
 						'image-with-caption-html'=>'<figure><div class="ampforwp-gallery-item amp-carousel-container">{{main_images}} </div><figcaption {{openbrack}}class{{closebrack}}="expanded? \'expanded\' : \'\'" on="tap:AMP.setState({expanded: !expanded})" tabindex="0" role="button" >{{main_images_caption}}<span {{openbrack}}text{{closebrack}}="expanded ? \'less\' : \'more\'">more</span> </figcaption></figure>',
 						'image-without-caption-html' =>'<div class="ampforwp-gallery-item amp-carousel-container">{{main_images}} </div>',
-						'gallery_css' => '',
+						'gallery_css' => '.cls-btn{background:#0d0d0d;border:none;position: absolute;right: 10px;}
+							.cls-btn:after{content:"X";display:inline-block;color:#fff;font-size:20px;padding:20px;}',
 
 						'scripts' => array()
 									),
@@ -163,6 +188,8 @@ class AMP_Rev_Slider_Embed_Handler extends AMPforWP\AMPVendor\AMP_Base_Embed_Han
 						'image-without-caption-html' =>'<div class="ampforwp-gallery-item amp-carousel-container">{{main_images}} </div>',
 						'carousel_with_thumbnail_html'=>'<button on="tap:carousel-with-carousel-preview-{{unique_id}}.goToSlide(index={{unique_index}})" class="amp-carousel-slide amp-scrollable-carousel-slide">{{thumbnail}}</button>',
 						'gallery_css' => '
+							.cls-btn{background:#0d0d0d;border:none;position: absolute;right: 10px;}
+							.cls-btn:after{content:"X";display:inline-block;color:#fff;font-size:20px;padding:20px;}
 							.carousel-preview button{padding:0;}
 							.carousel-preview amp-img{height:40px;width:60px;position:relative;}
 							.carousel-preview {width: 100%;display: inline-block;text-align: center;margin: 20px 0px;}
@@ -193,14 +220,29 @@ class AMP_Rev_Slider_Embed_Handler extends AMPforWP\AMPVendor\AMP_Base_Embed_Han
 		}
 
 		$amp_images = array();
+		$tag_type = '';
 		foreach ( $args['images'] as $key => $image ) {
-			$amp_img_arr = array(
+			if($image['bgtype'] =="image" || $image['bgtype'] =="external" ){
+				$amp_img_arr = array(
 					'src' => $image['url'],
 					'width' => $image['width'],
 					'height' => $image['height'],
 					'layout' => 'fill',
 					'class'  => 'amp-carousel-img',
 				);
+				$tag_type = 'amp-img';
+			}elseif( $image['bgtype'] =="youtube"){
+				$amp_img_arr = array(
+					'data-videoid'=> $image['url'],
+					'width' => $image['width'],
+					'height' => $image['height'],
+					'layout'=>'responsive',
+					'class'  => 'amp-carousel-img',
+					'data-param-playlist'=> $image['url'],
+					'data-param-modestbranding'=> '1'
+				);
+				$tag_type = 'amp-youtube';
+			}
 			if(  3 == ampforwp_get_setting('ampforwp-gallery-design-type') || true == ampforwp_get_setting('ampforwp-gallery-lightbox') ){
 				$design3_additional_attr = array('on'=> 'tap:gallery-lightbox', 'role'=>'button', 
                 	'tabindex'=>$key);
@@ -214,21 +256,35 @@ class AMP_Rev_Slider_Embed_Handler extends AMPforWP\AMPVendor\AMP_Base_Embed_Han
 					    </amp-image-lightbox>';
 			}
 			$amp_images[$key] = AMP_HTML_Utils::build_tag(
-				'amp-img',
+				$tag_type,
 				$amp_img_arr
 			);
 
-			//Small Thumbnail Images
-			$thumb_url = ampforwp_aq_resize( $image['url'], 120, 60, true, false ); //resize & crop the image
-	           if($thumb_url!=false){
-					$smallimage   =  $thumb_url[0];
-					$smallwidth   =  $thumb_url[1];
-					$smallheight  =  $thumb_url[2];
-	            }else{
-	            	$smallimage  = $image['url'];
-	            	$smallwidth = $image['width'];
-	            	$smallheight = $image['height'];
-	            }
+			$upload_dir = wp_upload_dir();
+			$upload_url = $upload_dir['baseurl'];
+			if( $tag_type == 'amp-img'){
+				if ( false === strpos( $image['url'], $upload_url ) ) {
+					$smallimage  = $image['url'];
+		            $smallwidth = 120;
+		            $smallheight = 60;
+				}else{
+					//Small Thumbnail Images
+					$thumb_url = ampforwp_aq_resize( $image['url'], 120, 60, true, false ); //resize & crop the image
+		           	if($thumb_url!=false){
+						$smallimage   =  $thumb_url[0];
+						$smallwidth   =  $thumb_url[1];
+						$smallheight  =  $thumb_url[2];
+		            }else{
+		            	$smallimage  = $image['url'];
+		            	$smallwidth = $image['width'];
+		            	$smallheight = $image['height'];
+		            }
+				}
+			}elseif( $tag_type == 'amp-youtube'){
+	            	$smallimage  = $image['cover_img'];
+	            	$smallwidth = 120;
+	            	$smallheight = 60;
+			}
 
 	        $amp_images_small[$key] = AMP_HTML_Utils::build_tag(
 				'amp-img',
@@ -306,36 +362,6 @@ class AMP_Rev_Slider_Embed_Handler extends AMPforWP\AMPVendor\AMP_Base_Embed_Han
 }// Class closed
 
 // Add Caption in the Gallery Image
-add_filter('amp_gallery_images','AMPforWP\\AMPVendor\\ampforwp_new_gallery_images', 10, 3);
-function ampforwp_new_gallery_images($images_markup, $image, $markup_arr){
-	add_action('amp_post_template_css', 'AMPforWP\\AMPVendor\\ampforwp_additional_gallery_style');
-	add_filter('amp_post_template_data','ampforwp_carousel_bind_script');
-	add_action('amp_post_template_css', 'ampforwp_additional_style_carousel_caption');
-	return $images_markup;
-}
+add_filter('amp_gallery_images','ampforwp_new_gallery_images', 10, 3);
 
-if( ! function_exists( 'ampforwp_additional_gallery_style' ) ){
-	function ampforwp_additional_gallery_style(){
-		global $redux_builder_amp,$carousel_markup_all;
-		$design_type = '';
-		$design_type = $redux_builder_amp['ampforwp-gallery-design-type'];
-		
-		if(isset($design_type) && $design_type!==''){
-			echo $carousel_markup_all[$design_type]['gallery_css'];
-		}
-	}
-}
-
-add_filter('amp_thumbnail_images','AMPforWP\\AMPVendor\\ampforwp_new_thumbnail_images',10,3);
-function ampforwp_new_thumbnail_images($amp_images, $uniqueid, $markup_arr){
-	if(!isset($markup_arr['carousel_with_thumbnail_html'])){return '';}
-	$amp_thumb_image_buttons = '';
-	foreach ($amp_images as $key => $value) {
-		$returnHtml = $markup_arr['carousel_with_thumbnail_html'];
-		$returnHtml = str_replace('{{thumbnail}}', $value , $returnHtml);
-		$returnHtml = str_replace('{{unique_id}}', $uniqueid , $returnHtml);
-		$returnHtml = str_replace('{{unique_index}}', $key , $returnHtml);
-		$amp_thumb_image_buttons[$key] = $returnHtml;
-	}
-	return $amp_thumb_image_buttons;
-}
+add_filter('amp_thumbnail_images','ampforwp_new_thumbnail_images',10,3);

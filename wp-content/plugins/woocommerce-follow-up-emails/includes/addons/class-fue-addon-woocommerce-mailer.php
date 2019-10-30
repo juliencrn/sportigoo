@@ -1224,6 +1224,9 @@ class FUE_Addon_Woocommerce_Mailer {
 						}
 					}
 				}
+				if ( $order->needs_payment() ) {
+					$replacements['order_pay_url'] = $order->get_checkout_payment_url();
+				}
 			}
 		}
 

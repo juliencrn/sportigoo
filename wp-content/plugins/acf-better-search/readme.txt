@@ -1,10 +1,11 @@
-=== Plugin Name ===
+=== ACF: Better Search ===
 Contributors: mateuszgbiorczyk
 Donate link: https://www.paypal.me/mateuszgbiorczyk/
 Tags: acf, acf search, advanced custom fields, better search, search
 Requires at least: 4.7.0
-Tested up to: 5.1.0
-Stable tag: 3.1.3
+Tested up to: 5.3
+Requires PHP: 5.6
+Stable tag: trunk
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +66,35 @@ Advanced Custom Fields in version 5 (also free). ACF below version 5 has a diffe
 1. Screenshot of the options panel
 
 == Changelog ==
+
+= 3.4.3 =
+* New filter `acfbs_search_post_object_fields` to select post fields using to search
+
+= 3.4.2 =
+* Fix for `posts_join` filter
+* Update priority of `posts_search` filter (from 10 do 0)
+
+= 3.4.1 =
+* New filter `acfbs_search_is_available` to block search
+
+= 3.4.0 =
+* New way to start search engine
+* New filter `acfbs_is_available` to turn off search engine
+
+= 3.3.2 =
+* Validation for fields types on settings page
+
+= 3.3.1 =
+* Security changes
+
+= 3.3.0 =
+* New settings page
+* New admin notice
+
+= 3.2.0 =
+* Changes in plugin structure
+* New mode to ability using only selected fields for searching
+* Filters to extend plugin capabilities
 
 = 3.1.3 =
 * Full path for loaded PHP files
@@ -137,3 +167,7 @@ Advanced Custom Fields in version 5 (also free). ACF below version 5 has a diffe
 
 = 1.0.0 =
 * The first stable release
+
+== Upgrade Notice ==
+
+None.

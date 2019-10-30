@@ -12,13 +12,18 @@ function ampforwp_analytics() {
 		$ga_account = str_replace(' ', '', $ga_account);
 		$ga_fields = array(
 						'vars'=>array(
-							'account'=>$ga_account,
+							'gtag_id'=>$ga_account,
 							),
-						'triggers'=> array(
-							'trackPageview'=> array(
+						);
+		$ga_fields['vars']['config'] = array(
+						$ga_account=> array(
+								'groups'=>'default',
+						)
+					);
+		$ga_fields['vars']['triggers'] = array(
+						'trackPageview'=> array(
 								'on'=>'visible',
-								'request'=>'pageview'
-							)
+								'request'=>'pageview'			
 						)
 					);
 		if ( true == ampforwp_get_setting('ampforwp-ga-field-anonymizeIP')) {
@@ -29,21 +34,42 @@ function ampforwp_analytics() {
 				'enabled'=> true
 			);
 		}
-		$ampforwp_ga_fields = apply_filters('ampforwp_advance_google_analytics', $ampforwp_ga_fields );
 		$ampforwp_ga_fields = json_encode( $ga_fields);
-		if($ampforwp_ga_fields && ampforwp_get_setting('ampforwp-ga-field-advance-switch')){
-			$ampforwp_ga_fields = ampforwp_get_setting('ampforwp-ga-field-advance');
-			$ampforwp_ga_fields = preg_replace('!//.*!', '', $ampforwp_ga_fields);
+		if( ampforwp_get_setting('ampforwp-ga-field-advance-switch') ){
+			$ampforwp_ga_fields = apply_filters('ampforwp_advance_google_analytics', $ampforwp_ga_fields );
 			$ampforwp_ga_fields = preg_replace('!/\*.*?\*/!s', '', $ampforwp_ga_fields);
-			}
+			$ampforwp_ga_fields = preg_replace('/\n\s*\n/', '', $ampforwp_ga_fields);
 	 		?>
-			<amp-analytics <?php if(ampforwp_get_data_consent()){?>data-block-on-consent <?php } ?> type="googleanalytics" id="analytics1">
+	 		<amp-analytics <?php if(ampforwp_get_data_consent()){?>data-block-on-consent <?php } ?> type="googleanalytics" id="analytics1">
+	 		<script type="application/json">
+				<?php echo $ampforwp_ga_fields; ?>
+			</script>
+			</amp-analytics>
+	 		<?php } else { ?>
+			<amp-analytics <?php if(ampforwp_get_data_consent()){?>data-block-on-consent <?php } ?> type="gtag" id="analytics1" data-credentials="include" >
 				<script type="application/json">
 					<?php echo $ampforwp_ga_fields; ?>
 				</script>
 			</amp-analytics>
-			<?php
+			<?php }
 		}//code ends for supporting Google Analytics
+
+	// 10.2 Analytics Support added for clicky.com
+	if ( true == ampforwp_get_setting('amp-clicky-switch') ) { 
+		$clicky_site_id = ampforwp_get_setting('clicky-site-id'); 
+		$clicky_fields = array(
+						'vars'=>array(
+							'site_id'=> $clicky_site_id,
+							)
+					);
+		$clicky_fields = apply_filters('ampforwp_clicky_analytics', $clicky_fields );?>
+		<amp-analytics <?php if(ampforwp_get_data_consent()){?>data-block-on-consent <?php } ?> type="clicky">
+		<script type="application/json">
+			<?php echo json_encode( $clicky_fields); ?>
+			</script>
+		</amp-analytics>
+		<?php
+	}
 
 	// 10.2 Analytics Support added for segment.com
 	if ( true == ampforwp_get_setting('ampforwp-Segment-switch') ) { 
@@ -96,6 +122,9 @@ function ampforwp_analytics() {
 							'c1'=>$comscore_c1,
 							'c2'=>$comscore_c2
 							),
+						'extraUrlParams'=> array(
+							'comscorekw'=> 'amp'
+						),
 					); 
 				$comscore_fields = apply_filters('ampforwp_comscore_analytics', $comscore_fields );?>
 					<amp-analytics <?php if(ampforwp_get_data_consent()){?>data-block-on-consent <?php } ?> type="comscore">
@@ -259,7 +288,7 @@ function ampforwp_facebook_pixel() {
 			$amp_pixel .= 'data-block-on-consent';
 		}
 		$amp_pixel .= ' src="https://www.facebook.com/tr?id='.esc_attr(ampforwp_get_setting('amp-fb-pixel-id')).'&ev=PageView&noscript=1"></amp-pixel>';
-		echo $amp_pixel;
+		echo $amp_pixel; // escaped above 
 	}
 }
 // For Setting up Google AMP Client ID API
@@ -277,7 +306,7 @@ if( ! function_exists( ' ampforwp_analytics_clientid_api ' ) ) {
 add_filter('amp_post_template_data','ampforwp_register_analytics_script', 20);
 function ampforwp_register_analytics_script( $data ){ 
 	global $redux_builder_amp;
-	if( true == ampforwp_get_setting('ampforwp-ga-switch') || true == ampforwp_get_setting('ampforwp-Segment-switch') || true == ampforwp_get_setting('ampforwp-Quantcast-switch') || true == ampforwp_get_setting('ampforwp-comScore-switch') || true == ampforwp_get_setting('ampforwp-Yandex-switch') || true == ampforwp_get_setting('ampforwp-Chartbeat-switch') || true == ampforwp_get_setting('ampforwp-Alexa-switch') || true == ampforwp_get_setting('ampforwp-afs-analytics-switch')) {
+	if( true == ampforwp_get_setting('ampforwp-ga-switch') || true == ampforwp_get_setting('ampforwp-Segment-switch') || true == ampforwp_get_setting('ampforwp-Quantcast-switch') || true == ampforwp_get_setting('ampforwp-comScore-switch') || true == ampforwp_get_setting('ampforwp-Yandex-switch') || true == ampforwp_get_setting('ampforwp-Chartbeat-switch') || true == ampforwp_get_setting('ampforwp-Alexa-switch') || true == ampforwp_get_setting('ampforwp-afs-analytics-switch') || true == ampforwp_get_setting('amp-use-gtm-option') || true == ampforwp_get_setting('amp-clicky-switch')) {
 		
 		if ( empty( $data['amp_component_scripts']['amp-analytics'] ) ) {
 			$data['amp_component_scripts']['amp-analytics'] = 'https://cdn.ampproject.org/v0/amp-analytics-0.1.js';
@@ -311,6 +340,9 @@ if ( ! function_exists('amp_activate') ) {
 // Create GTM support
 add_filter( 'amp_post_template_analytics', 'amp_gtm_add_gtm_support' );
 function amp_gtm_add_gtm_support( $analytics ) {
+	if(true == ampforwp_get_setting('ampforwp-gtm-field-advance-switch') ){
+		return $analytics;
+	}	
 	if ( true == ampforwp_get_setting('amp-use-gtm-option') ) {
 		global $redux_builder_amp;
 		$gtm_id 	=	 "";
@@ -321,14 +353,14 @@ function amp_gtm_add_gtm_support( $analytics ) {
 		$gtm_id 	= str_replace(" ", "", $gtm_id);
 		 
 		$analytics['amp-gtm-googleanalytics'] = array(
-			'type' => $redux_builder_amp['amp-gtm-analytics-type'],
+			'type' => ampforwp_get_setting('amp-gtm-analytics-type'),
 			'attributes' => array(
 				'data-credentials' 	=> 'include',
 				'config'			=> 'https://www.googletagmanager.com/amp.json?id='. esc_attr( $gtm_id ) .'&gtm.url=SOURCE_URL'
 			),
 			'config_data' => array(
 				'vars' => array(
-					'account' =>  $redux_builder_amp['amp-gtm-analytics-code'],
+					'account' =>  ampforwp_get_setting('amp-gtm-analytics-code'),
 				),
 				'triggers' => array(
 					'trackPageview' => array(
@@ -338,9 +370,83 @@ function amp_gtm_add_gtm_support( $analytics ) {
 				),
 			),
 		);
-		if ( isset($redux_builder_amp['ampforwp-gtm-field-anonymizeIP']) && true == $redux_builder_amp['ampforwp-gtm-field-anonymizeIP'] ) {
+		if ( true == ampforwp_get_setting('ampforwp-gtm-field-anonymizeIP') ) {
 			$analytics['amp-gtm-googleanalytics']['config_data']['vars']['anonymizeIP'] = 'true';
 		}
 	}
+	$gtm_fields = '';
+	$gtm_fields = apply_filters('ampforwp_advance_gtm_analytics', $gtm_fields );
+	if($gtm_fields && ampforwp_get_setting('ampforwp-gtm-field-advance-switch')){
+	$gtm_fields = preg_replace('!/\*.*?\*/!s', '', $gtm_fields); 
+	$analytics['amp-gtm-googleanalytics']['config_data'] = json_decode($gtm_fields, true);
+	}
 	return $analytics;
+}
+add_filter( 'ampforwp_body_beginning', 'ampforwp_add_advance_gtm_fields' );
+function ampforwp_add_advance_gtm_fields( $ampforwp_adv_gtm_fields ) {
+	if(true == ampforwp_get_setting('amp-use-gtm-option') && true == ampforwp_get_setting('ampforwp-gtm-field-advance-switch') ){
+			$ampforwp_adv_gtm_fields = "";
+			$ampforwp_adv_gtm_fields = ampforwp_get_setting('ampforwp-gtm-field-advance');
+			$ampforwp_adv_gtm_fields = preg_replace('!/\*.*?\*/!s', '', $ampforwp_adv_gtm_fields);
+			$ampforwp_adv_gtm_fields = preg_replace('/\n\s*\n/', '', $ampforwp_adv_gtm_fields);
+			$ampforwp_adv_gtm_fields = preg_replace('/\/\/(.*?)\s(.*)/m', '$2', $ampforwp_adv_gtm_fields);
+	 		?>
+			<amp-analytics id="<?php echo ampforwp_get_setting('amp-gtm-analytics-type'); ?>" type="googleanalytics" data-credentials="include" config="https://www.googletagmanager.com/amp.json?id=<?php echo ampforwp_get_setting('amp-gtm-id'); ?>&amp;gtm.url=SOURCE_URL"><script type="application/json"><?php echo $ampforwp_adv_gtm_fields ?></script></amp-analytics>
+			<?php
+		 }
+		 return $ampforwp_adv_gtm_fields;
+}
+
+// 83. Advance Analytics(Google Analytics)
+add_filter('ampforwp_advance_google_analytics','ampforwp_add_advance_ga_fields');
+function ampforwp_add_advance_ga_fields($ga_fields){
+	global $redux_builder_amp, $post;
+	$url = $title = $id = $author_id = $author_name = '';
+	$url = get_the_permalink();
+	$tag_names = array();
+	if(!is_object($post)){ return $ga_fields; }
+	$id = ampforwp_get_the_ID();
+	$title = get_the_title($id);
+	$category_detail = get_the_category($id);//$post->ID
+	if ( ! empty( $category_detail ) ) {
+		foreach($category_detail as $cd){
+			$category_name = $cd->cat_name;
+		}
+	}
+	$tags = get_the_tags( $id );
+	$focusKeyword = '';
+	$seoScore = '';
+	if( defined('WPSEO_FILE')){
+		$focusKeyword = get_post_meta($id, '_yoast_wpseo_focuskw', true); 
+		$seoScore = get_post_meta($id, '_yoast_wpseo_content_score', true); 
+	}
+
+	$tagNames = '';
+	if( !empty($tags) ){
+	    foreach( $tags as $tag ) {
+	    	$tag_names[] = $tag->name;
+	    }
+	    $tagNames = implode( ', ', $tag_names );
+	}
+	$author_id = get_post_field( 'post_author', $id );
+	$author_name = get_the_author_meta( 'display_name' , $author_id );
+	$published_at = get_the_date( 'l F j, Y' , $id );
+	$ampforwp_adv_ga_fields = array();
+	$ampforwp_adv_ga_fields = ampforwp_get_setting('ampforwp-ga-field-advance');
+	if($ampforwp_adv_ga_fields)	{
+		$ampforwp_adv_ga_fields = str_replace('{url}', $url, $ampforwp_adv_ga_fields);
+		$ampforwp_adv_ga_fields = str_replace('{id}', $id, $ampforwp_adv_ga_fields);
+		$ampforwp_adv_ga_fields = str_replace('{title}', $title, $ampforwp_adv_ga_fields);
+		$ampforwp_adv_ga_fields = str_replace('{author_id}', $author_id, $ampforwp_adv_ga_fields);
+		$ampforwp_adv_ga_fields = str_replace('{author_name}', $author_name, $ampforwp_adv_ga_fields);
+		$ampforwp_adv_ga_fields = str_replace('{category}', $category_name, $ampforwp_adv_ga_fields);
+		$ampforwp_adv_ga_fields = str_replace('{published_at}', $published_at, $ampforwp_adv_ga_fields);
+		$ampforwp_adv_ga_fields = str_replace('{tags}', $tagNames, $ampforwp_adv_ga_fields);
+		if( defined('WPSEO_FILE')){
+			$ampforwp_adv_ga_fields = str_replace('{seo_score}', $seoScore, $ampforwp_adv_ga_fields);
+			$ampforwp_adv_ga_fields = str_replace('{focus_keyword}', $focusKeyword, $ampforwp_adv_ga_fields);
+		}
+		return $ampforwp_adv_ga_fields;
+	}	
+	return $ga_fields;	
 }

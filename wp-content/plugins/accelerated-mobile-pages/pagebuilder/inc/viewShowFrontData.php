@@ -61,7 +61,7 @@ function ampforwp_pagebuilder_header_html_output(){
 		$previousData = (str_replace("'", "", $previousData));
 		$previousData = json_decode($previousData,true);
 		if(isset($previousData['settingdata']['scripts_data']) && $previousData['settingdata']['scripts_data']!=""){
-			echo $previousData['settingdata']['scripts_data'];
+			echo $previousData['settingdata']['scripts_data']; // nothing to escaped
 		}
 	}
 }
@@ -496,7 +496,7 @@ function amppb_validateCss($css){
 	$css = (esc_html($css));
 	$css = str_replace('&quot;', '"', $css);
 	$css = preg_replace('/@media([^\r\n,{}]+){\s*}/', "", $css);
-	$css = str_replace(array('.amppb-fluid','.amppb-fixed'), array('.ap-fl','.ap-fi'), $css);
+	$css = str_replace(array('.amppb-fluid','.amppb-fixed','.accordion-mod'), array('.ap-fl','.ap-fi','.apac'), $css);
 	$css = preg_replace('/(([a-z -]*:(\s)*;))/', "", $css);
 	$css = preg_replace('/((;[\s\n;]*;))/', ";", $css);
 	$css = preg_replace('/(?:[^\r\n,{}]+)(?:,(?=[^}]*{,)|\s*{[\s]*})/', "", $css);
@@ -537,7 +537,7 @@ function ampforwp_pb_autoCompileLess($css)
         		if ( $m[2] == $m[4] ) {
         			return $m[1].":".$m[2].";";
         		}
-        		if(trim($parts[0])==trim($m[1])){
+        		if(trim($m[0])==trim($m[1])){
         			return $m[1].":".$m[2].";";
         		}else{
         			return $m[1].":".$m[2]." ".$m[4].";";
@@ -646,10 +646,10 @@ function amppb_post_content($content){
 				$html .= '</div>';
 		}
 		if(!empty($html)){
-			$content = $html;	
+			$content = do_shortcode($html);	
 		}
 	}
-	return do_shortcode($content);
+	return $content;
 }
 
 function ampforwp_rowData($container,$col,$moduleTemplate){
@@ -740,7 +740,7 @@ function ampforwp_rowData($container,$col,$moduleTemplate){
 														$repeaterFrontTemplate
 													);
 											if(strpos($repeaterFrontTemplate, '{{'.$moduleField['name'].'-thumbnail}}')!==false){
-												$imageDetails = ampforwp_get_attachment_id( $replace, 'thumbnail');
+												$imageDetails = ampforwp_get_attachment_id( $replace[0], 'thumbnail');
 												$imageUrl = isset($imageDetails[0])? $imageDetails[0] : '';
 												$repeaterFrontTemplate = str_replace(
 														'{{'.$moduleField['name'].'-thumbnail}}', 
@@ -1034,6 +1034,9 @@ function ampforwp_rowData($container,$col,$moduleTemplate){
                 $moduleFrontHtml = str_replace('{{repeater_max_count}}', $repeaterUniqueId, $moduleFrontHtml);          
 				$moduleFrontHtml = ampforwp_replaceIfContentConditional('repeater_max_count', $repeaterUniqueId, $moduleFrontHtml);
 				}
+				if($contentArray['type'] == 'accordion-mod'){
+					$contentArray['type'] = str_replace('accordion-mod', 'apac', $contentArray['type']);
+				}
 				$html .= "<div class='amp_mod ap_m_".$contentArray['cell_id'].' '.$contentArray['type']."'>".$moduleFrontHtml;
 				$html .= '</div>';
 				/*if($contentArray['type']=="text"){
@@ -1052,7 +1055,7 @@ function ampforwp_rowData($container,$col,$moduleTemplate){
 function ampforwp_pagebuilder_module_style(){
 	$custom_css = ampforwp_get_setting('css_editor'); 
 	$sanitized_css = ampforwp_sanitize_i_amphtml($custom_css);
-	echo $sanitized_css;
+	echo $sanitized_css; //sanitize above
 }
 function sortByIndex($contentArray){
 	$completeSortedArray = array();

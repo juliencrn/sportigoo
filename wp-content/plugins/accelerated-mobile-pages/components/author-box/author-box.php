@@ -70,13 +70,13 @@ if ( isset($args['show_time']) ) {
 }
 
  ?>
-    <div class="amp-author <?php echo $class; ?>">
+    <div class="amp-author <?php echo esc_attr($class); ?>">
         <?php if ( $avatar ) {
     $author_avatar_url = ampforwp_get_wp_user_avatar();
     if( null == $author_avatar_url ){
        $author_avatar_url = get_avatar_url( $post_author->ID, array( 'size' => $avatar_size ) );
     } ?>
-        <div class="amp-author-image <?php echo $author_image_wrapper; ?>">
+        <div class="amp-author-image <?php echo esc_attr($author_image_wrapper); ?>">
             <amp-img <?php if(ampforwp_get_data_consent()){?>data-block-on-consent <?php } ?>src="<?php echo esc_url($author_avatar_url); ?>" width="<?php echo esc_attr($avatar_size); ?>" height="<?php echo esc_attr($avatar_size); ?>" layout="fixed"></amp-img> 
         </div>
         <?php } ?>
@@ -84,13 +84,14 @@ if ( isset($args['show_time']) ) {
         if ( true == ampforwp_get_setting('ampforwp-author-page-url') ){
             if ( function_exists('coauthors_posts_links') ) {
                 if( $author_pub_name  ){
-                    echo '<span class="author-name">' .esc_html($author_prefix) . esc_url($author_link) . ' </span>';
+                    $allowed_tags = '<a>';
+                    echo '<span class="author-name">' .esc_html($author_prefix) . strip_tags($author_link, $allowed_tags) . ' </span>';
                     echo ampforwp_yoast_twitter_handle();
                 }
             }
             else {
                 if( $author_pub_name  ){
-                    echo '<span class="author-name">' .esc_html($author_prefix) . ' <a href="'. esc_url(ampforwp_url_controller($author_link)).'"> ' .esc_html( $author_name ).'</a></span>';
+                    echo '<span class="author-name">' .esc_html($author_prefix) . ' <a href="'. esc_url(ampforwp_url_controller($author_link)).'" title="'. esc_html($author_name).'"> ' .esc_html( $author_name ).'</a></span>';
                     echo ampforwp_yoast_twitter_handle();
                 }
             }

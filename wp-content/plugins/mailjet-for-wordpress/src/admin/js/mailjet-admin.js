@@ -31,7 +31,6 @@
     jQuery(document).ready(function ($) {
 
         $('#copy_properties').on("click", function () {
-            console.log("clicked");
             const text = document.querySelector('#cf7_contact_properties');
             text.disabled = false;
             text.select();
@@ -249,7 +248,7 @@ function mjCF7Subscription() {
     const cf7email = document.getElementById('cf7_email');
 
     saveButton.addEventListener("click", function (e) {
-        if(cf7email.value === '') {
+        if(activateCF7IntegrationBox.checked === true && cf7email.value === '') {
             cf7email.className+= ' mj-missing-required-input';
             e.preventDefault();
             return false;
@@ -290,7 +289,7 @@ function mjWooSubscription() {
 
 function mjSendingSettings() {
     /**
-     * disable SSL checkbox if port != 465
+     * disable SSL checkbox if port != 465 && != 587 && != 588
      */
     const portSelect = document.querySelector('.mjSettings #mailjet_port');
     function getPort() {
@@ -300,7 +299,7 @@ function mjSendingSettings() {
     const sslLabel = sslBox.parentElement.nodeName === "LABEL" ? sslBox.parentElement : null;
 
     function disableSSL() {
-        if (getPort() !== "465") {
+        if (getPort() !== "465" && getPort() !== "587" && getPort() !== "588") {
             sslBox.checked = false;
             sslBox.setAttribute("disabled", "disabled");
             sslLabel && sslBox.parentElement.classList.add('mj-disabled');
@@ -309,11 +308,24 @@ function mjSendingSettings() {
             sslLabel && sslBox.parentElement.classList.remove('mj-disabled');
         }
     }
+
+    function changeEncryption() {
+        if (sslBox.checked == true) {
+            if (getPort() === "587" || getPort() === "588") {
+                sslBox.value = 'tls';
+            } else if (getPort() === "465") {
+                sslBox.value = 'ssl';
+            }
+        }
+    }
+
     if (portSelect && sslBox) {
         portSelect.addEventListener("change", function () {
             disableSSL();
+            changeEncryption();
         });
         disableSSL();
+        changeEncryption();
     }
     /**
      * Show Sending email through MJ form

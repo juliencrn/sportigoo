@@ -1,5 +1,26 @@
 *** WooCommerce Follow-Up Emails ***
 
+2019-10-23 - version 4.8.17
+* Tweak - Replace custom queries with get_posts() for WPML compatibility.
+
+2019-09-27 - version 4.8.16
+* Fix - Output of {booking_persons} variable in email places it in two lines.
+* Fix - Compatibility issue with WooCommerce Gutenberg Products Block.
+
+2019-08-08 - version 4.8.15
+* Tweak:  WC 3.7 compatibility.
+
+2019-07-02 - version 4.8.14
+* Fix:    Fatal Error in Points and Rewards integration when points are awarded on signup
+* Fix:    Wrong wording for template's coupon code
+
+2019-06-11 - version 4.8.13
+* Fix:    {order_pay_url} doesn't work in Abandonment Emails.
+* Fix:    Assign purchases to new user accounts if the same email has purchased previously as guest.
+
+2019-05-22 - version 4.8.12
+* Fix:    For email types 'after subscription expired', 'after subscription cancelled' and 'before active subscription expires' email should not be sent if the subscription was renewed at the time the email is scheduled.
+
 2019-05-08 - version 4.8.11
 * Fix:    Coupon expiry dates are not set.
 * Fix:    API permissions error with authentication.

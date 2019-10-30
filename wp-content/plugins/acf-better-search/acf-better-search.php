@@ -3,16 +3,17 @@
   /*
     Plugin Name: ACF: Better Search
     Description: Adds to default WordPress search engine the ability to search by content from selected fields of Advanced Custom Fields plugin.
-    Version: 3.1.3
+    Version: 3.4.3
     Author: Mateusz Gbiorczyk
     Author URI: https://gbiorczyk.pl/
     Text Domain: acf-better-search
   */
 
-  define('ACFBS_VERSION', '3.1.3');
+  define('ACFBS_VERSION', '3.4.3');
+  define('ACFBS_FILE',    __FILE__);
+  define('ACFBS_NAME',    plugin_basename(__FILE__));
   define('ACFBS_PATH',    plugin_dir_path(__FILE__));
-  define('ACFBS_HTTP',    plugin_dir_url(__FILE__));
-  define('ACFBS_NOTICE',  'acfbs_notice_hidden');
+  define('ACFBS_URL',     plugin_dir_url(__FILE__));
 
-  include ACFBS_PATH . 'functions/_core.php';
-  new ACFBetterSearch();
+  require_once __DIR__ . '/vendor/autoload.php';
+  new AcfBetterSearch\AcfBetterSearch();

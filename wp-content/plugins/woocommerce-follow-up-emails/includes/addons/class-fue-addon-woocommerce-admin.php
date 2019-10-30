@@ -228,7 +228,7 @@ class FUE_Addon_Woocommerce_Admin {
 		$page = isset($_GET['page']) ? $_GET['page'] : '';
 
 		if ( $page == 'followup-emails' || $page == 'followup-emails-settings' || $page == 'followup-emails-queue' ) {
-			wp_enqueue_script( 'wc-product-search', plugins_url( 'templates/js/fue-select.js', FUE_FILE ), array( 'jquery', 'select2' ), FUE_VERSION );
+			wp_enqueue_script( 'fue-select', plugins_url( 'templates/js/fue-select.js', FUE_FILE ), array( 'jquery', 'select2' ), FUE_VERSION );
 
 			wp_enqueue_style('select2');
 			wp_enqueue_script( 'fue-queue', FUE_TEMPLATES_URL .'/js/queue.js', array('jquery'), FUE_VERSION );
@@ -268,7 +268,7 @@ class FUE_Addon_Woocommerce_Admin {
 
 			wp_enqueue_script( 'select2' );
 			wp_enqueue_style( 'select2' );
-			wp_enqueue_script( 'wc-product-search', plugins_url( 'templates/js/fue-select.js', FUE_FILE ), array( 'jquery', 'select2' ), FUE_VERSION );
+			wp_enqueue_script( 'fue-select', plugins_url( 'templates/js/fue-select.js', FUE_FILE ), array( 'jquery', 'select2' ), FUE_VERSION );
 
 			wp_enqueue_script( 'woocommerce_admin' );
 			wp_enqueue_script('farbtastic');
@@ -285,7 +285,7 @@ class FUE_Addon_Woocommerce_Admin {
 		if ( $screen->id == 'follow_up_email' ) {
 			wp_enqueue_script( 'fue-form-woocommerce', plugins_url( 'templates/js/email-form-woocommerce.js', FUE_FILE ), array('jquery'), FUE_VERSION );
 			wp_enqueue_style( 'woocommerce_admin_styles', WC()->plugin_url() . '/assets/css/admin.css' );
-			wp_enqueue_script( 'wc-product-search', plugins_url( 'templates/js/fue-select.js', FUE_FILE ), array( 'jquery', 'select2' ), FUE_VERSION );
+			wp_enqueue_script( 'fue-select', plugins_url( 'templates/js/fue-select.js', FUE_FILE ), array( 'jquery', 'select2' ), FUE_VERSION );
 		} elseif ( $screen->id == 'product' ) {
 			wp_enqueue_style( 'fue_wc_admin', FUE_TEMPLATES_URL .'/add-ons/woocommerce.css' );
 		}

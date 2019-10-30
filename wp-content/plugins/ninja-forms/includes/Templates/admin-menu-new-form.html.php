@@ -15,7 +15,7 @@
         if( ! function_exists( 'NF_Layouts' ) && ! $disable_admin_notices ) {
             $u_id = get_option( 'nf_aff', false );
             if ( !$u_id ) $u_id = apply_filters( 'ninja_forms_affiliate_id', false );
-            $link = 'https://ninjaforms.com/extensions/layout-styles/?utm_medium=plugin&utm_source=plugin-builder&utm_campaign=Ninja+Forms+Builder&utm_content=Layout+and+Styles';
+            $link = 'https://ninjaforms.com/extensions/layout-styles/?utm_source=Ninja+Forms+Plugin&utm_medium=Form+Builder&utm_campaign=Builder+Layout+Styles+Comment+Bubble';
             if ( $u_id ) {
                 $link = 'http://www.shareasale.com/r.cfm?u=' . $u_id . '&b=812237&m=63061&afftrack=&urllink=' . $link;
             }
@@ -33,6 +33,17 @@
     <div id="nf-drawer"></div>
     <span class="merge-tags-content" style="display:none;"></span>
     <div id="merge-tags-box"></div>
+</script>
+
+<script id="tmpl-nf-advanced-main-content" type="text/template">
+    <div>
+        <div class="child-view-container"></div>
+        <# if(1 != nfAdmin.devMode){ #>
+            <div style="clear:both;padding-top:100px;padding:20px;opacity:.5;text-align:center;">
+                For more technical features, <a href="<?php echo add_query_arg('page', 'nf-settings', admin_url('admin.php')); ?>#ninja_forms[builder_dev_mode]">enable Developer Mode</a>.
+            </div>
+        <# } #>
+    </div>
 </script>
 
 <!-- MERGE TAGS BOX TEMPLATES -->
@@ -464,7 +475,7 @@
     <div class="{{{ data.renderClasses() }}}" {{{ data.renderVisible() }}}>
         {{{ data.renderSetting() }}}
         <span class="nf-setting-error"></span>
-        <span class="nf-import-options" style="display:none">
+        <span class="nf-dev-import-options" style="display:none">
             <?php _e( 'Please use the following format', 'ninja-forms' ); ?>:
             <br>
             <br>
@@ -478,6 +489,21 @@
 Label One, value-one, 1
 Label Two, value-two, 2
 Label Three, value-three, 3
+            </pre>
+            <textarea></textarea>
+            <a href="#" class="nf-button primary nf-import extra"><?php _e( 'Import', 'ninja-forms' ); ?></a>
+        </span>
+        <span class="nf-import-options" style="display:none">
+            <?php _e( 'Please place one label on each line, separated by commas.', 'ninja-forms' ); ?>
+            <br>
+            <br>
+            <em>
+            Example:
+            </em>
+            <pre>
+Label One,
+Label Two,
+Label Three
             </pre>
             <textarea></textarea>
             <a href="#" class="nf-button primary nf-import extra"><?php _e( 'Import', 'ninja-forms' ); ?></a>

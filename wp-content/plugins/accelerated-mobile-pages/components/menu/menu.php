@@ -24,12 +24,23 @@ function amp_menu_html($echo, $menu_args, $type){
 	    $menu_html_content = apply_filters('ampforwp_menu_content', $menu_html_content);
 	    $sanitizer_obj = new AMPFORWP_Content( $menu_html_content, array(), apply_filters( 'ampforwp_content_sanitizers', array( 'AMP_Img_Sanitizer' => array(), 'AMP_Style_Sanitizer' => array(), ) ) );
 	    $sanitized_menu =  $sanitizer_obj->get_amp_content();
-	    if ( 'header' == $type ) {
-	    	set_transient('ampforwp_header_menu', $sanitized_menu, 24*HOUR_IN_SECONDS );
+
+	    $menu_cache = true;
+	    if ( class_exists('Sitepress') ) {
+	    	 $menu_cache = false;
 	    }
-	    elseif ('footer' == $type) {
-	    	set_transient('ampforwp_footer_menu', $sanitized_menu, 24*HOUR_IN_SECONDS );
+	    if(defined('QTX_VERSION')){ // FOR qTranslate-X 
+	    	 $menu_cache = false;
 	    }
+	    $menu_cache = apply_filters('ampforwp_menu_cache',$menu_cache);
+	    if ($menu_cache) {
+		    if ( 'header' == $type ) {
+		    	set_transient('ampforwp_header_menu', $sanitized_menu, 24*HOUR_IN_SECONDS );
+		    }
+		    elseif ('footer' == $type) {
+		    	set_transient('ampforwp_footer_menu', $sanitized_menu, 24*HOUR_IN_SECONDS );
+		    }
+		}
     	return $sanitized_menu;
 	}
 }
@@ -70,6 +81,6 @@ function amp_menu_styles(){
 			<?php
 		}?>
 		<?php /*AMP theme framework and AMP layouts and this is required*/ ?>
-		aside{width:150px}.amp-menu{list-style-type:none;margin:0;padding:0}.amp-menu li{position:relative;display:block}.amp-menu li.menu-item-has-children ul{display:none}.amp-menu li.menu-item-has-children:hover>ul{display:}.amp-menu li.menu-item-has-children>ul>li{padding-left:10px}.amp-menu>li a{padding:7px;display:block;margin-bottom:1px}.amp-menu>li ul{list-style-type:none;margin:0;padding:0;position:relative}.amp-menu input{display:none;}<?php 
+		aside{width:150px}.amp-menu{list-style-type:none;margin:0;padding:0}.amp-menu li{position:relative;display:block}.amp-menu li.menu-item-has-children ul{display:none}.amp-menu li.menu-item-has-children>ul>li{padding-left:10px}.amp-menu>li a{padding:7px;display:block;margin-bottom:1px}.amp-menu>li ul{list-style-type:none;margin:0;padding:0;position:relative}.amp-menu input{display:none;}<?php 
 	}
 }

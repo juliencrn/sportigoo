@@ -27,7 +27,7 @@ global $redux_builder_amp, $wp; ?>
 	$amp_component_scripts = $sanitizer->amp_scripts;
 	if ( $sanitizer && $amp_component_scripts) {	
 		foreach ($amp_component_scripts as $ampforwp_service => $ampforwp_js_file) { ?>
-			<script custom-element="<?php echo $ampforwp_service; ?>"  src="<?php echo esc_url($ampforwp_js_file); ?>" async></script> <?php
+			<script custom-element="<?php echo esc_attr($ampforwp_service); ?>"  src="<?php echo esc_url($ampforwp_js_file); ?>" async></script> <?php
 		}
 	}?>
 	<style amp-custom>
@@ -48,7 +48,9 @@ global $redux_builder_amp, $wp; ?>
 
 	  <?php if ( is_archive() ) {
 	  	if( is_author() ){
-			$curauth = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
+	  		$author_name = get_query_var('author_name');
+	  		$author = get_query_var('author');
+			$curauth = (get_query_var('author_name')) ? get_user_by('slug', esc_attr($author_name)) : get_userdata(esc_attr($author));
 				if( true == ampforwp_gravatar_checker($curauth->user_email) ){
 					$curauth_url = get_avatar_url( $curauth->user_email, array('size'=>180) );
 					if($curauth_url){ ?>
@@ -58,7 +60,11 @@ global $redux_builder_amp, $wp; ?>
 					<?php }
 				}
 			}
-	    the_archive_title( '<h1 class="page-title">', '</h1>' );
+	    if(ampforwp_default_logo()){
+    		the_archive_title( '<h1 class="page-title">', '</h1>' );
+		}else{
+			the_archive_title( '<h2 class="page-title">', '</h2>' );
+		}
 	    
 			$arch_desc 		= $sanitizer->get_amp_content();
 			if( $arch_desc ) {  
@@ -71,7 +77,7 @@ global $redux_builder_amp, $wp; ?>
 		    }
 				if($paged <= '1') {?>
 					<div class="amp-wp-content taxonomy-description">
-						<?php echo $arch_desc;// amphtml content, no kses ?>
+						<?php echo do_shortcode($arch_desc);// amphtml content, no kses ?>
 				    </div> <?php
 				}
 			}
@@ -103,8 +109,13 @@ global $redux_builder_amp, $wp; ?>
 		  		}
 				} ?>
 	        <div class="amp-wp-content amp-wp-article-header amp-loop-list">
-
-		        <h1 class="amp-wp-title"><a href="<?php echo esc_url( $ampforwp_amp_post_url ); ?>"><?php the_title() ?></a></h1>
+	        <?php 
+	        	$title_name = '<a href="'.esc_url( $ampforwp_amp_post_url ).'">'.get_the_title().'</a>';
+	        	if( ampforwp_default_logo() ){ ?>
+		        	<h2 class="amp-wp-title"><?php echo $title_name; //escaped above ?></h2>
+				<?php }else{ ?>
+					<h3 class="amp-wp-title"><?php echo $title_name; //escaped above ?></h3>
+				<?php } ?>
 
 				<div class="amp-wp-content-loop">
 

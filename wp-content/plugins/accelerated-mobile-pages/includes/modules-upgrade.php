@@ -87,7 +87,7 @@ function ampforwp_enable_modules_upgread(){
                                     ),
                             'install' => 'ads-for-wp/ads-for-wp.php',
                         );
-            $redirectSettingsUrl = admin_url('admin.php?page=adsforwp&tab=general&reference=ampforwp');
+            $redirectSettingsUrl = admin_url('edit.php?post_type=adsforwp');
         break;
         default:
             $plugins = array();
@@ -103,7 +103,7 @@ function ampforwp_enable_modules_upgread(){
 
 function ampforwp_admin_notice_module_reference_install() {
     // Exit if the user does not have proper permissions
-    if(! current_user_can( 'manage_options' ) && !is_admin() ) {
+    if(! current_user_can( 'manage_options' )) {
         return ;
     }
 
@@ -198,7 +198,7 @@ function ampforwp_import_structure_data(){
             }
             
             $schema_options_array = array('isAccessibleForFree'=>False,'notAccessibleForFree'=>0,'paywall_class_name'=>'');
-            update_post_meta( $insertedPageId, 'data_array', $post_data_array);
+            update_post_meta( $insertedPageId, 'data_group_array', $post_data_array);
             update_post_meta( $insertedPageId, 'schema_type', $ampforwp_sd_type_pages);
             update_post_meta( $insertedPageId, 'schema_options', $schema_options_array);
             }
@@ -229,7 +229,7 @@ function ampforwp_import_structure_data(){
                                                    );
                 }
                 $schema_options_array = array('isAccessibleForFree'=>False,'notAccessibleForFree'=>0,'paywall_class_name'=>'');
-                update_post_meta( $insertedPageId, 'data_array', $post_data_array);
+                update_post_meta( $insertedPageId, 'data_group_array', $post_data_array);
                 update_post_meta( $insertedPageId, 'schema_type', $ampforwp_sd_type_posts);
                 update_post_meta( $insertedPageId, 'schema_options', $schema_options_array);
             }
@@ -237,6 +237,7 @@ function ampforwp_import_structure_data(){
     update_option('sd_data', $sd_data_update);
     update_option('ampforwp_structure_data_module_upgrade','migrated');
     return true;
+    wp_die();
 }
 // AdsforWP
 //On module upgrade

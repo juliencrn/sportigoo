@@ -50,7 +50,33 @@ class AMP_Img_Sanitizer extends AMP_Base_Sanitizer {
 				$node->parentNode->removeChild( $node );
 				continue;
 			}
+			if ( ! is_numeric( $node->getAttribute( 'srcset' ) ) && true == ampforwp_get_setting('ampforwp-amp-img-lightbox')) {
+				if(!$node->getAttribute( 'srcset' )){
+					$image_src = $node->getAttribute( 'src' );
+					preg_match('/(.*-(\d{3}x\d{3}.))/', $image_src , $image_src_matches);
+					if($image_src_matches){
+					 	$img_name = explode('/',$image_src);
+					    $img_name = end($img_name);
+					    $img_croped = explode('-',$img_name);
+					    $img_croped = end($img_croped);
+					    $img_ext = wp_check_filetype($image_src);
+					    $img_ext = $img_ext['ext'];
+					    $new_img_url = str_replace("-$img_croped",".$img_ext",$image_src);
+					    if ( $new_img_url ) {
+					    	$node->setAttribute( 'srcset', esc_url($new_img_url) );
+					    }
+					}
+				}
+			}
 
+			if( $node->getAttribute( 'src' )){
+				if (strpos($node->getAttribute( 'src' ), '../wp-content') !== false) {
+				    $site_url = content_url();
+				    $image_complete_src = str_replace('../wp-content', $site_url, $node->getAttribute( 'src' ));
+				    $node->setAttribute('src',$image_complete_src);
+				}
+			}
+			
 			// Determine which images need their dimensions determined/extracted.
 			if ( ! is_numeric( $node->getAttribute( 'width' ) ) || ! is_numeric( $node->getAttribute( 'height' ) ) ) {
 				$need_dimensions[ $node->getAttribute( 'src' ) ][] = $node;
@@ -99,10 +125,12 @@ class AMP_Img_Sanitizer extends AMP_Base_Sanitizer {
 				if ( ! is_numeric( $node->getAttribute( 'width' ) ) ) {
 
 					// Let width have the right aspect ratio based on the height attribute.
-					if ( is_numeric( $node->getAttribute( 'height' ) ) && isset( $dimensions['height'] ) && isset( $dimensions['width'] ) ) {
+					if ( is_numeric( $node->getAttribute( 'height' ) ) && isset( $dimensions['height'] ) && 0 !== $dimensions['height'] && isset( $dimensions['width'] ) ) {
 						$width = round( ( floatval( $node->getAttribute( 'height' ) ) * $dimensions['width'] ) / $dimensions['height'] );
 					}
-
+					if($width==0){
+						$width = self::FALLBACK_WIDTH;
+					}
 					$node->setAttribute( 'width', $width );
 					if ( ! isset( $dimensions['width'] ) ) {
 						$class .= ' amp-wp-unknown-width';
@@ -111,10 +139,12 @@ class AMP_Img_Sanitizer extends AMP_Base_Sanitizer {
 				if ( ! is_numeric( $node->getAttribute( 'height' ) ) ) {
 
 					// Let height have the right aspect ratio based on the width attribute.
-					if ( is_numeric( $node->getAttribute( 'width' ) ) && isset( $dimensions['width'] ) && isset( $dimensions['height'] ) ) {
+					if ( is_numeric( $node->getAttribute( 'width' ) ) && isset( $dimensions['width'] ) && 0 !== $dimensions['width'] && isset( $dimensions['height'] ) ) {
 						$height = round( ( floatval( $node->getAttribute( 'width' ) ) * $dimensions['height'] ) / $dimensions['width'] );
 					}
-
+					if($height==0){
+						$height = self::FALLBACK_HEIGHT;
+					}
 					$node->setAttribute( 'height', $height );
 					if ( ! isset( $dimensions['height'] ) ) {
 						$class .= ' amp-wp-unknown-height';

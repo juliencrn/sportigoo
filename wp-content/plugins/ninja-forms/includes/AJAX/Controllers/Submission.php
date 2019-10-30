@@ -13,7 +13,7 @@ class NF_AJAX_Controllers_Submission extends NF_Abstracts_Controller
     public function __construct()
     {
         if( isset( $_POST[ 'nf_resume' ] ) && isset( $_COOKIE[ 'nf_wp_session' ] ) ){
-            add_action( 'ninja_forms_loaded', array( $this, 'resume' ) );
+            add_action( 'init', array( $this, 'resume' ) );
             return;
         }
 
@@ -108,7 +108,10 @@ class NF_AJAX_Controllers_Submission extends NF_Abstracts_Controller
                 $this->_respond();
             }
         } else {
-            $this->_form_cache = WPN_Helper::get_nf_cache( $this->_form_id );
+            if( WPN_Helper::use_cache() ) {
+                $this->_form_cache = WPN_Helper::get_nf_cache( $this->_form_id );
+            }
+
         }
 
         // Add Field Keys to _form_data
@@ -149,7 +152,12 @@ class NF_AJAX_Controllers_Submission extends NF_Abstracts_Controller
         // Init Calc Merge Tags.
         $calcs_merge_tags = Ninja_Forms()->merge_tags[ 'calcs' ];
 
-        $form_settings = $this->_form_cache[ 'settings' ];
+        if(isset($this->_form_cache[ 'settings' ] ) ) {
+            $form_settings = $this->_form_cache[ 'settings' ];
+        } else {
+            $form_settings = false;
+        }
+
         if( ! $form_settings ){
             $form = Ninja_Forms()->form( $this->_form_id )->get();
             $form_settings = $form->get_settings();
@@ -265,15 +273,31 @@ class NF_AJAX_Controllers_Submission extends NF_Abstracts_Controller
                 $unique_field_value = serialize( $unique_field_value );
             }
 
-            /*
-             * Check our db for the value submitted.
-             */
-            
-            global $wpdb;
-            $sql = $wpdb->prepare( "SELECT COUNT(m.meta_id) FROM `" . $wpdb->prefix . "postmeta` AS m LEFT JOIN `" . $wpdb->prefix . "posts` AS p ON p.id = m.post_id WHERE m.meta_key = '_field_%d' AND m.meta_value = '%s' AND p.post_status = 'publish'", $unique_field_id, $unique_field_value );
-            $result = $wpdb->get_results( $sql, 'ARRAY_N' );
-            if ( intval( $result[ 0 ][ 0 ] ) > 0 ) {
-                $this->_errors['fields'][ $unique_field_id ] = array( 'slug' => 'unique_field', 'message' => $unique_field_error );
+            if ( ! empty($unique_field_value) ) {
+                /*
+                 * Check our db for the value submitted.
+                 */
+                
+                global $wpdb;
+                // @TODO: Rewrite this to use our submissions API.
+                $sql = $wpdb->prepare( "SELECT COUNT(m.meta_id) FROM `" . $wpdb->prefix . "postmeta` AS m LEFT JOIN `" . $wpdb->prefix . "posts` AS p ON p.id = m.post_id WHERE m.meta_key = '_field_%d' AND m.meta_value = '%s' AND p.post_status = 'publish'", $unique_field_id, $unique_field_value );
+                $result = $wpdb->get_results( $sql, 'ARRAY_N' );
+                if ( intval( $result[ 0 ][ 0 ] ) > 0 ) {
+                    $this->_errors['fields'][ $unique_field_id ] = array( 'slug' => 'unique_field', 'message' => $unique_field_error );
+                    $this->_respond();
+                }
+            }
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Verify the submission limit.
+        |--------------------------------------------------------------------------
+        */
+        if ( isset( $this->_data[ 'settings' ][ 'sub_limit_number' ] ) && ! empty( $this->_data[ 'settings' ][ 'sub_limit_number' ] ) ) {
+            $subs = Ninja_Forms()->form( $this->_form_id )->get_subs();
+            if ( count( $subs ) >= intval( $this->_data[ 'settings' ][ 'sub_limit_number' ] ) ) {
+                $this->_errors[ 'form' ][] = $this->_data[ 'settings' ][ 'sub_limit_msg' ];
                 $this->_respond();
             }
         }
@@ -547,7 +571,8 @@ class NF_AJAX_Controllers_Submission extends NF_Abstracts_Controller
     protected function _respond( $data = array() )
     {
         // Restore form instance ID.
-        if($this->_form_instance_id){
+        if(property_exists($this, '_form_instance_id') 
+            && $this->_form_instance_id){
             $this->_data[ 'form_id' ] = $this->_form_instance_id;
 
             // Maybe update IDs for field errors, if there are field errors.

@@ -91,7 +91,7 @@ function ampforwp_framework_get_comments(){
 			                        'max_depth'   		=> 5,
 			                        'avatar_size'		=> 0,
 			                        'callback'			=> 'ampforwp_custom_translated_comment',
-			                        'reverse_top_level' => true //Show the latest comments at the top of the list
+			                        'reverse_top_level' => false //Show the latest comments at the top of the list
 								), $comments);  ?>
 						    </ul> <?php 
 							    $max_page = get_comment_pages_count($comments, AMPFORWP_COMMENTS_PER_PAGE);
@@ -113,7 +113,7 @@ function ampforwp_framework_get_comments(){
 					if ( ! defined( 'AMP_COMMENTS_VERSION' ) ) { ?>
 						<div class="amp-comment-button">
 							<?php if ( comments_open($postID) ) { ?>
-						    	<a href="<?php echo ampforwp_comment_button_url(); ?>" rel="nofollow"><?php echo esc_html(ampforwp_translation( $redux_builder_amp['amp-translator-leave-a-comment-text'], 'Leave a Comment' ) ); ?></a> <?php
+						    	<a href="<?php echo ampforwp_comment_button_url(); ?>" title="<?php echo ampforwp_get_setting('amp-translator-leave-a-comment-text')?>" rel="nofollow"><?php echo esc_html(ampforwp_translation( $redux_builder_amp['amp-translator-leave-a-comment-text'], 'Leave a Comment' ) ); ?></a> <?php
 							} else {
 								echo "<p class='nocomments'>". esc_html( ampforwp_translation( $redux_builder_amp['amp-translator-comments-closed'], 'Comments are closed'  ) )." </p>";
 							}?>
@@ -166,7 +166,7 @@ function ampforwp_framework_get_disqus_comments(){
 	}
 
 	if( $redux_builder_amp['ampforwp-disqus-comments-name'] !== '' ) {
-		global $post; $post_slug=$post->post_name;
+		global $post; $post_slug = rawurlencode($post->post_name);
 
 		$disqus_script_host_url = "https://ampforwp.appspot.com/?api=". AMPFORWP_DISQUS_URL;
 
@@ -174,7 +174,7 @@ function ampforwp_framework_get_disqus_comments(){
 			$disqus_script_host_url = esc_url( $redux_builder_amp['ampforwp-disqus-host-file'] );
 		}
 
-		$disqus_url = $disqus_script_host_url.'?disqus_title='.$post_slug.'&url='.get_permalink().'&disqus_name='. esc_url( $redux_builder_amp['ampforwp-disqus-comments-name'] ) ."/embed.js"  ;
+		$disqus_url = $disqus_script_host_url.'?disqus_title='.$post_slug.'&url='.rawurlencode(get_permalink()).'&disqus_name='. esc_url( ampforwp_get_setting('ampforwp-disqus-comments-name') ) ."/embed.js"  ;
 		?>
 		<section class="amp-disqus-comments">
 			<amp-iframe
@@ -184,7 +184,7 @@ function ampforwp_framework_get_disqus_comments(){
 				sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
 				frameborder="0"
 				<?php if(ampforwp_get_data_consent()){?>data-block-on-consent <?php } ?>
-				src="<?php echo esc_url($disqus_url); ?>" >
+				src="<?php echo esc_url($disqus_url); ?>" title="<?php echo esc_html__('Disqus Comments.','accelerated-mobile-pages'); ?>">
 				<div overflow tabindex="0" role="button" aria-label="Read more"><?php echo esc_html__('Disqus Comments Loading...','accelerated-mobile-pages') ?></div>
 			</amp-iframe>
 		</section>
@@ -225,25 +225,25 @@ function ampforwp_framework_get_vuukle_comments(){
 
  	$vuukle_html = '<amp-iframe width="600" height="350" layout="responsive" sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms" resizable frameborder="0" src="'.esc_url($srcUrl).'">
 
-		<div overflow tabindex="0" role="button" aria-label="Show comments">Show comments</div>';
-	echo $vuukle_html;
+		<div overflow tabindex="0" role="button" aria-label="Show comments">'.esc_html__('Show comments','accelerated-mobile-pages').'</div>';
+	echo $vuukle_html; // escaped above
 }
 
 function ampforwp_framework_get_spotim_comments(){
-	global $post, $redux_builder_amp; 
+	global $post;
 	$spotId ='';
-	if( isset($redux_builder_amp['ampforwp-spotim-comments-apiKey']) && $redux_builder_amp['ampforwp-spotim-comments-apiKey'] !== ""){
-		$spotId = $redux_builder_amp['ampforwp-spotim-comments-apiKey'];
+	if( true == ampforwp_get_setting('ampforwp-spotim-comments-apiKey') && ampforwp_get_setting('ampforwp-spotim-comments-apiKey') !== ""){
+		$spotId = ampforwp_get_setting('ampforwp-spotim-comments-apiKey');
 	}
-	$srcUrl = 'https://amp.spot.im/production.html?';
-	$srcUrl = add_query_arg('spotId' ,get_permalink(), $srcUrl);
+	$srcUrl = 'https://amp.spot.im/production.html?spot_im_highlight_immediate=true';
+	$srcUrl = add_query_arg('spotId' ,$spotId, $srcUrl);
 	$srcUrl = add_query_arg('postId' , $post->ID, $srcUrl);
 	$spotim_html = '<amp-iframe width="375" height="815" resizable sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation" layout="responsive"
 	  frameborder="0" src="'.esc_url($srcUrl).'">
 	  <amp-img placeholder height="815" layout="fill" src="//amp.spot.im/loader.png"></amp-img>
-	  <div overflow class="spot-im-amp-overflow" tabindex="0" role="button" aria-label="Read more">Load more...</div>
+	  <div overflow class="spot-im-amp-overflow" tabindex="0" role="button" aria-label="Read more">'.esc_html__('Load more...','accelerated-mobile-pages').'</div>
 	</amp-iframe>';
-	echo $spotim_html;
+	echo $spotim_html; // escaped above
 }
 
 // Comments Scripts

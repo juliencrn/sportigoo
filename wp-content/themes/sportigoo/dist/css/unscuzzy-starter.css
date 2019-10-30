@@ -1124,13 +1124,7 @@ p {
     .nav__search-input::-webkit-input-placeholder {
       color: #FFF;
       opacity: 0.8; }
-    .nav__search-input:-moz-placeholder {
-      color: #FFF;
-      opacity: 0.8; }
     .nav__search-input::-moz-placeholder {
-      color: #FFF;
-      opacity: 0.8; }
-    .nav__search-input:-ms-input-placeholder {
       color: #FFF;
       opacity: 0.8; }
     .nav__search-input::-ms-input-placeholder {
@@ -1277,6 +1271,9 @@ p {
     height: -webkit-max-content;
     height: -moz-max-content;
     height: max-content; }
+    @media (max-width: 767px) {
+      .text-img__right {
+        display: none; } }
   @media (max-width: 767px) {
     .text-img .container,
     .text-img .container-fluid {
@@ -2563,11 +2560,7 @@ button.button,
     margin-bottom: 50px; }
   .formulaire input::-webkit-input-placeholder {
     color: #1D467A; }
-  .formulaire input:-moz-placeholder {
-    color: #1D467A; }
   .formulaire input::-moz-placeholder {
-    color: #1D467A; }
-  .formulaire input:-ms-input-placeholder {
     color: #1D467A; }
   .formulaire input::-ms-input-placeholder {
     color: #1D467A; }
@@ -2602,13 +2595,7 @@ button.button,
 textarea::-webkit-input-placeholder {
   color: #1D467A !important; }
 
-textarea:-moz-placeholder {
-  color: #1D467A !important; }
-
 textarea::-moz-placeholder {
-  color: #1D467A !important; }
-
-textarea:-ms-input-placeholder {
   color: #1D467A !important; }
 
 textarea::-ms-input-placeholder {
@@ -2713,11 +2700,7 @@ textarea::placeholder {
     color: #1D467A; }
   .woocommerce form.checkout.woocommerce-checkout input::-webkit-input-placeholder, .woocommerce form.checkout.woocommerce-checkout textarea::-webkit-input-placeholder, .woocommerce form.edit-account input::-webkit-input-placeholder, .woocommerce form.edit-account textarea::-webkit-input-placeholder, .woocommerce form.woocommerce-form-login input::-webkit-input-placeholder, .woocommerce form.woocommerce-form-login textarea::-webkit-input-placeholder, .woocommerce form.woocommerce-form input::-webkit-input-placeholder, .woocommerce form.woocommerce-form textarea::-webkit-input-placeholder {
     color: #1D467A; }
-  .woocommerce form.checkout.woocommerce-checkout input:-moz-placeholder, .woocommerce form.checkout.woocommerce-checkout textarea:-moz-placeholder, .woocommerce form.edit-account input:-moz-placeholder, .woocommerce form.edit-account textarea:-moz-placeholder, .woocommerce form.woocommerce-form-login input:-moz-placeholder, .woocommerce form.woocommerce-form-login textarea:-moz-placeholder, .woocommerce form.woocommerce-form input:-moz-placeholder, .woocommerce form.woocommerce-form textarea:-moz-placeholder {
-    color: #1D467A; }
   .woocommerce form.checkout.woocommerce-checkout input::-moz-placeholder, .woocommerce form.checkout.woocommerce-checkout textarea::-moz-placeholder, .woocommerce form.edit-account input::-moz-placeholder, .woocommerce form.edit-account textarea::-moz-placeholder, .woocommerce form.woocommerce-form-login input::-moz-placeholder, .woocommerce form.woocommerce-form-login textarea::-moz-placeholder, .woocommerce form.woocommerce-form input::-moz-placeholder, .woocommerce form.woocommerce-form textarea::-moz-placeholder {
-    color: #1D467A; }
-  .woocommerce form.checkout.woocommerce-checkout input:-ms-input-placeholder, .woocommerce form.checkout.woocommerce-checkout textarea:-ms-input-placeholder, .woocommerce form.edit-account input:-ms-input-placeholder, .woocommerce form.edit-account textarea:-ms-input-placeholder, .woocommerce form.woocommerce-form-login input:-ms-input-placeholder, .woocommerce form.woocommerce-form-login textarea:-ms-input-placeholder, .woocommerce form.woocommerce-form input:-ms-input-placeholder, .woocommerce form.woocommerce-form textarea:-ms-input-placeholder {
     color: #1D467A; }
   .woocommerce form.checkout.woocommerce-checkout input::-ms-input-placeholder, .woocommerce form.checkout.woocommerce-checkout textarea::-ms-input-placeholder, .woocommerce form.edit-account input::-ms-input-placeholder, .woocommerce form.edit-account textarea::-ms-input-placeholder, .woocommerce form.woocommerce-form-login input::-ms-input-placeholder, .woocommerce form.woocommerce-form-login textarea::-ms-input-placeholder, .woocommerce form.woocommerce-form input::-ms-input-placeholder, .woocommerce form.woocommerce-form textarea::-ms-input-placeholder {
     color: #1D467A; }
@@ -2947,11 +2930,7 @@ li {
       border-radius: 5px; }
     .newsletter input::-webkit-input-placeholder {
       color: #FFF; }
-    .newsletter input:-moz-placeholder {
-      color: #FFF; }
     .newsletter input::-moz-placeholder {
-      color: #FFF; }
-    .newsletter input:-ms-input-placeholder {
       color: #FFF; }
     .newsletter input::-ms-input-placeholder {
       color: #FFF; }
@@ -3054,11 +3033,7 @@ li {
         margin-right: 25px; }
       .newsletter-big form input::-webkit-input-placeholder {
         color: #1D467A; }
-      .newsletter-big form input:-moz-placeholder {
-        color: #1D467A; }
       .newsletter-big form input::-moz-placeholder {
-        color: #1D467A; }
-      .newsletter-big form input:-ms-input-placeholder {
         color: #1D467A; }
       .newsletter-big form input::-ms-input-placeholder {
         color: #1D467A; }

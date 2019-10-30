@@ -4,7 +4,8 @@
 <html amp <?php echo AMP_HTML_Utils::build_attributes_string( $this->get( 'html_tag_attributes' ) ); ?>>
 <head>
 	<meta charset="utf-8">
-	<meta name="robots" content="noindex,nofollow"/>
+	<?php if(is_search() && false == ampforwp_get_setting('amp-inspection-tool') && false == ampforwp_get_setting('ampforwp-robots-search-pages')){?>
+	<meta name="robots" content="noindex,nofollow"/><?php } ?>
   <link rel="dns-prefetch" href="https://cdn.ampproject.org">
 	<?php $paged = get_query_var( 'paged' );
 	$current_search_url =trailingslashit(get_home_url())."?s=".get_search_query();
@@ -52,14 +53,19 @@
 			'paged'               => esc_attr($paged),
 			'post__not_in' 		  => $exclude_ids,
 			'has_password' 		  => false ,
+			'no_found_rows' 	  => true,
 			'post_status'		  => 'publish'
 		) ) );
 		if ( function_exists( 'relevanssi_do_query' ) ) {
 			relevanssi_do_query( $q );
 		}; ?>
 
-     <?php global $redux_builder_amp; ?>
- 		<h1 class="amp-wp-content page-title archive-heading"><?php echo esc_attr(ampforwp_translation( $redux_builder_amp['amp-translator-search-text'], 'You searched for:') . '  ' . get_search_query());?></h1>
+     <?php global $redux_builder_amp;
+     	if( ampforwp_default_logo() ){ ?>
+ 			<h1 class="amp-wp-content page-title archive-heading"><?php echo ampforwp_translation( $redux_builder_amp['amp-translator-search-text'], 'You searched for:') . '  ' . get_search_query();?></h1>
+	 	<?php }else{?>
+			<h2 class="amp-wp-content page-title archive-heading"><?php echo ampforwp_translation( $redux_builder_amp['amp-translator-search-text'], 'You searched for:') . '  ' . get_search_query();?></h2>
+	 	<?php } ?>
 
 	<?php if ( $q->have_posts() ) : while ( $q->have_posts() ) : $q->the_post();?>
 
@@ -85,7 +91,14 @@
 					<?php }
 					} ?> 
                 </ul>
-				<h2 class="amp-wp-title"><a href="<?php echo ampforwp_url_controller( get_permalink() ); ?>"> <?php the_title(); ?></a></h2>
+				<?php
+					$title_name = '<a href="'.ampforwp_url_controller( get_permalink() ).'">'.get_the_title().'</a>';
+	        		if( ampforwp_default_logo() ){ ?>
+	    		   		<h2 class="amp-wp-title"><?php echo $title_name; //escaped above ?></h2>
+					<?php }else{ ?>
+						<h3 class="amp-wp-title"><?php echo $title_name; //escaped above ?></h3>
+					<?php } ?>
+				
 				<?php if( ampforwp_check_excerpt() ) {
 					$class = 'large-screen-excerpt-design-3';
 					if ( true == $redux_builder_amp['excerpt-option-design-3'] ) {

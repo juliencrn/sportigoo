@@ -3,8 +3,15 @@
 <?php
 do_action( 'levelup_head');
 if( !ampforwp_levelup_compatibility('hf_builder_head') ){
+    $header_type = ampforwp_get_setting('header-type');
+    if(!defined('AMPFORWP_LAYOUTS_FILE')){
+        if( !in_array($header_type,array(1,2,3,10)) ) {
+            $header_type = 1;
+        }
+    }
 ?>
-<?php if($redux_builder_amp['header-type'] == '1'){?>
+<?php if($header_type == '1'){?>
+<?php do_action('ampforwp_admin_menu_bar_front'); ?>
 <header class="header h_m h_m_1">
     <?php do_action('ampforwp_header_top_design4'); ?>
     <input type="checkbox" id="offcanvas-menu" class="tg" />
@@ -132,7 +139,7 @@ if( !ampforwp_levelup_compatibility('hf_builder_head') ){
     <?php do_action('ampforwp_header_bottom_design4'); ?>
 </header>
 <?php } ?>
-<?php if($redux_builder_amp['header-type'] == '2'){?>
+<?php if($header_type == '2'){?>
 <header class="header-2 h_m h_m_1">
     <?php do_action('ampforwp_header_top_design4'); ?>
     <input type="checkbox" id="offcanvas-menu" class="tg" />
@@ -230,9 +237,9 @@ if( !ampforwp_levelup_compatibility('hf_builder_head') ){
                     <?php amp_logo(); ?>
                 </div>
                 <div class="h-2">
-                    <?php if($redux_builder_amp['signin-button-text'] && $redux_builder_amp['signin-button-link']){?>
+                   <?php if( ampforwp_get_setting('signin-button-text') && ampforwp_get_setting('signin-button-link') ){?>
                     <div class="h-sing">
-                        <a target="_blank" href="<?php echo esc_url($redux_builder_amp['signin-button-link'])?>"><?php echo esc_attr($redux_builder_amp['signin-button-text']) ?></a>
+                        <a target="_blank" href="<?php echo ampforwp_get_setting('signin-button-link')?>"><?php echo __(ampforwp_get_setting('signin-button-text'), 'accelerated-mobile-pages'); ?></a>
                     </div>
                     <?php } ?>
                     <?php if( isset( $redux_builder_amp['amp-swift-cart-btn'] ) && true == $redux_builder_amp['amp-swift-cart-btn'] ) { ?>
@@ -252,7 +259,7 @@ if( !ampforwp_levelup_compatibility('hf_builder_head') ){
     <?php do_action('ampforwp_header_bottom_design4'); ?>
 </header>
 <?php } ?>
-<?php if($redux_builder_amp['header-type'] == '3'){?>
+<?php if($header_type == '3'){?>
 <header class="header-3 h_m h_m_1">
     <?php do_action('ampforwp_header_top_design4'); ?>
     <input type="checkbox" id="offcanvas-menu" class="tg" />

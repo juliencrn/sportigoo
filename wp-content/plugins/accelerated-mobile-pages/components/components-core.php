@@ -5,6 +5,7 @@ global $redux_builder_amp;
 $ampforwpTemplate = '';
 $loadComponent = array();
 $scriptComponent = array();
+$search_found = false;
 $supportComponent = array('AMP-search','AMP-menu','AMP-alter-menu','AMP-logo','AMP-social-icons','AMP-sidebar','AMP-featured-image','AMP-author-box','AMP-loop','AMP-categories-tags','AMP-comments','AMP-post-navigation','AMP-related-posts','AMP-post-pagination','AMP-call-now', 'AMP-breadcrumb','AMP-gdpr');
 
 add_filter( 'amp_post_template_data', 'ampforwp_framework_add_and_form_scripts',20);
@@ -40,11 +41,11 @@ function ampforwp_loadComponents($componentName){
 	if(empty($componentName)) return '';
 	$componentName = str_replace("AMP-", "", $componentName);
 
-	$file = AMP_FRAMEWORK_COMOPNENT_DIR_PATH.'/'.$componentName.'/'.$componentName.".php";
+	$file = AMP_FRAMEWORK_COMOPNENT_DIR_PATH.'/'.esc_attr($componentName).'/'.esc_attr($componentName).".php";
 	if(!file_exists($file)){
 		return '';
 	}
-	include_once($file);
+	include_once( esc_attr($file));
 }
 
 // Icons
@@ -115,11 +116,15 @@ function amp_title(){
 		$ID = $post->ID;
 	if( $ID!=null ){
 		do_action('ampforwp_above_the_title'); 
-		?><h1 class="amp-post-title"><?php 
-			$ampforwp_title = get_the_title($ID);
-			$ampforwp_title =  apply_filters('ampforwp_filter_single_title', $ampforwp_title);
-			echo wp_kses_data( $ampforwp_title ); 
-		?></h1><?php 
+		$ampforwp_title = get_the_title($ID);
+		$ampforwp_title =  apply_filters('ampforwp_filter_single_title', $ampforwp_title);
+		if(!empty($ampforwp_title) && ampforwp_default_logo()){
+		?>
+			<h1 class="amp-post-title"><?php echo wp_kses_data( $ampforwp_title ); ?></h1>
+		<?php
+		}else{?>
+			<h2 class="amp-post-title"><?php echo wp_kses_data( $ampforwp_title ); ?></h2>
+		<?php }
 		do_action('ampforwp_below_the_title');
     }
 }
@@ -170,7 +175,7 @@ function amp_menu($echo=true, $menu_args=array(), $type='header'){
 			return $amp_menu;
 		}
 		else
-			echo $amp_menu;
+			echo $amp_menu; // escaped above
 	}
 }
 // Alternative Menus
@@ -372,11 +377,11 @@ function amp_header_core(){
 		    <?php do_action( 'amp_meta', $thisTemplate ); ?>
 		    <?php 
 		    	if(ampforwp_amp_nonamp_convert("", "check")){
-		    		echo '<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">';
+		    		echo '<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=2,user-scalable=yes">';
 		    		wp_head();
 
 		    	}else{
-		    		if(is_search()){?>
+		    		if(is_search() && false == ampforwp_get_setting('amp-inspection-tool') && false == ampforwp_get_setting('ampforwp-robots-search-pages')){?>
 		    			<meta name="robots" content="noindex,nofollow"/>
 		    		<?php }
 		    		do_action( 'amp_post_template_head', $thisTemplate );
@@ -385,9 +390,10 @@ function amp_header_core(){
 				<?php $thisTemplate->load_parts( array( 'style' ) ); ?>
 				<?php do_action( 'amp_post_template_css', $thisTemplate ); ?>
 				<?php do_action( 'amp_css', $thisTemplate ); ?>
-				<?php $custom_css = ampforwp_get_setting('css_editor'); 
+				<?php $custom_css = ampforwp_get_setting('css_editor');
+					  $custom_css = str_replace(array('.accordion-mod'), array('.apac'), $custom_css);
 					  $sanitized_css = ampforwp_sanitize_i_amphtml($custom_css);
-					  echo $sanitized_css; ?>
+					  echo $sanitized_css; // sanitized above ?>
 			</style>
 			<?php do_action('ampforwp_before_head', $thisTemplate);  ?>
 		</head>
@@ -569,28 +575,35 @@ function amp_content($post_id= ''){
 }
 
 function amp_date( $args=array() ) {
-
-    global $redux_builder_amp;
-    if ( 2 == $redux_builder_amp['ampforwp-post-date-format'] ) {
+    if ( 2 == ampforwp_get_setting('ampforwp-post-date-format') ) {
     	$args = array('format' => 'traditional');
     }
-    if ( (isset($args['format']) && $args['format'] == 'traditional') || 'time' == $args ) {
-      $post_date = get_the_date() . ' '. get_the_time();
-        } else {
-          $post_date = human_time_diff(
+    if ( true == ampforwp_get_setting('ampforwp-post-time') && (isset($args['format']) && $args['format'] == 'traditional') && 2 == ampforwp_get_setting('ampforwp-post-date-global') ) {
+      	$post_date =  get_the_modified_date( get_option( 'date_format' )). ' '. get_the_modified_time();
+    }
+    elseif ( false == ampforwp_get_setting('ampforwp-post-time') && (isset($args['format']) && $args['format'] == 'traditional') && 2 == ampforwp_get_setting('ampforwp-post-date-global') ){
+    	 $post_date =  get_the_modified_date( get_option( 'date_format' ));
+    }
+    elseif ( true == ampforwp_get_setting('ampforwp-post-time') && (isset($args['format']) && $args['format'] == 'traditional') || 'time' == $args ){
+    	 $post_date =  get_the_date(). ' '. get_the_time();
+    }
+    elseif ( false == ampforwp_get_setting('ampforwp-post-time') ){
+    	 $post_date =  get_the_date();
+    }else{
+        $post_date = human_time_diff(
                     get_the_time('U', get_the_ID() ), 
-                    current_time('timestamp') ) .' '. ampforwp_translation( $redux_builder_amp['amp-translator-ago-date-text'],
+                    current_time('timestamp') ) .' '. ampforwp_translation(ampforwp_get_setting('amp-translator-ago-date-text'),
                     'ago');
-        }
-        $post_date = apply_filters('ampforwp_modify_post_date', $post_date);
-        if(isset($args['custom_format']) && $args['custom_format']!=""){
-	    	$post_date = date($args['custom_format'],get_the_time('U', get_the_ID() ));
-	    }
-        if ( 'date' == $args || 'time' == $args ) {
-          echo esc_attr($post_date) .' ';
-        }
-        else
-          echo '<div class="loop-date">'.esc_attr($post_date).'</div>';
+    }
+    $post_date = apply_filters('ampforwp_modify_post_date', $post_date);
+   	if(isset($args['custom_format']) && $args['custom_format']!=""){
+	    $post_date = date($args['custom_format'],get_the_time('U', get_the_ID() ));
+	}
+    if ( 'date' == $args || 'time' == $args ) {
+        echo esc_html( $post_date ) .' ';
+    }
+    else
+    echo '<div class="loop-date">'.esc_html( $post_date ).'</div>';
 }
 
 //Load font Compoment
@@ -706,17 +719,37 @@ if ( !function_exists('amp_call_now') ) {
 function ampforwp_addThis_support(){
 	$data_pub_id = ampforwp_get_setting('add-this-pub-id');
 	$data_widget_id = ampforwp_get_setting('add-this-widget-id');
-	if ( is_single() || (is_page() && ampforwp_get_setting('ampforwp-page-social')) ) {
+	$addthisWidth = '';
+	$amp_addthis = '';
+	if ( ( is_single() || (is_page() && ampforwp_get_setting('ampforwp-page-social')) ) && !checkAMPforPageBuilderStatus(ampforwp_get_the_ID()) ) {
 	 	if( ampforwp_get_setting('enable-add-this-option') ) {
+	
 	 		if( 4 == ampforwp_get_setting('amp-design-selector') && 'default' ==  ampforwp_get_setting('swift-add-this-position') ){
-	 			$amp_addthis = '<amp-addthis width="290" height="92" data-pub-id="'.esc_html($data_pub_id).'" data-widget-id="'. esc_html($data_widget_id).'"></amp-addthis>';
+	 			$addthisWidth = 290; 
 	 		}
 	 		else{
-				$amp_addthis = '<amp-addthis width="320" height="92" data-pub-id="'.esc_html($data_pub_id).'" data-widget-id="'.esc_html($data_widget_id).'"></amp-addthis>';
-			} 
+				$addthisWidth = 320; 
+			}
+			if( ampforwp_get_setting('addthis-inline-share') == true){
+				$amp_addthis .= '<amp-addthis width="'.$addthisWidth.'" height="92" data-pub-id="'.esc_attr($data_pub_id).'" data-widget-id="'. esc_attr($data_widget_id).'"></amp-addthis>';
+			}
+
 			do_action('ampforwp_before_social_icons_hook');
 			return $amp_addthis;
 			do_action('ampforwp_after_social_icons_hook');
 		}
 	}
-} 
+}
+
+add_action('amp_post_template_footer','ampforwp_addthis_floating_social_share');
+function ampforwp_addthis_floating_social_share(){
+	$data_pub_id = ampforwp_get_setting('add-this-pub-id');
+	$data_widget_id = ampforwp_get_setting('add-this-widget-id');
+	if ( ( is_single() || (is_page() && ampforwp_get_setting('ampforwp-page-social')) ) && !checkAMPforPageBuilderStatus(ampforwp_get_the_ID()) ) {
+	 	if( ampforwp_get_setting('enable-add-this-option') ) {
+			if( ampforwp_get_setting('addthis-floating-share') == true ){
+				echo '<amp-addthis width="320" height="92" data-pub-id="'.esc_attr($data_pub_id).'" data-widget-id="'. esc_attr($data_widget_id).'" data-widget-type="floating"></amp-addthis>';
+			}
+		}
+	}
+}

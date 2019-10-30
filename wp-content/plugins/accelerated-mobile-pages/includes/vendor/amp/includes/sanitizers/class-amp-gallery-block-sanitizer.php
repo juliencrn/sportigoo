@@ -109,12 +109,45 @@ class AMP_Gallery_Block_Sanitizer extends AMP_Base_Sanitizer {
 					$images[] = $element;
 				}
 			}
+
+			if( $node->getElementsByTagName( 'amp-anim' )){
+				foreach ( $node->getElementsByTagName( 'amp-anim' ) as $element ) {
+					$url = $element->getAttribute('src');
+					$width = $element->getAttribute('width');
+					$height = $element->getAttribute('height');
+					$attachment_id = attachment_url_to_postid($url);
+					if ( empty( $images ) ) {
+						$images[] = $element;
+					}
+					$urls[] = apply_filters('amp_gallery_image_params', array(
+								'url' => $url,
+								'width' => $width,
+								'height' => $height,
+							),$attachment_id);
+					
+				}
+			}
+
+			$fig_item = $node->getElementsByTagName( 'figure');
+			$ni =0;
 			// If not linking to anything then look for <amp-img>.
 			foreach ( $node->getElementsByTagName( 'amp-img' ) as $element ) {
+				$caption = $fig_item->item($ni)->nodeValue;
+				$ni++;
 				$url = $element->getAttribute('src');
 				$width = $element->getAttribute('width');
 				$height = $element->getAttribute('height');
 				$attachment_id = attachment_url_to_postid($url);
+				if($attachment_id==0){
+					$img_name = explode('/',$url);
+    				$img_name = end($img_name);
+    				$img_croped = explode('-',$img_name);
+    				$img_croped = end($img_croped);
+    				$filetype = wp_check_filetype($img_croped);
+					$img_ext = $filetype['ext'];
+    				$new_img_url = str_replace("-$img_croped",".$img_ext",$url);
+    				$attachment_id = attachment_url_to_postid($new_img_url);
+				}
 				if ( empty( $images ) ) {
 					$images[] = $element;
 				}
@@ -122,6 +155,7 @@ class AMP_Gallery_Block_Sanitizer extends AMP_Base_Sanitizer {
 								'url' => $url,
 								'width' => $width,
 								'height' => $height,
+								'caption' => $caption
 							),$attachment_id);
 			}
 
@@ -228,6 +262,7 @@ class AMP_Gallery_Block_Sanitizer extends AMP_Base_Sanitizer {
 					'src' => $image['url'],
 					'width' => $image['width'],
 					'height' => $image['height'],
+					'caption' => $image['caption'],
 					'layout' => 'fill',
 					'class'  => 'amp-carousel-img',
 				);
@@ -341,14 +376,21 @@ class AMP_Gallery_Block_Sanitizer extends AMP_Base_Sanitizer {
 		if ( $amp_image_lightbox ) {
 			add_action('ampforwp_after_post_content', 'AMPforWP\\AMPVendor\\ampforwp_gallery_lightbox');
 		}
+		if($markup == 1){
+			add_action('amp_post_template_css', 'AMPforWP\\AMPVendor\\ampforwp_gal_des_1');
+		}
 		add_filter('amp_post_template_data','ampforwp_carousel_bind_script');
 		add_action('amp_post_template_css', 'ampforwp_additional_style_carousel_caption');
 		return $amp_carousel;
 	}
 }
 
+function ampforwp_gal_des_1(){
+	echo '.cls-btn{background:#0d0d0d;border:none;position: absolute;right: 10px;}.cls-btn:after{content:"X";display:inline-block;color:#fff;font-size:20px;padding:20px;}';
+}
+
 function ampforwp_gal_des_2(){
-	echo ".carousel-preview button{padding:0;}.carousel-preview amp-img{height:40px;width:60px;position:relative;}.carousel-preview {width: 100%;display: inline-block;text-align: center;margin: 20px 0px;}";
+	echo ".carousel-preview button{padding:0;}.carousel-preview amp-img{height:40px;width:60px;position:relative;}.carousel-preview {width: 100%;display: inline-block;text-align: center;margin: 20px 0px;}.cls-btn{background:#0d0d0d;border:none;position: absolute;right: 10px;}.cls-btn:after{content:\"X\";display:inline-block;color:#fff;font-size:20px;padding:20px;}";
 }
 function ampforwp_gal_des_3(){
 	echo '.gal_w{display:inline-block;width:100%}.gal_w amp-img{background:#f1f1f1;height:134px;width:150px;position: relative;float:left;margin:10px;}.cls-btn{background:#0d0d0d;border:none;position: absolute;right: 10px;}.cls-btn:after{content:"X";display:inline-block;color:#fff;font-size:20px;padding:20px;}';
@@ -362,5 +404,5 @@ function ampforwp_gallery_lightbox(){
 					            role="button" tabindex="0"></button>
 					      </div>
 					    </amp-image-lightbox>';
-	echo $amp_image_lightbox;
+	echo $amp_image_lightbox; // nothing to escaped
 }

@@ -36,11 +36,6 @@ class NF_FormBlock {
 			$css_dir . 'nf-form-block-style.css',
 			array( 'wp-edit-blocks' )
 		);
-		wp_register_style(
-			'ninja-forms-block-editor',
-			$css_dir . 'nf-form-block-editor.css',
-			array( 'wp-edit-blocks', 'form-blocks-style' )
-		);
 
 		/**
 		 * we need to get our forms so that the block can build a dropdown

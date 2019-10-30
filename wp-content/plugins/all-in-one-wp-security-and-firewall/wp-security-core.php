@@ -7,7 +7,7 @@ if ( !defined('ABSPATH') ) {
 if (!class_exists('AIO_WP_Security')){
 
 class AIO_WP_Security{
-    var $version = '4.3.9.4';
+    var $version = '4.4.2';
     var $db_version = '1.9';
     var $plugin_url;
     var $plugin_path;
@@ -139,34 +139,18 @@ class AIO_WP_Security{
 
     static function activate_handler($networkwide)
     {
+        global $wpdb;
         //Only runs when the plugin activates
         include_once ('classes/wp-security-installer.php');
         AIOWPSecurity_Installer::run_installer($networkwide);
-
-        if ( !wp_next_scheduled('aiowps_hourly_cron_event') ) {
-            wp_schedule_event(time(), 'hourly', 'aiowps_hourly_cron_event'); //schedule an hourly cron event
-        }
-        if ( !wp_next_scheduled('aiowps_daily_cron_event') ) {
-            wp_schedule_event(time(), 'daily', 'aiowps_daily_cron_event'); //schedule an daily cron event
-        }
-
-        do_action('aiowps_activation_complete');
+        AIOWPSecurity_Installer::set_cron_tasks_upon_activation($networkwide);
     }
     
-    static function deactivate_handler()
+    static function deactivate_handler($networkwide)
     {
         //Only runs with the pluign is deactivated
         include_once ('classes/wp-security-deactivation-tasks.php');
-        AIOWPSecurity_Deactivation::run_deactivation_tasks();
-        wp_clear_scheduled_hook('aiowps_hourly_cron_event');
-        wp_clear_scheduled_hook('aiowps_daily_cron_event');
-        if (AIOWPSecurity_Utility::is_multisite_install()){
-            delete_site_transient('users_online');
-        }
-        else{
-            delete_transient('users_online');
-        }
-        
+        AIOWPSecurity_Deactivation::run_deactivation_tasks($networkwide);
         do_action('aiowps_deactivation_complete');
     }
     
@@ -242,6 +226,10 @@ class AIO_WP_Security{
         global $aio_wp_security;
         if(isset($_GET['aiowpsec_do_log_out']))
         {
+            $nonce = isset($_GET['_wpnonce'])?$_GET['_wpnonce']:'';
+            if ( !wp_verify_nonce( $nonce, 'aio_logout' ) ) {
+                return; 
+            }
             wp_logout();
             if(isset($_GET['after_logout']))//Redirect to the after logout url directly
             {

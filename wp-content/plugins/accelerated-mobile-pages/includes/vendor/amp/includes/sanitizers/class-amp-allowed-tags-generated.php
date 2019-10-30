@@ -699,6 +699,37 @@ class AMP_Allowed_Tags_Generated {
 				),
 			),
 		),
+		'amp-connatix-player' => array(
+			array(
+				'attr_spec_list' => array(
+					'data-player-id' => array(
+						'mandatory' => true,
+					),
+					'media' => array(),
+					'noloading' => array(
+						'value' => array(
+							'',
+						),
+					),
+				),
+				'tag_spec' => array(
+					'amp_layout' => array(
+						'supported_layouts' => array(
+							6,
+							2,
+							3,
+							7,
+							1,
+							4,
+						),
+					),
+					'requires_extension' => array(
+						'amp-connatix-player',
+					),
+					'spec_url' => 'https://www.ampproject.org/docs/reference/components/amp-connatix-player',
+				),
+			),
+		),
 		'amp-consent' => array(
 			array(
 				'attr_spec_list' => array(
@@ -1477,6 +1508,46 @@ class AMP_Allowed_Tags_Generated {
 				),
 			),
 		),
+		'amp-image-slider' => array(
+			array(
+				'attr_spec_list' => array(
+					'disable-hint-reappear' => array(),
+					'initial-slider-position' => array(
+						'value_regex' => '0(\\.[0-9]+)?|1(\\.0+)?',
+					),
+					'media' => array(),
+					'noloading' => array(
+						'value' => array(
+							'',
+						),
+					),
+					'step-size' => array(
+						'value_regex' => '0(\\.[0-9]+)?|1(\\.0+)?',
+					),
+				),
+				'tag_spec' => array(
+					'amp_layout' => array(
+						'supported_layouts' => array(
+							2,
+							9,
+							1,
+							4,
+						),
+					),
+					'child_tags' => array(
+						'child_tag_name_oneof' => array(
+							'amp-img',
+							'div',
+						),
+						'mandatory_min_num_child_tags' => 2,
+					),
+					'requires_extension' => array(
+						'amp-image-slider',
+					),
+					'spec_url' => 'https://amp.dev/documentation/components/amp-image-slider',
+				),
+			),
+		),
 		'amp-img' => array(
 			array(
 				'attr_spec_list' => array(
@@ -1961,6 +2032,34 @@ class AMP_Allowed_Tags_Generated {
 				'tag_spec' => array(
 					'requires_extension' => array(
 						'amp-position-observer',
+					),
+				),
+			),
+		),
+		'amp-recaptcha-input' => array(
+			array(
+				'attr_spec_list' => array(
+					'data-action' => array(
+						'mandatory' => true,
+					),
+					'data-sitekey' => array(
+						'mandatory' => true,
+					),
+					'name' => array(
+						'blacklisted_value_regex' => '(^|\\s)(__amp_\\S*|__count__|__defineGetter__|__defineSetter__|__lookupGetter__|__lookupSetter__|__noSuchMethod__|__parent__|__proto__|__AMP_\\S*|\\$p|\\$proxy|acceptCharset|addEventListener|appendChild|assignedSlot|attachShadow|baseURI|checkValidity|childElementCount|childNodes|classList|className|clientHeight|clientLeft|clientTop|clientWidth|compareDocumentPosition|computedName|computedRole|contentEditable|createShadowRoot|enqueAction|firstChild|firstElementChild|getAnimations|getAttribute|getAttributeNS|getAttributeNode|getAttributeNodeNS|getBoundingClientRect|getClientRects|getDestinationInsertionPoints|getElementsByClassName|getElementsByTagName|getElementsByTagNameNS|getRootNode|hasAttribute|hasAttributeNS|hasAttributes|hasChildNodes|hasPointerCapture|innerHTML|innerText|inputMode|insertAdjacentElement|insertAdjacentHTML|insertAdjacentText|isContentEditable|isDefaultNamespace|isEqualNode|isSameNode|lastChild|lastElementChild|lookupNamespaceURI|namespaceURI|nextElementSibling|nextSibling|nodeName|nodeType|nodeValue|offsetHeight|offsetLeft|offsetParent|offsetTop|offsetWidth|outerHTML|outerText|ownerDocument|parentElement|parentNode|previousElementSibling|previousSibling|querySelector|querySelectorAll|releasePointerCapture|removeAttribute|removeAttributeNS|removeAttributeNode|removeChild|removeEventListener|replaceChild|reportValidity|requestPointerLock|scrollHeight|scrollIntoView|scrollIntoViewIfNeeded|scrollLeft|scrollWidth|setAttribute|setAttributeNS|setAttributeNode|setAttributeNodeNS|setPointerCapture|shadowRoot|styleMap|tabIndex|tagName|textContent|toString|valueOf|(webkit|ms|moz|o)dropzone|(webkit|moz|ms|o)MatchesSelector|(webkit|moz|ms|o)RequestFullScreen|(webkit|moz|ms|o)RequestFullscreen)(\\s|$)',
+						'mandatory' => true,
+					),
+				),
+				'tag_spec' => array(
+					'amp_layout' => array(
+						'supported_layouts' => array(
+							1,
+						),
+					),
+					'mandatory_ancestor' => 'form',
+					'requires_extension' => array(
+						'amp-form',
+						'amp-recaptcha-input',
 					),
 				),
 			),

@@ -27,7 +27,7 @@
 	$amp_component_scripts = $sanitizer->amp_scripts;
 	if ( $sanitizer && $amp_component_scripts) {	
 		foreach ($amp_component_scripts as $ampforwp_service => $ampforwp_js_file) { ?>
-			<script custom-element="<?php echo $ampforwp_service; ?>"  src="<?php echo esc_url($ampforwp_js_file); ?>" async></script> <?php
+			<script custom-element="<?php echo esc_attr($ampforwp_service); ?>"  src="<?php echo esc_url($ampforwp_js_file); ?>" async></script> <?php
 		}
 	}?>
 	<style amp-custom>
@@ -62,6 +62,7 @@ if ( get_query_var( 'paged' ) ) {
 		$q = new WP_Query( array(
 			'post_type'           => 'post',
 			'orderby'             => 'date',
+			'no_found_rows' 	  => true,
 			'ignore_sticky_posts' => 1,
 			'paged'               => esc_attr($paged),
 			'post__not_in' 		  => $exclude_ids,
@@ -73,7 +74,9 @@ if ( get_query_var( 'paged' ) ) {
  		<div class="amp-wp-content">
  	<?php 
  			if( is_author() ){
-			$curauth = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
+ 				$author_name = get_query_var('author_name');
+ 				$author = get_query_var('author');
+			$curauth = (get_query_var('author_name')) ? get_user_by('slug', esc_attr($author_name)) : get_userdata(esc_attr($author));
 				if( true == ampforwp_gravatar_checker($curauth->user_email) ){
 					$curauth_url = get_avatar_url( $curauth->user_email, array('size'=>180) );
 					if($curauth_url){ ?>
@@ -83,12 +86,17 @@ if ( get_query_var( 'paged' ) ) {
 					<?php }
 				}
 			}
- 			the_archive_title( '<h1 class="amp-wp-content page-title archive-heading">', '</h1>' );
+
+			if(ampforwp_default_logo()){
+				the_archive_title( '<h1 class="amp-wp-content page-title archive-heading">', '</h1>' );
+			}else{
+ 				the_archive_title( '<h2 class="amp-wp-content page-title archive-heading">', '</h2>' );
+ 			}
 			$arch_desc 		= $sanitizer->get_amp_content();
 			if( $arch_desc ) {  
 				if($paged <= '1') {?>
 					<div class="taxonomy-description">
-						<?php echo $arch_desc;// amphtml content, no kses ?>
+						<?php echo do_shortcode($arch_desc);// amphtml content, no kses ?>
 				  </div>
 			  </div> <?php
 				}
@@ -125,6 +133,10 @@ if ( get_query_var( 'paged' ) ) {
 				$thumb_url = ampforwp_get_post_thumbnail();
 				$thumb_width  	= ampforwp_get_post_thumbnail('width');
 				$thumb_height 	= ampforwp_get_post_thumbnail('height');
+				if(ampforwp_get_setting('ampforwp-homepage-posts-image-modify-size')){
+					$thumb_width  	= ampforwp_get_setting('ampforwp-design-3-homepage-posts-width');
+					$thumb_height 	= ampforwp_get_setting('ampforwp-design-3-homepage-posts-height');
+				}
 				if($thumb_url){
 					?>
 					<div class="home-post_image">
@@ -152,7 +164,13 @@ if ( get_query_var( 'paged' ) ) {
 					<?php }
 					} ?> 
                 </ul>
-				<h2 class="amp-wp-title"><a href="<?php echo esc_url( $ampforwp_amp_post_url ); ?>"> <?php the_title(); ?></a></h2>
+                <?php 
+					$title_name = '<a href="'.esc_url( $ampforwp_amp_post_url ).'">'.get_the_title().'</a>';
+					if( ampforwp_default_logo() ){ ?>
+						<h2 class="amp-wp-title"><?php echo $title_name;//escaped above ?></h2>
+					<?php }else{ ?>
+						<h3 class="amp-wp-title"><?php echo $title_name;//escaped above ?></h3>
+					<?php } ?>
 					<?php if( ampforwp_check_excerpt() ) {
 						$class = 'large-screen-excerpt-design-3';
 						if ( true == $redux_builder_amp['excerpt-option-design-3'] ) {

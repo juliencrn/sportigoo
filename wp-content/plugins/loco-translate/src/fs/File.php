@@ -384,7 +384,9 @@ class Loco_fs_File {
 
 
     /**
-     * 
+     * @param string
+     * @param string[]
+     * @return array
      */
     private static function explode( $path, array $b ){
         $a = explode( '/', $path );
@@ -410,7 +412,8 @@ class Loco_fs_File {
 
     /**
      * Get path relative to given location, unless path is already relative
-     * @return string
+     * @param string base path
+     * @return string path relative to given base
      */
     public function getRelativePath( $base ){
         $path = $this->normalize();
@@ -425,7 +428,7 @@ class Loco_fs_File {
                 if( isset($path{$length}) ){
                     return substr( $path, $length );
                 }
-                // else paths were idenitcal
+                // else paths were identical
                 return '';
             }
             // else attempt to find nearest common root
@@ -444,7 +447,6 @@ class Loco_fs_File {
         // else return unmodified
         return $path;
     }
-
 
 
     /**
@@ -514,17 +516,18 @@ class Loco_fs_File {
 
 
     /**
-     * @return Loco_fs_Directory
+     * @return Loco_fs_Directory|null
      */
     public function getParent(){
+        $dir = null;
         $path = $this->dirname();
         if( '.' !== $path && $this->path !== $path ){ 
             $dir = new Loco_fs_Directory( $path );
             $dir->cloneWriteContext( $this->w );
-            return $dir;
         }
-    }    
-    
+        return $dir;
+    }
+
 
     /**
      * Copy this file for real
@@ -536,8 +539,20 @@ class Loco_fs_File {
         $copy = clone $this;
         $copy->path = $dest;
         $copy->clearStat();
-        $this->getWriteContext()->copy( $copy );
+        $this->getWriteContext()->copy($copy);
         return $copy;
+    }
+
+
+    /**
+     * Move/rename this file for real
+     * @param Loco_fs_File target file with new path
+     * @throws Loco_error_WriteException
+     * @return Loco_fs_File original file that should no longer exist
+     */
+    public function move( Loco_fs_File $dest ){
+        $this->getWriteContext()->move($dest);
+        return $this->clearStat();
     }
 
 

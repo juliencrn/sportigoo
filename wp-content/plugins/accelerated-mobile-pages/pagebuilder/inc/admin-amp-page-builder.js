@@ -56,15 +56,17 @@ Vue.component('amp-pagebuilder-modal', {
 						}
 					).then(function(response){
 						response =response.body;
-						if(response.status="200"){
+						if(response.status=="200"){
 							this.layoutMsg = "Layout removed successfully!";
 							this.showsavedLayouts = response.data;
-							amppb_panel_options.savedLayouts = this.showsavedLayouts
-
+							amppb_panel_options.savedLayouts = this.showsavedLayouts;
  							this.save_layout = {name:"",url:""};
 						}
-						else
+						else if(response.status=="404"){
 							this.layoutMsg = "Try Again";
+						}else if(response.status=="403"){
+							this.layoutMsg = "Sorry! You don't have permission to delete the layout.";
+						}
 					    setTimeout(() => {
 				          	this.layoutMsg = '';
 				      	},5000);
@@ -655,7 +657,9 @@ Vue.component('fields-data',{
 		},
 		fieldShowHideCheck: function(field){
 			var returnOpt = [];
-			returnOpt.push(true);
+			if( !field.required_type){
+				returnOpt.push(true);
+			}
 			if(field.required){
 				var requiredCondition = field.required;
 
@@ -667,7 +671,9 @@ Vue.component('fields-data',{
 								for(var i = 0; i < length; i++) {
 			                        if(requiredCondition[maindata.name][i] == maindata.default){
 			                        	checkingInArray = true;
-			                        	return false;	
+			                        	if( !field.required_type){
+			                        		return false;	
+			                        	}
 			                        } 
 			                    }
 			                    if(checkingInArray){
@@ -688,10 +694,19 @@ Vue.component('fields-data',{
 				    return self.indexOf(value) === index;
 					});
 
-			if(returnOpt.length==1 && returnOpt[0]==true){
-				return true;
+			if(field.required_type == 'or'){
+				var reqOpt = returnOpt.indexOf(true);
+				if( reqOpt!= -1){
+					return true;
+				}else{
+					return false;
+				}
 			}else{
-				return false;
+				if(returnOpt.length==1 && returnOpt[0]==true){
+					return true;
+				}else{
+					return false;
+				}
 			}
 			return false;
 		},
@@ -785,27 +800,36 @@ Vue.component('textarea-wysiwyg', {
   props: [ 'defaultText','fieldindex' ],
   mounted: function() {
   	var componentPoint = this;
-	console.log(jQuery(this.$el));
+	var useEditor = wp.oldEditor;
+ 	if(!useEditor){
+    	useEditor = wp.editor;
+  	}
 	var textareaId = jQuery(this.$el).find('textarea').attr('id');
-	if(wp.editor){
-		wp.editor.initialize(textareaId, {
+	if(useEditor){
+		useEditor.initialize(textareaId, {
 									tinymce: true,
 									quicktags: true,
 								})
 		var editor = window.tinymce.get( textareaId );
 		editor.on( 'blur hide', function onEditorBlur() {
-				componentPoint.defaultText.default = wp.editor.getContent(textareaId);
+				componentPoint.defaultText.default = useEditor.getContent(textareaId);
 		});
-
+		jQuery("#"+textareaId).on('change', function(){
+      	componentPoint.defaultText.default = useEditor.getContent(textareaId);
+    	});
 	}
   	
   },
   
   beforeDestroy: function() {
   	var componentPoint = this;
-  	if(wp.editor){
+  	var useEditor = wp.oldEditor;
+ 	if(!useEditor){
+    	useEditor = wp.editor;
+  	}
+  	if(useEditor){
   		var textareaId = jQuery(this.$el).find('textarea').attr('id');
-  		wp.editor.remove(textareaId);
+  		useEditor.remove(textareaId);
 	}
   }
 });
