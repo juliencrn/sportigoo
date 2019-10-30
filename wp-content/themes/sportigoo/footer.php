@@ -100,5 +100,16 @@ if ( !is_product() && !is_shop() && !is_page(35) && !is_page(41) && !is_single()
 
 <?php wp_footer(); ?>
 
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-5RVMR6G"
+    height="0"
+    width="0"
+    style="display:none;visibility:hidden"
+  ></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 </body>
 </html>
