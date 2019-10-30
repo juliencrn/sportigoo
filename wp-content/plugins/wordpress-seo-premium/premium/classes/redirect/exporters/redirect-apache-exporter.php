@@ -62,13 +62,24 @@ class WPSEO_Redirect_Apache_Exporter extends WPSEO_Redirect_File_Exporter {
 		if ( $redirect->get_format() === WPSEO_Redirect_Formats::PLAIN ) {
 			return sprintf(
 				$this->get_format( $redirect->get_format() ),
-				$this->add_url_slash( $redirect->get_origin() ),
-				$this->add_url_slash( $redirect->get_target() ),
+				$this->format_url( $redirect->get_origin() ),
+				$this->format_url( $redirect->get_target() ),
 				$redirect->get_type()
 			);
 		}
 
 		return parent::format( $redirect );
+	}
+
+	/**
+	 * Format the URL before it is added to the redirects.
+	 *
+	 * @param string $url The URL.
+	 *
+	 * @return string Formatted URL.
+	 */
+	protected function format_url( $url ) {
+		return $this->add_url_slash( $url );
 	}
 
 	/**

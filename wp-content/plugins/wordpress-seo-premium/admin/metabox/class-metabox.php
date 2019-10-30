@@ -11,16 +11,22 @@
 class WPSEO_Metabox extends WPSEO_Meta {
 
 	/**
+	 * An instance of the Social Admin class.
+	 *
 	 * @var WPSEO_Social_Admin
 	 */
 	protected $social_admin;
 
 	/**
+	 * An instance of the Metabox Analysis SEO class.
+	 *
 	 * @var WPSEO_Metabox_Analysis_SEO
 	 */
 	protected $analysis_seo;
 
 	/**
+	 * An instance of the Metabox Analysis Readability class.
+	 *
 	 * @var WPSEO_Metabox_Analysis_Readability
 	 */
 	protected $analysis_readability;
@@ -69,7 +75,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		/* translators: %s expands to the post type name. */
 		WPSEO_Meta::$meta_fields['advanced']['meta-robots-noindex']['title'] = __( 'Allow search engines to show this %s in search results?', 'wordpress-seo' );
 		if ( '0' === (string) get_option( 'blog_public' ) ) {
-			WPSEO_Meta::$meta_fields['advanced']['meta-robots-noindex']['description'] = '<p class="error-message">' . __( 'Warning: even though you can set the meta robots setting here, the entire site is set to noindex in the sitewide privacy settings, so these settings won\'t have an effect.', 'wordpress-seo' ) . '</p>';
+			WPSEO_Meta::$meta_fields['advanced']['meta-robots-noindex']['description'] = '<span class="error-message">' . __( 'Warning: even though you can set the meta robots setting here, the entire site is set to noindex in the sitewide privacy settings, so these settings won\'t have an effect.', 'wordpress-seo' ) . '</span>';
 		}
 		/* translators: %1$s expands to Yes or No,  %2$s expands to the post type name.*/
 		WPSEO_Meta::$meta_fields['advanced']['meta-robots-noindex']['options']['0'] = __( 'Default for %2$s, currently: %1$s', 'wordpress-seo' );
@@ -250,42 +256,14 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	}
 
 	/**
-	 * Output a tab in the Yoast SEO Metabox.
-	 *
-	 * @param string $id      CSS ID of the tab.
-	 * @param string $heading Heading for the tab.
-	 * @param string $content Content of the tab. This content should be escaped.
-	 */
-	public function do_tab( $id, $heading, $content ) {
-		?>
-		<div id="<?php echo esc_attr( 'wpseo_' . $id ); ?>" class="wpseotab <?php echo esc_attr( $id ); ?>">
-			<?php echo $content; ?>
-		</div>
-		<?php
-	}
-
-	/**
 	 * Output the meta box.
 	 */
 	public function meta_box() {
 		$content_sections = $this->get_content_sections();
 
-		$helpcenter_tab = new WPSEO_Option_Tab(
-			'metabox',
-			__( 'Meta box', 'wordpress-seo' ),
-			array( 'video_url' => WPSEO_Shortlinker::get( 'https://yoa.st/metabox-screencast' ) )
-		);
-
-		$help_center = new WPSEO_Help_Center( '', $helpcenter_tab, WPSEO_Utils::is_yoast_seo_premium() );
-		$help_center->localize_data();
-		$help_center->mount();
-
-		if ( ! WPSEO_Utils::is_yoast_seo_premium() ) {
-			echo $this->get_buy_premium_link();
-		}
-
 		echo '<div class="wpseo-metabox-content">';
-		echo '<div class="wpseo-metabox-sidebar"><ul>';
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Reason: $this->get_product_title is considered safe.
+		printf( '<div class="wpseo-metabox-menu"><ul role="tablist" class="yoast-aria-tabs" aria-label="%s">', $this->get_product_title() );
 
 		foreach ( $content_sections as $content_section ) {
 			if ( $content_section->name === 'premium' ) {
@@ -312,33 +290,53 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	private function get_content_sections() {
 		$content_sections = array();
 
-		$content_sections[] = $this->get_content_meta_section();
+		$content_sections[] = $this->get_seo_meta_section();
+
+		if ( $this->analysis_readability->is_enabled() ) {
+			$content_sections[] = $this->get_readability_meta_section();
+		}
 
 		// Check if social_admin is an instance of WPSEO_Social_Admin.
 		if ( $this->social_admin instanceof WPSEO_Social_Admin ) {
 			$content_sections[] = $this->social_admin->get_meta_section();
 		}
 
-		if ( WPSEO_Capability_Utils::current_user_can( 'wpseo_edit_advanced_metadata' ) || WPSEO_Options::get( 'disableadvanced_meta' ) === false ) {
-			$content_sections[] = $this->get_advanced_meta_section();
-		}
-
-		if ( has_action( 'wpseo_tab_header' ) || has_action( 'wpseo_tab_content' ) ) {
-			$content_sections[] = $this->get_addons_meta_section();
-		}
+		$content_sections = array_merge( $content_sections, $this->get_additional_meta_sections() );
 
 		return $content_sections;
 	}
 
 	/**
-	 * Returns the metabox section for the content analysis.
+	 * Returns the metabox section for the seo analysis.
 	 *
 	 * @return WPSEO_Metabox_Section
 	 */
-	private function get_content_meta_section() {
+	private function get_seo_meta_section() {
 		wp_nonce_field( 'yoast_free_metabox', 'yoast_free_metabox_nonce' );
 
 		$content = $this->get_tab_content( 'general' );
+
+		$label = __( 'SEO', 'wordpress-seo' );
+		if ( $this->analysis_seo->is_enabled() ) {
+			$label = '<span class="wpseo-score-icon-container" id="wpseo-seo-score-icon"></span>' . $label;
+		}
+
+		$html_after = '';
+
+		if ( WPSEO_Capability_Utils::current_user_can( 'wpseo_edit_advanced_metadata' ) || WPSEO_Options::get( 'disableadvanced_meta' ) === false ) {
+			$advanced_collapsible = new WPSEO_Paper_Presenter(
+				__( 'Advanced', 'wordpress-seo' ),
+				null,
+				array(
+					'collapsible' => true,
+					'class'       => 'metabox wpseo-form wpseo-collapsible-container',
+					'content'     => $this->get_tab_content( 'advanced' ),
+					'paper_id'    => 'collapsible-advanced-settings',
+				)
+			);
+
+			$html_after = '<div class="wpseo_content_wrapper">' . $advanced_collapsible->get_output() . '</div>';
+		}
 
 		/**
 		 * Filter: 'wpseo_content_meta_section_content' - Allow filtering the metabox content before outputting.
@@ -349,71 +347,71 @@ class WPSEO_Metabox extends WPSEO_Meta {
 
 		return new WPSEO_Metabox_Section_React(
 			'content',
-			'<span class="screen-reader-text">' . __( 'Content optimization', 'wordpress-seo' ) . '</span><span class="yst-traffic-light-container">' . WPSEO_Utils::traffic_light_svg() . '</span>',
+			$label,
 			$content,
 			array(
-				'link_aria_label' => __( 'Content optimization', 'wordpress-seo' ),
-				'link_class'      => 'yoast-tooltip yoast-tooltip-e',
+				'html_after' => $html_after,
 			)
 		);
 	}
 
 	/**
-	 * Returns the metabox section for the advanced settings.
+	 * Returns the metabox section for the readability analysis.
 	 *
 	 * @return WPSEO_Metabox_Section
 	 */
-	private function get_advanced_meta_section() {
-		$content = $this->get_tab_content( 'advanced' );
-
-		$tab = new WPSEO_Metabox_Form_Tab(
-			'advanced',
-			$content,
-			__( 'Advanced', 'wordpress-seo' ),
-			array( 'single' => true )
-		);
-
-		return new WPSEO_Metabox_Tab_Section(
-			'advanced',
-			'<span class="screen-reader-text">' . __( 'Advanced', 'wordpress-seo' ) . '</span><span class="dashicons dashicons-admin-generic"></span>',
-			array( $tab ),
-			array(
-				'link_aria_label' => __( 'Advanced', 'wordpress-seo' ),
-				'link_class'      => 'yoast-tooltip yoast-tooltip-e',
-			)
-		);
+	private function get_readability_meta_section() {
+		return new WPSEO_Metabox_Section_Readability();
 	}
 
 	/**
-	 * Returns a link to activate the Buy Premium tab.
+	 * Returns metabox sections that have been added by other plugins.
 	 *
-	 * @return string
+	 * @return WPSEO_Metabox_Section_Additional[]
 	 */
-	private function get_buy_premium_link() {
-		return sprintf(
-			'<div class="wpseo-metabox-buy-premium"><a target="_blank" href="%1$s"><span class="dashicons dashicons-star-filled wpseo-buy-premium"></span>%2$s%3$s</a></div>',
-			esc_url( WPSEO_Shortlinker::get( 'https://yoa.st/3g6' ) ),
-			esc_html__( 'Go Premium', 'wordpress-seo' ),
-			WPSEO_Admin_Utils::get_new_tab_message()
-		);
-	}
+	protected function get_additional_meta_sections() {
+		$sections = array();
 
-	/**
-	 * Returns a metabox section dedicated to hosting metabox tabs that have been added by other plugins through the
-	 * `wpseo_tab_header` and `wpseo_tab_content` actions.
-	 *
-	 * @return WPSEO_Metabox_Section
-	 */
-	private function get_addons_meta_section() {
-		return new WPSEO_Metabox_Addon_Tab_Section(
-			'addons',
-			'<span class="screen-reader-text">' . __( 'Add-ons', 'wordpress-seo' ) . '</span><span class="dashicons dashicons-admin-plugins"></span>',
-			array(),
-			array(
-				'link_aria_label' => __( 'Add-ons', 'wordpress-seo' ),
-				'link_class'      => 'yoast-tooltip yoast-tooltip-e',
-			)
-		);
+		/**
+		 * Private filter: 'yoast_free_additional_metabox_sections'.
+		 *
+		 * Meant for internal use only. Allows adding additional tabs to the Yoast SEO metabox.
+		 *
+		 * @since 11.9
+		 *
+		 * @param array[] $sections {
+		 *     An array of arrays with tab specifications.
+		 *
+		 *     @type array $section {
+		 *          A tab specification.
+		 *
+		 *          @type string $name         The name of the tab. Used in the HTML IDs, href and aria properties.
+		 *          @type string $link_content The content of the tab link.
+		 *          @type string $content      The content of the tab.
+		 *          @type array $options {
+		 *              Optional. Extra options.
+		 *
+		 *              @type string $link_class      Optional. The class for the tab link.
+		 *              @type string $link_aria_label Optional. The aria label of the tab link.
+		 *          }
+		 *     }
+		 * }
+		 */
+		$requested_sections = apply_filters( 'yoast_free_additional_metabox_sections', array() );
+
+		foreach ( $requested_sections as $section ) {
+			if ( is_array( $section ) && array_key_exists( 'name', $section ) && array_key_exists( 'link_content', $section ) && array_key_exists( 'content', $section ) ) {
+				$options    = array_key_exists( 'options', $section ) ? $section['options'] : array();
+				$sections[] = new WPSEO_Metabox_Section_Additional(
+					$section['name'],
+					$section['link_content'],
+					$section['content'],
+					$options
+				);
+			}
+		}
+
+		return $sections;
 	}
 
 	/**
@@ -749,9 +747,14 @@ class WPSEO_Metabox extends WPSEO_Meta {
 			return;
 		}
 
-		if ( get_queried_object_id() !== 0 ) {
+		$post_id = get_queried_object_id();
+		if ( empty( $post_id ) && isset( $_GET['post'] ) ) {
+			$post_id = sanitize_text_field( $_GET['post'] );
+		}
+
+		if ( $post_id !== 0 ) {
 			// Enqueue files needed for upload functionality.
-			wp_enqueue_media( array( 'post' => get_queried_object_id() ) );
+			wp_enqueue_media( array( 'post' => $post_id ) );
 		}
 
 		$asset_manager->enqueue_style( 'metabox-css' );
@@ -759,12 +762,14 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		$asset_manager->enqueue_style( 'select2' );
 
 		$asset_manager->enqueue_script( 'metabox' );
-		$asset_manager->enqueue_script( 'help-center' );
 		$asset_manager->enqueue_script( 'admin-media' );
 
 		$asset_manager->enqueue_script( 'post-scraper' );
 		$asset_manager->enqueue_script( 'replacevar-plugin' );
 		$asset_manager->enqueue_script( 'shortcode-plugin' );
+
+		$asset_manager->enqueue_script( 'admin-script' );
+		$asset_manager->enqueue_style( 'admin-css' );
 
 		wp_localize_script( WPSEO_Admin_Asset_Manager::PREFIX . 'admin-media', 'wpseoMediaL10n', $this->localize_media_script() );
 		wp_localize_script( WPSEO_Admin_Asset_Manager::PREFIX . 'post-scraper', 'wpseoPostScraperL10n', $this->localize_post_scraper_script() );
@@ -975,6 +980,8 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	}
 
 	/**
+	 * Checks if the page is the post overview page.
+	 *
 	 * @param string $page The page to check for the post overview page.
 	 *
 	 * @return bool Whether or not the given page is the post overview page.
@@ -984,6 +991,8 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	}
 
 	/**
+	 * Checks if the page is the post edit page.
+	 *
 	 * @param string $page The page to check for the post edit page.
 	 *
 	 * @return bool Whether or not the given page is the post edit page.
@@ -1051,5 +1060,28 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	 */
 	public function setup_page_analysis() {
 		_deprecated_function( __METHOD__, 'WPSEO 9.6' );
+	}
+
+	/**
+	 * Output a tab in the Yoast SEO Metabox.
+	 *
+	 * @deprecated         12.2
+	 * @codeCoverageIgnore
+	 *
+	 * @param string $id      CSS ID of the tab.
+	 * @param string $heading Heading for the tab.
+	 * @param string $content Content of the tab. This content should be escaped.
+	 */
+	public function do_tab( $id, $heading, $content ) {
+		_deprecated_function( __METHOD__, '12.2' );
+
+		?>
+		<div id="<?php echo esc_attr( 'wpseo_' . $id ); ?>" class="wpseotab wpseo-form <?php echo esc_attr( $id ); ?>">
+			<?php
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Reason: deprecated function.
+			echo $content;
+			?>
+		</div>
+		<?php
 	}
 }

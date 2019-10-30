@@ -62,4 +62,40 @@ class WPSEO_Redirect_Htaccess_Exporter extends WPSEO_Redirect_Apache_Exporter {
 
 		return $htaccess;
 	}
+
+	/**
+	 * Escape special characters in the URL that will cause problems in .htaccess.
+	 *
+	 * Overrides WPSEO_Redirect_Apache_Exporter::format_url.
+	 *
+	 * @param string $url The URL.
+	 *
+	 * @return string The escaped URL.
+	 */
+	protected function format_url( $url ) {
+		$url = parent::format_url( $url );
+
+		return $this->sanitize( $url );
+	}
+
+	/**
+	 * Escape special characters that will cause problems in .htaccess.
+	 *
+	 * @param string $unsanitized The unsanitized value.
+	 *
+	 * @return string The sanitized value.
+	 */
+	private function sanitize( $unsanitized ) {
+		return str_replace(
+			array(
+				'\\',
+				'"',
+			),
+			array(
+				'/',
+				'\"',
+			),
+			$unsanitized
+		);
+	}
 }

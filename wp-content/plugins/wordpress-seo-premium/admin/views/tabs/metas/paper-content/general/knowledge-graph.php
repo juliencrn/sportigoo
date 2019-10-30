@@ -44,6 +44,18 @@ $knowledge_graph_help = new WPSEO_Admin_Help_Panel(
 	$yform->select( 'company_or_person', __( 'Organization or person', 'wordpress-seo' ), $yoast_free_kg_select_options, 'styled', false );
 	?>
 	<div id="knowledge-graph-company">
+		<?php
+
+		/*
+		 * Render the `knowledge-graph-company-warning` div when the company name or logo are not set.
+		 * This div is used as React render root in `js/src/search-appearance.js`.
+		 */
+		$is_company_info_missing = empty( $yform->options['company_name'] ) || empty( $yform->options['company_logo'] );
+		if ( $is_company_info_missing ) :
+			?>
+		<div id="knowledge-graph-company-warning"></div>
+		<?php endif; ?>
+
 		<h3><?php esc_html_e( 'Organization', 'wordpress-seo' ); ?></h3>
 		<?php
 		$yform->textinput( 'company_name', __( 'Organization name', 'wordpress-seo' ), array( 'autocomplete' => 'organization' ) );
@@ -55,6 +67,7 @@ $knowledge_graph_help = new WPSEO_Admin_Help_Panel(
 		<h3><?php esc_html_e( 'Personal info', 'wordpress-seo' ); ?></h3>
 		<?php
 		echo '<div id="wpseo-person-selector"></div>';
+		$yform->media_input( 'person_logo', __( 'Person logo / avatar', 'wordpress-seo' ) );
 		$yform->hidden( 'company_or_person_user_id', 'person_id' );
 		?>
 	</div>

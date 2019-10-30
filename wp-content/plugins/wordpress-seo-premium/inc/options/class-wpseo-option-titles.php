@@ -66,8 +66,11 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 
 		'website_name'                  => '',
 		'person_name'                   => '',
+		'person_logo'                   => '',
+		'person_logo_id'                => 0,
 		'alternate_website_name'        => '',
 		'company_logo'                  => '',
+		'company_logo_id'               => 0,
 		'company_name'                  => '',
 		'company_or_person'             => 'company',
 		'company_or_person_user_id'     => false,
@@ -93,6 +96,13 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		 * - 'display-metabox-tax-' . $tax->name => false;
 		 */
 	);
+
+	/**
+	 * Used for "caching" during pageload.
+	 *
+	 * @var array
+	 */
+	protected $enriched_defaults = null;
 
 	/**
 	 * Array of variable option name patterns for the option.
@@ -137,6 +147,8 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		add_action( 'unregistered_post_type', array( $this, 'invalidate_enrich_defaults_cache' ) );
 		add_action( 'registered_taxonomy', array( $this, 'invalidate_enrich_defaults_cache' ) );
 		add_action( 'unregistered_taxonomy', array( $this, 'invalidate_enrich_defaults_cache' ) );
+
+		add_filter( 'admin_title', array( 'Yoast_Input_Validation', 'add_yoast_admin_document_title_errors' ) );
 	}
 
 	/**
@@ -230,10 +242,8 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 	 * @return  void
 	 */
 	public function enrich_defaults() {
-		$cache_key = 'yoast_titles_rich_defaults_' . $this->option_name;
-
-		$enriched_defaults = wp_cache_get( $cache_key );
-		if ( false !== $enriched_defaults ) {
+		$enriched_defaults = $this->enriched_defaults;
+		if ( null !== $enriched_defaults ) {
 			$this->defaults += $enriched_defaults;
 			return;
 		}
@@ -288,8 +298,8 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 			}
 		}
 
-		wp_cache_set( $cache_key, $enriched_defaults );
-		$this->defaults += $enriched_defaults;
+		$this->enriched_defaults = $enriched_defaults;
+		$this->defaults         += $enriched_defaults;
 	}
 
 	/**
@@ -302,7 +312,7 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 	 * @return void
 	 */
 	public function invalidate_enrich_defaults_cache() {
-		wp_cache_delete( 'yoast_titles_rich_defaults_' . $this->option_name );
+		$this->enriched_defaults = null;
 	}
 
 	/**
@@ -359,13 +369,14 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 							$clean[ $key ] = $dirty[ $key ];
 						}
 						else {
-							$defaults = $this->get_defaults();
+							$defaults      = $this->get_defaults();
 							$clean[ $key ] = $defaults['company_or_person'];
 						}
 					}
 					break;
 
 				case 'company_logo':
+				case 'person_logo':
 					$this->validate_url( $key, $dirty, $old, $clean );
 					break;
 
@@ -417,13 +428,14 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 							if ( isset( $old[ $key ] ) ) {
 								$clean[ $key ] = sanitize_title_with_dashes( $old[ $key ] );
 							}
-							/**
+
+							/*
 							 * @todo [JRF => whomever] Maybe change the untranslated $pt name in the
 							 * error message to the nicely translated label ?
 							 */
 							add_settings_error(
 								$this->group_name, // Slug title of the setting.
-								'_' . $key, // Suffix-id for the error message box.
+								$key, // Suffix-id for the error message box.
 								/* translators: %s expands to a post type. */
 								sprintf( __( 'Please select a valid taxonomy for post type "%s"', 'wordpress-seo' ), $post_type ), // The error message.
 								'error' // Error type, either 'error' or 'updated'.
@@ -453,7 +465,8 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 							if ( isset( $old[ $key ] ) ) {
 								$clean[ $key ] = sanitize_key( $old[ $key ] );
 							}
-							/**
+
+							/*
 							 * @todo [JRF =? whomever] Maybe change the untranslated $tax name in the
 							 * error message to the nicely translated label ?
 							 */
@@ -474,6 +487,8 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 					break;
 
 				case 'company_or_person_user_id':
+				case 'company_logo_id':
+				case 'person_logo_id':
 				case 'title_test': /* Integer field - not in form. */
 					if ( isset( $dirty[ $key ] ) ) {
 						$int = WPSEO_Utils::validate_int( $dirty[ $key ] );

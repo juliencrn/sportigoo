@@ -24,6 +24,11 @@ class WPSEO_Image_Utils {
 		 */
 		$url = preg_replace( '/(.*)-\d+x\d+\.(jpg|png|gif)$/', '$1.$2', $url );
 
+		// Don't try to do this for external URLs.
+		if ( strpos( $url, get_site_url() ) !== 0 ) {
+			return 0;
+		}
+
 		if ( function_exists( 'wpcom_vip_attachment_url_to_postid' ) ) {
 			// @codeCoverageIgnoreStart -- We can't test this properly.
 			return (int) wpcom_vip_attachment_url_to_postid( $url );
@@ -196,7 +201,7 @@ class WPSEO_Image_Utils {
 		}
 
 		// Add the uploads basedir if the path does not start with it.
-		if ( empty( $uploads['error'] ) && strpos( $path, $uploads['basedir'] . DIRECTORY_SEPARATOR ) !== 0 ) {
+		if ( empty( $uploads['error'] ) && strpos( $path, $uploads['basedir'] ) !== 0 ) {
 			return $uploads['basedir'] . DIRECTORY_SEPARATOR . ltrim( $path, DIRECTORY_SEPARATOR );
 		}
 
@@ -369,18 +374,80 @@ class WPSEO_Image_Utils {
 	public static function get_first_usable_content_image_for_post( $post_id = null ) {
 		$post = get_post( $post_id );
 
+		// We know get_post() returns the post or null.
+		if ( ! $post ) {
+			return null;
+		}
+
 		$image_finder = new WPSEO_Content_Images();
 		$images       = $image_finder->get_images( $post->ID, $post );
 
-		if ( ! is_array( $images ) || empty( $images ) ) {
+		return self::get_first_image( $images );
+	}
+
+	/**
+	 * Gets the term's first usable content image. Null if none is available.
+	 *
+	 * @param int $term_id The term id.
+	 *
+	 * @return string|null The image URL.
+	 */
+	public static function get_first_content_image_for_term( $term_id ) {
+		$term_description = term_description( $term_id );
+
+		// We know term_description() returns a string which may be empty.
+		if ( $term_description === '' ) {
 			return null;
 		}
 
-		$image_url = reset( $images );
-		if ( ! $image_url ) {
+		$image_finder = new WPSEO_Content_Images();
+		$images       = $image_finder->get_images_from_content( $term_description );
+
+		return self::get_first_image( $images );
+	}
+
+	/**
+	 * Retrieves an attachment ID for an image uploaded in the settings.
+	 *
+	 * Due to self::get_attachment_by_url returning 0 instead of false.
+	 * 0 is also a possibility when no ID is available.
+	 *
+	 * @param string $setting The setting the image is stored in.
+	 *
+	 * @return int|bool The attachment id, or false or 0 if no ID is available.
+	 */
+	public static function get_attachment_id_from_settings( $setting ) {
+		$image_id = WPSEO_Options::get( $setting . '_id', false );
+		if ( ! $image_id ) {
+			$image = WPSEO_Options::get( $setting, false );
+			if ( $image ) {
+				// There is not an option to put a URL in an image field in the settings anymore, only to upload it through the media manager.
+				// This means an attachment always exists, so doing this is only needed once.
+				$image_id = self::get_attachment_by_url( $image );
+				WPSEO_Options::set( $setting . '_id', $image_id );
+			}
+		}
+
+		return $image_id;
+	}
+
+	/**
+	 * Retrieves the first possible image url from an array of images.
+	 *
+	 * @param array $images The array to extract image url from.
+	 *
+	 * @return string|null The extracted image url when found, null when not found.
+	 */
+	protected static function get_first_image( $images ) {
+		if ( ! is_array( $images ) ) {
 			return null;
 		}
 
-		return $image_url;
+		$images = array_filter( $images );
+		if ( empty( $images ) ) {
+			return null;
+		}
+
+		return reset( $images );
 	}
 }

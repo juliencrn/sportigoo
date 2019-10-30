@@ -11,26 +11,36 @@
 class WPSEO_Rank {
 
 	/**
+	 * Constant used for determining a bad SEO rating.
+	 *
 	 * @var string
 	 */
 	const BAD = 'bad';
 
 	/**
+	 * Constant used for determining an OK SEO rating.
+	 *
 	 * @var string
 	 */
 	const OK = 'ok';
 
 	/**
+	 * Constant used for determining a good SEO rating.
+	 *
 	 * @var string
 	 */
 	const GOOD = 'good';
 
 	/**
+	 * Constant used for determining that no focus keyphrase is set.
+	 *
 	 * @var string
 	 */
 	const NO_FOCUS = 'na';
 
 	/**
+	 * Constant used for determining that this content is not indexed.
+	 *
 	 * @var string
 	 */
 	const NO_INDEX = 'noindex';
@@ -73,11 +83,15 @@ class WPSEO_Rank {
 	);
 
 	/**
+	 * The current rank.
+	 *
 	 * @var int
 	 */
 	protected $rank;
 
 	/**
+	 * WPSEO_Rank constructor.
+	 *
 	 * @param int $rank The actual rank.
 	 */
 	public function __construct( $rank ) {
@@ -138,11 +152,31 @@ class WPSEO_Rank {
 	 */
 	public function get_drop_down_label() {
 		$labels = array(
-			self::NO_FOCUS => __( 'SEO: No Focus Keyphrase', 'wordpress-seo' ),
-			self::BAD      => __( 'SEO: Needs improvement', 'wordpress-seo' ),
-			self::OK       => __( 'SEO: OK', 'wordpress-seo' ),
-			self::GOOD     => __( 'SEO: Good', 'wordpress-seo' ),
-			self::NO_INDEX => __( 'SEO: Post Noindexed', 'wordpress-seo' ),
+			self::NO_FOCUS => sprintf(
+				/* translators: %s expands to the SEO score */
+				__( 'SEO: %s', 'wordpress-seo' ),
+				__( 'No Focus Keyphrase', 'wordpress-seo' )
+			),
+			self::BAD => sprintf(
+				/* translators: %s expands to the SEO score */
+				__( 'SEO: %s', 'wordpress-seo' ),
+				__( 'Needs improvement', 'wordpress-seo' )
+			),
+			self::OK => sprintf(
+				/* translators: %s expands to the SEO score */
+				__( 'SEO: %s', 'wordpress-seo' ),
+				__( 'OK', 'wordpress-seo' )
+			),
+			self::GOOD => sprintf(
+				/* translators: %s expands to the SEO score */
+				__( 'SEO: %s', 'wordpress-seo' ),
+				__( 'Good', 'wordpress-seo' )
+			),
+			self::NO_INDEX => sprintf(
+				/* translators: %s expands to the SEO score */
+				__( 'SEO: %s', 'wordpress-seo' ),
+				__( 'Post Noindexed', 'wordpress-seo' )
+			),
 		);
 
 		return $labels[ $this->rank ];
@@ -155,16 +189,30 @@ class WPSEO_Rank {
 	 */
 	public function get_drop_down_readability_labels() {
 		$labels = array(
-			self::BAD      => __( 'Readability: Needs improvement', 'wordpress-seo' ),
-			self::OK       => __( 'Readability: OK', 'wordpress-seo' ),
-			self::GOOD     => __( 'Readability: Good', 'wordpress-seo' ),
+			self::BAD => sprintf(
+				/* translators: %s expands to the readability score */
+				__( 'Readability: %s', 'wordpress-seo' ),
+				__( 'Needs improvement', 'wordpress-seo' )
+			),
+			self::OK => sprintf(
+				/* translators: %s expands to the readability score */
+				__( 'Readability: %s', 'wordpress-seo' ),
+				__( 'OK', 'wordpress-seo' )
+			),
+			self::GOOD => sprintf(
+				/* translators: %s expands to the readability score */
+				__( 'Readability: %s', 'wordpress-seo' ),
+				__( 'Good', 'wordpress-seo' )
+			),
 		);
 
 		return $labels[ $this->rank ];
 	}
 
 	/**
-	 * @return int The starting score for this rank.
+	 * Get the starting score for this rank.
+	 *
+	 * @return int The start score.
 	 */
 	public function get_starting_score() {
 		// No index does not have a starting score.
@@ -176,7 +224,9 @@ class WPSEO_Rank {
 	}
 
 	/**
-	 * @return int The end score for this rank.
+	 * Get the ending score for this rank.
+	 *
+	 * @return int The end score.
 	 */
 	public function get_end_score() {
 		// No index does not have an end score.

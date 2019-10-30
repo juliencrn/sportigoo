@@ -9,6 +9,7 @@
  * Class that holds most of the admin functionality for Yoast SEO.
  */
 class WPSEO_Admin {
+
 	/**
 	 * The page identifier used in WordPress to register the admin page.
 	 *
@@ -17,6 +18,7 @@ class WPSEO_Admin {
 	 * @var string
 	 */
 	const PAGE_IDENTIFIER = 'wpseo_dashboard';
+
 	/**
 	 * Array of classes that add admin functionality.
 	 *
@@ -109,6 +111,9 @@ class WPSEO_Admin {
 		$integrations[] = new WPSEO_MyYoast_Proxy();
 		$integrations[] = new WPSEO_MyYoast_Route();
 		$integrations[] = new WPSEO_Schema_Person_Upgrade_Notification();
+		$integrations[] = new WPSEO_Admin_Settings_Changed_Listener();
+		$integrations[] = new WPSEO_Tracking( 'https://tracking.yoast.com/stats', ( WEEK_IN_SECONDS * 2 ) );
+		$integrations[] = new WPSEO_Admin_Banner();
 
 		$integrations = array_merge(
 			$integrations,
@@ -117,7 +122,6 @@ class WPSEO_Admin {
 			$this->initialize_cornerstone_content()
 		);
 
-		/** @var WPSEO_WordPress_Integration $integration */
 		foreach ( $integrations as $integration ) {
 			$integration->register_hooks();
 		}
@@ -304,7 +308,8 @@ class WPSEO_Admin {
 			'variable_warning'        => sprintf( __( 'Warning: the variable %s cannot be used in this template. See the help center for more info.', 'wordpress-seo' ), '<code>%s</code>' ),
 			'dismiss_about_url'       => $this->get_dismiss_url( 'wpseo-dismiss-about' ),
 			'dismiss_tagline_url'     => $this->get_dismiss_url( 'wpseo-dismiss-tagline-notice' ),
-			'help_video_iframe_title' => __( 'Yoast SEO video tutorial', 'wordpress-seo' ),
+			/* translators: %s: expends to Yoast SEO */
+			'help_video_iframe_title' => sprintf( __( '%s video tutorial', 'wordpress-seo' ), 'Yoast SEO' ),
 			'scrollable_table_hint'   => __( 'Scroll to see the table content.', 'wordpress-seo' ),
 		);
 	}
