@@ -4,7 +4,6 @@ import {smoothScroll} from './smooth-scroll.js'
 import {customSelect} from './custom-select.js'
 import {carousel} from './carousel.js'
 import {activities} from './activities.js'
-import {modal} from './modal.js'
 import {lastPosts} from './last-posts.js'
 import {respNavigation} from './resp-navigation.js'
 import {faq} from './faq.js'
@@ -23,7 +22,6 @@ jQuery($ => {
 	smoothScroll($);
 	carousel($);
 	activities($);
-	modal($);
 	lastPosts($);
 	respNavigation($);
 	faq($);

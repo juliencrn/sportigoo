@@ -53,6 +53,44 @@
                     "maxlength": ""
                 },
                 {
+                    "key": "field_5dbad73165551",
+                    "label": "Bouton \"demande d'info\"",
+                    "name": "bouton_demande_dinfo",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Demande d'information",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5dbad74765552",
+                    "label": "demande d'info",
+                    "name": "informations",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Vous avez une question ? \r\nVous pouvez nous contacter via : \r\n- mail à contact@sportigoo.fr\r\n- via le chat en bas à droite de l'écran\r\n\r\nà très vite !",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0
+                },
+                {
                     "key": "field_5c827e4598d7a",
                     "label": "Titre avis",
                     "name": "titre_avis",
@@ -276,5 +314,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1554560499
+    "modified": 1572526913
 }
