@@ -16,8 +16,6 @@ while ( have_posts() ) {
 
         get_template_part('pages/homepage/qui-sommes-nous');
 
-        get_template_part('pages/homepage/map');
-
         get_template_part('pages/homepage/categories-slider');
 
         get_template_part('pages/homepage/activities');

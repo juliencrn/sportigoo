@@ -215,50 +215,6 @@ var customSelect = function customSelect($) {
   document.addEventListener('click', closeAllSelect);
 };
 
-var svgMap = function svgMap($) {
-
-	var map = $('#mapsvg');
-
-	if (map.length) {
-		map.mapSvg({
-
-			source: map.attr('data-url'),
-			width: "500px",
-			responsive: true,
-
-			colors: {
-				base: '#1d467a',
-				background: 'transparent',
-				stroke: 'white',
-				selected: '#E7511E',
-				hover: '#E7511E'
-			},
-
-			onClick: function onClick() {
-				var body = $('body');
-				var dept = this.id.split("-")[1];
-				//body.trigger('map:select');
-				setCookie('whereIam', dept);
-				window.location.href = $('#permalink_activity').val();
-			},
-
-			afterLoad: function afterLoad() {
-				var dept = getCookie('whereIam');
-				if (dept) {
-					this.selectRegion("FR-" + dept);
-				}
-				var regions = map.find('.mapsvg-region');
-				regions.each(function () {
-					var id = $(this).attr('id').split('-')[1];
-
-					$(this).attr('data-id', id);
-				});
-			}
-
-		});
-	}
-};
-
 var carousel = function carousel($) {
   $('.home_categories_slider').slick({
     autoplay: true,
@@ -785,32 +741,6 @@ var scrollToAnchor = function scrollToAnchor(elt) {
   $('html,body').animate({ scrollTop: elt.offset().top - 65 }, 'slow');
 };
 
-var forceMap = function forceMap($) {
-
-	var region = getCookie('whereIam');
-
-	if (!region || region == "0") {
-
-		var mapModal = $("#map_modal");
-
-		if (mapModal.length) {
-			mapModal.modal({
-				escapeClose: false,
-				clickClose: false,
-				showClose: false
-			});
-
-			mapModal.on($.modal.OPEN, function () {
-				return svgMap();
-			});
-
-			$('body').on('map:select', function () {
-				return $.modal.close();
-			});
-		}
-	}
-};
-
 var modalNewsletter = function modalNewsletter($) {
 
 	$('form#mjForm').on('submit', function () {
@@ -872,28 +802,18 @@ var woocommerce = function woocommerce($) {
 // Document ready
 jQuery(function ($) {
 
-	// let whereIam = getCookie('whereIam');
-	// console.log(whereIam ?
-	// 	"Region " + whereIam + " selectionnée" :
-	// 	'Pas de région selectionnée'
-	// );
-
-	// setCookie('whereIam', 0);
-
 	customSelect($);
 	cookie($);
 	navbar($);
 	activitiesPreview($);
 	smoothScroll($);
 	carousel($);
-	forceMap($);
 	activities($);
 	modal($);
 	lastPosts($);
 	respNavigation($);
 	faq($);
 	modalNewsletter($);
-	svgMap($);
 	searchActivity($);
 	woocommerce($);
 });

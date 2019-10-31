@@ -3862,37 +3862,6 @@ td:last-child {
     .home .search .button {
       width: 100%; } }
 
-.home .homepage__map {
-  z-index: 1;
-  padding-top: 70px;
-  text-align: center;
-  background-image: -webkit-gradient(linear, left bottom, left top, from(#ffe9e2), to(#ececec));
-  background-image: -webkit-linear-gradient(bottom, #ffe9e2 0%, #ececec 100%);
-  background-image: -moz- oldlinear-gradient(bottom, #ffe9e2 0%, #ececec 100%);
-  background-image: -o-linear-gradient(bottom, #ffe9e2 0%, #ececec 100%);
-  background-image: linear-gradient(0deg, #ffe9e2 0%, #ececec 100%); }
-  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    .home .homepage__map {
-      display: none; } }
-  .home .homepage__map .logo-grey {
-    position: absolute;
-    height: 80px;
-    top: -50px;
-    left: 50px; }
-    @media (max-width: 999px) {
-      .home .homepage__map .logo-grey {
-        height: 40px;
-        top: -25px; } }
-  .home .homepage__map .mapsvg {
-    margin: 2rem auto -10rem;
-    max-height: 400px; }
-    .home .homepage__map .mapsvg path {
-      stroke-width: 1px !important;
-      -webkit-transition: fill 0.4s;
-      -o-transition: fill 0.4s;
-      -moz-transition: fill 0.4s;
-      transition: fill 0.4s; }
-
 .home .activities--homepage {
   padding-top: 15rem; }
 

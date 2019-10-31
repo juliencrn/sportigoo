@@ -45,13 +45,13 @@ add_action( 'login_head', function () {
  * Changer le lien du logo
  */
 add_filter( 'login_headerurl', function () {
-    return get_bloginfo( 'url' );
+    return esc_url( home_url() );
 } );
 
 /**
  * Changer le titre du logo
  */
-add_filter( 'login_headertitle', function () {
+add_filter( 'login_headertext', function () {
     return get_bloginfo( 'name' ) . ' - ' . get_bloginfo( 'description' );
 } );
 
