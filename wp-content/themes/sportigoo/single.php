@@ -15,7 +15,7 @@ while (have_posts()) {
 
     <div class="content single">
         <section>
-            <div class="activity-preview" style="background-image: url(<?= $thumbnail_url ?>);">
+            <div class="activity-preview" style="background-image: url(<?php echo $thumbnail_url ?>);">
                 <div class="container">
                     <h1 class="t-center">
                         <?php the_title(); ?>
@@ -32,7 +32,7 @@ while (have_posts()) {
                     if ( !empty( $categories ) ) {
                         foreach ($categories as $cat) { ?>
                             <a class="categories__item" href="<?php echo get_category_link( $cat->cat_ID ); ?>">
-                                <?= $cat->name ?>
+                                <?php echo $cat->name ?>
                             </a>
                         <?php }
                     } ?>
@@ -54,20 +54,20 @@ while (have_posts()) {
                                 }
                             }
                             ?>
-                            <p class="blog__share t-blue"><?= $share ?>
-                                <a class="icon" href="https://twitter.com/share?url=<?= $link ?>" target="_blank">
+                            <p class="blog__share t-blue"><?php echo $share ?>
+                                <a class="icon" href="https://twitter.com/share?url=<?php echo $link ?>" target="_blank">
                                     <svg width="20" height="20">
                                         <use xlink:href="#twitter"></use>
                                     </svg>
                                 </a>
-                                <a class="icon" href="http://www.facebook.com/sharer.php?u=<?= $link ?>"
+                                <a class="icon" href="http://www.facebook.com/sharer.php?u=<?php echo $link ?>"
                                    target="_blank">
                                     <svg width="20" height="20">
                                         <use xlink:href="#facebook"></use>
                                     </svg>
                                 </a>
                                 <a class="icon"
-                                   href="http://www.linkedin.com/shareArticle?mini=true&amp;url=<?= $link ?>"
+                                   href="http://www.linkedin.com/shareArticle?mini=true&amp;url=<?php echo $link ?>"
                                    target="_blank">
                                     <svg width="20" height="20">
                                         <use xlink:href="#linkedin"></use>

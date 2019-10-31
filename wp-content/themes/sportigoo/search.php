@@ -60,13 +60,13 @@ if (is_search()) {
                 <section class="activities activities-display">
                     <div class="container activities-search__header">
                         <h1 class="section-title">
-                            "<?= ucfirst( get_search_query() ); ?>"
+                            "<?php echo ucfirst( get_search_query() ); ?>"
                         </h1>
                         <p class="section-paragraph">
-                            <?= $sub_title_product . " \"" . get_search_query() ?>"
+                            <?php echo $sub_title_product . " \"" . get_search_query() ?>"
                         </p>
                     </div>
-                    <div class="activities__pattern" style="background-image: url(<?= $pattern_url ?>);"></div>
+                    <div class="activities__pattern" style="background-image: url(<?php echo $pattern_url ?>);"></div>
                     <div class="activities__block ">
                         <div id="results" class="activities__row hasPrev container" style="position: unset;">
                             <?php while (have_posts()) {
@@ -92,10 +92,10 @@ if (is_search()) {
                 <section class="blog-search">
                     <div class="container activities-search__header">
                         <h1 class="section-title">
-                            "<?= ucfirst( get_search_query() ); ?>"
+                            "<?php echo ucfirst( get_search_query() ); ?>"
                         </h1>
                         <p class="section-paragraph">
-                            <?= $sub_title_post . " \"" . get_search_query() ?>"
+                            <?php echo $sub_title_post . " \"" . get_search_query() ?>"
                         </p>
                     </div>
                     <div class="blog-search__block">
@@ -184,7 +184,7 @@ if (is_search()) {
                     <?php echo $titre ?>
                 </h1>
             </div>
-            <div class="activities__pattern" style="background-image: url(<?= $pattern_url ?>);"></div>
+            <div class="activities__pattern" style="background-image: url(<?php echo $pattern_url ?>);"></div>
             <div class="activities__block container">
                 <div id="results" class="activities__row ">
                     <?php if ( $results->have_posts() ) {

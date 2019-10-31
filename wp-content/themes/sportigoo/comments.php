@@ -37,7 +37,7 @@ if ( have_rows( 'blog_labels', 'option' ) ) {
 
 <div class="container">
     <div class="commentaires" id="comments">
-        <h3 class="t-center commentaires__title"><?= $comment_title ?></h3>
+        <h3 class="t-center commentaires__title"><?php echo $comment_title ?></h3>
 
         <?php
         /**

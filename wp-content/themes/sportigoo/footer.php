@@ -65,7 +65,7 @@ if ( !is_product() && !is_shop() && !is_page(35) && !is_page(41) && !is_single()
                     <div class="footer__col">
                         <h4><?php the_sub_field( 'titre_newsletter' ); ?></h4>
                         <p><?php the_sub_field( 'texte_newsletter' ); ?></p>
-                        <a <?= $footer_news_link ?> class="button button--white">S'inscrire</a>
+                        <a <?php echo $footer_news_link ?> class="button button--white">S'inscrire</a>
                     </div>
 
                 <?php }

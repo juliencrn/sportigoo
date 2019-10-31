@@ -23,7 +23,7 @@ if ( have_posts() ) { ?>
         <section class="blog-search">
             <div class="container activities-search__header">
                 <h1 class="section-title">
-                    <?= $title; ?>
+                    <?php echo $title; ?>
                 </h1>
                 <p class="section-paragraph">
                     <?php

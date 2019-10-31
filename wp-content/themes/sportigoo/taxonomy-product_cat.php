@@ -42,7 +42,7 @@ $term = get_queried_object();
                     <?php the_field('texte_avant_le_contenu', $term); ?>
                 </div>
             </div>
-            <div class="activities__pattern" style="background-image: url(<?= $pattern_url ?>);"></div>
+            <div class="activities__pattern" style="background-image: url(<?php echo $pattern_url ?>);"></div>
             <div class="activities__block">
 
 
