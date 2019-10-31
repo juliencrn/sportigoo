@@ -46,9 +46,9 @@ $avis_bg_url = get_field( 'background_avis', $product->get_id() );
 <?php if ( have_comments()  ) : // && get_comments_number() > 3 ?>
     <section id="reviews" class="avis">
         <h2 class="t-center avis__title">
-            <?= $avis_title ?>
+            <?php echo $avis_title ?>
         </h2>
-        <div class="avis__bg" style="background-image: url(<?= $avis_bg_url ?>);">
+        <div class="avis__bg" style="background-image: url(<?php echo $avis_bg_url ?>);">
             <div class="avis__bg-filter"></div>
             <div class="container">
                 <div class="avis__carousel <?php echo (get_comments_number() < 4) ?'hasMin': 'hasMore'; ?>" id="comments" data-count="<?php echo get_comments_number() ?>">
@@ -76,7 +76,7 @@ $avis_bg_url = get_field( 'background_avis', $product->get_id() );
 <section class="produit_sporti__commentaires">
     <div class="container">
         <div class="commentaires">
-            <h3 class="t-center commentaires__title"><?= $comment_title ?></h3>
+            <h3 class="t-center commentaires__title"><?php echo $comment_title ?></h3>
 
             <?php if ( get_option( 'woocommerce_review_rating_verification_required' ) === 'no' || wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) ) : ?>
 

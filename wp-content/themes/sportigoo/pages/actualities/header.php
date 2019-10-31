@@ -24,9 +24,9 @@ $link = get_permalink( $id );
                 <div class="last-posts__preview">
                     <div class="last-posts__excerpt-wrapper t-center">
                         <p id="excerptPreview">
-                            <?= $excerpt ?>
+                            <?php echo $excerpt ?>
                         </p>
-                        <a class="link" id="preview-link" href="<?= $link ?>">Lire la suite</a>
+                        <a class="link" id="preview-link" href="<?php echo $link ?>">Lire la suite</a>
                     </div>
                 </div>
 
@@ -48,7 +48,7 @@ $link = get_permalink( $id );
                                     <span class="link link__white">Découvrir</span>
                                 </a>
                                 <div class="last-posts__img"
-                                     style="background-image:url('<?= $thumbnail_url ?>');">
+                                     style="background-image:url('<?php echo $thumbnail_url ?>');">
                                 </div>
 
                             </div>

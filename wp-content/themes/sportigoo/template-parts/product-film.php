@@ -22,7 +22,7 @@ if ( have_rows( 'video_de_la_session', 'option' ) ) {
     while (have_rows( 'video_de_la_session', 'option' )) {
         the_row(); ?>
         <section class="film">
-            <div class="film__bg" style="background-image: url('<?= $bg_url ?>');">
+            <div class="film__bg" style="background-image: url('<?php echo $bg_url ?>');">
                 <div class="film__bg-filter"></div>
                 <div class="film__bg-filter film__bg-filter-grad"></div>
                 <div class="container">
@@ -36,7 +36,7 @@ if ( have_rows( 'video_de_la_session', 'option' ) ) {
                     </p>
                     <div class="film__button">
                         <a class="button button--white" href="#booking_now" rel="modal:open">
-                            <?= $bouton_reserver ?>
+                            <?php echo $bouton_reserver ?>
                         </a>
                     </div>
                 </div>

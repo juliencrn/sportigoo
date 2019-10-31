@@ -187,7 +187,7 @@ $fields = get_fields( $product_id )['produit'];
                         <div class="alaw">
                             <?php if ( !empty( $image ) ) { ?>
                                 <div class="alaw__img">
-                                    <div class="alaw__img-bg" style="background-image: url(<?= $image['url']; ?>)">
+                                    <div class="alaw__img-bg" style="background-image: url(<?php echo $image['url']; ?>)">
 
                                     </div>
                                 </div>

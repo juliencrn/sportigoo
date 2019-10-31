@@ -15,7 +15,7 @@ $thumbnail_url = get_the_post_thumbnail_url( get_the_ID(), 'medium' );
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('blogcard'); ?>>
     <a class="blogcard__wrapper" href="<?php the_permalink(); ?>">
-        <div class="blogcard__img" style="background-image:url(<?= $thumbnail_url ?>)">
+        <div class="blogcard__img" style="background-image:url(<?php echo $thumbnail_url ?>)">
             <?php if ( !empty( $cats ) ) : ?>
                 <div class="blogcard__cat">
                     <p><?php echo $cats[0]->name; ?></p>

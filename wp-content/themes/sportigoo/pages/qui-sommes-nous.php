@@ -22,7 +22,7 @@ while (have_posts()) {
                         <iframe
                                 width="560"
                                 height="315"
-                                src="<?= $iframe_src ?>"
+                                src="<?php echo $iframe_src ?>"
                                 frameborder="0"
                                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen="allowfullscreen"
@@ -162,10 +162,10 @@ while (have_posts()) {
 
         if ( function_exists( 'zz_display_product_row' ) ) { ?>
             <section class="activities activities--homepage activities-display">
-                <div class="activities__pattern" style="background-image: url('<?= $pattern ?>');"></div>
+                <div class="activities__pattern" style="background-image: url('<?php echo $pattern ?>');"></div>
                 <div class="activities__block">
                     <div class="container">
-                        <h3 class="section-subtitle"><?= $titre_1 ?></h3>
+                        <h3 class="section-subtitle"><?php echo $titre_1 ?></h3>
                     </div>
                     <?php zz_display_product_row( array(
                         'orderby' => array('meta_value_num' => 'DESC'),

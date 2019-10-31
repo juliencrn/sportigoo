@@ -66,7 +66,7 @@ class sportigoo_lastposts_Widget extends WP_Widget {
                     <a class="actu-item__wrapper" href="<?php the_permalink(); ?>">
                         <div class="actu-item__img">
                             <?php if ($thumbnail_url) { ?>
-                            <img src="<?= $thumbnail_url ?>" style="min-width: 70px;max-width: 70px"/>
+                            <img src="<?php echo $thumbnail_url ?>" style="min-width: 70px;max-width: 70px"/>
                             <?php } ?>
                         </div>
                         <div class="actu-item__content">
@@ -78,7 +78,7 @@ class sportigoo_lastposts_Widget extends WP_Widget {
 
                                 <?php if ($the_cat) { ?>
                                     <span> |</span>
-                                    <span> <?= $the_cat->name ?></span>
+                                    <span> <?php echo $the_cat->name ?></span>
                                 <?php } ?>
 
                             </small>

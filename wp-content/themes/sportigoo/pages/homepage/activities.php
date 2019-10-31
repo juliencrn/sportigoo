@@ -20,17 +20,17 @@ if ( have_rows( 'suggestion', 2 ) ) {
 }
 ?>
 
-<section class="activities activities--<?= is_front_page() ? 'homepage': 'trendy'; ?> activities-display">
-    <div class="activities__pattern" style="background-image: url('<?= $pattern ?>');"></div>
+<section class="activities activities--<?php echo is_front_page() ? 'homepage': 'trendy'; ?> activities-display">
+    <div class="activities__pattern" style="background-image: url('<?php echo $pattern ?>');"></div>
     <?php if (is_front_page()) { ?>
         <div class="container">
-            <h2 class="section-title"><?= $page_title ?></h2>
+            <h2 class="section-title"><?php echo $page_title ?></h2>
         </div>
     <?php } ?>
 
     <div class="activities__block">
         <div class="">
-            <h3 class="section-subtitle <?= is_front_page() ? '': 't-white'; ?>"><?= $titre_1 ?></h3>
+            <h3 class="section-subtitle <?php echo is_front_page() ? '': 't-white'; ?>"><?php echo $titre_1 ?></h3>
         </div>
         <?php zz_display_product_row(array(
             'orderby' => array('meta_value_num' => 'DESC'),
@@ -40,7 +40,7 @@ if ( have_rows( 'suggestion', 2 ) ) {
 
     <div class="activities__block">
         <div class="">
-            <h3 class="section-subtitle"><?= $titre_2 ?></h3>
+            <h3 class="section-subtitle"><?php echo $titre_2 ?></h3>
         </div>
         <?php zz_display_product_row(array(
             'orderby' => array('comment_count' => 'DESC')
@@ -49,7 +49,7 @@ if ( have_rows( 'suggestion', 2 ) ) {
 
     <div class="activities__block">
         <div class="">
-            <h3 class="section-subtitle"><?= $titre_3 ?></h3>
+            <h3 class="section-subtitle"><?php echo $titre_3 ?></h3>
         </div>
         <?php zz_display_product_row(array(
             'orderby' => array('modified' => 'DESC')

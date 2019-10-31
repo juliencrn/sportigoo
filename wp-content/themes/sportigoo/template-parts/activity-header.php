@@ -30,7 +30,7 @@ $large_thumbnail_url = get_the_post_thumbnail_url( $product_id, 'full' );
 ?>
 
 <section>
-    <div class="activity-preview" style="background-image: url('<?= $large_thumbnail_url ?>');">
+    <div class="activity-preview" style="background-image: url('<?php echo $large_thumbnail_url ?>');">
         <div class="container">
             <div class="activity-preview__container">
                 <div class="activity-preview__left relative">
@@ -47,8 +47,8 @@ $large_thumbnail_url = get_the_post_thumbnail_url( $product_id, 'full' );
                         <?php echo $product->get_short_description(); ?>
                     </p>
 
-                    <a class="button button--white button--jumbotron" <?= $product_link ?>>
-                        <?= $bouton_reserver ?>
+                    <a class="button button--white button--jumbotron" <?php echo $product_link ?>>
+                        <?php echo $bouton_reserver ?>
                     </a>
 
                     <div class="stars orange">
@@ -96,7 +96,7 @@ $large_thumbnail_url = get_the_post_thumbnail_url( $product_id, 'full' );
                         <iframe
                                 width="1080"
                                 height="610"
-                                src="<?= $iframe_src ?>"
+                                src="<?php echo $iframe_src ?>"
                                 frameborder="0"
                                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen="allowfullscreen"

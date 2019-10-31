@@ -35,43 +35,43 @@ $where_terms = get_terms( array(
 ) );
 ?>
 
-<section class="search" id="3-clics" style="background-image:url('<?= $img1 ?>');">
+<section class="search" id="3-clics" style="background-image:url('<?php echo $img1 ?>');">
     <div class="container">
         <h3 class="section-subtitle">
-            <?= $search_title ?>
+            <?php echo $search_title ?>
         </h3>
-        <input type="hidden" id="search_base_url" value="<?= get_permalink( (defined( 'WP_LOCAL_DEV' ) && WP_LOCAL_DEV == true) ?485 : 30052 ); // Search custom  ?>">
+        <input type="hidden" id="search_base_url" value="<?php echo get_permalink( (defined( 'WP_LOCAL_DEV' ) && WP_LOCAL_DEV == true) ?485 : 30052 ); // Search custom  ?>">
         <form id="js-search-activity">
             <div class="custom-select">
                 <select name="what">
-                    <option value="0"><?= $label_what ?></option>
+                    <option value="0"><?php echo $label_what ?></option>
 
                     <?php foreach ($what_terms as $term) { ?>
-                        <option value="<?= $term->term_id ?>"><?= $term->name ?></option>
+                        <option value="<?php echo $term->term_id ?>"><?php echo $term->name ?></option>
                     <?php } ?>
                 </select>
             </div>
             <div class="custom-select">
                 <select name="who">
-                    <option value="0"><?= $label_who ?></option>
+                    <option value="0"><?php echo $label_who ?></option>
 
                     <?php foreach ($who_terms as $term) { ?>
-                        <option value="<?= $term->term_id ?>"><?= $term->name ?></option>
+                        <option value="<?php echo $term->term_id ?>"><?php echo $term->name ?></option>
                     <?php } ?>
                 </select>
             </div>
             <div class="custom-select" id="where-group" onclick="this.className = 'custom-select'">
                 <select name="where">
-                    <option value="0"><?= $label_where ?></option>
+                    <option value="0"><?php echo $label_where ?></option>
 
                     <?php foreach ($where_terms as $term) {
                         $dept = get_field('numero', $term); ?>
-                        <option data-dept="<?= $dept ?>" value="<?=  $term->term_id ?>"><?= $term->name ?></option>
+                        <option data-dept="<?php echo $dept ?>" value="<?php echo  $term->term_id ?>"><?php echo $term->name ?></option>
                     <?php } ?>
                 </select>
             </div>
-            <input class="button button--white" type="submit" value="<?= $label_submit ?>"/>
-            <img class="search__deco-button" src="<?= $img2 ?>"/>
+            <input class="button button--white" type="submit" value="<?php echo $label_submit ?>"/>
+            <img class="search__deco-button" src="<?php echo $img2 ?>"/>
         </form>
     </div>
 </section>

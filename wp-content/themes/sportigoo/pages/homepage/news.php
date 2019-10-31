@@ -16,7 +16,7 @@ if ( have_rows( 'news' ) ) {
 <section class="homepage-posts">
     <div class="container">
         <h2 class="section-title">
-            <?= $titre_section ?>
+            <?php echo $titre_section ?>
         </h2>
 
         <?php
@@ -45,8 +45,8 @@ if ( have_rows( 'news' ) ) {
                         foreach ($categories as $cat) {
                             $i++;
                             if ( $i < 3 ) { ?>
-                                <a class="categories__item" id="catoutup-<?= $i ?>" href="<?php echo get_category_link( $cat->cat_ID ); ?>">
-                                    <?= $cat->name ?>
+                                <a class="categories__item" id="catoutup-<?php echo $i ?>" href="<?php echo get_category_link( $cat->cat_ID ); ?>">
+                                    <?php echo $cat->name ?>
                                 </a>
                             <?php } ?>
 
@@ -55,9 +55,9 @@ if ( have_rows( 'news' ) ) {
                 </div>
                 <div class="last-posts__excerpt-wrapper">
                     <p id="excerptPreview">
-                        <?= $excerpt ?>
+                        <?php echo $excerpt ?>
                     </p>
-                    <a class="link" id="preview-link" href="<?= $link ?>">Lire la suite</a>
+                    <a class="link" id="preview-link" href="<?php echo $link ?>">Lire la suite</a>
                 </div>
             </div>
 
@@ -77,9 +77,9 @@ if ( have_rows( 'news' ) ) {
                                     foreach ($categories as $cat) {
                                         $i++;
                                         if ( $i < 3 ) { ?>
-                                            <span class="cat-<?= $i ?>"
-                                                  data-name="<?= $cat->name ?>"
-                                                  data-url="<?= get_category_link( $cat->cat_ID ); ?>"
+                                            <span class="cat-<?php echo $i ?>"
+                                                  data-name="<?php echo $cat->name ?>"
+                                                  data-url="<?php echo get_category_link( $cat->cat_ID ); ?>"
                                             ></span>
                                         <?php } ?>
 
@@ -92,7 +92,7 @@ if ( have_rows( 'news' ) ) {
                                 <span class="link link__white">Découvrir</span>
                             </a>
                             <div class="last-posts__img"
-                                 style="background-image:url('<?= $thumbnail_url ?>');">
+                                 style="background-image:url('<?php echo $thumbnail_url ?>');">
                             </div>
 
                         </div>
@@ -106,7 +106,7 @@ if ( have_rows( 'news' ) ) {
 
         </div>
         <a class="button" href="<?php echo get_permalink( 41 ); ?>">
-            <?= $bouton ?>
+            <?php echo $bouton ?>
         </a>
     </div>
 </section>

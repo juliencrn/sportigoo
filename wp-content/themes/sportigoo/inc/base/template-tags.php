@@ -170,8 +170,8 @@ if ( !function_exists( 'zz_print_social_list' ) ) {
         if ( is_array( $list ) ) {
             foreach ($list as $name) { ?>
                 <a href="<?php the_field( $name, 'option' ); ?>" target="_blank">
-                    <svg width="<?= $size ?>" height="<?= $size ?>">
-                        <use xlink:href="#<?= $name ?>"></use>
+                    <svg width="<?php echo $size ?>" height="<?php echo $size ?>">
+                        <use xlink:href="#<?php echo $name ?>"></use>
                     </svg>
                 </a>
             <?php }
@@ -281,7 +281,7 @@ if ( !function_exists( 'zz_display_product_row' ) ) {
         $products = new WP_Query( $args  );
         if ( $products->have_posts() ) { ?>
             <div class="activities__row">
-                <div class="activities__slider activitiesSlider <?= $preview ? 'hasPrev':'' ?>">
+                <div class="activities__slider activitiesSlider <?php echo $preview ? 'hasPrev':'' ?>">
                     <?php while ($products->have_posts()) {
                         $products->the_post();
                         get_template_part( 'woocommerce/content', 'product' );

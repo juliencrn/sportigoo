@@ -18,16 +18,16 @@ $link = get_category_link( $term_id );
 <div class="six cols">
     <div class="actu-group">
 
-        <div class="actu-group__topbar" style="background-color:<?= $color ?>"></div>
+        <div class="actu-group__topbar" style="background-color:<?php echo $color ?>"></div>
 
         <h2 class="actu-group__title t-center">
             <a class="t-center h2 t-gris"
-               href="<?= $link ?>">
-                <?= $term->name ?>
+               href="<?php echo $link ?>">
+                <?php echo $term->name ?>
             </a>
         </h2>
 
-        <a class="d-block actu-group__img" href="<?= $link ?>" style="background-image: url('<?= $image ?>');"></a>
+        <a class="d-block actu-group__img" href="<?php echo $link ?>" style="background-image: url('<?php echo $image ?>');"></a>
 
         <?php
         $last_posts = new WP_Query( array(
@@ -67,7 +67,7 @@ $link = get_category_link( $term_id );
                         <a class="actu-item__wrapper" href="<?php the_permalink(); ?>">
                             <div class="actu-item__img">
                                 <?php if ( $thumbnail_url ) { ?>
-                                    <img src="<?= $thumbnail_url ?>" style="min-width: 70px;max-width: 70px"/>
+                                    <img src="<?php echo $thumbnail_url ?>" style="min-width: 70px;max-width: 70px"/>
                                 <?php } ?>
                             </div>
                             <div class="actu-item__content">
@@ -79,7 +79,7 @@ $link = get_category_link( $term_id );
 
                                     <?php if ( $the_cat ) { ?>
                                         <span> |</span>
-                                        <span> <?= $the_cat->name ?></span>
+                                        <span> <?php echo $the_cat->name ?></span>
                                     <?php } ?>
 
                                 </small>
@@ -94,7 +94,7 @@ $link = get_category_link( $term_id );
         <?php } ?>
 
         <div class="actu-group__footer">
-            <a href="<?= $link ?>">
+            <a href="<?php echo $link ?>">
                 <svg width="30" height="30">
                     <use xlink:href="#chevron-down"></use>
                 </svg>

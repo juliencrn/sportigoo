@@ -29,7 +29,7 @@ $thumbnail_url = get_the_post_thumbnail_url( get_the_ID(), 'medium' );
 <article data-id="<?php echo get_the_ID(); ?>" style="overflow: hidden;"  <?php wc_product_class('activities__item-wrapper'); ?>>
     <a class="activities__link" href="<?php the_permalink(); ?>">
         <div class="activities__item">
-            <div class="activities__img" style="background-image: url(<?= $thumbnail_url ?>);"></div>
+            <div class="activities__img" style="background-image: url(<?php echo $thumbnail_url ?>);"></div>
             <h4 class="activities__title">
                 <?php the_title(); ?>
             </h4>

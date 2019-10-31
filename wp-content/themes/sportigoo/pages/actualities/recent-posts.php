@@ -31,14 +31,14 @@ if ( !$my_posts->have_posts() ) {
 
                         <article class="blogcard">
                             <a class="blogcard__wrapper" href="<?php the_permalink(); ?>">
-                                <div class="blogcard__img" style="background-image:url('<?= $thumbnail_url ?>')">
+                                <div class="blogcard__img" style="background-image:url('<?php echo $thumbnail_url ?>')">
 
                                     <div class="blogcard__cat">
                                         <?php
                                         $categories = get_the_category( $id );
                                         if ( !empty( $categories ) ) { ?>
                                             <p class="categories__item">
-                                                <?= $categories[0]->name ?>
+                                                <?php echo $categories[0]->name ?>
                                             </p>
                                         <?php } ?>
                                     </div>

@@ -37,9 +37,9 @@ while (have_posts()) {
                     <div class="activities__item-wrapper">
                         <a class="activities__link" href="<?php echo get_term_link( $term, 'product_cat' ); ?>">
                             <div class="activities__item">
-                                <div class="activities__img" style="background-image: url('<?= $image ?>');"></div>
+                                <div class="activities__img" style="background-image: url('<?php echo $image ?>');"></div>
                                 <h4 class="activities__title">
-                                    <?= $term->name ?>
+                                    <?php echo $term->name ?>
                                 </h4>
                                 <p class="activities__discover">
                                     Découvrir
@@ -54,7 +54,7 @@ while (have_posts()) {
         </section>
 
         <section class="activities">
-            <div class="activities__pattern" style="background-image: url('<?= $pattern ?>');"></div>
+            <div class="activities__pattern" style="background-image: url('<?php echo $pattern ?>');"></div>
             <span class="section-separator"></span>
 
             <?php
@@ -69,7 +69,7 @@ while (have_posts()) {
                     <div class="activities__block">
                         <div class="">
                             <h3 class="section-subtitle">
-                                <?= $term->name ?>
+                                <?php echo $term->name ?>
                             </h3>
                         </div>
                         <?php zz_display_product_row( array(

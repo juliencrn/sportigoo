@@ -13,8 +13,8 @@ $pattern = get_stylesheet_directory_uri() . "/dist/img/pattern-activite.png";
 
 <?php if ( have_rows( 'presentation' ) ) { ?>
     <section class="text-img text-img--repeat">
-    <div class="activities__pattern" style="background-image: url('<?= $pattern ?>');"></div>
-        <div class="container-fluid" style="margin: 0 20px; display:flex; flex-direction: row<?= $reverse ?>;">
+    <div class="activities__pattern" style="background-image: url('<?php echo $pattern ?>');"></div>
+        <div class="container-fluid" style="margin: 0 20px; display:flex; flex-direction: row<?php echo $reverse ?>;">
             <?php while (have_rows( 'presentation' )) {
 
                 the_row(); ?>
@@ -38,7 +38,7 @@ $pattern = get_stylesheet_directory_uri() . "/dist/img/pattern-activite.png";
                                 <div class="carousel">
                                     <?php while (have_rows( 'slider' )) {
                                         the_row();
-    
+
                                         if ( get_sub_field( 'slide' ) ) {
                                             $url = get_sub_field( 'slide' )['sizes']['medhome'] ?>
                                             <div class="carousel__item"
@@ -61,8 +61,8 @@ $pattern = get_stylesheet_directory_uri() . "/dist/img/pattern-activite.png";
                             <?php } ?>
                         <?php } ?>
                     <?php } ?>
-                    
-                    
+
+
                 </div>
             <?php } ?>
         </div>

@@ -6,7 +6,7 @@ $pattern = get_stylesheet_directory_uri() . "/dist/img/pattern-activite.png";
 if ($terms) { ?>
 <section>
 
-  <div class="activities__pattern" style="background-image: url('<?= $pattern ?>');"></div>
+  <div class="activities__pattern" style="background-image: url('<?php echo $pattern ?>');"></div>
   <div class="home_categories_slider ">
 
     <?php foreach($terms as $term) {

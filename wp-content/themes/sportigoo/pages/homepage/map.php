@@ -19,7 +19,7 @@
                             $i++; ?>
                             <div class="how-to-use__step">
                                 <div class="how-to-use__number">
-                                    <?= $i ?>
+                                    <?php echo $i ?>
                                 </div>
                                 <p><?php the_sub_field( "etape" ); ?></p>
                             </div>

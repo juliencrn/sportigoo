@@ -16,11 +16,11 @@ if ( have_rows( 'header' ) ) {
 ?>
 
 <section class="homepage__cover">
-    <div class="cover cover--full" style="background-image:url('<?= $header_bg ?>')">
+    <div class="cover cover--full" style="background-image:url('<?php echo $header_bg ?>')">
         <div class="cover__filter"></div>
         <div class="container">
-            <h1><?= $page_title ?></h1>
-            <h2><?= $page_slogan ?></h2>
+            <h1><?php echo $page_title ?></h1>
+            <h2><?php echo $page_slogan ?></h2>
         </div>
         <div class="go-down">
             <a href="#3-clics">

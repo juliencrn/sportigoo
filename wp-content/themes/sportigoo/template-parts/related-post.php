@@ -32,8 +32,8 @@
                     $more = get_sub_field( 'voir_plus' );
                 }
             } ?>
-            <a class="button button--jumbotron" href="<?= $link ?>">
-                <?= $more ?>
+            <a class="button button--jumbotron" href="<?php echo $link ?>">
+                <?php echo $more ?>
             </a>
         </p>
     </div>
