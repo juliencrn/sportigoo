@@ -1,0 +1,45 @@
+&__blue-section {
+  text-align: justify;
+  margin: 40px 0;
+
+  &__waves {
+    width: 100%;
+    height: 150px;
+    z-index: -1;
+    left: 0;
+    background-color: transparent;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &--top {
+      background-image: url("../../static/svg/wave-blue-arc.svg");
+      transform: rotate(180deg);
+      background-position: bottom;
+    }
+    &--bottom {
+      background-image: url("../../static/svg/wave-blue-arc.svg");
+      background-position: bottom;
+    }
+  }
+
+  &__bg {
+    background-color: $primary;
+    color: $white;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    .wrapper {
+      padding: 15px 0;
+      width: 850px;
+      max-width: 100%;
+      p {
+        font-family: $ff-book;
+        font-size: $fs-h3;
+        font-weight: 400;
+        line-height: 30px;
+      }
+    }
+  }
+}

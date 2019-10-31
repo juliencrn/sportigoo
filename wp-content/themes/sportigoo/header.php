@@ -48,7 +48,7 @@
         </style>";
 } ?>
 
-<?php $transparent = is_page( array(2, 39, 41) ) || is_singular( array('post') ) ? 'transparent' : ''; ?>
+<?php $transparent = is_page( array(2, 39, 41) ) || is_singular( array('post') ) ? 'transparent nav--topped' : ''; ?>
 
 <header class="nav <?php echo $transparent ?>">
     <div class="container nav__container">

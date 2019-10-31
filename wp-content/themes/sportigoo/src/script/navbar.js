@@ -4,7 +4,7 @@ const navbar = $ => {
 		$('.nav').css({
 			background: 'rgba(29,70,122,1)',
 			boxShadow: '3px 0 5px rgba(0,0,0,0.5)',
-		});
+		}).removeClass('nav--topped');
 		$('.nav li ul').css({
 			background: 'rgba(29,70,122,1)',
 		});
@@ -14,13 +14,17 @@ const navbar = $ => {
 		$('.nav').css({
 			background: 'rgba(29,70,122,0)',
 			boxShadow: '0px 0 5px rgba(0,0,0,0)',
-		});
+		}).addClass('nav--topped');
 		$('.nav li ul').css({
 			background: 'rgba(29,70,122,0)',
 		})
 	};
 
-	const toggleNavColor = () => $(window).scrollTop() < 150 && $('.nav').hasClass('transparent') ?  navTran() : navBlue();
+	const toggleNavColor = () => {
+    $(window).scrollTop() < 150 && $('.nav').hasClass('transparent')
+      ? navTran()
+      : navBlue();
+  }
 
 	// Hide when scroll down
 	$(document).on('scroll', () => toggleNavColor());

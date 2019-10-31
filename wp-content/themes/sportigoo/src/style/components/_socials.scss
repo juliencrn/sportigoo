@@ -4,10 +4,16 @@
     justify-content: center;
     svg {
         margin: 0 6px;
-        fill: $white;
-        &:hover {
-            fill: $secondary;
-        }
+    //    fill: $white;
+    //    &:hover {
+    //        fill: $secondary;
+    //    }
+    }
+    a {
+      fill: $white;
+      &:hover {
+        fill: $secondary;
+      }
     }
 }
 .socialshare {

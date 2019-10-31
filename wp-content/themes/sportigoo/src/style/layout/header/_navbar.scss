@@ -6,6 +6,14 @@
   z-index: 500;
   &.transparent {
     background: $nav-background;
+    &.nav--topped {
+      a:hover {
+        color: $white;
+        svg {
+          fill: $white;
+        }
+      }
+    }
   }
   background: $blue;
   position: fixed;
@@ -33,10 +41,11 @@
         color:$link-color-hover;
       }
     }
+
     ul {
       margin: 0;
     }
-    
+
     li {
       margin: 0;
       padding: 5px 10px;

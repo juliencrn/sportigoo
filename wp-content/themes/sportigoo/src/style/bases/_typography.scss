@@ -2,6 +2,27 @@
 /**
  * Basic typography style for copy text
  */
+@font-face {
+  font-family: "Gotham-black";
+  src: url("../../static/fonts/Gotham-black.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gotham-book";
+  src: url("../../static/fonts/Gotham-book.ttf") format("truetype");
+}
+
+$ff-black: 'Gotham-black', sans-serif !default;
+$ff-book: 'Gotham-book', sans-serif !default;
+
+.ff-black {
+  font-family: $ff-black;
+}
+.ff-book {
+  font-family: $ff-book;
+}
+
+
 
 h1,
 .h1 {

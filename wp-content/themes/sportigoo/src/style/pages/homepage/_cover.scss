@@ -1,0 +1,45 @@
+/* Header */
+&__cover {
+  position: relative;
+  z-index: auto;
+  .cover {
+    background-color: $secondary;
+    min-height: 100vh;
+    &__titles {
+      text-align: left;
+      width: 100%;
+      max-width: 550px;
+
+      .title {
+        font-weight: 700;
+        line-height: 1;
+        font-family: $ff-black;
+      }
+      .sub-title {
+        font-weight: 400;
+        font-family: $ff-book;
+        @media (#{$bp-larger-than-phablet}) {
+          width: 75%;
+        }
+      }
+    }
+
+    .go-down {
+      z-index: 10;
+    }
+
+    &__image {
+      width: 715px;
+      max-width: 60%;
+      height: auto;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: auto;
+
+      @media (#{$bp-smaller-than-phablet}) {
+        display: none;
+      }
+    }
+  }
+}

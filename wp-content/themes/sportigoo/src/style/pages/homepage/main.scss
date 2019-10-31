@@ -1,7 +1,8 @@
+.homepage {
 
-
-.home {
+  @import "cover";
   @import "search";
-  @import "activities";
-  @import "posts";
+  @import "categories-list";
+  @import "blue-section";
+
 }

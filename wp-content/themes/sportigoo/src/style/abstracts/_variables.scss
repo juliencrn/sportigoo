@@ -47,6 +47,8 @@ $font-color: $primary !default;
 // =============================================================================
 // Typography
 // =============================================================================
+
+
 /* Font-family*/
 $ff-p: 'Gotham',sans-serif !default;
 $ff-h1: 'Gotham',sans-serif !default;
@@ -55,6 +57,7 @@ $ff-h3: 'Gotham',sans-serif !default;
 $ff-h4: 'Gotham',sans-serif !default;
 $ff-h5: 'Gotham',sans-serif !default;
 $ff-h6: 'Gotham',sans-serif !default;
+
 /* Font-size*/
 $fs-h1: 5rem;
 $fs-h2: 3rem;
@@ -85,8 +88,8 @@ $flh-p: 1.2;
 // Grid Variables
 // =============================================================================
 $container-width: 1140px !default;
-$container-width-larger-than-mobile: 85% !default;
-$container-width-larger-than-phablet: 80% !default;
+$container-width-larger-than-mobile: 90% !default;
+$container-width-larger-than-phablet: 85% !default;
 $total-columns: 12 !default;
 $column-width: 100 / $total-columns !default; // calculates individual column width based off of # of columns
 $column-margin: 4% !default; // space between columns

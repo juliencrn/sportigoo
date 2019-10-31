@@ -7,7 +7,7 @@ var navbar = function navbar($) {
 		$('.nav').css({
 			background: 'rgba(29,70,122,1)',
 			boxShadow: '3px 0 5px rgba(0,0,0,0.5)'
-		});
+		}).removeClass('nav--topped');
 		$('.nav li ul').css({
 			background: 'rgba(29,70,122,1)'
 		});
@@ -17,14 +17,14 @@ var navbar = function navbar($) {
 		$('.nav').css({
 			background: 'rgba(29,70,122,0)',
 			boxShadow: '0px 0 5px rgba(0,0,0,0)'
-		});
+		}).addClass('nav--topped');
 		$('.nav li ul').css({
 			background: 'rgba(29,70,122,0)'
 		});
 	};
 
 	var toggleNavColor = function toggleNavColor() {
-		return $(window).scrollTop() < 150 && $('.nav').hasClass('transparent') ? navTran() : navBlue();
+		$(window).scrollTop() < 150 && $('.nav').hasClass('transparent') ? navTran() : navBlue();
 	};
 
 	// Hide when scroll down
@@ -116,7 +116,7 @@ var smoothScroll = function smoothScroll($) {
         // Only prevent default if animation is actually gonna happen
         event.preventDefault();
         $('html, body').animate({
-          scrollTop: target.offset().top
+          scrollTop: target.offset().top - 100
         }, 1000, function () {
           // Callback after animation
           // Must change focus!
