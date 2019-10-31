@@ -211,13 +211,14 @@ if( ! class_exists( 'YITH_WC_Social_Login_Admin' ) ){
             $args = array(
                 'create_menu_page' => true,
                 'parent_slug'      => '',
-                'page_title'       => _x( 'Social Login', 'Plugin name. Do not translate', 'yith-woocommerce-social-login' ),
+                'page_title'       => _x( 'YITH WooCommerce Social Login', 'Plugin name. Do not translate', 'yith-woocommerce-social-login' ),
                 'menu_title'       => _x( 'Social Login', 'Plugin name. Do not translate', 'yith-woocommerce-social-login' ),
                 'capability'       => 'manage_options',
                 'parent'           => '',
                 'parent_page'      => 'yith_plugin_panel',
                 'page'             => $this->_panel_page,
                 'admin-tabs'       => $admin_tabs,
+                'class'            => yith_set_wrapper_class(),
                 'options-path'     => YITH_YWSL_DIR . '/plugin-options'
             );
 

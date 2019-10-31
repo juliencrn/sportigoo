@@ -28,9 +28,8 @@ include_once( 'lib/yit-ajax.php' );
 include_once( 'lib/yit-plugin-subpanel.php' );
 include_once( 'lib/yit-plugin-common.php' );
 include_once( 'lib/yit-plugin-gradients.php');
-include_once( 'licence/lib/yit-licence.php');
-include_once( 'licence/lib/yit-plugin-licence.php');
-include_once( 'licence/lib/yit-theme-licence.php');
+include_once( 'lib/yit-plugin-licence.php');
+include_once( 'lib/yit-theme-licence.php');
 include_once( 'lib/yit-video.php');
 include_once( 'lib/yit-upgrade.php');
 include_once( 'lib/yit-pointers.php');
@@ -40,6 +39,8 @@ include_once( 'lib/yit-debug.php');
 include_once( 'lib/yith-dashboard.php' );
 include_once( 'lib/privacy/yit-privacy.php' );
 include_once( 'lib/privacy/yit-privacy-plugin-abstract.php' );
+include_once( 'lib/promo/yith-promo.php' );
+include_once( 'lib/yith-system-status.php' );
 
 /* === Gutenberg Support === */
 if( class_exists( 'WP_Block_Type_Registry' ) ){
@@ -183,12 +184,13 @@ if( ! function_exists( 'yith_add_action_links' ) ){
 	 * @use      plugin_action_links_{$plugin_file_name}
 	 */
 	function yith_add_action_links( $links, $panel_page = '', $is_premium = false ) {
+		$links = is_array( $links ) ? $links : array();
 		if( ! empty( $panel_page )  ){
 			$links[] = sprintf( '<a href="%s">%s</a>', admin_url( "admin.php?page={$panel_page}" ), _x( 'Settings', 'Action links',  'yith-plugin-fw' ) );
 		}
 
 		if( $is_premium && class_exists( 'YIT_Plugin_Licence' ) ){
-			$links[] = sprintf( '<a href="%s">%s</a>', YIT_Plugin_Licence::get_license_activation_url(),__( 'License',  'yith-plugin-fw' ) );
+			$links[] = sprintf( '<a href="%s">%s</a>', YIT_Plugin_Licence()->get_license_activation_url(),__( 'License',  'yith-plugin-fw' ) );
 		}
 
 		return $links;
