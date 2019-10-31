@@ -3,13 +3,13 @@
 Plugin Name: YITH WooCommerce Social Login
 Plugin URI: https://yithemes.com/themes/plugins/yith-woocommerce-social-login/
 Description: <code><strong>YITH WooCommerce Social Login</strong></code> allows your users and customers to register and log into your store using one of their favourite social networks, like Facebook, Google, Twitter etc. Perfect for speeding up the login process on your e-commerce shop. <a href="https://yithemes.com/" target="_blank">Get more plugins for your e-commerce shop on <strong>YITH</strong></a>.
-Version: 1.3.6
+Version: 1.3.2
 Author: YITH
 Author URI: https://yithemes.com/
 Text Domain: yith-woocommerce-social-login
 Domain Path: /languages/
 WC requires at least: 3.0.0
-WC tested up to: 3.8.0
+WC tested up to: 3.6.0
 */
 
 /*
@@ -74,7 +74,7 @@ if ( !function_exists( 'yith_ywsl_install_woocommerce_admin_notice' ) ) {
 if ( defined( 'YITH_YWSL_VERSION' ) ) {
     return;
 }else{
-    define( 'YITH_YWSL_VERSION', '1.3.6' );
+    define( 'YITH_YWSL_VERSION', '1.3.2' );
 }
 
 if ( ! defined( 'YITH_YWSL_FREE_INIT' ) ) {
@@ -129,12 +129,11 @@ function yith_ywsl_constructor() {
     // Load YWSL text domain ___________________________________
     load_plugin_textdomain( 'yith-woocommerce-social-login', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
-	if ( ! headers_sent() && ! session_id() ) {
+	if(session_id() == '') {
 		session_start();
 	}
 
-
-	require_once( YITH_YWSL_INC . 'functions.yith-social-login.php' );
+    require_once( YITH_YWSL_INC . 'functions.yith-social-login.php' );
     require_once( YITH_YWSL_INC . 'class-yith-social-login.php' );
 	require_once( YITH_YWSL_INC . 'class-yith-social-login-session.php' );
     if ( is_admin() ) {

@@ -18,6 +18,29 @@ return array(
 
 	'settings' => array(
 
+        'section_general_settings_videobox'         => array(
+            'name' => __( 'Upgrade to the PREMIUM VERSION', 'yith-woocommerce-social-login' ),
+            'type' => 'videobox',
+            'default' => array(
+                'plugin_name'        => __( 'YITH WooCommerce Social Login', 'yith-woocommerce-social-login' ),
+                'title_first_column' => __( 'Discover Advanced Features', 'yith-woocommerce-social-login' ),
+                'description_first_column' => __('Upgrade to the PREMIUM VERSION
+of YITH WooCommerce Social Login to benefit from all features!', 'yith-woocommerce-social-login'),
+                'video' => array(
+                    'video_id'           => '125910673',
+                    'video_image_url'    =>  YITH_YWSL_ASSETS_URL.'/images/yith-woocommerce-social-login.jpg',
+                    'video_description'  => __( 'YITH WooCommerce Social Login', 'yit' ),
+                ),
+                'title_second_column' => __( 'Get Support and Pro Features', 'yith-woocommerce-social-login' ),
+                'description_second_column' => __('By purchasing the premium version of the plugin, you will benefit from the advanced features of the product and you will get one year of free update and support through our platform available 24h/24.', 'yith-woocommerce-social-login'),
+                'button' => array(
+                    'href' =>  YITH_WC_Social_Login_Admin()->get_premium_landing_uri(),
+                    'title' => 'Get Support and Pro Features'
+                )
+            ),
+            'id'   => 'ywsl_general_videobox'
+        ),
+
 		'section_general_settings'     => array(
 			'name' => __( 'General settings', 'yith-woocommerce-social-login' ),
 			'type' => 'title',
@@ -57,8 +80,7 @@ return array(
             'desc'    => '',
             'id'      => 'ywsl_facebook_enable',
             'default' => 'no',
-            'type'      => 'yith-field',
-            'yith-type' => 'onoff',
+            'type'    => 'checkbox'
         ),
 
         'facebook_id' => array(
@@ -94,8 +116,7 @@ return array(
             'desc'    => '',
             'id'      => 'ywsl_twitter_enable',
             'default' => 'no',
-            'type'      => 'yith-field',
-            'yith-type' => 'onoff',
+            'type'    => 'checkbox'
         ),
 
         'twitter_key' => array(
@@ -131,8 +152,7 @@ return array(
             'desc'    => '',
             'id'      => 'ywsl_google_enable',
             'default' => 'no',
-            'type'      => 'yith-field',
-            'yith-type' => 'onoff',
+            'type'    => 'checkbox'
         ),
 
         'google_id' => array(

@@ -7,7 +7,8 @@
  * http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
-jQuery( function ( $ ) {
+
+(function ( $ ) {
     //dependencies handler
     $( '[data-dep-target]' ).each( function () {
         var t = $( this );
@@ -149,4 +150,4 @@ jQuery( function ( $ ) {
     // prevents the WC message for changes when leaving the panel page
     $( '.yith-plugin-fw-panel .woo-nav-tab-wrapper' ).removeClass( 'woo-nav-tab-wrapper' ).addClass( 'yith-nav-tab-wrapper' );
 
-} );
+})( jQuery );

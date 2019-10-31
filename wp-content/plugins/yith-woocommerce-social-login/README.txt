@@ -3,8 +3,8 @@
 Contributors: yithemes
 Tags: social login, login, social provider, social authentication, authentication, connect with social, woocommerce connect, facebook, google, register, social networks, twitter
 Requires at least: 4.0
-Tested up to: 5.3
-Stable tag: 1.3.6
+Tested up to: 5.0
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -62,151 +62,122 @@ During this transition step, .po and .mo files will be used as always, but in or
 
 
 == Changelog ==
-
-= 1.3.6 - Released on 30 October 2019 =
-
-* Update: Plugin framework
-
-= 1.3.5 - Released on 29 October 2019 =
-
-* New: Support for WordPress 5.3
-* New: Support for WooCommerce 3.8
-* Update: Plugin framework
-
-= 1.3.4 - Released on 24 July 2019 =
-
-* New: Support for WooCommerce 3.7
-* Update: Plugin framework
-
-= 1.3.3 - Released on 12 June 2019 =
-
-* Update: Plugin framework
-
-= 1.3.2 - Released on 29 April 2019 =
-
+= 1.3.2 - Released on Apr 29, 2019 =
 * Update: Facebook icon
 
-= 1.3.1 - Released on 23 April 2019 =
+= 1.3.1 - Released on Apr 23, 2019 =
+* Update: Plugin Core 3.1.29
 
-* Update: Plugin framework
+= 1.3.0 - Released on Apr 05, 2019 =
+* New: Support to WooCommerce 3.6.0 RC1
+* Update: Plugin Core 3.1.28
 
-= 1.3.0 - Released on 05 April 2019 =
-
-* New: Support for WooCommerce 3.6
-* Update: Plugin framework
-
-= 1.2.9 - Released on 11 February 2019 =
-
-* Update: Plugin framework
+= 1.2.9 - Released on Feb 11, 2019 =
+* Update: Plugin Core 3.1.20
 * Update: Hybrid Library to 2.13.0
 * Update: Google Library to remove Google+
 * Update: Google icon
 
-= 1.2.8 - Released on 28 January 2019 =
+= 1.2.8 - Released on Jan 28, 2019 =
+* Update: Plugin Core 3.1.15
 
-* Update: Plugin framework
+= 1.2.7 - Released on Dec 10, 2018 =
+* New: Support to WordPress 5.0
+* Update: Plugin Core 3.1.5
 
-= 1.2.7 - Released on 10 December 2018 =
+= 1.2.6 - Released on Dec 06, 2018 =
+* New: Support to WordPress 5.0
+* Update: Plugin Core 3.1.5
 
-* New: Support for WordPress 5.0
-* Update: Plugin framework
+= 1.2.5 - Released on Oct 24, 2018 =
+* Update: Plugin Core 3.0.28
 
-= 1.2.6 - Released on 06 December 2018 =
-
-* New: Support for WordPress 5.0
-* Update: Plugin framework
-
-= 1.2.5 - Released on 24 October 2018 =
-
-* Update: Plugin framework
-
-= 1.2.3 - Released on 18 October 2018 =
-
-* New: Support for WooCommerce 3.5
+= 1.2.3 - Released on Oct 18, 2018 =
+* New: Support to WooCommerce 3.5.0 RC2
+* Update: Plugin Core 3.0.25
 * Tweak: Twitter callback URL
-* Update: Plugin framework
 
-= 1.2.2 - Released on 27 September 2018 =
-
-* Update: Plugin framework
+= 1.2.2 - Released on Sep 27, 2018 =
+* Update: Plugin Core 3.0.23
 * Fix: Fixed warning for session_destroy()
 * Fix: Removed public_actions from Facebook
 * Fix: Google+ login scopes
 
-= 1.2.1 - Released on 16 May 2018 =
-
-* New: Support for WordPress 4.9.6
-* New: Support for WooCommerce 3.4
+= 1.2.1 - Released on May 16, 2018 =
+* New: Support to WordPress 4.9.6 RC2
+* New: Support to WooCommerce 3.4.0 RC1
 * Dev: Added Classes YITH_WC_Social_Login_Session
 * Updated: Hybrid Library 2.10.0
-* Update: Plugin framework
+* Update: Plugin Core 3.0.15
 * Fix: Facebook login flow
 
-= 1.2.0 - Released on 31 March 2017 =
+= 1.2.0 - Released on Mar 31, 2017 =
+* New: Support to WooCommerce 3.0 RC 2
+* Update: Plugin Framework
 
-* New: Support for WooCommerce 3.0
-* Update: Plugin framework
-
-= 1.1.2 - Released on 16 February 2017 =
-
+= 1.1.2 - Released on Feb 16, 2017 =
 * Fix: Issue when are called functions include/require in hybridauth library
-* Update: Plugin framework
+* Update: Plugin Framework
 
-= 1.1.1 - Released on 28 December 2016 =
-
-* New: Action to send email to customer after the registration
-* Update: Hybrid Library 2.8.2
+= 1.1.1 - Released on Dec 28, 2016 =
+* Added: Action to send email to customer after the registration
+* Updated: Hybrid Library 2.8.2
 
 
 = 1.1.0 =
 * Tweak: Clear the session when a user logged out
 
-= 1.0.9 - Released on 14 December 2015 =
-* New: Support for Wordpress 4.4
-* Fix: Catch the Exceptions when the login with provider is cancelled
-* Update: Plugin framework
+= 1.0.9 - Released on Dec 14, 2015 =
+* Added: Support to Wordpress 4.4
+* Fixed: Catch the Exceptions when the login with provider is cancelled
+* Updated: Plugin Core Framework
 
-= 1.0.8 - Released on 07 December 2015 =
+= 1.0.8 - Released on Dec 07, 2015 =
+* Fixed: YIT panel script not enqueue in admin
 
-* Fix: YIT panel script not enqueue in admin
+= 1.0.7 - Released on Dec 04, 2015 =
+* Added: Swedish translation
+* Updated: Hybrid Library 2.6.0
+* Updated: Changed Text Domain from 'ywsl' to 'yith-woocommerce-social-login'
 
-= 1.0.7 - Released on 04 December 2015 =
+= 1.0.6 - Released on Sep 14, 2015 =
+* Fixed: Template social buttons
+* Fixed: Removed "read_stream" Facebook scope
+* Updated: Plugin Core Framework
 
-* New: Swedish translation
-* Update: Hybrid Library 2.6.0
-* Update: Changed Text Domain from 'ywsl' to 'yith-woocommerce-social-login'
+= 1.0.5 - Released on Aug 12, 2015 =
+* Added: Support to WooCommerce 2.4.2
+* Updated: Plugin Core Framework
 
-= 1.0.6 - Released on 14 September 2015 =
+= 1.0.4 - Released on Jun 19, 2015 =
+* Fixed: Security issues
 
-* Fix: Template social buttons
-* Fix: Removed "read_stream" Facebook scope
-* Update: Plugin framework
+= 1.0.3 - Released on May 14, 2015 =
+* Fixed: Refeal link
 
-= 1.0.5 - Released on 12 August 2015 =
+= 1.0.2 - Released on May 12, 2015 =
+* Fixed: Removed "read_friendlists" scope
 
-* New: Support for WooCommerce 2.4.2
-* Update: Plugin framework
+= 1.0.1 - Released on Apr 24, 2015 =
+* Added: Wordpress 4.2 compatibility
+* Fixed: Wp security issue
 
-= 1.0.4 - Released on 19 June 2015 =
-
-* Fix: Security issues
-
-= 1.0.3 - Released on 14 May 2015 =
-
-* Fix: Refeal link
-
-= 1.0.2 - Released on 12 May 2015 =
-
-* Fix: Removed "read_friendlists" scope
-
-= 1.0.1 - Released on 24 April 2015 =
-
-* New: Wordpress 4.2 compatibility
-* Fix: Wp security issue
-
-= 1.0.0 - Released on 12 March 2015 =
+= 1.0.0 - Released on Mar 12, 2015 =
 Initial release
 
 == Suggestions ==
 If you have any suggestions concerning how to improve YITH WooCommerce Social Login, you can [write to us](mailto:plugins@yithemes.com "Your Inspiration Themes"), so that we can improve YITH WooCommerce Social Login.
 
+== Upgrade notice ==
+= 1.0.3 =
+* Fixed: Refeal link
+
+= 1.0.2 =
+* Fixed: Removed "read_friendlists" scope
+
+= 1.0.1 =
+* Added: Wordpress 4.2 compatibility
+* Fixed: Wp security issue
+
+= 1.0.0 =
+Initial release

@@ -185,11 +185,6 @@ if( ! class_exists( 'YITH_WC_Social_Login' ) ){
 					wp_redirect( $this->get_redirect_to() );
 				}
 
-				if ( is_null( $this->hybridauth ) ) {
-					wp_redirect( $this->get_redirect_to() );
-				}
-
-
 				try {
 					$adapter      = $this->hybridauth->authenticate( $social_name );
 					$user_profile = $adapter->getUserProfile();
