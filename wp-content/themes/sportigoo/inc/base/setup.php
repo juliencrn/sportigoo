@@ -86,6 +86,7 @@ add_action( 'after_setup_theme', function () {
 
     // Add new post thumbnail size
     add_image_size( 'medhome', 520, 9999 ); // and unlimited height
+    add_image_size( 'med-400', 400, 9999 ); // and unlimited height
 
 } );
 

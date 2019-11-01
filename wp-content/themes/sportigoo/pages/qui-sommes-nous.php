@@ -150,7 +150,7 @@ while (have_posts()) {
             <?php } ?>
         </section>
 
-        <?php
+        <?php /*
         $titre_1 = "Ça cartonne en ce moment !";
         $pattern = get_stylesheet_directory_uri() . "/dist/img/pattern-activite.png";
         if ( have_rows( 'suggestion', 2 ) ) {
@@ -173,7 +173,7 @@ while (have_posts()) {
                     ) ); ?>
                 </div>
             </section>
-        <?php } ?>
+        <?php } */ ?>
 
     </div>
 

@@ -12,14 +12,14 @@ const activities = $ => {
 			dots: false,
 			infinite: true,
 			speed: 300,
-			autoplay: true,
+			// autoplay: true,
 			slidesToShow: 5,
 			centerMode: true,
 			centerPadding: padding,
 			prevArrow:
-				'<div class="carousel__prev"><svg width="20" height="20"><use xlink:href="#chevron-left"></use></svg></div>',
+				'<div class="carousel__prev" style="display: none"></div>',
 			nextArrow:
-				'<div class="carousel__next"><svg width="20" height="20"><use xlink:href="#chevron-right"></use></svg></div>',
+				'<div class="carousel__next"><svg width="50" height="50"><use xlink:href="#next"></use></svg></div>',
 
 			responsive: [
 				{

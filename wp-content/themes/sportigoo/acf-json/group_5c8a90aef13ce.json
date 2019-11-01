@@ -169,8 +169,8 @@
             "allow_null": 0
         },
         {
-            "key": "field_5c8aed470a13b",
-            "label": "Suggestion",
+            "key": "field_5dbb7e2f54a55",
+            "label": "Netflix",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -185,10 +185,10 @@
             "endpoint": 0
         },
         {
-            "key": "field_5c8aed520a13c",
-            "label": "Suggestion",
-            "name": "suggestion",
-            "type": "group",
+            "key": "field_5dbb7e4254a56",
+            "label": "Sections Netflix",
+            "name": "sections_netflix",
+            "type": "repeater",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -197,12 +197,16 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "block",
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
             "sub_fields": [
                 {
-                    "key": "field_5c8aedbc0a140",
-                    "label": "Titre de la section",
-                    "name": "titre_de_la_section",
+                    "key": "field_5dbb7e6d54a57",
+                    "label": "Titre",
+                    "name": "titre",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -212,18 +216,18 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "Les suggestions",
+                    "default_value": "Sportigoo Original",
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
                     "maxlength": ""
                 },
                 {
-                    "key": "field_5c8aed5a0a13d",
-                    "label": "Titre 1",
-                    "name": "titre_1",
-                    "type": "text",
-                    "instructions": "Trié par nombre de ventes",
+                    "key": "field_5dbb7e7c54a58",
+                    "label": "Produits",
+                    "name": "produits",
+                    "type": "post_object",
+                    "instructions": "Pour des raisons de performances, essayer de limiter le nombre à 10",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -231,18 +235,58 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "Ça cartonne en ce moment !",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                },
+                    "post_type": [
+                        "product"
+                    ],
+                    "taxonomy": "",
+                    "allow_null": 0,
+                    "multiple": 1,
+                    "return_format": "id",
+                    "ui": 1
+                }
+            ]
+        },
+        {
+            "key": "field_5dbba2cbb13db",
+            "label": "Chiffres",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5dbba2e0b13dc",
+            "label": "Chiffres",
+            "name": "chiffres",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 3,
+            "max": 3,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
                 {
-                    "key": "field_5c8aed870a13e",
-                    "label": "Titre 2",
-                    "name": "titre_2",
+                    "key": "field_5dbba2efb13dd",
+                    "label": "Chiffre",
+                    "name": "chiffre",
                     "type": "text",
-                    "instructions": "Trié par nombre d'avis",
+                    "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -250,18 +294,18 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "Les sorties tendances",
+                    "default_value": "3.500",
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
                     "maxlength": ""
                 },
                 {
-                    "key": "field_5c8aed990a13f",
-                    "label": "Titre 3",
-                    "name": "titre_3",
+                    "key": "field_5dbba2fdb13de",
+                    "label": "Label",
+                    "name": "label",
                     "type": "text",
-                    "instructions": "Trié par date de modification\/publication",
+                    "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -269,11 +313,35 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "Derniers ajouts",
+                    "default_value": "Personnes conquises",
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
                     "maxlength": ""
+                },
+                {
+                    "key": "field_5dbba307b13df",
+                    "label": "Icon",
+                    "name": "icon",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
                 }
             ]
         },
@@ -296,7 +364,7 @@
         {
             "key": "field_5dbb78413b576",
             "label": "Titre Types d'événement",
-            "name": "",
+            "name": "titre_types_devenement",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -423,5 +491,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1572567166
+    "modified": 1572578073
 }

@@ -1,63 +1,69 @@
 <?php
-if ( !function_exists( 'zz_display_product_row' ) ) {
-    return;
-}
-$page_title = "Les suggestions";
-$titre_1 = "Ça cartonne en ce moment !";
-$titre_2 = "Les sorties tendances";
-$titre_3 = "Derniers ajouts";
-$pattern = get_stylesheet_directory_uri() . "/dist/img/pattern-activite.png";
-
-if ( have_rows( 'suggestion', 2 ) ) {
-    while (have_rows( 'suggestion', 2 )) {
-        the_row();
-
-        $page_title = get_sub_field( 'titre_de_la_section' ) ?: $page_title;
-        $titre_1 = get_sub_field( 'titre_1' ) ?: $titre_1;
-        $titre_2 = get_sub_field( 'titre_2' ) ?: $titre_2;
-        $titre_3 = get_sub_field( 'titre_3' ) ?: $titre_3;
-    }
-}
+$has_preview = true;
 ?>
 
-<section class="activities activities--<?php echo is_front_page() ? 'homepage': 'trendy'; ?> activities-display">
-    <div class="activities__pattern" style="background-image: url('<?php echo $pattern ?>');"></div>
-    <?php if (is_front_page()) { ?>
-        <div class="container">
-            <h2 class="section-title"><?php echo $page_title ?></h2>
+<section class="activities activities--homepage activities-display">
+
+  <?php if ( have_rows('sections_netflix') ) { ?>
+    <?php while ( have_rows('sections_netflix') ) {
+      the_row(); ?>
+
+      <div class="activities__block">
+        <div class="">
+          <h2 class="homepage__titles h1 t-orange">
+            <?php the_sub_field('titre') ?>
+          </h2>
         </div>
+        <?php
+        $post_ids = get_sub_field('produits');
+        if ( !empty($post_ids) ) { ?>
+          <div class="activities__row">
+            <div class="activities__slider activitiesSlider <?php echo $has_preview ? 'hasPrev':'' ?>">
+              <?php foreach ($post_ids as $post_id) {
+                $product = wc_get_product($post_id);
+                if ( $product->is_visible() ) {
+                  $thumbnail_url = get_the_post_thumbnail_url( $post_id, 'med-400' ); ?>
+
+                  <article
+                    data-id="<?php echo $post_id; ?>"
+                    <?php wc_product_class('activities__item-wrapper'); ?>
+                  >
+                    <div class="wrapper">
+                      <a class="activities__link" href="<?php echo get_permalink($post_id); ?>">
+                        <div class="activities__item">
+                          <div class="activities__img" style="background-image: url(<?php echo $thumbnail_url ?>);"></div>
+                          <h4 class="activities__title">
+                            <?php echo get_the_title($post_id); ?>
+                          </h4>
+                          <div class="activities__filter"></div>
+                        </div>
+                      </a>
+                      <svg class="activities__preview-button" width="20" height="20">
+                        <use xlink:href="#next"></use>
+                      </svg>
+                    </div>
+                  </article>
+                <?php } ?>
+
+              <?php } ?>
+            </div>
+          </div>
+
+          <?php // Preview template
+          if ($has_preview) {
+            get_template_part( 'pages/homepage/activities', 'preview' );
+          }
+        } ?>
+      </div>
+
     <?php } ?>
+  <?php } ?>
 
-    <div class="activities__block">
-        <div class="">
-            <h3 class="section-subtitle <?php echo is_front_page() ? '': 't-white'; ?>"><?php echo $titre_1 ?></h3>
-        </div>
-        <?php zz_display_product_row(array(
-            'orderby' => array('meta_value_num' => 'DESC'),
-            'meta_key' => 'total_sales'
-        )); ?>
-    </div>
+  <div class="activities__cta">
+    <a href="#" class="button2">
+      Voir tout
+    </a>
+  </div>
 
-    <div class="activities__block">
-        <div class="">
-            <h3 class="section-subtitle"><?php echo $titre_2 ?></h3>
-        </div>
-        <?php zz_display_product_row(array(
-            'orderby' => array('comment_count' => 'DESC')
-        )); ?>
-    </div>
-
-    <div class="activities__block">
-        <div class="">
-            <h3 class="section-subtitle"><?php echo $titre_3 ?></h3>
-        </div>
-        <?php zz_display_product_row(array(
-            'orderby' => array('modified' => 'DESC')
-        )); ?>
-    </div>
-
-    <style>
-      .activities__block > div > h3.section-subtitle { margin-left: 50px; }
-    </style>
 
 </section>

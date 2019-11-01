@@ -253,40 +253,19 @@ if ( !function_exists( 'zz_display_product_row' ) ) {
     /**
      * Affiche un row de product filtrés
      *
-     * @param array $args
+     * @param $post_ids
      * @param bool $preview
      */
-    function zz_display_product_row($args = [], $preview = true)
+    function zz_display_product_row($post_ids, $preview = true)
     {
-        $commun_arg = array(
-            'post_type' => 'product',
-            'post_status' => 'publish',
-            'posts_per_page' => 12,
-        );
-
-//        if (is_page(39)) { // Activité page only
-//            if ( get_option( 'region_term_id' ) ) {
-//                if (isset($args['tax_query'])) {
-//                    $args['tax_query'][] = array('relation' => 'AND');
-//                }
-//                $args['tax_query'][] = array(
-//                    'taxonomy' => 'lieu',
-//                    'terms' => get_option( 'region_term_id' )
-//                );
-//            }
-//        }
-
-        $args = array_merge($commun_arg,$args);
-
-        $products = new WP_Query( $args  );
-        if ( $products->have_posts() ) { ?>
+        if ( !empty($post_ids) ) { ?>
             <div class="activities__row">
                 <div class="activities__slider activitiesSlider <?php echo $preview ? 'hasPrev':'' ?>">
-                    <?php while ($products->have_posts()) {
-                        $products->the_post();
-                        get_template_part( 'woocommerce/content', 'product' );
+                    <?php foreach ($post_ids as $post_id) {
+                      set_query_var('post_id', $post_id);
+                      get_template_part( 'woocommerce/content', 'product' );
                     }
-                    wp_reset_postdata(); ?>
+                    ?>
                 </div>
             </div>
 
@@ -360,7 +339,7 @@ if ( !function_exists( 'sportigoo_section_product_tax' ) ) {
 
       <?php foreach ($arr as $term) {
         $bg = get_field('image', $term);
-        $bg = !empty($bg) ? $bg['sizes']['medhome'] : '';
+        $bg = !empty($bg) ? $bg['sizes']['med-400'] : '';
         $title = $term->name;
         ?>
         <div class="homepage__categories__item">
