@@ -21,8 +21,8 @@ if ( have_rows( 'header' ) ) {
             </div>
             <div class="go-down">
               <a href="#homepage__search">
-                <svg width="25" height="25">
-                  <use xlink:href="#chevron-down"></use>
+                <svg width="25" height="25" style="transform: rotate(90deg)">
+                  <use xlink:href="#next"></use>
                 </svg>
               </a>
             </div>

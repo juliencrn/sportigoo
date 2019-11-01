@@ -5,13 +5,13 @@
         href="#homepage__categories"
         class="button2 button2--xxl button2--noradius-right"
       >
-        Quoi ?
+        <?php the_field('label_quoi'); ?>
       </a>
       <a
         href="#homepage__event_types"
         class="button2 button2--xxl button2--noradius-left"
       >
-        Pour qui ?
+        <?php the_field('label_qui'); ?>
       </a>
     </div>
   </div>

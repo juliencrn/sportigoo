@@ -7,12 +7,14 @@ $bp-larger-than-mobile    : "min-width: 375px" !default;
 $bp-larger-than-phablet   : "min-width: 550px" !default;
 $bp-larger-than-tablet    : "min-width: 768px" !default;
 $bp-larger-than-desktop   : "min-width: 1000px" !default;
+$bp-larger-than-desktopm   : "min-width: 1200px" !default;
 $bp-larger-than-desktophd : "min-width: 1366px" !default;
 
 $bp-smaller-than-mobile: "max-width: 374px" !default;
 $bp-smaller-than-phablet: "max-width: 549px" !default;
 $bp-smaller-than-tablet: "max-width: 767px" !default;
 $bp-smaller-than-desktop: "max-width: 999px" !default;
+$bp-smaller-than-desktopm: "max-width: 1199px" !default;
 $bp-smaller-than-desktophd: "max-width: 1365px" !default;
 
 // =============================================================================
@@ -87,7 +89,7 @@ $flh-p: 1.2;
 // =============================================================================
 // Grid Variables
 // =============================================================================
-$container-width: 1140px !default;
+$container-width: 1200px !default;
 $container-width-larger-than-mobile: 90% !default;
 $container-width-larger-than-phablet: 85% !default;
 $total-columns: 12 !default;

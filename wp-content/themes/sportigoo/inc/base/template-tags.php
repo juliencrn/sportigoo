@@ -342,3 +342,48 @@ if ( !function_exists( 'whl_get_the_excerpt' ) ) {
         return $excerpt;
     }
 }
+
+
+if ( !function_exists( 'sportigoo_section_product_tax' ) ) {
+  /**
+   * Récupérer une liste de terms->slugs
+   *
+   * @param $arr array of terms
+   * @return mixed html | null
+   */
+  function sportigoo_section_product_tax($arr)
+  {
+    if ( empty($arr) ) {
+      return null;
+    }
+    ?>
+
+      <?php foreach ($arr as $term) {
+        $bg = get_field('image', $term);
+        $bg = !empty($bg) ? $bg['sizes']['medhome'] : '';
+        $title = $term->name;
+        ?>
+        <div class="homepage__categories__item">
+
+          <div class="homepage__categories__item--bg" style="background-image: url('<?php echo $bg; ?>');">
+            <div class="homepage__categories__item--face">
+              <h3 class="homepage__categories__item--title">
+                <?php echo $title; ?>
+              </h3>
+            </div>
+            <div class="homepage__categories__item--hover">
+              <h3 class="homepage__categories__item--title">
+                <?php echo $title; ?>
+              </h3>
+              <p class="homepage__categories__item--content">
+                <?php echo $term->description; ?>
+              </p>
+            </div>
+          </div>
+        </div>
+      <?php } ?>
+
+    <?php
+
+  }
+}
