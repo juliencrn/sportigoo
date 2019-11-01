@@ -2233,6 +2233,13 @@ button.button,
   .woocommerce input.button--xxl,
   .woocommerce button.button--xxl {
     padding: 25px; }
+  a.button--noradius,
+  input.button--noradius,
+  button.button--noradius,
+  .woocommerce a.button--noradius,
+  .woocommerce input.button--noradius,
+  .woocommerce button.button--noradius {
+    border-radius: 0; }
   a.button--noradius-left,
   input.button--noradius-left,
   button.button--noradius-left,
@@ -2299,6 +2306,10 @@ button.button2 {
   input.button2--xxl,
   button.button2--xxl {
     padding: 25px; }
+  a.button2--noradius,
+  input.button2--noradius,
+  button.button2--noradius {
+    border-radius: 0; }
   a.button2--noradius-left,
   input.button2--noradius-left,
   button.button2--noradius-left {
@@ -3167,51 +3178,24 @@ li {
      -moz-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  margin: 0 30px 0 0;
-  text-align: left;
-  font-weight: 500; }
+  text-align: left; }
   .custom-select select {
     display: none;
     /*hide original SELECT element: */ }
 
-.select-selected {
-  background-color: #FFF;
-  border-radius: 5px; }
-  .select-selected:after {
-    position: absolute;
-    content: url(".././img/chevron-down.svg");
-    top: 17px;
-    right: 20px;
-    width: 15px;
-    height: 15px;
-    -webkit-transition: -webkit-transform 0.4s;
-    transition: -webkit-transform 0.4s;
-    -o-transition: transform 0.4s;
-    -moz-transition: transform 0.4s, -moz-transform 0.4s;
-    transition: transform 0.4s;
-    transition: transform 0.4s, -webkit-transform 0.4s, -moz-transform 0.4s; }
-
 /* Point the arrow upwards when the select box is open (active): */
-.select-selected.select-arrow-active:after {
-  border-color: transparent transparent #FFF transparent;
-  -webkit-transform: rotate(180deg);
-     -moz-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-          transform: rotate(180deg); }
-
 /* style the items (options), including the selected item: */
-.select-items div,
-.select-selected {
-  color: #1D467A;
+.select-items div {
+  color: #E7511E;
   padding: 16px 20px;
-  border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
   cursor: pointer; }
 
 /* Style items (options): */
 .select-items {
   position: absolute;
   background-color: #FFF;
+  top: 70px;
+  border: 2px solid green;
   left: 0;
   right: 0;
   z-index: 99; }
@@ -4603,6 +4587,81 @@ td:last-child {
   display: flex; }
   .produit_sporti section.laws .row > .cols {
     margin: auto; }
+
+.search__header {
+  background-color: #E7511E;
+  position: relative; }
+  .search__header .cover {
+    position: relative; }
+    .search__header .cover__titles {
+      text-align: left;
+      width: 100%;
+      max-width: 450px; }
+      @media (min-width: 550px) {
+        .search__header .cover__titles {
+          margin-left: 20%; } }
+      @media (min-width: 1200px) {
+        .search__header .cover__titles {
+          margin-left: 30%; } }
+      .search__header .cover__titles .title {
+        font-weight: 700;
+        line-height: 1;
+        font-size: 4rem;
+        font-family: "Gotham-black", sans-serif; }
+    .search__header .cover__image {
+      width: 715px;
+      max-width: 40%;
+      height: auto;
+      position: absolute;
+      bottom: 5%;
+      right: 10%; }
+      @media (max-width: 549px) {
+        .search__header .cover__image {
+          display: none; } }
+  .search__header__waves {
+    width: 100%;
+    z-index: -1;
+    left: 0;
+    background-color: transparent;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    background-image: url("../../static/svg/wave-orange.svg");
+    background-position: bottom;
+    top: 0;
+    -webkit-transform: translateY(0) rotate(180deg);
+       -moz-transform: translateY(0) rotate(180deg);
+        -ms-transform: translateY(0) rotate(180deg);
+            transform: translateY(0) rotate(180deg);
+    height: 300px; }
+    @media (min-width: 1200px) {
+      .search__header__waves {
+        height: 400px; } }
+
+.search__buttons .container {
+  padding-top: 80px;
+  padding-bottom: 60px; }
+  .search__buttons .container .wrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+       -moz-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    max-width: 100%;
+    width: 550px;
+    text-align: center;
+    margin: auto; }
+    .search__buttons .container .wrapper .button2, .search__buttons .container .wrapper .button {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+         -moz-box-flex: 1;
+          -ms-flex: 1;
+              flex: 1; }
 
 .pab {
   position: absolute; }

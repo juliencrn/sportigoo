@@ -7,6 +7,7 @@ import {activities} from './activities.js'
 import {lastPosts} from './last-posts.js'
 import {respNavigation} from './resp-navigation.js'
 import {faq} from './faq.js'
+import {ajaxSearch} from "./ajax-search";
 import {modal} from "./modal";
 import {searchActivity} from './search-activity'
 import {activitiesPreview} from './activities-preview'
@@ -29,7 +30,8 @@ jQuery($ => {
 	faq($);
 	modalNewsletter($);
 	searchActivity($);
-	woocommerce($)
+	woocommerce($);
+	ajaxSearch($)
 
 });
 

@@ -60,7 +60,7 @@ $has_preview = true;
   <?php } ?>
 
   <div class="activities__cta">
-    <a href="#" class="button2">
+    <a href="<?php echo get_permalink(get_field('page_de_recherche', 'option')) ?>" class="button2">
       Voir tout
     </a>
   </div>

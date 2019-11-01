@@ -37,6 +37,8 @@ require $inc . "widgets/widget-social-count.php";
 require $inc . "widgets/widget-twitter.php";
 require $inc . "widgets/widgets.php";
 
+require $inc . "ajax-search.php";
+
 
 if ( is_plugin_active( 'mailjet-for-wordpress/wp-mailjet.php' ) ) {
     require $inc . "vendors/edit-mailjet.php"; // Mailjet

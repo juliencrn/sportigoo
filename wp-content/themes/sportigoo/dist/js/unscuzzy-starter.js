@@ -575,6 +575,59 @@ var faq = function faq($) {
   });
 };
 
+var ajaxSearch = function ajaxSearch($) {
+
+  // Don't use if we are on another page
+  if (!$('body').hasClass('page-template-page-search')) {
+    return null;
+  }
+
+  // DOM Search inputs
+  var searchSection = $('#js-search__buttons');
+  var outputSection = $('#js-search__output');
+  var output = outputSection.find('#js-output');
+  var viewMoreButton = outputSection.find('#js-view-more');
+  var productItemClass = '.js-product-item';
+
+  // Ajax args
+  var initialArgs = {
+    'action': 'zz_get_products'
+  };
+
+  // Initial load
+  callServer();
+
+  // Utils functions
+  function getProductCount() {
+    return output.find(productItemClass).length;
+  }
+
+  function callServer() {
+    var offset = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+    var args = Object.assign(initialArgs, { offset: offset });
+    $.post(ajaxurl, args, function (res) {
+      return output.append(res);
+    });
+  }
+
+  // View more button first
+  viewMoreButton.on('click', function () {
+    return callServer(getProductCount());
+  });
+
+  // Infinite scroll
+  $(window).scroll(function () {
+    var currentPosition = $(window).scrollTop();
+    var winHeight = $(window).height();
+    var docHeight = $(document).height();
+
+    if (currentPosition + winHeight === docHeight) {
+      callServer(getProductCount());
+    }
+  });
+};
+
 var modal = function modal($) {
   jQuery(function ($) {
     var popup = $('.activity-preview__video');
@@ -816,6 +869,7 @@ jQuery(function ($) {
 	modalNewsletter($);
 	searchActivity($);
 	woocommerce($);
+	ajaxSearch($);
 });
 
 }());

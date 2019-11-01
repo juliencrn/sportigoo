@@ -341,10 +341,17 @@ if ( !function_exists( 'sportigoo_section_product_tax' ) ) {
         $bg = get_field('image', $term);
         $bg = !empty($bg) ? $bg['sizes']['med-400'] : '';
         $title = $term->name;
-        ?>
-        <div class="homepage__categories__item">
 
-          <div class="homepage__categories__item--bg" style="background-image: url('<?php echo $bg; ?>');">
+        // Build pre-filtered URL
+        $search_page_id = get_field('page_de_recherche', 'option');
+        $base_url = get_permalink($search_page_id);
+        $key = 'categorie';
+        $value = $term->slug;
+        $url = add_query_arg($key, $value, $base_url);
+        ?>
+
+        <div class="homepage__categories__item">
+          <a href="<?php echo $url; ?>" class="homepage__categories__item--bg" style="background-image: url('<?php echo $bg; ?>');">
             <div class="homepage__categories__item--face">
               <h3 class="homepage__categories__item--title">
                 <?php echo $title; ?>
@@ -358,7 +365,7 @@ if ( !function_exists( 'sportigoo_section_product_tax' ) ) {
                 <?php echo $term->description; ?>
               </p>
             </div>
-          </div>
+          </a>
         </div>
       <?php } ?>
 

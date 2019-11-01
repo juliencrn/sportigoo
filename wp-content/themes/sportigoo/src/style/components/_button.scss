@@ -15,6 +15,9 @@
   &--xxl {
     padding: 25px;
   }
+  &--noradius {
+    border-radius: 0;
+  }
   &--noradius-left {
     border-radius: 0 50px 50px 0;
   }

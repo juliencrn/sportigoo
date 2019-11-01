@@ -18,7 +18,7 @@ if ( !is_product() && !is_shop() && !is_page(35) && !is_page(41) && !is_single()
 
 </div><!-- #sportigoo__main -->
 
-<footer>
+<footer id="site-footer">
     <div class="footer">
         <div class="container">
             <div class="footer__col">
