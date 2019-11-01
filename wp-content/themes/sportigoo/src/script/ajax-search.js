@@ -9,13 +9,15 @@ const ajaxSearch = $ => {
   const searchSection = $('#js-search__buttons');
   const outputSection = $('#js-search__output');
   const output = outputSection.find('#js-output');
-  const viewMoreButton = outputSection.find('#js-view-more');
   const productItemClass = '.js-product-item';
 
 
   // Ajax args
   const initialArgs = {
     'action': 'zz_get_products'
+  };
+  let state = {
+    isLoading: false
   };
 
   // Initial load
@@ -27,20 +29,29 @@ const ajaxSearch = $ => {
   }
 
   function callServer(offset = 0) {
-    const args = Object.assign(initialArgs, {offset: offset});
-    $.post(ajaxurl, args, res => output.append(res));
-  }
+    if ( state.isLoading ) {
+      return null;
+    }
 
-  // View more button first
-  viewMoreButton.on('click', () => callServer(getProductCount()));
+    state.isLoading = true;
+    const args = Object.assign(initialArgs, {offset: offset});
+    $.post(ajaxurl, args, res => {
+      state.isLoading = false;
+      if ( res ) {
+        output.append(res)
+      }
+    });
+  }
 
   // Infinite scroll
   $(window).scroll(() => {
     const currentPosition = $(window).scrollTop();
+    const footerHeight = $('#site-footer').height();
     const winHeight = $(window).height();
     const docHeight = $(document).height();
+    const screenPosition = currentPosition + winHeight + footerHeight + 100;
 
-    if ( currentPosition + winHeight === docHeight ) {
+    if ( !state.isLoading && screenPosition > docHeight ) {
       callServer(getProductCount())
     }
   });

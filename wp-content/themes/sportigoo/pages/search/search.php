@@ -67,12 +67,10 @@ function zz_search_select2($input) {
 
 <section id="js-search__buttons" class="search__buttons">
   <div class="container">
-    <form id="js-search-activity">
-      <div class="wrapper">
-        <?php zz_search_select2($data_inputs['what']); ?>
-        <?php zz_search_select2($data_inputs['who']); ?>
-        <?php zz_search_select2($data_inputs['where']); ?>
-      </div>
-    </form>
+    <div class="wrapper activities">
+      <?php zz_search_select2($data_inputs['what']); ?>
+      <?php zz_search_select2($data_inputs['who']); ?>
+      <?php zz_search_select2($data_inputs['where']); ?>
+    </div>
   </div>
 </section>

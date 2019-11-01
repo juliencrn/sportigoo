@@ -2,6 +2,10 @@
 $has_preview = true;
 ?>
 
+
+
+
+
 <section class="activities activities--homepage activities-display">
 
   <?php if ( have_rows('sections_netflix') ) { ?>
@@ -22,28 +26,10 @@ $has_preview = true;
               <?php foreach ($post_ids as $post_id) {
                 $product = wc_get_product($post_id);
                 if ( $product->is_visible() ) {
-                  $thumbnail_url = get_the_post_thumbnail_url( $post_id, 'med-400' ); ?>
-
-                  <article
-                    data-id="<?php echo $post_id; ?>"
-                    <?php wc_product_class('activities__item-wrapper'); ?>
-                  >
-                    <div class="wrapper">
-                      <a class="activities__link" href="<?php echo get_permalink($post_id); ?>">
-                        <div class="activities__item">
-                          <div class="activities__img" style="background-image: url(<?php echo $thumbnail_url ?>);"></div>
-                          <h4 class="activities__title">
-                            <?php echo get_the_title($post_id); ?>
-                          </h4>
-                          <div class="activities__filter"></div>
-                        </div>
-                      </a>
-                      <svg class="activities__preview-button" width="20" height="20">
-                        <use xlink:href="#next"></use>
-                      </svg>
-                    </div>
-                  </article>
-                <?php } ?>
+                  set_query_var('post_id', $post_id);
+                  set_query_var('has_preview', $has_preview);
+                  get_template_part('template-parts/loop-product-netflix');
+                } ?>
 
               <?php } ?>
             </div>

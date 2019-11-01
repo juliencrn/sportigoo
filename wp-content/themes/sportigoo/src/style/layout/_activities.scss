@@ -10,7 +10,7 @@
 
   .homepage__titles {
     margin-left: 60px;
-    margin-top: 100px;
+    margin-top: 80px;
 
     @media (#{$bp-smaller-than-tablet}) {
       margin-left: 15px;
@@ -22,11 +22,11 @@
       position: relative;
       color: $white;
       text-align: center;
-      margin: 60px 20px 0 100px;
+      margin: 50px 20px 0 80px;
       overflow: hidden;
 
       @media (#{$bp-smaller-than-tablet}) {
-        margin: 60px 15px 0 15px;
+        margin: 50px 15px 0 15px;
       }
     }
     &__item-wrapper {
@@ -71,7 +71,7 @@
         }
     }
     &__block {
-        padding-bottom: 5rem;
+        padding-bottom: 4rem;
 
         .activity-preview {
             display: none;
@@ -108,10 +108,11 @@
         background: linear-gradient(rgba($black,0) 50%, rgba($black,1));
     }
     &__title {
-
+      font-family: $ff-black;
+      font-weight: normal;
       position: relative;
       z-index: 10;
-      margin-bottom: 5px;
+      margin: 0 10px 10px;
       color:$white;
       transition: transform $fast, opacity $fast;
       opacity: 0;

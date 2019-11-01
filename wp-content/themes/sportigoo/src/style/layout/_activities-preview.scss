@@ -92,6 +92,8 @@
     &__title {
         margin-bottom: 30px;
         font-size: 3rem;
+      font-family: $ff-black;
+      font-weight: normal;
         &.orange {
             color: $secondary;
         }

@@ -30,7 +30,9 @@
   &__container {
     display: flex;
     justify-content: center;
+    position: relative;
     .wrapper {
+      margin-top: -60px;
       padding: 15px 0;
       width: 850px;
       max-width: 100%;

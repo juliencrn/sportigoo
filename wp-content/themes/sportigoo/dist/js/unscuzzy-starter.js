@@ -586,12 +586,14 @@ var ajaxSearch = function ajaxSearch($) {
   var searchSection = $('#js-search__buttons');
   var outputSection = $('#js-search__output');
   var output = outputSection.find('#js-output');
-  var viewMoreButton = outputSection.find('#js-view-more');
   var productItemClass = '.js-product-item';
 
   // Ajax args
   var initialArgs = {
     'action': 'zz_get_products'
+  };
+  var state = {
+    isLoading: false
   };
 
   // Initial load
@@ -605,24 +607,29 @@ var ajaxSearch = function ajaxSearch($) {
   function callServer() {
     var offset = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
+    if (state.isLoading) {
+      return null;
+    }
+
+    state.isLoading = true;
     var args = Object.assign(initialArgs, { offset: offset });
     $.post(ajaxurl, args, function (res) {
-      return output.append(res);
+      state.isLoading = false;
+      if (res) {
+        output.append(res);
+      }
     });
   }
-
-  // View more button first
-  viewMoreButton.on('click', function () {
-    return callServer(getProductCount());
-  });
 
   // Infinite scroll
   $(window).scroll(function () {
     var currentPosition = $(window).scrollTop();
+    var footerHeight = $('#site-footer').height();
     var winHeight = $(window).height();
     var docHeight = $(document).height();
+    var screenPosition = currentPosition + winHeight + footerHeight + 100;
 
-    if (currentPosition + winHeight === docHeight) {
+    if (!state.isLoading && screenPosition > docHeight) {
       callServer(getProductCount());
     }
   });
