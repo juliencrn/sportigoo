@@ -44,7 +44,7 @@ function zz_search_select2($input) {
     class="<?php echo $classes; ?>"
   >
     <select name="<?php echo $id; ?>">
-      <option value="0"><?php echo $input['label']; ?></option>
+      <option value="0" selected><?php echo $input['label']; ?></option>
 
       <?php
       foreach ($input['data'] as $term) {
@@ -55,7 +55,9 @@ function zz_search_select2($input) {
           </option>
           <?php
         } else { ?>
-          <option value="<?php echo $term->term_id ?>"><?php echo $term->name ?></option>
+          <option value="<?php echo $term->term_id ?>">
+            <?php echo $term->name ?>
+          </option>
         <?php }
       }
       ?>

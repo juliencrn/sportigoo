@@ -144,7 +144,8 @@ var customSelect = function customSelect($) {
     /* For each element, create a new DIV that will act as the selected item: */
     a = document.createElement('DIV');
     a.setAttribute('class', 'select-selected');
-    a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+    a.innerHTML = "<span>" + selElmnt.options[selElmnt.selectedIndex].innerHTML + "</span>";
+    // a.innerHTML = "<span>Input</span>";
     x[i].appendChild(a);
     /* For each element, create a new DIV that will contain the option list: */
     b = document.createElement('DIV');
@@ -163,7 +164,8 @@ var customSelect = function customSelect($) {
         for (i = 0; i < s.length; i++) {
           if (s.options[i].innerHTML == this.innerHTML) {
             s.selectedIndex = i;
-            h.innerHTML = this.innerHTML;
+            // h.innerHTML = this.innerHTML
+            // h.innerHTML = "Hloa"
             y = this.parentNode.getElementsByClassName('same-as-selected');
             for (k = 0; k < y.length; k++) {
               y[k].removeAttribute('class');

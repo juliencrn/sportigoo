@@ -2,67 +2,67 @@
 .custom-select {
     position: relative;
     flex: 1;
-    //margin: 0 30px 0 0;
-    text-align: left;
-    //font-weight: 500;
     select {
         display: none; /*hide original SELECT element: */
     }
-}
 
+
+
+  /* Label in bouton */
   .select-selected {
-    //background-color: $white;
-    //border-radius: $global-radius;
-    &:after {
-        //position: absolute;
-        //content: url('.././img/chevron-down.svg');
-        //top: 17px;
-        //right: 20px;
-        //width: 15px;
-        //height: 15px;
-        //transition: transform $fast;
-      }
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  /* Point the arrow upwards when the select box is open (active): */
-  .select-selected.select-arrow-active:after {
-    //border-color: transparent transparent $white transparent;
-    //transform:rotate(180deg);
-  }
-
-  /* style the items (options), including the selected item: */
-  .select-items div {
-    color: $secondary;
-    padding: 16px 20px;
-    //border: 1px solid transparent;
-    //border-color: transparent transparent rgba($black, 0.1) transparent;
-    cursor: pointer;
-  }
-
-  /* Style items (options): */
+  /* Style items dropdown (options): */
   .select-items {
     position: absolute;
     background-color:  $white;
-    top: 70px;
-    border: 2px solid green;
+    top: 90px;
     left: 0;
     right: 0;
     z-index: 99;
+    box-shadow: 1px 4px 6px 1px rgba(112, 112, 112, 0.39);
+    border-radius: 10px;
+    overflow: hidden;
+
     div {
+      color: $secondary;
+      padding: 16px 20px;
+      cursor: pointer;
       transition: background $fast;
+      text-transform: capitalize;
+
       &:nth-last-child(1) {
         border-radius: 0 0 $global-radius $global-radius;
       }
       &:hover {
-        background: $light-blue;
+        background: $light-orange;
+      }
+      /* Selected in dropdown */
+      &.same-as-selected {
+        background: $light-orange;
+      }
+    }
+
+    /* Hide the items when the select box is closed: */
+    &.select-hide {
+      display: none;
+      div:hover, .same-as-selected {
+        background-color: rgba($black, 0.1);
       }
     }
   }
 
-  /* Hide the items when the select box is closed: */
-  .select-hide {
-    display: none;
-    div:hover, .same-as-selected {
-        background-color: rgba($black, 0.1);
-    }
-  }
+}
+
+
+
+
+
+
+
+
+

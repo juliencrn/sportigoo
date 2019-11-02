@@ -3191,42 +3191,64 @@ li {
      -moz-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  text-align: left; }
+  /* Label in bouton */
+  /* Style items dropdown (options): */ }
   .custom-select select {
     display: none;
     /*hide original SELECT element: */ }
-
-/* Point the arrow upwards when the select box is open (active): */
-/* style the items (options), including the selected item: */
-.select-items div {
-  color: #E7511E;
-  padding: 16px 20px;
-  cursor: pointer; }
-
-/* Style items (options): */
-.select-items {
-  position: absolute;
-  background-color: #FFF;
-  top: 70px;
-  border: 2px solid green;
-  left: 0;
-  right: 0;
-  z-index: 99; }
-  .select-items div {
-    -webkit-transition: background 0.4s;
-    -o-transition: background 0.4s;
-    -moz-transition: background 0.4s;
-    transition: background 0.4s; }
-    .select-items div:nth-last-child(1) {
-      border-radius: 0 0 5px 5px; }
-    .select-items div:hover {
-      background: #e4f0ff; }
-
-/* Hide the items when the select box is closed: */
-.select-hide {
-  display: none; }
-  .select-hide div:hover, .select-hide .same-as-selected {
-    background-color: rgba(0, 0, 0, 0.1); }
+  .custom-select .select-selected {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+       -moz-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+       -moz-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+       -moz-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+  .custom-select .select-items {
+    position: absolute;
+    background-color: #FFF;
+    top: 90px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    -webkit-box-shadow: 1px 4px 6px 1px rgba(112, 112, 112, 0.39);
+            box-shadow: 1px 4px 6px 1px rgba(112, 112, 112, 0.39);
+    border-radius: 10px;
+    overflow: hidden;
+    /* Hide the items when the select box is closed: */ }
+    .custom-select .select-items div {
+      color: #E7511E;
+      padding: 16px 20px;
+      cursor: pointer;
+      -webkit-transition: background 0.4s;
+      -o-transition: background 0.4s;
+      -moz-transition: background 0.4s;
+      transition: background 0.4s;
+      text-transform: capitalize;
+      /* Selected in dropdown */ }
+      .custom-select .select-items div:nth-last-child(1) {
+        border-radius: 0 0 5px 5px; }
+      .custom-select .select-items div:hover {
+        background: #ffe9e2; }
+      .custom-select .select-items div.same-as-selected {
+        background: #ffe9e2; }
+    .custom-select .select-items.select-hide {
+      display: none; }
+      .custom-select .select-items.select-hide div:hover, .custom-select .select-items.select-hide .same-as-selected {
+        background-color: rgba(0, 0, 0, 0.1); }
 
 .go-down {
   position: absolute;
@@ -4678,12 +4700,25 @@ td:last-child {
           -ms-flex: 1;
               flex: 1; }
 
+@media (max-width: 549px) {
+  .page-template-page-search .search__buttons {
+    display: none; } }
+
 .page-template-page-search .search__buttons .container {
   padding-top: 50px;
   padding-bottom: 80px; }
 
 .page-template-page-search .search__buttons .wrapper .button2 {
-  text-align: center; }
+  text-align: center;
+  height: 80px;
+  vertical-align: middle;
+  padding: 0 16px;
+  font-size: 2rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex; }
   .page-template-page-search .search__buttons .wrapper .button2--noradius {
     border-left: none;
     border-right: none; }

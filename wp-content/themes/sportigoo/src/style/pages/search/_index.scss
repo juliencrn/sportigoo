@@ -3,6 +3,11 @@
 
     &__header {}
     &__buttons {
+
+      @media (#{$bp-smaller-than-phablet}) {
+        display: none;
+      }
+
       .container {
         padding-top: 50px;
         padding-bottom: 80px;
@@ -10,6 +15,11 @@
       .wrapper {
         .button2 {
           text-align: center;
+          height: 80px;
+          vertical-align: middle;
+          padding: 0 16px;
+          font-size: $fs-h4;
+          display: flex;
 
           &--noradius {
             border-left: none;
@@ -17,6 +27,7 @@
           }
         }
       }
+
     }
 
     &__output {
