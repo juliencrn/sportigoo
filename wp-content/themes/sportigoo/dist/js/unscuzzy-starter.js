@@ -584,24 +584,83 @@ var ajaxSearch = function ajaxSearch($) {
     return null;
   }
 
+  var urlParams = new URLSearchParams(window.location.search);
+
   // DOM Search inputs
   var searchSection = $('#js-search__buttons');
+  var allSelect = searchSection.find('.custom-select');
   var outputSection = $('#js-search__output');
   var output = outputSection.find('#js-output');
   var productItemClass = '.js-product-item';
 
+  var notFound = '\n    <div style="margin: auto; text-align: center" class="ff-book">\n        Oups, aucune activit\xE9 ne correspond \xE0 votre recherche.\n    </div>';
+
+  // const setParam = param => urlParams.has(param) ? urlParams.get(param) : 0
+
   // Ajax args
-  var initialArgs = {
-    'action': 'zz_get_products'
+  var args = {
+    action: 'zz_get_products',
+    offset: 0,
+    product_who: 0,
+    product_where: 0,
+    product_what: 0,
+    product_cat: []
   };
   var state = {
-    isLoading: false
+    isLoading: false,
+    hasPosts: true
   };
 
   // Initial load
   callServer();
 
-  // Utils functions
+  /**
+   * EVENTS
+   */
+
+  // Infinite scroll
+  $(window).scroll(function () {
+    var currentPosition = $(window).scrollTop();
+    var footerHeight = $('#site-footer').height();
+    var winHeight = $(window).height();
+    var docHeight = $(document).height();
+    var screenPosition = currentPosition + winHeight + footerHeight + 100;
+
+    if (!state.isLoading && screenPosition > docHeight) {
+      args.offset = getProductCount();
+      callServer();
+    }
+  });
+
+  // On selects filters change
+  allSelect.find('.select-items div').click(function () {
+    var select = $(this).parent().parent().find('select');
+    var name = select.attr('name');
+    var value = parseInt(select.val());
+    args.offset = 0;
+    state.hasPosts = true;
+
+    // console.log({name, value, select })
+
+    switch (name) {
+      case "who":
+        args.product_who = value;
+        break;
+      case "where":
+        args.product_where = value;
+        break;
+      case "what":
+        args.product_what = value;
+        break;
+    }
+
+    callServer(true);
+  });
+
+  /**
+   * Utils functions
+   */
+
   function getLoader() {
     var slug = '';
     var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -618,12 +677,14 @@ var ajaxSearch = function ajaxSearch($) {
   }
 
   function callServer() {
-    var offset = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    var rm = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
-    if (state.isLoading) {
+    // console.log({ args, state });
+    if (state.isLoading || !state.hasPosts) {
       return null;
     }
 
+    // Loading... animation
     state.isLoading = true;
 
     var _getLoader = getLoader(),
@@ -632,28 +693,18 @@ var ajaxSearch = function ajaxSearch($) {
 
     output.append(loader);
 
-    var args = Object.assign(initialArgs, { offset: offset });
     $.post(ajaxurl, args, function (res) {
       state.isLoading = false;
+      output.find('.' + slug).remove();
+      if (rm) output.find('*').remove();
       if (res) {
-        output.find('.' + slug).remove();
         output.append(res);
+      } else {
+        if (rm) output.append(notFound);
+        state.hasPosts = false;
       }
     });
   }
-
-  // Infinite scroll
-  $(window).scroll(function () {
-    var currentPosition = $(window).scrollTop();
-    var footerHeight = $('#site-footer').height();
-    var winHeight = $(window).height();
-    var docHeight = $(document).height();
-    var screenPosition = currentPosition + winHeight + footerHeight + 100;
-
-    if (!state.isLoading && screenPosition > docHeight) {
-      callServer(getProductCount());
-    }
-  });
 };
 
 var modal = function modal($) {

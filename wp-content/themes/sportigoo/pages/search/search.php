@@ -5,7 +5,7 @@ $data_inputs = [
     "class" => "custom-select button2 button2--noradius-right",
     "label" => "Quoi ?",
     "data" => get_terms( array(
-      'hide_empty' => false,
+      'hide_empty' => true,
       'taxonomy' => 'product_cat',
       'child_of' => 58 // product_cat > type > x
     ) ),
@@ -16,7 +16,7 @@ $data_inputs = [
     "class" => "custom-select button2 button2--noradius",
     "label" => "Pour qui ?",
     "data" => get_terms( array(
-      'hide_empty' => false,
+      'hide_empty' => true,
       'taxonomy' => 'product_cat',
       'child_of' => 59 // product_cat > qui > x
     ) ),
@@ -27,7 +27,7 @@ $data_inputs = [
     "class" => "custom-select button2 button2--noradius-left",
     "label" => "Où ?",
     "data" => get_terms( array(
-      'hide_empty' => false,
+      'hide_empty' => true,
       'taxonomy' => 'lieu'
     ) ),
     "lieu" => true
@@ -44,7 +44,7 @@ function zz_search_select2($input) {
     class="<?php echo $classes; ?>"
   >
     <select name="<?php echo $id; ?>">
-      <option value="0" selected><?php echo $input['label']; ?></option>
+      <option value="0"><?php echo $input['label']; ?></option>
 
       <?php
       foreach ($input['data'] as $term) {
