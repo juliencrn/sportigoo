@@ -600,6 +600,17 @@ var ajaxSearch = function ajaxSearch($) {
   callServer();
 
   // Utils functions
+  function getLoader() {
+    var slug = '';
+    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (var i = 0; i < 10; i++) {
+      var randomInt = Math.floor(Math.random() * chars.length);
+      slug += chars.charAt(randomInt);
+    }
+    var loader = '<div class="loader ' + slug + '" style="margin: auto;"></div>';
+    return { loader: loader, slug: slug };
+  }
+
   function getProductCount() {
     return output.find(productItemClass).length;
   }
@@ -612,10 +623,18 @@ var ajaxSearch = function ajaxSearch($) {
     }
 
     state.isLoading = true;
+
+    var _getLoader = getLoader(),
+        loader = _getLoader.loader,
+        slug = _getLoader.slug;
+
+    output.append(loader);
+
     var args = Object.assign(initialArgs, { offset: offset });
     $.post(ajaxurl, args, function (res) {
       state.isLoading = false;
       if (res) {
+        output.find('.' + slug).remove();
         output.append(res);
       }
     });

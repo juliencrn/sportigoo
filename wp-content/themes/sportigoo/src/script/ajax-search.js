@@ -24,6 +24,17 @@ const ajaxSearch = $ => {
   callServer();
 
   // Utils functions
+  function getLoader() {
+    let slug = '';
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (let i = 0; i < 10; i++ ) {
+      const randomInt = Math.floor(Math.random() * chars.length);
+      slug += chars.charAt(randomInt)
+    }
+    const loader = '<div class="loader ' + slug + '" style="margin: auto;"></div>';
+    return { loader, slug }
+  }
+
   function getProductCount() {
     return output.find(productItemClass).length
   }
@@ -34,10 +45,14 @@ const ajaxSearch = $ => {
     }
 
     state.isLoading = true;
+    const { loader, slug } = getLoader();
+    output.append(loader);
+
     const args = Object.assign(initialArgs, {offset: offset});
     $.post(ajaxurl, args, res => {
       state.isLoading = false;
       if ( res ) {
+        output.find(`.${slug}`).remove();
         output.append(res)
       }
     });

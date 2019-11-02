@@ -30,6 +30,10 @@
         justify-content: center;
         flex-wrap: wrap;
 
+        .loader {
+          margin-top: 60px!important;
+        }
+
         /* item */
         .activities__item--search {
           width: 100%;

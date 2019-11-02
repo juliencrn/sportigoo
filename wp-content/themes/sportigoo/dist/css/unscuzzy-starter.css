@@ -4707,6 +4707,8 @@ td:last-child {
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
   /* item */ }
+  .page-template-page-search .search__output__wrapper .loader {
+    margin-top: 60px !important; }
   .page-template-page-search .search__output__wrapper .activities__item--search {
     width: 100%;
     text-align: center; }
