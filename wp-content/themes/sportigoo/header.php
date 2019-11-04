@@ -131,4 +131,4 @@ if ( isset( $_COOKIE['whereIam'] ) && $_COOKIE['whereIam'] != "0" ) {
 
 ?>
 
-<div id="sportigoo__main" style="overflow-x: hidden;">
+<div id="sportigoo__main">
