@@ -202,17 +202,17 @@ if ( !function_exists( 'zz_custom_logo' ) ) {
 if ( !function_exists( 'zz_get_the_term_list' ) ) {
     /**
      * @param $id
-     * @param $taxonomy
-     * @param string $before
-     * @param string $sep
-     * @param string $after
      * @return bool|false|string|WP_Error|WP_Term[]
      *
      * @link https://developer.wordpress.org/reference/functions/get_the_term_list/
      */
-    function zz_get_the_term_list($id, $taxonomy, $before = '', $sep = '', $after = '')
+    function zz_get_the_term_list($id)
     {
-        $terms = get_the_terms( $id, $taxonomy );
+      $before = '';
+      $sep = '';
+      $after = '';
+
+        $terms = get_the_terms( $id, 'product_cat' );
 
         if ( is_wp_error( $terms ) ) {
             return $terms;
@@ -225,11 +225,10 @@ if ( !function_exists( 'zz_get_the_term_list' ) ) {
         $links = array();
 
         foreach ($terms as $term) {
-            $link = get_term_link( $term, $taxonomy );
-            if ( is_wp_error( $link ) ) {
-                return $link;
-            }
-            $links[] = '<a class="categories__item" href="' . esc_url( $link ) . '" rel="tag">' . $term->name . '</a>';
+          $base_url = get_permalink(get_field('page_de_recherche', 'option'));
+          $link = add_query_arg('categorie', $term->slug, $base_url);
+
+          $links[] = '<a class="categories__item" href="' . esc_url( $link ) . '" rel="tag">' . $term->name . '</a>';
         }
 
         /**
@@ -242,7 +241,7 @@ if ( !function_exists( 'zz_get_the_term_list' ) ) {
          *
          * @param string[] $links An array of term links.
          */
-        $term_links = apply_filters( "term_links-{$taxonomy}", $links );
+        $term_links = apply_filters( "term_links-{product_cat}", $links );
 
         return $before . join( $sep, $term_links ) . $after;
     }

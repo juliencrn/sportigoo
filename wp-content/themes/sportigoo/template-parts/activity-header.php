@@ -108,5 +108,3 @@ if ( have_rows( 'produit' ) ) {
   <?php }
 }
 ?>
-
-

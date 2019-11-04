@@ -4263,6 +4263,8 @@ td:last-child {
     font-weight: bold;
     color: #000;
     font-size: 36px; }
+  .homepage #homepage__event_types {
+    margin-bottom: 80px; }
 
 .activities-archive .activity-preview {
   min-height: 100vh; }
@@ -4662,7 +4664,7 @@ td:last-child {
     top: unset;
     fill: #ffe9e2;
     z-index: 5;
-    height: 300px;
+    height: 50vh;
     background-image: url("../../static/svg/wave-beige-search.svg"); }
 
 .page-template-page-search .search__buttons {
