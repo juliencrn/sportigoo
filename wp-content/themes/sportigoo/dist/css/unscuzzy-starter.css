@@ -4002,7 +4002,7 @@ td:last-child {
             display: none; } }
   .homepage__search--container {
     padding-top: 80px;
-    padding-bottom: 60px; }
+    padding-bottom: 10px; }
     .homepage__search--container .wrapper {
       margin: auto;
       display: -webkit-box;
@@ -4130,8 +4130,10 @@ td:last-child {
         .homepage__categories__item--content {
           display: none; } }
   .homepage__blue-section {
-    text-align: justify;
     margin: 40px 0 0; }
+    @media (min-width: 550px) {
+      .homepage__blue-section {
+        text-align: justify; } }
     .homepage__blue-section__waves {
       width: 100%;
       z-index: -1;
@@ -4265,6 +4267,8 @@ td:last-child {
     font-size: 36px; }
   .homepage #homepage__event_types {
     margin-bottom: 80px; }
+  .homepage #homepage__categories {
+    margin-top: 50px; }
 
 .activities-archive .activity-preview {
   min-height: 100vh; }

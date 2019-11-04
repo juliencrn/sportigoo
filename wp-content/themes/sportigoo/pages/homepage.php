@@ -6,25 +6,32 @@ $detect = new Mobile_Detect;
 get_header();
 
 while ( have_posts() ) {
-    the_post();
+  the_post();
 
-    echo '<div class="content homepage">';
+  echo '<div class="content homepage">';
 
-        // Send server media queries utility
-        set_query_var('detect', $detect);
+  // Send server media queries utility
+  set_query_var('detect', $detect);
 
-        get_template_part('pages/homepage/header');
-        get_template_part('pages/homepage/search'); // Buttons
-        get_template_part('pages/homepage/categories-what');
-        get_template_part('pages/homepage/blue-section');
-        get_template_part('pages/homepage/activities'); // Netflix style
-        get_template_part('pages/homepage/chiffres'); // key number
-        get_template_part('pages/homepage/categories-who');
-        // get_template_part('pages/homepage/xxxx'); // googles rates
-        // get_template_part('pages/homepage/xxxx'); // Blog
-        // get_template_part('pages/homepage/xxxx'); // Feverup CTA
+  get_template_part('pages/homepage/header');
 
-    echo '</div>';
+  if ( !$detect->isMobile() ) {
+    get_template_part( 'pages/homepage/search' ); // Buttons
+  }
+
+  get_template_part('pages/homepage/categories-what');
+  get_template_part('pages/homepage/blue-section');
+
+  if ( !$detect->isMobile() ) {
+    get_template_part('pages/homepage/activities'); // Netflix style
+  }
+
+  get_template_part('pages/homepage/chiffres'); // key number
+  get_template_part('pages/homepage/categories-who');
+  // get_template_part('pages/homepage/xxxx'); // googles rates
+  // get_template_part('pages/homepage/xxxx'); // Blog
+
+  echo '</div>';
 
 } // End of the loop.
 

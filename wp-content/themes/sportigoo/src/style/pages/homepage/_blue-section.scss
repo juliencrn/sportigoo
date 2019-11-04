@@ -1,6 +1,9 @@
 &__blue-section {
-  text-align: justify;
   margin: 40px 0 0;
+
+  @media (#{$bp-larger-than-phablet}) {
+    text-align: justify;
+  }
 
   &__waves {
     @include wave;
