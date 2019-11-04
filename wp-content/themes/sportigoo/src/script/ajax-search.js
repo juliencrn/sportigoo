@@ -1,13 +1,10 @@
-import { Map } from 'immutable'
-
 const ajaxSearch = $ => {
+  // TODO : Update seected in select when "reset" & "url"
 
   // Don't use if we are on another page
   if ( !$('body').hasClass('page-template-page-search') ) {
     return null;
   }
-
-  let urlParams = new URLSearchParams(window.location.search)
 
   // DOM Search inputs
   const searchSection = $('#js-search__buttons');
@@ -23,24 +20,37 @@ const ajaxSearch = $ => {
         Oups, aucune activité ne correspond à votre recherche.
     </div>`;
 
-  // const setParam = param => urlParams.has(param) ? urlParams.get(param) : 0
-
   // Ajax args
-  const initialArgs = Map({
+  const tmpInitialArgs = {
     action: 'zz_get_products',
     offset: 0,
-    product_who: 0,
-    product_where: 0,
-    product_what: 0
-  });
-  let args = initialArgs.toObject();
+    product_where: null,
+    product_cat: []
+  };
+  const initialArgs = Object.freeze(tmpInitialArgs);
+  let args = resetArgs();
   let state = {
     isLoading: false,
     hasPosts: true
   };
 
-  // Initial load
-  callServer(initialArgs.toObject());
+  /**
+   * Initial load
+   * Check if has URL param
+   * @type {URLSearchParams}
+   */
+  const urlParams = new URLSearchParams(window.location.search);
+  if ( urlParams.has('categorie') ) {
+    const val = urlParams.get('categorie');
+    args.product_cat = [val];
+    updateSeleted(val);
+    callServer(args, true)
+  } else if ( urlParams.has('s') ) {
+    const val = urlParams.get('s');
+    console.log('has categorie : ', val)
+  } else {
+    callServer(initialArgs);
+  }
 
 
   /**
@@ -56,7 +66,12 @@ const ajaxSearch = $ => {
   });
 
   // On "Refresh" button click
-  refreshButton.click(() => callServer(initialArgs.toObject(), true));
+  refreshButton.click(() => {
+    removeSeleted();
+    args = resetArgs();
+    state.hasPosts = true;
+    callServer(args, true)
+  });
 
 
   /**
@@ -69,6 +84,8 @@ const ajaxSearch = $ => {
 
   // Call ajax and print response
   function callServer( argument, rm = false ) {
+    console.log({ argument }); // debug
+
     // Echap double request
     if ( state.isLoading || !state.hasPosts ) return null;
 
@@ -82,9 +99,12 @@ const ajaxSearch = $ => {
     $.post(ajaxurl, argument, res => {
       state.isLoading = false;
       loader.hide();
-      if ( res ) {
+      console.log({res})
+      if ( res && res !== "" ) {
         output.append(res)
+        console.log('a')
       } else {
+        console.log('b')
         if (rm) output.append(notFound);
         state.hasPosts = false;
       }
@@ -109,23 +129,59 @@ const ajaxSearch = $ => {
   function handleFilter( selector ) {
     const select = selector.parent().parent().find('select');
     const name = select.attr('name');
-    const value = parseInt(select.val());
+    const value = select.val();
+
     args.offset = 0;
     state.hasPosts = true;
 
     switch (name) {
       case "who":
-        args.product_who = value;
+      case "what":
+        // Remove "who" categories if exits And push the new value
+        args.product_cat = args.product_cat.filter(slug => !getSelectValues(name).includes(slug));
+        args.product_cat.push(value);
         break;
       case "where":
         args.product_where = value;
         break;
-      case "what":
-        args.product_what = value;
-        break;
     }
 
     callServer(args, true)
+  }
+
+  // Return an array with all values of one select by this name attr
+  function getSelectValues( name ) {
+    const array = [];
+    allSelect.find(`select[name=${name}]`).find('option').each(function () {
+      const slug = $(this).val();
+      if ( slug && slug !== '0' ) {
+        array.push(slug)
+      }
+    });
+    return array;
+  }
+
+  // Update selected item when something change
+  function updateSeleted( optionName ) {
+    allSelect.each(function () {
+      $(this).find('.select-items div').each(function() {
+        if ( $(this).attr('data-slug') === optionName ) {
+          $(this).addClass('same-as-selected')
+        }
+      })
+    });
+  }
+
+  // Remove selected class for each select
+  function removeSeleted() {
+    allSelect.find('.select-items div').each(function() {
+      $(this).removeClass('same-as-selected')
+    })
+  }
+
+  // Reset args
+  function resetArgs() {
+    return Object.assign({}, tmpInitialArgs);
   }
 
 };

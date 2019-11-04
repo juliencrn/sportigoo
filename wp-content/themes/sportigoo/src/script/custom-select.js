@@ -17,6 +17,7 @@ const customSelect = $ => {
       /* For each option in the original select element,
         create a new DIV that will act as an option item: */
       c = document.createElement('DIV')
+      c.setAttribute('data-slug', selElmnt.options[j].value);
       c.innerHTML = selElmnt.options[j].innerHTML
       c.addEventListener('click', function(e) {
         /* When an item is clicked, update the original select box,

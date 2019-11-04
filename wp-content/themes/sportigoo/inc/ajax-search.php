@@ -6,9 +6,8 @@ function zz_get_products() {
 
   // Get param
   $offset = $_POST['offset'] ?: 0;
-  $product_who = $_POST['product_who'];
-  $product_where = $_POST['product_where'];
-  $product_what = $_POST['product_what'];
+  $product_where = $_POST['product_where'] ?: false;
+  $product_cat = $_POST['product_cat'] ?: [];
 
   // Basic query arguments default
   $args = [
@@ -23,45 +22,24 @@ function zz_get_products() {
   ];
 
   // Controller
-  $cat_arr = array();
-  $lieu_arr = array();
-  if ( isset($product_who) && $product_who != 0) {
-    array_push($cat_arr, $product_who);
-  }
-  if ( isset($product_what) && $product_what != 0) {
-    array_push($cat_arr, $product_what);
-  }
-  if ( isset($product_where) && $product_where != 0) {
-    array_push($lieu_arr, $product_where);
-  }
-
-  if ( count($cat_arr) ) {
+  if ( isset($product_cat) && count($product_cat) > 0 ) {
     $args['tax_query'][] = array(
       'taxonomy' => 'product_cat',
-      'field'    => 'term_id',
-      'terms'    => $cat_arr,
+      'field'    => 'slug',
+      'terms'    => $product_cat,
       'operator' => 'AND'
     );
   }
-  if ( count($lieu_arr) ) {
+
+  if ( $product_where ) {
     $args['tax_query'][] = array(
       'taxonomy' => 'lieu',
-      'field'    => 'term_id',
-      'terms'    => $lieu_arr,
+      'field'    => 'slug',
+      'terms'    => array($product_where),
     );
   }
 
-  /* ?>
-  <pre>
-    <code>
-      <?php
-      var_dump($args);
-      ?>
-    </code>
-  </pre>
-  <?php */
-
-//  die();
+   /* ?><pre><code><?php var_dump($args); die(); ?></code></pre><?php */
 
   // Instance
   $query = new WP_Query( $args );
