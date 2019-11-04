@@ -166,6 +166,12 @@ class MPSUM_Disable_Updates {
 		add_filter('site_transient_update_themes', array( $this, 'disable_theme_notifications' ), PHP_INT_MAX - 10);
 		add_filter('http_request_args', array( $this, 'http_request_args_remove_plugins_themes' ), 5, 2);
 
+		// Divi compatibility which allows automatic updates to occur
+		if (isset($GLOBALS['et_core_updates'])) {
+			$divi_upgrader = $GLOBALS['et_core_updates'];
+			remove_action('after_setup_theme', array($divi_upgrader, 'remove_theme_update_actions'), 11);
+		}
+
 	} //end constructor
 
 	/**

@@ -355,11 +355,15 @@ class MPSUM_Logs {
 	 * @param int    $status       Status of upgrade
 	 * @param int    $user_id      User responsible for the upgrade
 	 */
-	private function insert_log($name, $type, $version_from, $version, $action, $status, $user_id = 0, $notes = '' ) {
+	public function insert_log($name, $type, $version_from, $version, $action, $status, $user_id = 0, $notes = '' ) {
 		global $wpdb;
 		$table_name = $wpdb->base_prefix . 'eum_logs';
 		if ('' == $version_from) $version_from = '0.00';
 		$notes = str_replace('&#8230;', '', $notes);
+
+		// Strip URLs from notes
+		$notes = preg_replace('/\?.*/', '', $notes);
+
 		$wpdb->insert(
 			$table_name,
 			array(
@@ -396,7 +400,7 @@ class MPSUM_Logs {
 	 * @param	string $slug Slug of item
 	 * @return string The name of the item being updated.
 	 */
-	protected function get_name_for_update($type, $slug) {
+	public function get_name_for_update($type, $slug) {
 		if (! function_exists('get_plugins')) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
@@ -487,45 +491,6 @@ class MPSUM_Logs {
 				}
 				break;
 		}
-	}
-
-	/**
-	 * Log when a plugin (themes are hopefully coming soon) fails to update via safemode.
-	 *
-	 * @since 7.0.1
-	 * @access private
-	 * @param object $item The plugin item that will be logged.
-	 */
-	public static function log_safe_mode($item) {
-
-		global $wpdb;
-		$plugin_data = get_plugin_data(WP_PLUGIN_DIR.'/'.$item->plugin);
-		$tablename = $wpdb->base_prefix . 'eum_logs';
-
-		// Version numbers will be the same since the plugin didn't update
-		$version_from = $plugin_data['Version'];
-		if ('' == $version_from) $version_from = '0.00';
-		$wpdb->insert(
-			$tablename,
-			array(
-				'name'	        => $plugin_data['Name'],
-				'type'	        => 'plugin',
-				'version_from'  => $version_from,
-				'version'       => $plugin_data['Version'],
-				'action'        => 'automatic',
-				'status'        => 2,
-				'date'	        => current_time('mysql'),
-			),
-			array(
-				'%s',
-				'%s',
-				'%s',
-				'%s',
-				'%s',
-				'%s',
-				'%s',
-			)
-		);
 	}
 
 	/**

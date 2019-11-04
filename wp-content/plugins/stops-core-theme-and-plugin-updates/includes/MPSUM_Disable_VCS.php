@@ -46,6 +46,8 @@ class MPSUM_Disable_VCS {
 		add_filter('site_transient_update_themes', array($this, 'process_theme_updates'), 100);
 		add_action('admin_notices', array($this, 'notice'), 5);
 		add_action('network_admin_notices', array($this, 'notice'), 5);
+		add_action('eum_plugins_tab_header', array($this, 'show_eum_plugins_tab_warning'));
+		add_action('eum_themes_tab_header', array($this, 'show_eum_themes_tab_warning'));
 	}
 
 	/**
@@ -72,6 +74,46 @@ class MPSUM_Disable_VCS {
 			}
 		}
 		return $value;
+	}
+	
+	/**
+	 * Show a VCS warning on the EUM plugins tab
+	 */
+	public function show_eum_plugins_tab_warning() {
+		$this->excluded_plugins = array_unique($this->excluded_plugins);
+		if (!empty($this->excluded_plugins)) {
+			$plugin_list = sprintf('<strong>%s</strong>', esc_html(implode($this->excluded_plugins, ', ')));
+		}
+		if (empty($plugin_list)) {
+			return;
+		}
+		?>
+		<div class="notice notice-warning">
+			<?php
+			echo '<p>' . sprintf(esc_html__('The following plugins are under version control and will not be updated: %s', 'stops-core-theme-and-plugin-updates'), $plugin_list) . '</p>';
+			?>
+		</div>
+		<?php
+	}
+	
+	/**
+	 * Show a VCS warning on the EUM themes tab
+	 */
+	public function show_eum_themes_tab_warning() {
+		$this->excluded_themes = array_unique($this->excluded_themes);
+		if (!empty($this->excluded_themes)) {
+			$theme_list = sprintf('<strong>%s</strong>', esc_html(implode($this->excluded_themes, ', ')));
+		}
+		if (empty($theme_list)) {
+			return;
+		}
+		?>
+		<div class="notice notice-warning">
+			<?php
+			echo '<p>' . sprintf(esc_html__('The following themes are under version control and will not be updated: %s', 'stops-core-theme-and-plugin-updates'), $theme_list) . '</p>';
+			?>
+		</div>
+		<?php
 	}
 
 	/**

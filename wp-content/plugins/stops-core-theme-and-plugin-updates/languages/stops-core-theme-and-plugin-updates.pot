@@ -1018,11 +1018,11 @@ msgstr ""
 msgid "User has insufficient capability to take backups"
 msgstr ""
 
-#: src/includes/MPSUM_Disable_VCS.php:138
+#: src/includes/MPSUM_Disable_VCS.php:93, src/includes/MPSUM_Disable_VCS.php:180
 msgid "The following plugins are under version control and will not be updated: %s"
 msgstr ""
 
-#: src/includes/MPSUM_Disable_VCS.php:143
+#: src/includes/MPSUM_Disable_VCS.php:113, src/includes/MPSUM_Disable_VCS.php:185
 msgid "The following themes are under version control and will not be updated: %s"
 msgstr ""
 
@@ -1524,7 +1524,7 @@ msgstr ""
 msgid "All plugin updates have been disabled."
 msgstr ""
 
-#: src/templates/admin-tab-plugins.php:13, src/templates/admin-tab-themes.php:13
+#: src/templates/admin-tab-plugins.php:14, src/templates/admin-tab-themes.php:13
 msgid "Save"
 msgstr ""
 

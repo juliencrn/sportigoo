@@ -4,7 +4,7 @@
 	if (false === MPSUM_Admin_Themes::can_update_themes()) {
 		printf('<div class="error"><p><strong>%s</strong></p></div>', esc_html__('All theme updates have been disabled.', 'stops-core-theme-and-plugin-updates'));
 	}
-
+	do_action('eum_themes_tab_header');
 	$theme_table = new MPSUM_Themes_List_Table($args = array('screen' => $slug, 'paged' => $paged, 'view' => $view));
 	$theme_table->prepare_items();
 	$theme_table->views();

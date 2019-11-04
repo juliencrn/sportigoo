@@ -5,6 +5,7 @@
 	if (false === MPSUM_Admin_Plugins::can_update_plugins()) {
 		printf('<div class="error"><p><strong>%s</strong></p></div>', esc_html__('All plugin updates have been disabled.', 'stops-core-theme-and-plugin-updates'));
 	}
+	do_action('eum_plugins_tab_header');
 	$plugin_table = new MPSUM_Plugins_List_Table($args = array('screen' => $slug, 'paged' => $paged, 'view' => $view));
 	$plugin_table->prepare_items();
 	$plugin_table->views();
