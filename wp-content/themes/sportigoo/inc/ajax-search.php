@@ -7,6 +7,7 @@ function zz_get_products() {
   // Get param
   $offset = $_POST['offset'] ?: 0;
   $product_where = $_POST['product_where'] ?: false;
+  $product_search = $_POST['search'] ?: false;
   $product_cat = $_POST['product_cat'] ?: [];
 
   // Basic query arguments default
@@ -39,10 +40,19 @@ function zz_get_products() {
     );
   }
 
+  if ( $product_search ) {
+    $args['s'] = $product_search;
+  }
+
    /* ?><pre><code><?php var_dump($args); die(); ?></code></pre><?php */
 
   // Instance
   $query = new WP_Query( $args );
+
+  // Better search engine ( Plugin: Relevanssi )
+  if ( $product_search && function_exists('relevanssi_do_query') ) {
+    relevanssi_do_query($query);
+  }
 
   // Loop
   if ( $query->have_posts() ) {

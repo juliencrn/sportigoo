@@ -602,7 +602,8 @@ var ajaxSearch = function ajaxSearch($) {
     action: 'zz_get_products',
     offset: 0,
     product_where: null,
-    product_cat: []
+    product_cat: [],
+    search: ""
   };
   var initialArgs = Object.freeze(tmpInitialArgs);
   var args = resetArgs();
@@ -622,9 +623,9 @@ var ajaxSearch = function ajaxSearch($) {
     args.product_cat = [val];
     updateSeleted(val);
     callServer(args, true);
-  } else if (urlParams.has('s')) {
-    var _val = urlParams.get('s');
-    console.log('has categorie : ', _val);
+  } else if (urlParams.has('search')) {
+    args.search = urlParams.get('search');
+    callServer(args, true);
   } else {
     callServer(initialArgs);
   }
@@ -711,6 +712,7 @@ var ajaxSearch = function ajaxSearch($) {
     var value = select.val();
 
     args.offset = 0;
+    args.search = "";
     state.hasPosts = true;
 
     switch (name) {

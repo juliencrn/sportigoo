@@ -49,13 +49,12 @@ add_filter( 'woocommerce_checkout_fields', function ($fields) {
 }, 12 );
 
 /**
- * Redirect shop page to
- * shop : 28
- * archive : 39
+ * Redirect shop page to search page
  */
 add_action( 'template_redirect', function () {
-    if ( is_shop() ) {
-        wp_redirect( get_permalink( 39 ), 301 );
+  $search_page_id = get_field('page_de_recherche', 'option');
+    if ( is_shop() && $search_page_id ) {
+        wp_redirect( get_permalink( $search_page_id ), 301 );
         exit;
     }
 }, 12 );

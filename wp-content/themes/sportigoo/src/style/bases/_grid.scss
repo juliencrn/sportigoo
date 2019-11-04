@@ -15,6 +15,19 @@
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
+  &--medium {
+    width: $container-width-larger-than-mobile!important;
+    max-width: $container-width-medium;
+  }
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  box-sizing: border-box;
 }
 
 .row {
@@ -52,7 +65,7 @@
     margin-left: 0;
   }
 
-  .one.col, .one.cols { 
+  .one.col, .one.cols {
     width: grid-column-width(1);
   }
   .two.cols {
@@ -64,7 +77,7 @@
   .four.cols {
     width: grid-column-width(4);
   }
-  .five.cols { 
+  .five.cols {
     width: grid-column-width(5);
   }
   .six.cols {
@@ -80,13 +93,13 @@
     width: grid-column-width(9);
   }
   .ten.cols {
-    width: grid-column-width(10); 
+    width: grid-column-width(10);
   }
-  .eleven.cols { 
+  .eleven.cols {
     width: grid-column-width(11);
   }
-  .twelve.cols { 
-    width: 100%; 
+  .twelve.cols {
+    width: 100%;
     margin-left: 0;
   }
   .one-third.col {
@@ -105,7 +118,7 @@
   .offset-by-one.col, .offset-by-one.cols {
     margin-left: grid-offset-length(1);
   }
-  .offset-by-two.col, .offset-by-two.cols { 
+  .offset-by-two.col, .offset-by-two.cols {
     margin-left: grid-offset-length(2);
   }
   .offset-by-three.col, .offset-by-three.cols {
@@ -114,34 +127,34 @@
   .offset-by-four.col, .offset-by-four.cols {
     margin-left: grid-offset-length(4);
   }
-  .offset-by-five.col,  .offset-by-five.cols { 
+  .offset-by-five.col,  .offset-by-five.cols {
     margin-left: grid-offset-length(5);
   }
-  .offset-by-six.col, .offset-by-six.cols { 
+  .offset-by-six.col, .offset-by-six.cols {
     margin-left: grid-offset-length(6);
   }
   .offset-by-seven.col, .offset-by-seven.cols {
     margin-left: grid-offset-length(7);
   }
-  .offset-by-eight.col, .offset-by-eight.cols { 
+  .offset-by-eight.col, .offset-by-eight.cols {
     margin-left: grid-offset-length(8);
   }
-  .offset-by-nine.col, .offset-by-nine.cols { 
+  .offset-by-nine.col, .offset-by-nine.cols {
     margin-left: grid-offset-length(9);
   }
-  .offset-by-ten.col, .offset-by-ten.cols { 
-    margin-left: grid-offset-length(10); 
+  .offset-by-ten.col, .offset-by-ten.cols {
+    margin-left: grid-offset-length(10);
   }
   .offset-by-eleven.col, .offset-by-eleven.cols {
     margin-left: grid-offset-length(11);
   }
-  .offset-by-one-third.col, .offset-by-one-third.cols  { 
+  .offset-by-one-third.col, .offset-by-one-third.cols  {
     margin-left: grid-offset-length(4);
   }
   .offset-by-two-thirds.col, .offset-by-two-thirds.cols {
     margin-left: grid-offset-length(8);
   }
-  .offset-by-one-half.col, .offset-by-one-half.col { 
+  .offset-by-one-half.col, .offset-by-one-half.col {
     margin-left: grid-offset-length(6);
   }
 }

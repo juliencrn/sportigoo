@@ -25,7 +25,8 @@ const ajaxSearch = $ => {
     action: 'zz_get_products',
     offset: 0,
     product_where: null,
-    product_cat: []
+    product_cat: [],
+    search: ""
   };
   const initialArgs = Object.freeze(tmpInitialArgs);
   let args = resetArgs();
@@ -45,9 +46,9 @@ const ajaxSearch = $ => {
     args.product_cat = [val];
     updateSeleted(val);
     callServer(args, true)
-  } else if ( urlParams.has('s') ) {
-    const val = urlParams.get('s');
-    console.log('has categorie : ', val)
+  } else if ( urlParams.has('search') ) {
+    args.search = urlParams.get('search');
+    callServer(args, true)
   } else {
     callServer(initialArgs);
   }
@@ -132,6 +133,7 @@ const ajaxSearch = $ => {
     const value = select.val();
 
     args.offset = 0;
+    args.search = "";
     state.hasPosts = true;
 
     switch (name) {

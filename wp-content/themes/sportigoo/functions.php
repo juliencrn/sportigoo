@@ -50,7 +50,7 @@ if ( class_exists( 'WooCommerce' ) ) {
     require $inc . "woocommerce/wc-archive.php";
     require $inc . "woocommerce/woocommerce.php";
     require $inc . "woocommerce/ajax-activity-preview.php";
-    require $inc . "woocommerce/search.php";
+//    require $inc . "woocommerce/search.php";
     require $inc . "woocommerce/taxonomy-lieu.php";
 
     // Block woocommerce updates

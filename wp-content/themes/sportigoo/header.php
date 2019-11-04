@@ -64,10 +64,14 @@
         ) ); ?>
 
         <div class="nav__search">
-            <form action="<?php echo site_url() ?>" role="search" method="get" style="margin-bottom: 0; display: flex;">
-                <input class="nav__search-input" required name="s" id="search" type="text" placeholder="Rechecher..."
+            <form
+              action="<?php echo esc_url(get_permalink(get_field('page_de_recherche', 'option'))) ?>"
+              role="search"
+              method="get"
+              style="margin-bottom: 0; display: flex;"
+            >
+                <input class="nav__search-input" required name="search" id="search" type="text" placeholder="Rechecher..."
                        value="<?php the_search_query(); ?>"/>
-                <input type="hidden" value="product" name="post_type"/>
                 <button class="nav__search-button" style="border: none" type="submit">
                     <svg width="22" height="22">
                         <use xlink:href="#search"></use>
