@@ -112,23 +112,4 @@
     </div>
 </header>
 
-<?php
-// Get taxonomy "lieu" term_id from "postal code" using ACF & cookies
-update_option( 'region_term_id', 0 );
-if ( isset( $_COOKIE['whereIam'] ) && $_COOKIE['whereIam'] != "0" ) {
-    $cp = (int)$_COOKIE['whereIam'];
-    foreach (get_terms( array(
-        'taxonomy' => 'lieu',
-        'hide_empty' => false
-    ) ) as $term) {
-        if ( get_field( 'numero', $term ) == $cp ) {
-            update_option( 'region_term_id', $term->term_id );
-        }
-    }
-}
-
-
-
-?>
-
 <div id="sportigoo__main">
