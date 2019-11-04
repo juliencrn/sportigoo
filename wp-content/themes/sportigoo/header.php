@@ -29,6 +29,10 @@
 		})(window,document,'script','dataLayer','<?php the_field("google_tag_manager", "option"); ?>');
   </script>
   <!-- End Google Tag Manager -->
+
+  <script type="text/javascript">
+    if (typeof $crisp !== 'undefined') $crisp.push(["safe", true])
+  </script>
 </head>
 
 <body <?php body_class(); ?>>
