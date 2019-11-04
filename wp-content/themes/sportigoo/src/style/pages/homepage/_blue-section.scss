@@ -3,22 +3,17 @@
   margin: 40px 0 0;
 
   &__waves {
-    width: 100%;
+    @include wave;
+
     height: 150px;
-    z-index: -1;
-    left: 0;
-    background-color: transparent;
-    background-size: cover;
-    background-repeat: no-repeat;
+    position: relative;
 
     &--top {
       background-image: url("../../static/svg/wave-blue-arc.svg");
       transform: rotate(180deg);
-      background-position: bottom;
     }
     &--bottom {
       background-image: url("../../static/svg/wave-blue-arc.svg");
-      background-position: bottom;
     }
   }
 

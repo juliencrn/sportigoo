@@ -15,10 +15,9 @@ $detect = get_query_var('detect');
         <h1 class="title">
           <?php the_title(); ?>
         </h1>
-
       </div>
     </div>
 
-    <!--      <div class="search__header__waves"></div>-->
+    <div class="search__header__waves"></div>
   </div>
 </section>
