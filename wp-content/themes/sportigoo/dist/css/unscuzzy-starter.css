@@ -4652,48 +4652,88 @@ td:last-child {
     height: 300px;
     background-image: url("../../static/svg/wave-beige-search.svg"); }
 
-@media (max-width: 549px) {
-  .page-template-page-search .search__buttons {
-    display: none; } }
-
-.page-template-page-search .search__buttons .container {
-  padding-top: 50px;
-  padding-bottom: 80px; }
-
-.page-template-page-search .search__buttons .wrapper {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-     -moz-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  max-width: 100%;
-  width: 550px;
-  text-align: center;
-  margin: auto; }
-  .page-template-page-search .search__buttons .wrapper .button2 {
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-       -moz-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
-    text-align: center;
-    height: 80px;
-    vertical-align: middle;
-    padding: 0 16px;
-    font-size: 2rem;
+.page-template-page-search .search__buttons {
+  padding-bottom: 30px; }
+  @media (max-width: 549px) {
+    .page-template-page-search .search__buttons {
+      display: none; } }
+  .page-template-page-search .search__buttons .container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative; }
+  .page-template-page-search .search__buttons .wrapper {
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
     display: -ms-flexbox;
-    display: flex; }
-    .page-template-page-search .search__buttons .wrapper .button2--noradius {
-      border-left: none;
-      border-right: none; }
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+       -moz-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    max-width: 90%;
+    width: 550px;
+    text-align: center;
+    margin: auto; }
+    .page-template-page-search .search__buttons .wrapper .button2 {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+         -moz-box-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      text-align: center;
+      height: 80px;
+      vertical-align: middle;
+      padding: 0 12px;
+      font-size: 2rem;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex; }
+      .page-template-page-search .search__buttons .wrapper .button2--noradius {
+        border-left: none;
+        border-right: none; }
+  .page-template-page-search .search__buttons--refresh {
+    position: absolute;
+    right: 0;
+    -webkit-transform: translateY(-50%) translateX(50%);
+       -moz-transform: translateY(-50%) translateX(50%);
+        -ms-transform: translateY(-50%) translateX(50%);
+            transform: translateY(-50%) translateX(50%);
+    top: 50%; }
+    @media (min-width: 1000px) {
+      .page-template-page-search .search__buttons--refresh {
+        -webkit-transform: translateY(-50%) translateX(-100%);
+           -moz-transform: translateY(-50%) translateX(-100%);
+            -ms-transform: translateY(-50%) translateX(-100%);
+                transform: translateY(-50%) translateX(-100%); } }
+    .page-template-page-search .search__buttons--refresh--button {
+      background-color: #E7511E;
+      padding: 8px;
+      border-radius: 100%;
+      display: inline-block;
+      border: none;
+      outline: none;
+      cursor: pointer; }
+      .page-template-page-search .search__buttons--refresh--button svg {
+        fill: #FFF;
+        display: block; }
+      .page-template-page-search .search__buttons--refresh--button:hover {
+        -webkit-animation: spin .8s linear infinite;
+           -moz-animation: spin .8s linear infinite;
+                animation: spin .8s linear infinite; }
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+       -moz-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+       -moz-transform: rotate(360deg);
+            transform: rotate(360deg); } }
 
 .page-template-page-search .search__output .container {
   margin-bottom: 40px; }

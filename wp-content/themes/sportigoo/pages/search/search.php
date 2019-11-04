@@ -74,5 +74,12 @@ function zz_search_select2($input) {
       <?php zz_search_select2($data_inputs['who']); ?>
       <?php zz_search_select2($data_inputs['where']); ?>
     </div>
+    <div class="search__buttons--refresh">
+      <button class="js-refresh search__buttons--refresh--button">
+        <svg width="27" height="27">
+          <use xlink:href="#refresh"></use>
+        </svg>
+      </button>
+    </div>
   </div>
 </section>

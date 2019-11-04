@@ -52,7 +52,8 @@
     "repository": "https://git.unscuzzy.com/lab/starter-integration",
     "dependencies": {
         "browserslist": "^4.0.2",
-        "gm": "^1.23.1"
+        "gm": "^1.23.1",
+        "immutable": "^4.0.0-rc.12"
     },
     "prettier": {
         "trailingComma": "es5",
