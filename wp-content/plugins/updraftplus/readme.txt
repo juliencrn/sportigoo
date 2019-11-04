@@ -3,7 +3,7 @@ Contributors: Backup with UpdraftPlus, DavidAnderson, DNutbourne, aporter, snigh
 Tags: backup, restore, database backup, wordpress backup, cloud backup, s3, dropbox, google drive, onedrive, ftp, backups
 Requires at least: 3.2
 Tested up to: 5.3
-Stable tag: 1.16.17
+Stable tag: 1.16.20
 Author URI: https://updraftplus.com
 Donate link: https://david.dw-perspective.org.uk/donate
 License: GPLv3 or later
@@ -167,6 +167,44 @@ Unfortunately not; since this is free software, there’s no warranty and no gua
 The <a href="https://updraftplus.com/news/">UpdraftPlus backup blog</a> is the best place to learn in more detail about any important changes.
 
 N.B. Paid versions of UpdraftPlus Backup / Restore have a version number which is 1 higher in the first digit, and has an extra component on the end, but the changelog below still applies. i.e. changes listed for 1.16.17.x of the free version correspond to changes made in 2.16.17.x of the paid version.
+
+= 1.16.20 - 04/Nov/2019 =
+
+* FEATURE: Add support for PHP 7.4 in UpdraftClone
+* FEATURE: Added the ability to restore "more files" backups
+* FEATURE: Add OneDrive Germany compatibility
+* FIX: Failure to send existing translation version with update checks (on paid versions) resulted in redundant translation updates
+* FIX: Deal with a BackBlaze "first chunk too small" error correctly when doing chunked uploading
+* TWEAK: Block any updates from occuring during a restore
+* TWEAK: Force the predecessor Amazon S3 SDK to use virtual-hosted style bucket identification instead of path style
+* TWEAK: Refactor the remote storage logging code in Addon base v2
+* TWEAK: Removed the Keyy notice (Keyy now has a new owner)
+* TWEAK: Add WP 5.3 support in UpdraftClone
+* TWEAK: On paid versions, possibly adjust the daily update check time to favour overnight hours
+* TWEAK: Get UpdraftClone supported WordPress versions during authentication
+* TWEAK: Added the ability to use backups stored in remote storage for UpdraftClone
+* TWEAK: Small PHP 7.4 deprecation tweaks in the Google and legacy AWS SDKs
+
+= 1.16.19 - 04/Oct/2019 =
+
+* FIX: GoogleDrive and WebDAV remote storage methods now correctly report if remote files failed to be deleted
+* FIX: Issue in cloudfiles-enhanced addon that breaks translations when the user language is different from the site language
+* FIX: Regression: add missing restore options
+* TWEAK: Improve restoration modal on mobile devices
+* TWEAK: Support the new Amazon S3 Middle East (Bahrain) region when removing a backup set
+* TWEAK: Improvements to the dashboard to allow for better screen-reader access
+* TWEAK: Ensure phpseclib Crypt_Blowfish is loaded over PEAR's version
+* TWEAK: Add time zone and expiries in to the UpdraftClone scheduled removal time
+* TWEAK: Add a multi-delete capability for OneDrive to prevent PHP timeouts during deletes
+
+= 1.16.18 - 20/Sep/2019 =
+
+* FIX: Select2 instance visiblility in restoration modal when selecting blog on multisite
+* FIX: Remove unsupported WordPress versions (3.6 and older) from the UpdraftClone selection list
+* FEATURE: Ability to resume interrupted database restores
+* TWEAK: Add filesystem error data when FTP input validation fails in UpdraftCentral
+* TWEAK: Enable appropriate SQL mode to ensure the database restoration compatibility
+* TWEAK: Add a link to the Backblaze configuration guide
 
 = 1.16.17 - 12/Sep/2019 =
 
@@ -921,4 +959,4 @@ Furthermore, reliance upon any non-English translation is at your own risk. Updr
 We recognise and thank the following for code and/or libraries used and/or modified under the terms of their open source licences; see: https://updraftplus.com/acknowledgements/
 
 == Upgrade Notice ==
-* 1.16.17: Re-designed restore process. Ability to use UpdraftClone with sub-folder multisites. Automatic fixing of some database corruption issues. Various tweaks and fixes; a recommended updated for all.
+* 1.16.20: Added support for latest WP + PHP versions in UpdraftClone; support for OneDrive Germany in OneDrive module; ability in versions that can backup non-WP files to also restore them; various tweaks and small improvements - a recommended update for all.

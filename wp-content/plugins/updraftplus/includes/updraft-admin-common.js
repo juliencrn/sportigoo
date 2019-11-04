@@ -719,7 +719,7 @@ function updraft_backupnow_inpage_go(success_callback, onlythisfileentity, extra
 
 function updraft_get_downloaders() {
 	var downloaders = '';
-	jQuery('.ud_downloadstatus .updraftplus_downloader, #ud_downloadstatus2 .updraftplus_downloader').each(function(x,y) {
+	jQuery('.ud_downloadstatus .updraftplus_downloader, #ud_downloadstatus2 .updraftplus_downloader, #ud_downloadstatus3 .updraftplus_downloader').each(function(x,y) {
 		var dat = jQuery(y).data('downloaderfor');
 		if (typeof dat == 'object') {
 			if (downloaders != '') { downloaders = downloaders + ':'; }
@@ -1688,6 +1688,11 @@ function updraft_downloader_status_update(download_status, response_raw) {
 						remove_updraft_downloader(this, dstatus.what);
 						updraft_restorer_checkstage2(0);
 					});
+				} else if (dstatus.p >= 100 && dstatus.base == 'udclonedlstatus_') {
+					jQuery(stid_selector + ' .raw').html(dstatus.m);
+					jQuery(stid_selector).fadeOut('slow', function () {
+						remove_updraft_downloader(this, dstatus.what);
+					});
 				} else if (dstatus.p < 100 || dstatus.base != 'uddlstatus_') {
 					jQuery(stid_selector + ' .raw').html(dstatus.m);
 				} else {
@@ -2124,39 +2129,8 @@ jQuery(document).ready(function($) {
 		if ('wp_only' === backup_nonce) {
 			options['form_data']['install_info']['wp_only'] = 1;
 		}
-		
-		updraft_send_command('process_updraftplus_clone_create', options, function (response) {
-			try {
-				$('#updraft-navtab-migrate-content .updraft_migrate_widget_module_content #updraft_migrate_createclone').prop('disabled', false);
-				$('#updraft-navtab-migrate-content .updraft_migrate_widget_module_content .updraftplus_spinner.spinner').removeClass('visible');
 
-				if (response.hasOwnProperty('status') && 'error' == response.status) {
-					$('#updraft-navtab-migrate-content .updraft_migrate_widget_module_content .updraftplus_clone_status').html(updraftlion.error + ' ' + response.message).show();
-					return;
-				}
-
-				if ('success' === response.status) {
-					$('#updraft-navtab-migrate-content .updraft_migrate_widget_module_content .updraft_migrate_widget_temporary_clone_stage2').hide();
-					$('#updraft-navtab-migrate-content .updraft_migrate_widget_module_content .updraft_migrate_widget_temporary_clone_stage3').show();
-					$('#updraft-navtab-migrate-content .updraft_migrate_widget_module_content .updraft_migrate_widget_temporary_clone_stage3').html(response.html);
-
-					// remove the clone timeout as the clone has now been created
-					if (temporary_clone_timeout) clearTimeout(temporary_clone_timeout);
-
-					if ('wp_only' === backup_nonce) {
-						jQuery('#updraft_clone_progress .updraftplus_spinner.spinner').addClass('visible');
-						temporary_clone_poll(clone_id, secret_token);
-					} else {
-						jQuery('#updraft_clone_progress .updraftplus_spinner.spinner').addClass('visible');
-						temporary_clone_boot_backup(clone_id, secret_token, response.url, response.key, backup_nonce, backup_timestamp);
-					}
-				}
-			} catch (err) {
-				$('#updraft-navtab-migrate-content .updraft_migrate_widget_module_content #updraft_migrate_createclone').prop('disabled', false);
-				console.log("Error when processing the response of process_updraftplus_clone_create (as follows)");
-				console.log(err);
-			}
-		});
+		temporary_clone_process_create(options, backup_timestamp, backup_nonce);
 	});
 
 	// Create a updraftplus_com_login object, to store functions and variables
@@ -2457,6 +2431,92 @@ jQuery(document).ready(function($) {
 			$('#updraft-navtab-migrate-content .updraft_migrate_widget_module_content .updraft_migrate_widget_temporary_clone_stage2').html('');
 			$('#updraft-navtab-migrate-content .updraft_migrate_widget_module_content .updraft_migrate_widget_temporary_clone_stage1').show();
 		}, timeout);
+	}
+
+	/**
+	 * This function will check if we are using an existing backup and if anything needs downloading before proceeding to process the clone create command
+	 *
+	 * @param {array}  options          - an array of options to create the clone
+	 * @param {string} backup_timestamp - the timestamp of the backup we want to use or 'current' to create a new backup
+	 * @param {string} backup_nonce     - the backup nonce of the backup we want to use or 'current' to create a new backup
+	 */
+	function temporary_clone_process_create(options, backup_timestamp, backup_nonce) {
+
+		var which_to_download = '';
+		if ('current' != backup_timestamp) {
+			updraft_send_command('whichdownloadsneeded', {
+				updraftplus_clone: true,
+				timestamp: backup_timestamp
+			}, function (response) {
+				if (response.hasOwnProperty('downloads')) {
+					console.log('UpdraftPlus: items which still require downloading follow');
+					which_to_download = response.downloads;
+					console.log(which_to_download);
+				}
+
+				// Kick off any downloads, if needed
+				if (0 == which_to_download.length) return;
+
+				for (var i = 0; i < which_to_download.length; i++) {
+					// updraft_downloader(base, backup_timestamp, what, whicharea, set_contents, prettydate, async)
+					updraft_downloader('udclonedlstatus_', backup_timestamp, which_to_download[i][0], '#ud_downloadstatus3', which_to_download[i][1], '', false);
+				}
+
+			}, {
+				alert_on_error: false, error_callback: function (response, status, error_code, resp) {
+					if (typeof resp !== 'undefined' && resp.hasOwnProperty('fatal_error')) {
+						console.error(resp.fatal_error_message);
+						$('#updraft-navtab-migrate-content .updraft_migrate_widget_module_content .updraftplus_clone_status').html('<p style="color:red;">' + resp.fatal_error_message + '</p>');
+					} else {
+						var error_message = "updraft_send_command: error: " + status + " (" + error_code + ")";
+						$('#updraft-navtab-migrate-content .updraft_migrate_widget_module_content .updraftplus_clone_status').html('<p style="color:red; margin: 5px;">' + error_message + '</p>');
+						console.log(error_message);
+						console.log(response);
+					}
+				}
+			});
+		}
+
+		setTimeout(function () {
+			if (0 != which_to_download.length) {
+				temporary_clone_process_create(options, backup_timestamp, backup_nonce);
+				return;
+			}
+			var clone_id = options['form_data']['clone_id'];
+			var secret_token = options['form_data']['secret_token'];
+			updraft_send_command('process_updraftplus_clone_create', options, function (response) {
+				try {
+					$('#updraft-navtab-migrate-content .updraft_migrate_widget_module_content #updraft_migrate_createclone').prop('disabled', false);
+					$('#updraft-navtab-migrate-content .updraft_migrate_widget_module_content .updraftplus_spinner.spinner').removeClass('visible');
+
+					if (response.hasOwnProperty('status') && 'error' == response.status) {
+						$('#updraft-navtab-migrate-content .updraft_migrate_widget_module_content .updraftplus_clone_status').html(updraftlion.error + ' ' + response.message).show();
+						return;
+					}
+
+					if ('success' === response.status) {
+						$('#updraft-navtab-migrate-content .updraft_migrate_widget_module_content .updraft_migrate_widget_temporary_clone_stage2').hide();
+						$('#updraft-navtab-migrate-content .updraft_migrate_widget_module_content .updraft_migrate_widget_temporary_clone_stage3').show();
+						$('#updraft-navtab-migrate-content .updraft_migrate_widget_module_content .updraft_migrate_widget_temporary_clone_stage3').html(response.html);
+
+						// remove the clone timeout as the clone has now been created
+						if (temporary_clone_timeout) clearTimeout(temporary_clone_timeout);
+
+						if ('wp_only' === backup_nonce) {
+							jQuery('#updraft_clone_progress .updraftplus_spinner.spinner').addClass('visible');
+							temporary_clone_poll(clone_id, secret_token);
+						} else {
+							jQuery('#updraft_clone_progress .updraftplus_spinner.spinner').addClass('visible');
+							temporary_clone_boot_backup(clone_id, secret_token, response.url, response.key, backup_nonce, backup_timestamp);
+						}
+					}
+				} catch (err) {
+					$('#updraft-navtab-migrate-content .updraft_migrate_widget_module_content #updraft_migrate_createclone').prop('disabled', false);
+					console.log("Error when processing the response of process_updraftplus_clone_create (as follows)");
+					console.log(err);
+				}
+			});
+		}, 5000);
 	}
 
 	/**
@@ -3113,6 +3173,7 @@ jQuery(document).ready(function($) {
 		},
 		close: function() {
 			$('.updraft_restore_container').hide();
+			$('body').removeClass('updraft-modal-is-opened');
 		},
 		open: function() {
 			this.init();
@@ -3124,9 +3185,11 @@ jQuery(document).ready(function($) {
 			$('.updraft-restore--stages li').removeClass('active').first().addClass('active');
 			// Show restoration window
 			$('.updraft_restore_container').show();
+			$('body').addClass('updraft-modal-is-opened');
 		},
 		process_next_action: function() {
 			var anyselected = 0;
+			var moreselected = 0;
 			var whichselected = [];
 			// Make a list of what files we want
 			var already_added_wpcore = 0;
@@ -3136,6 +3199,7 @@ jQuery(document).ready(function($) {
 					anyselected = 1;
 					var howmany = $(y).data('howmany');
 					var type = $(y).val();
+					if ('more' == type) moreselected = 1;
 					if (1 == meta_foreign || (2 == meta_foreign && 'db' != type)) {
 						if ('wpcore' != type) {
 							howmany = $('#updraft_restore_form #updraft_restore_wpcore').data('howmany');
@@ -3238,6 +3302,27 @@ jQuery(document).ready(function($) {
 							}
 						}
 					});
+
+					if (1 == moreselected) {
+					
+						anyselected = 0;
+					
+						jQuery('input[name="updraft_include_more_index[]"').each(function (x, y) {
+							if (jQuery(y).is(':checked') && !jQuery(y).is(':disabled')) {
+								anyselected = 1;
+								if ('' == jQuery('#updraft_include_more_path_restore' + x).val()) {
+									alert(updraftlion.emptyrestorepath);
+								}
+							}
+						});
+						
+						if (0 == anyselected) {
+							alert(updraftlion.youdidnotselectany);
+							jQuery('.updraft-restore--next-step, .updraft-restore--cancel').prop('disabled', false);
+							return;
+						}
+					}
+
 					if (!continue_restore) return;
 					var restore_options = $('#updraft_restoreoptions_ui select, #updraft_restoreoptions_ui input').serialize();
 					console.log("Restore options: "+restore_options);

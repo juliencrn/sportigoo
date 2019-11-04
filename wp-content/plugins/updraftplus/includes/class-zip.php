@@ -244,7 +244,7 @@ class UpdraftPlus_PclZip {
 		// Route around PHP bug (exact version with the problem not known)
 		$ziparchive_create_match = (version_compare(PHP_VERSION, '5.2.12', '>') && defined('ZIPARCHIVE::CREATE')) ? ZIPARCHIVE::CREATE : 1;
 
-		if ($flags == $ziparchive_create_match && file_exists($path)) @unlink($path);
+		if ($flags == $ziparchive_create_match && file_exists($path)) @unlink($path);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
 
 		$this->pclzip = new PclZip($path);
 
@@ -408,7 +408,7 @@ class UpdraftPlus_BinZip extends UpdraftPlus_PclZip {
 		$activity = false;
 
 		// BinZip does not like zero-sized zip files
-		if (file_exists($this->path) && 0 == filesize($this->path)) @unlink($this->path);
+		if (file_exists($this->path) && 0 == filesize($this->path)) @unlink($this->path);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
 
 		$descriptorspec = array(
 			0 => array('pipe', 'r'),
@@ -461,7 +461,7 @@ class UpdraftPlus_BinZip extends UpdraftPlus_PclZip {
 				$write = array($pipes[0]);
 			}
 
-			while ((!feof($pipes[1]) || !feof($pipes[2]) || (is_array($files) && count($files)>0)) && false !== ($changes = @stream_select($read, $write, $except, 0, 200000))) {
+			while ((!feof($pipes[1]) || !feof($pipes[2]) || (is_array($files) && count($files)>0)) && false !== ($changes = @stream_select($read, $write, $except, 0, 200000))) {// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
 
 				if (is_array($write) && in_array($pipes[0], $write) && is_array($files) && count($files)>0) {
 					$file = array_pop($files);
@@ -479,7 +479,7 @@ class UpdraftPlus_BinZip extends UpdraftPlus_PclZip {
 						$last_recorded_alive = time();
 					}
 					if (file_exists($this->path)) {
-						$new_size = @filesize($this->path);
+						$new_size = @filesize($this->path);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
 						if (!$something_useful_happened && $new_size > $orig_size + 20) {
 							UpdraftPlus_Job_Scheduler::something_useful_happened();
 							$something_useful_happened = true;

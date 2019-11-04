@@ -197,15 +197,6 @@ class UpdraftPlus_Notices extends Updraft_Notices {
 				'supported_positions' => $this->anywhere,
 				'validity_function' => 'wp_optimize_installed',
 			),
-			'keyy' => array(
-				'prefix' => '',
-				'title' => 'Keyy',
-				'text' => __("Instant and secure logon with a wave of your phone.", "updraftplus") . ' ' . $this->url_start(true, 'getkeyy.com') . __("No more forgotten passwords. Find out more about our revolutionary new WordPress plugin", 'updraftplus') . $this->url_end(true, 'getkeyy.com'),
-				'image' => 'notices/keyy_logo.png',
-				'dismiss_time' => 'dismiss_notice',
-				'supported_positions' => $this->anywhere,
-				'validity_function' => 'keyy_installed',
-			),
 			'metaslider' => array(
 				'prefix' => '',
 				'title' => "MetaSlider: The world's #1 slider plugin from the makers of UpdraftPlus",
@@ -318,19 +309,6 @@ class UpdraftPlus_Notices extends Updraft_Notices {
 
 		foreach ($plugins as $key => $value) {
 			if ('wp-optimize' == $value['TextDomain']) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-	protected function keyy_installed($plugin_base_dir = null, $product_name = null) {// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found -- Filter use
-		$wp_optimize_file = false;
-		if (!function_exists('get_plugins')) include_once(ABSPATH.'wp-admin/includes/plugin.php');
-		$plugins = get_plugins();
-
-		foreach ($plugins as $key => $value) {
-			if ('keyy' == $value['TextDomain']) {
 				return false;
 			}
 		}

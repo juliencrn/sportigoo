@@ -126,8 +126,8 @@ class UpdraftPlus_WPAdmin_Commands extends UpdraftPlus_Commands {
 			$warn = array();
 			$err = array();
 
-			@set_time_limit(UPDRAFTPLUS_SET_TIME_LIMIT);
-			$max_execution_time = (int) @ini_get('max_execution_time');
+			@set_time_limit(UPDRAFTPLUS_SET_TIME_LIMIT);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+			$max_execution_time = (int) @ini_get('max_execution_time');// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
 
 			if ($max_execution_time>0 && $max_execution_time<61) {
 				$warn[] = sprintf(__('The PHP setup on this webserver allows only %s seconds for PHP to run, and does not allow this limit to be raised. If you have a lot of data to import, and if the restore operation times out, then you will need to ask your web hosting company for ways to raise this limit (or attempt the restoration piece-by-piece).', 'updraftplus'), $max_execution_time);
@@ -256,6 +256,14 @@ class UpdraftPlus_WPAdmin_Commands extends UpdraftPlus_Commands {
 			
 			do_action_ref_array('updraftplus_restore_all_downloaded_postscan', array($backups, $timestamp, $elements, &$info, &$mess, &$warn, &$err));
 
+			if (0 == count($err) && 0 == count($warn)) {
+				$mess_first = __('The backup archive files have been successfully processed. Now press Restore again to proceed.', 'updraftplus');
+			} elseif (0 == count($err)) {
+				$mess_first = __('The backup archive files have been processed, but with some warnings. If all is well, then now press Restore again to proceed. Otherwise, cancel and correct any problems first.', 'updraftplus');
+			} else {
+				$mess_first = __('The backup archive files have been processed, but with some errors. You will need to cancel and correct any problems before retrying.', 'updraftplus');
+			}
+
 			$warn_result = '';
 			foreach ($warn as $warning) {
 				if (!$warn_result) $warn_result = '<ul id="updraft_restore_warnings">';
@@ -362,7 +370,7 @@ class UpdraftPlus_WPAdmin_Commands extends UpdraftPlus_Commands {
 		phpinfo(INFO_ALL ^ (INFO_CREDITS | INFO_LICENSE));
 
 		echo '<h3 id="ud-debuginfo-constants">'.__('Constants', 'updraftplus').'</h3>';
-		$opts = @get_defined_constants();
+		$opts = @get_defined_constants();// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
 		ksort($opts);
 		echo '<table><thead></thead><tbody>';
 		foreach ($opts as $key => $opt) {
@@ -392,13 +400,37 @@ class UpdraftPlus_WPAdmin_Commands extends UpdraftPlus_Commands {
 	public function whichdownloadsneeded($params) {
 		// The purpose of this is to look at the list of indicated downloads, and indicate which are not already fully downloaded. i.e. Which need further action.
 		$send_back = array();
-
 		$backup = UpdraftPlus_Backup_History::get_history($params['timestamp']);
 		$updraft_dir = $this->_updraftplus->backups_dir_location();
 		$backupable_entities = $this->_updraftplus->get_backupable_file_entities();
 
 		if (empty($backup)) return array('result' => 'asyouwere');
 
+		if (isset($params['updraftplus_clone']) && empty($params['downloads'])) {
+			$entities = array('db', 'plugins', 'themes', 'uploads', 'others');
+			foreach ($entities as $entity) {
+				
+				foreach ($backup as $key => $data) {
+					if ($key != $entity) continue;
+					
+					$set_contents = '';
+					$entity_array = array();
+					$entity_array[] = $key;
+					
+					if ('db' == $key) {
+						$set_contents = "0";
+					} else {
+						foreach (array_keys($data) as $findex) {
+							$set_contents .= ('' == $set_contents) ? $findex : ",$findex";
+						}
+					}
+
+					$entity_array[] = $set_contents;
+					$params['downloads'][] = $entity_array;
+				}
+			}
+		}
+		
 		foreach ($params['downloads'] as $i => $download) {
 			if (is_array($download) && 2 == count($download) && isset($download[0]) && isset($download[1])) {
 				$entity = $download[0];
@@ -487,6 +519,8 @@ class UpdraftPlus_WPAdmin_Commands extends UpdraftPlus_Commands {
 			$path = $params['node']['id'];
 		}
 
+		$page = empty($params['page']) ? '' : $params['page'];
+
 		if ($dh = opendir($path)) {
 			$path = rtrim($path, DIRECTORY_SEPARATOR);
 
@@ -501,7 +535,7 @@ class UpdraftPlus_WPAdmin_Commands extends UpdraftPlus_Commands {
 							'id' => UpdraftPlus_Manipulation_Functions::wp_normalize_path($path . DIRECTORY_SEPARATOR . $value),
 							'icon' => 'jstree-folder'
 						);
-					} else {
+					} elseif ('restore' != $page && is_file($path . DIRECTORY_SEPARATOR . $value)) {
 						$node_array[] = array(
 							'text' => $value,
 							'children' => false,
@@ -644,7 +678,7 @@ class UpdraftPlus_WPAdmin_Commands extends UpdraftPlus_Commands {
 					)
 				);
 
-				@$zip->close();
+				@$zip->close();// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
 			}
 		}
 

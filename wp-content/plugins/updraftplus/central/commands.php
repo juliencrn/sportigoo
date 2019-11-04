@@ -63,8 +63,9 @@ abstract class UpdraftCentral_Commands {
 	final protected function _get_backup_credentials_settings($dir) {
 		// Do we need to ask the user for filesystem credentials? when installing and/or deleting items in the given directory
 		$filesystem_method = get_filesystem_method(array(), $dir);
+
 		ob_start();
-		$filesystem_credentials_are_stored = request_filesystem_credentials(site_url());
+		$filesystem_credentials_are_stored = request_filesystem_credentials(site_url(), $filesystem_method);
 		ob_end_clean();
 		$request_filesystem_credentials = ('direct' != $filesystem_method && !$filesystem_credentials_are_stored);
 
@@ -223,7 +224,7 @@ abstract class UpdraftCentral_Commands {
 
 						// Remove zip file on success and on error (cleanup)
 						if ($install_result || is_null($install_result) || is_wp_error($install_result)) {
-							@unlink($zip_filepath);
+							@unlink($zip_filepath);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
 						}
 
 						if (false === $install_result || is_wp_error($install_result)) {
