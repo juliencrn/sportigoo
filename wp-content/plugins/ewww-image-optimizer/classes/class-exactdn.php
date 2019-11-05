@@ -328,6 +328,8 @@ if ( ! class_exists( 'ExactDN' ) ) {
 					}
 					if ( get_option( 'exactdn_never_been_active' ) ) {
 						$this->set_option( $this->prefix . 'lazy_load', true );
+						$this->set_option( 'exactdn_lossy', true );
+						$this->set_option( 'exactdn_all_the_things', true );
 						delete_option( 'exactdn_never_been_active' );
 					}
 					if ( 'external' === get_option( 'elementor_css_print_method' ) ) {
@@ -2347,7 +2349,7 @@ if ( ! class_exists( 'ExactDN' ) ) {
 			if ( strpos( $image_url, 'easyio/lazy/placeholder' ) ) {
 				return array();
 			}
-			if ( strpos( $image_url, 'revslider/admin/assets/images/dummy.png' ) ) {
+			if ( strpos( $image_url, '/dummy.png' ) ) {
 				return array();
 			}
 			if ( strpos( $image_url, '/lazy.png' ) ) {
