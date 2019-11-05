@@ -31,8 +31,9 @@ if ( have_rows( 'news' ) && $my_posts->have_posts() ) { ?>
 
                 <div
                   class="homepage__news__item__image"
-                  style="background-image: url('<?php echo $image[0]; ?>')"
-                ></div>
+                >
+                  <img src="<?php echo $image[0]; ?>" alt="<?php the_title(); ?>">
+                </div>
 
                 <div class="homepage__news__item__content">
 

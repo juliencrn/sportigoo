@@ -82,10 +82,24 @@
 
     &__image {
       height: 150px;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-color: $secondary;
+      //background-position: center;
+      //background-repeat: no-repeat;
+      //background-size: cover;
+      //background-color: $secondary;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+
+      img {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-top: 50%;
+        transform: translateY(-100%);
+      }
     }
 
     &__content {
