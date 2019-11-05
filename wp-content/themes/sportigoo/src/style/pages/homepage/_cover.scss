@@ -26,6 +26,7 @@
 
     .go-down {
       z-index: 10;
+      animation: move 3s ease-in-out infinite;
     }
 
     &__image {
@@ -44,4 +45,11 @@
       }
     }
   }
+}
+
+
+
+@keyframes move {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
 }
