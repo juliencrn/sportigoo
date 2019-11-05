@@ -31,6 +31,9 @@
     }
     &__item-wrapper {
       position: relative;
+      overflow: hidden;
+      border-radius: $global-radius;
+      margin: 0 6px;
 
       &:after {
         content: "";
@@ -45,7 +48,7 @@
         left: 0;
         right: 0;
         box-shadow: 5px 4px 7px 1px rgba(175, 175, 175, 0.39);
-        margin: 0 6px;
+        //margin: 0 6px;
         border-radius: 10px;
         overflow: hidden;
       }
@@ -83,6 +86,7 @@
         flex-direction: column;
         justify-content: flex-end;
         position: relative;
+        overflow: hidden;
         align-items: center;
         border-radius: $global-radius;
     }
@@ -105,6 +109,8 @@
         height: 100%;
         transition: all $fast, opacity $fast;
         opacity: 0;
+        overflow: hidden;
+        border-radius: $global-radius;
         background: linear-gradient(rgba($black,0) 50%, rgba($black,1));
     }
     &__title {

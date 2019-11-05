@@ -1,112 +1,68 @@
 <?php
 
-$titre_section = "";
-$bouton = "";
+// Posts query
+$my_posts = new WP_Query( array(
+  'post_type' => 'post',
+  'post_status' => 'publish',
+  'posts_per_page' => 3,
+  'orderby' => array('date' => 'DESC')
+) );
 
-if ( have_rows( 'news' ) ) {
-    while (have_rows( 'news' )) {
-        the_row();
+if ( have_rows( 'news' ) && $my_posts->have_posts() ) { ?>
+  <?php while ( have_rows( 'news' ) ) { the_row(); ?>
+    <section class="homepage__news">
+      <div class="container homepage__news__container">
 
-        $titre_section = get_sub_field( 'titre_section' ) ?: $titre_section;
-        $bouton = get_sub_field( 'bouton' ) ?: $bouton;
-    }
-}
-?>
-
-<section class="homepage-posts">
-    <div class="container">
-        <h2 class="section-title">
-            <?php echo $titre_section ?>
+        <h2 class="h2 section-title homepage__news__section--title">
+          <?php the_sub_field('titre_section'); ?>
         </h2>
 
-        <?php
-        // Posts query
-        $my_posts = new WP_Query( array(
-            'post_type' => 'post',
-            'post_status' => 'publish',
-            'posts_per_page' => 4,
-            'orderby' => array('date' => 'DESC')
-        ) );
+        <div class="homepage__news__section__posts">
+          <?php while ($my_posts->have_posts()) {
+            $my_posts->the_post();
+            $link = get_permalink( get_the_ID() );
+            $thumbnail_url = get_the_post_thumbnail_url( get_the_ID(), 'med-400' ) ?: '';
+            ?>
 
-        // 1er Post
-        $post1 = $my_posts->posts[0];
-        $id = $post1->ID;
-        $excerpt = whl_get_the_excerpt( $id );
-        $link = get_permalink( $id );
-        ?>
+            <div class="homepage__news__item--wrapper">
+              <div class="homepage__news__item--orange-bg"></div>
+              <a href="<?php the_permalink(); ?>" class="homepage__news__item">
 
-        <div class="last-posts">
-            <div class="last-posts__preview">
-                <div class="categories">
+                <div
+                  class="homepage__news__item__image"
+                  style="background-image: url('<?php echo $thumbnail_url; ?>')"
+                ></div>
+
+                <div class="homepage__news__item__content">
+
+                  <h3 class="h4 homepage__news__item__title">
+                    <?php the_title(); ?>
+                  </h3>
+
+                  <div class="homepage__news__item__categorie--wrapper">
                     <?php
-                    $categories = get_the_category( $id );
-                    if ( !empty( $categories ) ) {
-                        $i = 0;
-                        foreach ($categories as $cat) {
-                            $i++;
-                            if ( $i < 3 ) { ?>
-                                <a class="categories__item" id="catoutup-<?php echo $i ?>" href="<?php echo get_category_link( $cat->cat_ID ); ?>">
-                                    <?php echo $cat->name ?>
-                                </a>
-                            <?php } ?>
+                    $categories = get_the_category( get_the_ID() );
+                    if ( !empty( $categories ) ) { ?>
+                      <span class="homepage__news__item__categorie">
+                        # <?php echo $categories[0]->name ?>
+                      </span>
+                    <?php } ?>
+                  </div>
 
-                        <?php }
-                    } ?>
                 </div>
-                <div class="last-posts__excerpt-wrapper">
-                    <p id="excerptPreview">
-                        <?php echo $excerpt ?>
-                    </p>
-                    <a class="link" id="preview-link" href="<?php echo $link ?>">Lire la suite</a>
-                </div>
+              </a>
             </div>
 
-            <?php if ( $my_posts->have_posts() ) { ?>
-                <div class="last-posts__nav">
-                    <?php while ($my_posts->have_posts()) {
-                        $my_posts->the_post();
-                        $thumbnail_url = get_the_post_thumbnail_url( get_the_ID(), 'large' ); ?>
-
-
-                        <div class="last-posts__nav-item-wrapper">
-                            <div class="d-none catList">
-                                <?php
-                                $categories = get_the_category( get_the_ID() );
-                                if ( !empty( $categories ) ) {
-                                    $i = 0;
-                                    foreach ($categories as $cat) {
-                                        $i++;
-                                        if ( $i < 3 ) { ?>
-                                            <span class="cat-<?php echo $i ?>"
-                                                  data-name="<?php echo $cat->name ?>"
-                                                  data-url="<?php echo get_category_link( $cat->cat_ID ); ?>"
-                                            ></span>
-                                        <?php } ?>
-
-                                    <?php }
-                                } ?>
-                            </div>
-                            <span class="last-posts__nav-excerpt d-none"><?php the_excerpt() ?></span>
-                            <a class="last-posts__nav-item" href="<?php the_permalink(); ?>">
-                                <h4><?php the_title(); ?></h4>
-                                <span class="link link__white">Découvrir</span>
-                            </a>
-                            <div class="last-posts__img"
-                                 style="background-image:url('<?php echo $thumbnail_url ?>');">
-                            </div>
-
-                        </div>
-                    <?php }
-                    wp_reset_postdata(); ?>
-                </div>
-                <div class="last-posts__filter"></div>
-
-            <?php } ?>
-
-
+          <?php } wp_reset_postdata(); ?>
         </div>
-        <a class="button" href="<?php echo get_permalink( 41 ); ?>">
-            <?php echo $bouton ?>
-        </a>
-    </div>
-</section>
+
+        <div class="homepage__news__section--button--wrapper">
+          <a class="button2 homepage__news__section--button" href="<?php echo get_permalink( 41 ); ?>">
+            <?php the_sub_field('bouton'); ?>
+          </a>
+        </div>
+
+      </div>
+    </section>
+  <?php } ?>
+<?php } ?>

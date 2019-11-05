@@ -61,7 +61,7 @@
       img {
         width: 40px;
         height: auto;
-        animation: fade 3s ease-in-out infinite;
+        animation: fade 1.6s ease-in-out infinite;
       }
     }
   }
@@ -69,8 +69,14 @@
 }
 
 @keyframes fade {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
+  0%, 100% {
+    opacity: .5;
+    transform: scale(.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 
