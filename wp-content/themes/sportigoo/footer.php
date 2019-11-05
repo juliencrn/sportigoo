@@ -22,16 +22,13 @@ if ( !is_product() && !is_shop() && !is_page(35) && !is_page(41) && !is_single()
     <div class="footer">
         <div class="container">
             <div class="footer__col">
-
                 <?php zz_custom_logo(); ?>
-
                 <div class="socials">
                     <?php
                     $social_list = array('instagram', 'facebook', 'twitter', 'linkedin', 'pinterest');
                     zz_print_social_list( $social_list );
                     ?>
                 </div>
-
             </div>
 
             <?php if ( have_rows( 'widget_footer', 'option' ) ) {
