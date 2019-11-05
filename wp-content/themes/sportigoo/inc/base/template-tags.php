@@ -350,7 +350,11 @@ if ( !function_exists( 'sportigoo_section_product_tax' ) ) {
         ?>
 
         <div class="homepage__categories__item">
-          <a href="<?php echo $url; ?>" class="homepage__categories__item--bg" style="background-image: url('<?php echo $bg; ?>');">
+          <a
+            href="<?php echo $url; ?>"
+            class="homepage__categories__item--bg"
+            style="background-image: url('<?php echo $bg; ?>');"
+          >
             <div class="homepage__categories__item--face">
               <h3 class="homepage__categories__item--title">
                 <?php echo $title; ?>

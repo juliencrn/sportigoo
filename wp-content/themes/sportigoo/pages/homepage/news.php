@@ -21,7 +21,9 @@ if ( have_rows( 'news' ) && $my_posts->have_posts() ) { ?>
           <?php while ($my_posts->have_posts()) {
             $my_posts->the_post();
             $link = get_permalink( get_the_ID() );
-            $thumbnail_url = get_the_post_thumbnail_url( get_the_ID(), 'med-400' ) ?: '';
+            $post_thumbnail_id = get_post_thumbnail_id( get_the_ID() );
+            $thumbnail_url = wp_get_attachment_image_src($post_thumbnail_id, 'med-400');
+//            $thumbnail_url = get_the_post_thumbnail_url( get_the_ID(), 'med-400' ) ?: '';
             ?>
 
             <div class="homepage__news__item--wrapper">
