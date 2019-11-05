@@ -17,7 +17,7 @@ add_action( 'wp_enqueue_scripts', function () {
     if ( is_page( 41 ) || is_singular( 'post' ) || is_post_type_archive( 'post' ) ) {
         wp_enqueue_script( 'twitter', "https://platform.twitter.com/widgets.js", null, null, false );
     }
-    wp_enqueue_style( 'cookie-consent2-css', 'https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css' );
+
     wp_enqueue_script( 'gsap-js', "https://cdnjs.cloudflare.com/ajax/libs/gsap/1.14.2/TweenMax.min.js", null, null, true );
     wp_enqueue_script( 'slick-js', "https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js", null, null, true );
     wp_enqueue_script( 'cookiec-onsent2-js', "https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js", null, null, true );
