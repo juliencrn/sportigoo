@@ -19,7 +19,8 @@ while ( have_posts() ) {
     get_template_part( 'pages/homepage/search' ); // Buttons
   }
 
-  get_template_part('pages/homepage/categories-what');
+
+  get_template_part('pages/homepage/categories-who');
   get_template_part('pages/homepage/blue-section');
 
   if ( !$detect->isMobile() ) {
@@ -27,7 +28,7 @@ while ( have_posts() ) {
   }
 
   get_template_part('pages/homepage/chiffres'); // key number
-  get_template_part('pages/homepage/categories-who');
+  get_template_part('pages/homepage/categories-what');
   get_template_part('pages/homepage/reviews'); // googles rates
   get_template_part('pages/homepage/news'); // Blog
 
