@@ -29,8 +29,7 @@
     }
 
     &__image {
-      width: 715px;
-      max-width: 60%;
+      width: 50%;
       height: auto;
       position: absolute;
       bottom: 0;
@@ -39,6 +38,9 @@
 
       @media (#{$bp-smaller-than-phablet}) {
         display: none;
+      }
+      @media (#{$bp-smaller-than-desktop}) {
+        width: 60%;
       }
     }
   }

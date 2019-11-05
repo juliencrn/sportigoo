@@ -3990,8 +3990,7 @@ td:last-child {
       .homepage__cover .cover .go-down {
         z-index: 10; }
       .homepage__cover .cover__image {
-        width: 715px;
-        max-width: 60%;
+        width: 50%;
         height: auto;
         position: absolute;
         bottom: 0;
@@ -4000,6 +3999,9 @@ td:last-child {
         @media (max-width: 549px) {
           .homepage__cover .cover__image {
             display: none; } }
+        @media (max-width: 999px) {
+          .homepage__cover .cover__image {
+            width: 60%; } }
   .homepage__search--container {
     padding-top: 80px;
     padding-bottom: 10px; }
