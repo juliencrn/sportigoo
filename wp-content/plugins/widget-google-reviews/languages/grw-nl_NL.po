@@ -1,0 +1,27 @@
+msgid ""
+msgstr ""
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+
+msgid "Google Rating"
+msgstr "Google Beoordelingen"
+
+msgid "See All Reviews"
+msgstr "Bekijk alle beoordelingen"
+
+msgid "Google User"
+msgstr "Google gebruiker"
+
+msgid "read more"
+msgstr "lees meer"
+
+msgid "Next Reviews"
+msgstr "Volgende beoordelingen"

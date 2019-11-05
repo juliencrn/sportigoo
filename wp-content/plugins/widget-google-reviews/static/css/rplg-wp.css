@@ -1,0 +1,462 @@
+/*-------------------------------- WP overrides --------------------------------*/
+.widget-content input[type="text"],
+.widget-content select,
+.widget-content button {
+  border-spacing: 0;
+  width: 100%;
+  clear: both;
+}
+
+.form-group {
+  position: relative;
+}
+
+.widget-content .form-group {
+  margin: 10px 0 0;
+}
+
+.widget-content .form-group label {
+  vertical-align: baseline;
+}
+
+.widget-content .form-group img {
+  vertical-align: middle;
+}
+
+.widget-control-actions {
+  position: relative;
+}
+
+/*-------------------------------- Commons --------------------------------*/
+.rplg-widget {
+  margin: 10px 0;
+}
+
+.rplg-options-toggle {
+  padding: 10px;
+  margin: 10px 0 0;
+  cursor: pointer;
+  border: 1px solid #dbdbdb;
+  background: #eee url('../img/button-down-black.svg') no-repeat right;
+}
+
+.rplg-options {
+  padding: 0px 4px;
+}
+
+.rplg-disabled label,
+.rplg-disabled small {
+  opacity: .7;
+}
+
+.rplg-pro {
+  color: #fff;
+  padding: 6px;
+  border-radius: 3px;
+  background: #00bf54;
+}
+
+.rplg-pro a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.rplg-quest {
+  position: absolute;
+  top: -2px;
+  right: 2px;
+  width: 16px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  background: #eee;
+}
+
+.rplg-quest + div {
+  padding: 6px;
+  margin: 5px 0 0;
+  border-radius: 2px;
+  background: #eee;
+}
+
+/*-------------------------------- google finder --------------------------------*/
+.grw-step {
+  display: inline-block;
+  width: 20px;
+  line-height: 20px;
+  padding: 2px;
+  margin: 0 6px 0 0;
+  text-align: center;
+  background: #ffe045;
+  border-radius: 50%;
+}
+
+#shortcode .grw-step,
+#shortcode .yrw-step {
+  width: 28px;
+  padding: 4px;
+}
+
+.grw-places, .grw-reviews {
+  max-height: 200px;
+  overflow: auto;
+  border: 1px solid #f3f3f3;
+}
+
+.grw-place {
+  margin: 0;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.grw-place img {
+  border: none;
+  float: left;
+  height: 40px;
+  margin-right: 5px;
+  width: 40px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.grw-place .media-body {
+  overflow: hidden;
+}
+
+.grw-place .media-heading {
+  margin: 0;
+  padding-right: 6px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.grw-place .grw-grating {
+  font-size: 12px;
+  font-weight: 700;
+  color: #e7711b;
+  margin: 0 6px 0 0;
+}
+
+.grw-place .grw-gstars {
+  padding-left: 7px;
+}
+
+.grw-place small {
+  display: block;
+  font-size: 11px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.grw-place:hover {
+  background-color: #fafafa;
+}
+
+.grw-place.grw-active {
+  background-color: #eee;
+}
+
+.grw-place .grw-gtime {
+  color: #999;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.grw-place .grw-gtext {
+  color: #222;
+  font-size: 13px;
+  line-height: 18px;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+
+.grw-five-reviews-note {
+  margin: 4px 0;
+  color: #d32323;
+  text-align: center;
+}
+
+.grw-save-reviews-container {
+  position: relative;
+}
+
+.grw-tooltip {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 100%;
+  color: #333;
+  outline: none;
+  border: 1px solid #ccc;
+  border-color: rgba(0,0,0,.2);
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  opacity: 0;
+  z-index: 99999;
+  background: #ffe045;
+  box-shadow: 0 2px 10px rgba(0,0,0,.2);
+  transition: all .5s ease-in-out;
+}
+
+.grw-tooltip.grw-tooltip-visible {
+  opacity: 1;
+}
+
+.grw-tooltip .grw-corn1 {
+  position: absolute;
+  top: -9px;
+  right: 16px;
+  height: 0;
+  width: 0;
+  z-index: 1;
+  border-color: transparent;
+  border-style: dashed dashed solid;
+  border-width: 0 8.5px 8.5px;
+  border-bottom-color: #ccc;
+  border-bottom-color: rgba(0,0,0,.2);
+}
+
+.grw-tooltip .grw-corn2 {
+  position: absolute;
+  top: -8px;
+  right: 16px;
+  height: 0;
+  width: 0;
+  z-index: 1;
+  border-color: transparent;
+  border-bottom-color: #ffe045;
+  border-style: dashed dashed solid;
+  border-width: 0 8.5px 8.5px;
+}
+
+.grw-tooltip .grw-text {
+  padding: 10px;
+}
+
+.grw-tooltip .grw-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  color: #777;
+  padding: 2px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.grw-tooltip .grw-close:hover {
+  color: #444;
+}
+
+.grw-error,
+.yrw-error {
+  color: #e60909;
+  font-size: 13px;
+}
+
+/*-------------------------------- yelp finder --------------------------------*/
+.yrw-step {
+  display: inline-block;
+  width: 20px;
+  line-height: 20px;
+  padding: 2px;
+  margin: 0 6px 0 0;
+  text-align: center;
+  background: #ffe045;
+  border-radius: 50%;
+}
+
+.yrw-businesses, .yrw-reviews {
+  max-height: 200px;
+  overflow: auto;
+  border: 1px solid #f3f3f3;
+}
+
+.yrw-business {
+  margin: 0;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.yrw-business img {
+  border: none;
+  float: left;
+  height: 40px;
+  margin-right: 5px;
+  width: 40px;
+  width: 20px;
+  height: 20px;
+}
+
+.yrw-business .media-body {
+  overflow: hidden;
+}
+
+.yrw-business .media-heading {
+  margin: 0;
+  padding-right: 6px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.yrw-business .yrw-yrating {
+  font-size: 12px;
+  font-weight: 700;
+  color: #d32323;
+  margin: 0 6px 0 0;
+}
+
+.yrw-business .yrw-ystars {
+  padding-left: 7px;
+}
+
+.yrw-business small {
+  display: block;
+  font-size: 11px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.yrw-business:hover {
+  background-color: #fafafa;
+}
+
+.yrw-business.yrw-active {
+  background-color: #eee;
+}
+
+.yrw-business .yrw-ytime {
+  color: #999;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.yrw-business .yrw-ytext {
+  color: #222;
+  font-size: 13px;
+  line-height: 18px;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+
+.yrw-three-reviews-note {
+  margin: 4px 0;
+  color: #d32323;
+  text-align: center;
+}
+
+.yrw-tooltip {
+  position: absolute;
+  top: 44px;
+  right: 0;
+  width: 100%;
+  color: #333;
+  outline: none;
+  border: 1px solid #ccc;
+  border-color: rgba(0,0,0,.2);
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  opacity: 0;
+  z-index: 99999;
+  background: #ffe045;
+  box-shadow: 0 2px 10px rgba(0,0,0,.2);
+  transition: all .5s ease-in-out;
+}
+
+.yrw-tooltip.yrw-tooltip-visible {
+  opacity: 1;
+}
+
+.yrw-tooltip .yrw-corn1 {
+  position: absolute;
+  top: -9px;
+  right: 16px;
+  height: 0;
+  width: 0;
+  z-index: 1;
+  border-color: transparent;
+  border-style: dashed dashed solid;
+  border-width: 0 8.5px 8.5px;
+  border-bottom-color: #ccc;
+  border-bottom-color: rgba(0,0,0,.2);
+}
+
+.yrw-tooltip .yrw-corn2 {
+  position: absolute;
+  top: -8px;
+  right: 16px;
+  height: 0;
+  width: 0;
+  z-index: 1;
+  border-color: transparent;
+  border-bottom-color: #ffe045;
+  border-style: dashed dashed solid;
+  border-width: 0 8.5px 8.5px;
+}
+
+.yrw-tooltip .yrw-text {
+  padding: 10px;
+}
+
+.yrw-tooltip .yrw-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  color: #777;
+  padding: 2px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.yrw-tooltip .yrw-close:hover {
+  color: #444;
+}
+
+/*-------------------------------- facebook finder --------------------------------*/
+.fbrev-connect {
+  color: #fff;
+  padding: 5px;
+  border: none;
+  background: #3b5998;
+  cursor: pointer;
+}
+
+.fbrev-connect:hover {
+  background: #4869ad;
+}
+
+#shortcode .fbrev-connect {
+  margin-top: 15px;
+}
+
+.fbrev-pages .fbrev-page {
+  margin: 10px 0 0;
+  padding: 6px;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.fbrev-pages .fbrev-page.active, .fbrev-page:hover {
+  background: #eee;
+}
+
+.fbrev-pages .fbrev-page-photo {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  vertical-align: middle;
+  box-shadow: 0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);
+}
+
+.fbrev-pages span {
+  display: inline-block;
+  margin: 4px 16px;
+}

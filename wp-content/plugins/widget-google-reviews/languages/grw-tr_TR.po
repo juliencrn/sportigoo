@@ -1,0 +1,30 @@
+msgid ""
+msgstr ""
+"Language: tr_TR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+
+msgid "Google Rating"
+msgstr "Google Değerlendirme Notu"
+
+msgid "See All Reviews"
+msgstr "Tüm Değerlendirmeleri Oku"
+
+msgid "Google User"
+msgstr "Google Kullanıcısı"
+
+msgid "read more"
+msgstr "Devamını Oku"
+
+msgid "Next Reviews"
+msgstr "Diğer Değerlendirmeler"
+
+msgid "Write a review"
+msgstr "Değerlendirme Yap"
