@@ -4855,7 +4855,8 @@ td:last-child {
         height: 150px;
         background-position: center;
         background-repeat: no-repeat;
-        background-size: cover; }
+        background-size: cover;
+        background-color: #E7511E; }
       .homepage__news__item__content {
         padding: 20px 15px;
         background-color: #FFF;
