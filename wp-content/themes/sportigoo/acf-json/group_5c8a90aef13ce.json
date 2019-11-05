@@ -472,6 +472,41 @@
                     "maxlength": ""
                 }
             ]
+        },
+        {
+            "key": "field_5dc1824e354c2",
+            "label": "Avis Google",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5dc1825d354c3",
+            "label": "Avis Google shortcode",
+            "name": "avis_google_shortcode",
+            "type": "text",
+            "instructions": "Shortcode généré dans \"WP Google Reviews\"",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "[wprevpro_usetemplate tid=\"1\"]",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -491,5 +526,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1572578073
+    "modified": 1572966622
 }

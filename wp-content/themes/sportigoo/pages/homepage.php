@@ -28,7 +28,8 @@ while ( have_posts() ) {
 
   get_template_part('pages/homepage/chiffres'); // key number
   get_template_part('pages/homepage/categories-who');
-  // get_template_part('pages/homepage/xxxx'); // googles rates
+
+   get_template_part('pages/homepage/reviews'); // googles rates
   // get_template_part('pages/homepage/xxxx'); // Blog
 
   echo '</div>';

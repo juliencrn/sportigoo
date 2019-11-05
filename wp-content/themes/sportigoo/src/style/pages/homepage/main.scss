@@ -5,15 +5,12 @@
   @import "categories-list";
   @import "blue-section";
   @import "chiffres-section";
+  @import "_reviews.scss";
 
   &__titles {
     font-weight: bold;
     color: $black;
     font-size: 36px;
-  }
-
-  #homepage__event_types {
-    margin-bottom: 80px;
   }
 
   #homepage__categories {

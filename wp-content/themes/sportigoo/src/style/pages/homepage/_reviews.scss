@@ -1,0 +1,114 @@
+&__reviews {
+  margin: 40px 0 0;
+
+
+
+  &__waves {
+    @include wave;
+
+    height: 150px;
+    position: relative;
+    fill: $light-orange;
+
+    &--top {
+      background-image: url("../../static/svg/wave-light-orange-arc.svg");
+      transform: rotate(180deg);
+    }
+    &--bottom {
+      background-image: url("../../static/svg/wave-light-orange-arc.svg");
+    }
+  }
+
+  &__bg {
+    background-color: $light-orange;
+    color: $secondary;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    .wrapper {
+      padding: 0;
+      width: 750px;
+      max-width: 100%;
+
+      /* Modification du shortcode google reviews */
+      .wprs_unslider {
+        .wprevpro_t1_DIV_1 {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+        .wprevpro_t1_DIV_2 {
+          padding: 0 15px;
+          box-shadow: none;
+          background: none;
+          border: none;
+          &:before, &:after {
+            display: none;
+          }
+          p.wprevpro_t1_P_3.wprev_preview_tcolor1_T1 {
+
+            font-size: $fs-h3;
+            font-weight: 400;
+            line-height: 30px;
+            color: $secondary;
+            text-align: center;
+
+            span.wprevpro_star_imgs_T1 {
+              display: flex;
+              width: 100%;
+              margin-bottom: 30px;
+
+              img.wprevpro_t1_star_img_file {
+                margin: auto;
+              }
+            }
+          }
+        }
+
+        .wprs_unslider-arrow {
+          width: 30px;
+          height: 60px;
+          background: unset;
+          background-image: url("../../static/img/next.png");
+          background-color: transparent;
+          background-repeat: no-repeat;
+          background-position: 50% 50%;
+          background-size: 28px 44px;
+          opacity: 1;
+          transition: none;
+          margin-top: -40px;
+          overflow: visible;
+
+          @media (#{$bp-smaller-than-tablet}) {
+            &.prev {left: -10px;}
+            &.next {right: -10px;}
+          }
+          @media (#{$bp-larger-than-desktop}) {
+            &.prev {left: -100px;}
+            &.next {right: -100px;}
+          }
+          @media (#{$bp-larger-than-desktopm}) {
+            &.prev {left: -20%;}
+            &.next {right: -20%;}
+          }
+        }
+
+        .wprs_unslider-nav, .wprevpro_t1_IMG_4 {
+          display: none!important;
+        }
+
+        .wprevpro_t1_SPAN_5.wprev_preview_tcolor2_T1 {
+          text-align: right;
+          font-size: $fs-h4;
+          font-family: $ff-book;
+          font-weight: 400;
+          color: $secondary;
+          text-transform: capitalize;
+        }
+      }
+
+
+    }
+  }
+}
