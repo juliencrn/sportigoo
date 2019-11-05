@@ -1,0 +1,23 @@
+{
+    "name": "Sportigoo.fr",
+    "short_name": "Sportigoo.fr",
+    "description": "Le site r\u00e9f\u00e9rence des activit\u00e9s insolites et originales !",
+    "icons": [
+        {
+            "src": "https:\/\/sportigoo.fr\/wp-content\/plugins\/pwa-for-wp\/images\/logo.png",
+            "sizes": "192x192",
+            "type": "image\/png"
+        },
+        {
+            "src": "https:\/\/sportigoo.fr\/wp-content\/plugins\/pwa-for-wp\/images\/logo-512x512.png",
+            "sizes": "512x512",
+            "type": "image\/png"
+        }
+    ],
+    "background_color": "#D5E0EB",
+    "theme_color": "#D5E0EB",
+    "display": "standalone",
+    "orientation": "portrait",
+    "start_url": "https:\/\/sportigoo.fr\/",
+    "scope": "https:\/\/sportigoo.fr\/"
+}
