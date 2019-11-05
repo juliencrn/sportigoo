@@ -1,7 +1,17 @@
 const CACHE_VERSION = '1.7.1.2';
 
 const BASE_CACHE_FILES = [
-    
+    'https://sportigoo.fr/comment-organiser-un-evg-enterrement-de-vie-de-garcon/amp',
+'https://sportigoo.fr/pourquoi-il-est-important-de-feter-lanniversaire-de-son-enfant/amp',
+'https://sportigoo.fr/10-idees-dactivites-pour-un-evjf-paris/amp',
+'https://sportigoo.fr/top-15-gages-evjf/amp',
+'https://sportigoo.fr/10-idees-de-bar-pour-un-evg-a-paris/amp',
+'https://sportigoo.fr/amp',
+'https://sportigoo.fr/actualites/amp',
+'https://sportigoo.fr/boutique-activites-sportigoo/amp',
+'https://sportigoo.fr/conditions-generales-de-vente/amp',
+'https://sportigoo.fr/contact/amp',
+
 ];
 
 const OFFLINE_CACHE_FILES = [
