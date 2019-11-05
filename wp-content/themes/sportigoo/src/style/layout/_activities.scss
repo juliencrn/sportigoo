@@ -2,6 +2,15 @@
   position: relative;
   margin-top: -60px;
 
+  &--homepage {
+    article.activities__item-wrapper {
+      margin: 0 6px;
+      .wrapper {
+        margin: 0;
+      }
+    }
+  }
+
   &__cta {
     margin: 20px 0 0;
     display: flex;
@@ -33,7 +42,7 @@
       position: relative;
       overflow: hidden;
       border-radius: $global-radius;
-      margin: 0 6px;
+      //margin: 0 6px;
 
       &:after {
         content: "";
@@ -48,7 +57,7 @@
         left: 0;
         right: 0;
         box-shadow: 5px 4px 7px 1px rgba(175, 175, 175, 0.39);
-        //margin: 0 6px;
+        margin: 0 6px;
         border-radius: 10px;
         overflow: hidden;
       }
