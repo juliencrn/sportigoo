@@ -1354,6 +1354,9 @@ p {
   margin-top: 0; }
 
 /* Navbar */
+body.is-active .nav {
+  background: #1D467A !important; }
+
 .nav {
   left: 0;
   top: 0;
@@ -2131,6 +2134,7 @@ p {
   min-height: calc(100vh - 100px);
   background-size: cover;
   background-position: center;
+  padding-top: 100px;
   position: relative; }
   .activity-preview .container {
     z-index: 10; }
@@ -4532,7 +4536,6 @@ td:last-child {
               justify-content: center; }
       .homepage__blue-section__container .wrapper {
         padding: 15px 0;
-        width: 850px;
         max-width: 100%; }
         .homepage__blue-section__container .wrapper p {
           font-family: "Gotham-book", sans-serif;

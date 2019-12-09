@@ -1,4 +1,7 @@
 /* Navbar */
+body.is-active .nav {
+  background: $blue!important;
+}
 .nav {
   left: 0;
   top: 0;
