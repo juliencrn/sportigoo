@@ -1,11 +1,11 @@
 const CACHE_VERSION = '1.7.1.2';
 
 const BASE_CACHE_FILES = [
-    'https://sportigoo.fr/comment-organiser-un-evg-enterrement-de-vie-de-garcon/amp',
-'https://sportigoo.fr/pourquoi-il-est-important-de-feter-lanniversaire-de-son-enfant/amp',
-'https://sportigoo.fr/10-idees-dactivites-pour-un-evjf-paris/amp',
-'https://sportigoo.fr/top-15-gages-evjf/amp',
-'https://sportigoo.fr/10-idees-de-bar-pour-un-evg-a-paris/amp',
+    'https://sportigoo.fr/quest-ce-que-team-building-definition/amp',
+'https://sportigoo.fr/les-10-meilleures-activites-pour-un-team-building-a-paris/amp',
+'https://sportigoo.fr/10-idees-pour-un-evg-a-paris-de-reve/amp',
+'https://sportigoo.fr/6-conseils-pour-reussir-lanniversaire-de-son-enfant-a-paris/amp',
+'https://sportigoo.fr/les-10-etapes-pour-organiser-un-evjf/amp',
 'https://sportigoo.fr/amp',
 'https://sportigoo.fr/actualites/amp',
 'https://sportigoo.fr/boutique-activites-sportigoo/amp',
@@ -15,15 +15,15 @@ const BASE_CACHE_FILES = [
 ];
 
 const OFFLINE_CACHE_FILES = [
-     'https://sportigoo.fr/?amp=1',
+     'https://sportigoo.fr/10-idees-pour-un-evg-a-paris-de-reve/?amp=1',
 ];
 
 const NOT_FOUND_CACHE_FILES = [
-    'https://sportigoo.fr/?amp=1',
+    'https://sportigoo.fr/10-idees-pour-un-evg-a-paris-de-reve/?amp=1',
 ];
 
-const OFFLINE_PAGE = 'https://sportigoo.fr/?amp=1';
-const NOT_FOUND_PAGE = 'https://sportigoo.fr/?amp=1';
+const OFFLINE_PAGE = 'https://sportigoo.fr/10-idees-pour-un-evg-a-paris-de-reve/?amp=1';
+const NOT_FOUND_PAGE = 'https://sportigoo.fr/10-idees-pour-un-evg-a-paris-de-reve/?amp=1';
 
 const CACHE_VERSIONS = {
     content: 'content-v' + CACHE_VERSION,

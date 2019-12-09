@@ -3,11 +3,11 @@ const CACHE_VERSION = '1.7.1.2';
 const BASE_CACHE_FILES = [
     'https://sportigoo.fr/wp-content/plugins/pwa-for-wp/images/logo.png',
 'https://sportigoo.fr/wp-content/plugins/pwa-for-wp/images/logo-512x512.png',
-'https://sportigoo.fr/comment-organiser-un-evg-enterrement-de-vie-de-garcon/',
-'https://sportigoo.fr/pourquoi-il-est-important-de-feter-lanniversaire-de-son-enfant/',
-'https://sportigoo.fr/10-idees-dactivites-pour-un-evjf-paris/',
-'https://sportigoo.fr/top-15-gages-evjf/',
-'https://sportigoo.fr/10-idees-de-bar-pour-un-evg-a-paris/',
+'https://sportigoo.fr/quest-ce-que-team-building-definition/',
+'https://sportigoo.fr/les-10-meilleures-activites-pour-un-team-building-a-paris/',
+'https://sportigoo.fr/10-idees-pour-un-evg-a-paris-de-reve/',
+'https://sportigoo.fr/6-conseils-pour-reussir-lanniversaire-de-son-enfant-a-paris/',
+'https://sportigoo.fr/les-10-etapes-pour-organiser-un-evjf/',
 'https://sportigoo.fr/',
 'https://sportigoo.fr/actualites/',
 'https://sportigoo.fr/boutique-activites-sportigoo/',
@@ -17,15 +17,15 @@ const BASE_CACHE_FILES = [
 ];
 
 const OFFLINE_CACHE_FILES = [
-     'https://sportigoo.fr/',
+     'https://sportigoo.fr/10-idees-pour-un-evg-a-paris-de-reve/',
 ];
 
 const NOT_FOUND_CACHE_FILES = [
-    'https://sportigoo.fr/',
+    'https://sportigoo.fr/10-idees-pour-un-evg-a-paris-de-reve/',
 ];
 
-const OFFLINE_PAGE = 'https://sportigoo.fr/';
-const NOT_FOUND_PAGE = 'https://sportigoo.fr/';
+const OFFLINE_PAGE = 'https://sportigoo.fr/10-idees-pour-un-evg-a-paris-de-reve/';
+const NOT_FOUND_PAGE = 'https://sportigoo.fr/10-idees-pour-un-evg-a-paris-de-reve/';
 
 const CACHE_VERSIONS = {
     content: 'content-v' + CACHE_VERSION,
