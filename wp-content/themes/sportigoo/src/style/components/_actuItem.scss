@@ -1,7 +1,7 @@
 .actu-item {
   &__wrapper {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: $white;
     transition: background-color $fast;
     color: black;
@@ -23,6 +23,7 @@
   &__content {
     text-align: center;
     margin: auto;
+    flex: 1;
     padding: 10px 20px 10px 10px;
     p {
       margin-bottom: 0;

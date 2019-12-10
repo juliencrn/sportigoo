@@ -320,6 +320,8 @@ template {
   .woocommerce table.shop_table * {
     font-size: 18px !important;
     line-height: 27px; }
+  .woocommerce input#coupon_code {
+    min-width: 120px; }
 
 .ywsl-social {
   display: none !important; }
@@ -3868,9 +3870,11 @@ li {
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-justify-content: space-around;
-      -ms-flex-pack: distribute;
-          justify-content: space-around;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+     -moz-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   background-color: #FFF;
   -webkit-transition: background-color 0.4s;
   -o-transition: background-color 0.4s;
@@ -3896,6 +3900,11 @@ li {
 .actu-item__content {
   text-align: center;
   margin: auto;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+     -moz-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   padding: 10px 20px 10px 10px; }
   .actu-item__content p {
     margin-bottom: 0;
