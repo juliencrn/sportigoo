@@ -5,15 +5,15 @@ const BASE_CACHE_FILES = [
 ];
 
 const OFFLINE_CACHE_FILES = [
-     'https://sportigoo.fr/les-10-meilleures-activites-pour-un-team-building-a-paris/?amp=1',
+     'https://sportigoo.fr/total-solidaire-confinement-covid-19-epidemie-coronavirus/?amp=1',
 ];
 
 const NOT_FOUND_CACHE_FILES = [
-    'https://sportigoo.fr/les-10-meilleures-activites-pour-un-team-building-a-paris/?amp=1',
+    'https://sportigoo.fr/total-solidaire-confinement-covid-19-epidemie-coronavirus/?amp=1',
 ];
 
-const OFFLINE_PAGE = 'https://sportigoo.fr/les-10-meilleures-activites-pour-un-team-building-a-paris/?amp=1';
-const NOT_FOUND_PAGE = 'https://sportigoo.fr/les-10-meilleures-activites-pour-un-team-building-a-paris/?amp=1';
+const OFFLINE_PAGE = 'https://sportigoo.fr/total-solidaire-confinement-covid-19-epidemie-coronavirus/?amp=1';
+const NOT_FOUND_PAGE = 'https://sportigoo.fr/total-solidaire-confinement-covid-19-epidemie-coronavirus/?amp=1';
 
 const CACHE_VERSIONS = {
     content: 'content-v' + CACHE_VERSION,

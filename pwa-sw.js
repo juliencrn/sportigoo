@@ -3,11 +3,11 @@ const CACHE_VERSION = '1.7.1.2';
 const BASE_CACHE_FILES = [
     'https://sportigoo.fr/wp-content/plugins/pwa-for-wp/images/logo.png',
 'https://sportigoo.fr/wp-content/plugins/pwa-for-wp/images/logo-512x512.png',
+'https://sportigoo.fr/confinement-jeu-de-cartes-a-decouvrir/',
+'https://sportigoo.fr/total-solidaire-confinement-covid-19-epidemie-coronavirus/',
+'https://sportigoo.fr/confinement-coronavirus-les-conseils-et-les-regles-a-respecter/',
 'https://sportigoo.fr/escape-game-casa-de-papel/',
 'https://sportigoo.fr/lescalade-cest-quoi/',
-'https://sportigoo.fr/ou-faire-son-evg-enterrement-de-vie-de-garcon/',
-'https://sportigoo.fr/top-10-activites-a-faire-pour-un-team-building-a-paris-et-en-ile-de-france/',
-'https://sportigoo.fr/comment-organiser-un-team-building/',
 'https://sportigoo.fr/',
 'https://sportigoo.fr/actualites/',
 'https://sportigoo.fr/boutique-activites-sportigoo/',
@@ -17,15 +17,15 @@ const BASE_CACHE_FILES = [
 ];
 
 const OFFLINE_CACHE_FILES = [
-     'https://sportigoo.fr/les-10-meilleures-activites-pour-un-team-building-a-paris/',
+     'https://sportigoo.fr/total-solidaire-confinement-covid-19-epidemie-coronavirus/',
 ];
 
 const NOT_FOUND_CACHE_FILES = [
-    'https://sportigoo.fr/les-10-meilleures-activites-pour-un-team-building-a-paris/',
+    'https://sportigoo.fr/total-solidaire-confinement-covid-19-epidemie-coronavirus/',
 ];
 
-const OFFLINE_PAGE = 'https://sportigoo.fr/les-10-meilleures-activites-pour-un-team-building-a-paris/';
-const NOT_FOUND_PAGE = 'https://sportigoo.fr/les-10-meilleures-activites-pour-un-team-building-a-paris/';
+const OFFLINE_PAGE = 'https://sportigoo.fr/total-solidaire-confinement-covid-19-epidemie-coronavirus/';
+const NOT_FOUND_PAGE = 'https://sportigoo.fr/total-solidaire-confinement-covid-19-epidemie-coronavirus/';
 
 const CACHE_VERSIONS = {
     content: 'content-v' + CACHE_VERSION,
