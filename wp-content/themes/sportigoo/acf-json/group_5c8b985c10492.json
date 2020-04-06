@@ -1,6 +1,6 @@
 {
     "key": "group_5c8b985c10492",
-    "title": "Page - Qui sommes-nous",
+    "title": "Page - Devenir Partenaire",
     "fields": [
         {
             "key": "field_5c8b986a9c464",
@@ -79,6 +79,25 @@
             "max_height": "",
             "max_size": "",
             "mime_types": ""
+        },
+        {
+            "key": "field_5e8ac22ebbcce",
+            "label": "Texte intro (copie)",
+            "name": "texte_intro_copie",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
         },
         {
             "key": "field_5c8ba0cb49465",
@@ -254,6 +273,22 @@
                     "new_lines": ""
                 }
             ]
+        },
+        {
+            "key": "field_5e89e9710c9ba",
+            "label": "Cliquez ici",
+            "name": "cliquez_ici",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
         }
     ],
     "location": [
@@ -273,5 +308,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1552655398
+    "modified": 1586152071
 }

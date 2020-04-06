@@ -12,20 +12,20 @@ const BASE_CACHE_FILES = [
 'https://sportigoo.fr/actualites/',
 'https://sportigoo.fr/boutique-activites-sportigoo/',
 'https://sportigoo.fr/conditions-generales-de-vente/',
-'https://sportigoo.fr/contact/',
+'https://sportigoo.fr/mentions-legales/',
 
 ];
 
 const OFFLINE_CACHE_FILES = [
-     'https://sportigoo.fr/total-solidaire-confinement-covid-19-epidemie-coronavirus/',
+     'https://sportigoo.fr/devenir-partenaire-sportigoo/',
 ];
 
 const NOT_FOUND_CACHE_FILES = [
-    'https://sportigoo.fr/total-solidaire-confinement-covid-19-epidemie-coronavirus/',
+    'https://sportigoo.fr/devenir-partenaire-sportigoo/',
 ];
 
-const OFFLINE_PAGE = 'https://sportigoo.fr/total-solidaire-confinement-covid-19-epidemie-coronavirus/';
-const NOT_FOUND_PAGE = 'https://sportigoo.fr/total-solidaire-confinement-covid-19-epidemie-coronavirus/';
+const OFFLINE_PAGE = 'https://sportigoo.fr/devenir-partenaire-sportigoo/';
+const NOT_FOUND_PAGE = 'https://sportigoo.fr/devenir-partenaire-sportigoo/';
 
 const CACHE_VERSIONS = {
     content: 'content-v' + CACHE_VERSION,
