@@ -17,15 +17,15 @@ const BASE_CACHE_FILES = [
 ];
 
 const OFFLINE_CACHE_FILES = [
-     'https://sportigoo.fr/devenir-partenaire-sportigoo/',
+     'https://sportigoo.fr/',
 ];
 
 const NOT_FOUND_CACHE_FILES = [
-    'https://sportigoo.fr/devenir-partenaire-sportigoo/',
+    'https://sportigoo.fr/',
 ];
 
-const OFFLINE_PAGE = 'https://sportigoo.fr/devenir-partenaire-sportigoo/';
-const NOT_FOUND_PAGE = 'https://sportigoo.fr/devenir-partenaire-sportigoo/';
+const OFFLINE_PAGE = 'https://sportigoo.fr/';
+const NOT_FOUND_PAGE = 'https://sportigoo.fr/';
 
 const CACHE_VERSIONS = {
     content: 'content-v' + CACHE_VERSION,

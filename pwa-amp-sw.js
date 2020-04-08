@@ -5,15 +5,15 @@ const BASE_CACHE_FILES = [
 ];
 
 const OFFLINE_CACHE_FILES = [
-     'https://sportigoo.fr/devenir-partenaire-sportigoo/?amp=1',
+     'https://sportigoo.fr/?amp=1',
 ];
 
 const NOT_FOUND_CACHE_FILES = [
-    'https://sportigoo.fr/devenir-partenaire-sportigoo/?amp=1',
+    'https://sportigoo.fr/?amp=1',
 ];
 
-const OFFLINE_PAGE = 'https://sportigoo.fr/devenir-partenaire-sportigoo/?amp=1';
-const NOT_FOUND_PAGE = 'https://sportigoo.fr/devenir-partenaire-sportigoo/?amp=1';
+const OFFLINE_PAGE = 'https://sportigoo.fr/?amp=1';
+const NOT_FOUND_PAGE = 'https://sportigoo.fr/?amp=1';
 
 const CACHE_VERSIONS = {
     content: 'content-v' + CACHE_VERSION,
