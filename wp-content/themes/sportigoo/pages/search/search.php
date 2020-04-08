@@ -7,7 +7,7 @@ $data_inputs = [
     "data" => get_terms( array(
       'hide_empty' => true,
       'taxonomy' => 'product_cat',
-      'child_of' => 58 // product_cat > type > x
+      'child_of' => 4829 // product_cat > type > x
     ) ),
     "lieu" => false
   ],
