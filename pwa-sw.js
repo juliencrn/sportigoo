@@ -3,11 +3,11 @@ const CACHE_VERSION = '1.7.1.2';
 const BASE_CACHE_FILES = [
     'https://sportigoo.fr/wp-content/plugins/pwa-for-wp/images/logo.png',
 'https://sportigoo.fr/wp-content/plugins/pwa-for-wp/images/logo-512x512.png',
-'https://sportigoo.fr/confinement-jeu-de-cartes-a-decouvrir/',
-'https://sportigoo.fr/total-solidaire-confinement-covid-19-epidemie-coronavirus/',
-'https://sportigoo.fr/confinement-coronavirus-les-conseils-et-les-regles-a-respecter/',
-'https://sportigoo.fr/escape-game-casa-de-papel/',
-'https://sportigoo.fr/lescalade-cest-quoi/',
+'https://sportigoo.fr/camps-de-vacances-une-experience-inoubliable/',
+'https://sportigoo.fr/le-paintball-est-de-retour-preparez-vous-pour-lete/',
+'https://sportigoo.fr/top-10-des-activites-a-faire-pendant-lete/',
+'https://sportigoo.fr/sorties-culturelles-sur-paris-pendant-lete/',
+'https://sportigoo.fr/le-wine-gaming-une-activite-insolite-pour-un-team-building/',
 'https://sportigoo.fr/',
 'https://sportigoo.fr/actualites/',
 'https://sportigoo.fr/boutique-activites-sportigoo/',
@@ -17,15 +17,15 @@ const BASE_CACHE_FILES = [
 ];
 
 const OFFLINE_CACHE_FILES = [
-     'https://sportigoo.fr/',
+     'https://sportigoo.fr/enterrement-de-vie-de-jeune-fille-cest-quoi/',
 ];
 
 const NOT_FOUND_CACHE_FILES = [
-    'https://sportigoo.fr/',
+    'https://sportigoo.fr/enterrement-de-vie-de-jeune-fille-cest-quoi/',
 ];
 
-const OFFLINE_PAGE = 'https://sportigoo.fr/';
-const NOT_FOUND_PAGE = 'https://sportigoo.fr/';
+const OFFLINE_PAGE = 'https://sportigoo.fr/enterrement-de-vie-de-jeune-fille-cest-quoi/';
+const NOT_FOUND_PAGE = 'https://sportigoo.fr/enterrement-de-vie-de-jeune-fille-cest-quoi/';
 
 const CACHE_VERSIONS = {
     content: 'content-v' + CACHE_VERSION,
