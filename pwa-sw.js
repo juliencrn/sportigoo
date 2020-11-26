@@ -10,9 +10,6 @@ const BASE_CACHE_FILES = [
 'https://sportigoo.fr/le-wine-gaming-une-activite-insolite-pour-un-team-building/',
 'https://sportigoo.fr/',
 'https://sportigoo.fr/actualites/',
-'https://sportigoo.fr/boutique-activites-sportigoo/',
-'https://sportigoo.fr/conditions-generales-de-vente/',
-'https://sportigoo.fr/mentions-legales/',
 
 ];
 
