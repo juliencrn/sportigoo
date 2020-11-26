@@ -17,15 +17,15 @@ const BASE_CACHE_FILES = [
 ];
 
 const OFFLINE_CACHE_FILES = [
-     'https://sportigoo.fr/enterrement-de-vie-de-jeune-fille-cest-quoi/',
+     'https://sportigoo.fr/',
 ];
 
 const NOT_FOUND_CACHE_FILES = [
-    'https://sportigoo.fr/enterrement-de-vie-de-jeune-fille-cest-quoi/',
+    'https://sportigoo.fr/',
 ];
 
-const OFFLINE_PAGE = 'https://sportigoo.fr/enterrement-de-vie-de-jeune-fille-cest-quoi/';
-const NOT_FOUND_PAGE = 'https://sportigoo.fr/enterrement-de-vie-de-jeune-fille-cest-quoi/';
+const OFFLINE_PAGE = 'https://sportigoo.fr/';
+const NOT_FOUND_PAGE = 'https://sportigoo.fr/';
 
 const CACHE_VERSIONS = {
     content: 'content-v' + CACHE_VERSION,
